@@ -1,51 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraCtrl : MonoBehaviour
 {
-    [SerializeField] GameObject _parent;
-    [SerializeField] float _radius;
-    [SerializeField] float _yPos;
     [SerializeField] float _moveRate;
 
-    float _hAngle = 0;
-    float _vAngle = 0;
+    CinemachineVirtualCamera _vCm;
+    Cinemachine3rdPersonFollow _follow;
 
-    void Update()
+    float _v, _h;
+
+    void Start()
     {
-        Vector3 parent = _parent.transform.position;
-
-        float setX = parent.x + Horizontal().x + Vertical().x;
-        float setY = parent.y + _yPos + Vertical().y;
-        float setZ = parent.z + Horizontal().y;
-
-        transform.position = new Vector3(setX, setY, setZ);
-
-        transform.LookAt(_parent.transform);
+        _vCm = GetComponent<CinemachineVirtualCamera>();
+        _follow = _vCm.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
     }
 
-    Vector2 Horizontal()
+    private void Update()
     {
-        if (Mathf.Abs(_hAngle) / _moveRate >= 360) _hAngle = 0;
+        Transform target = _vCm.Follow;
+        Vector3 tEAngle = target.rotation.eulerAngles;
+        if (Input.GetKey(KeyCode.J)) _v = 1;
+        else if (Input.GetKey(KeyCode.L)) _v = -1;
+        else _v = 0;
 
-        float rad = (_hAngle / _moveRate) * (Mathf.PI / 180);
+        if (Input.GetKey(KeyCode.I)) _h = 1;
+        else if (Input.GetKey(KeyCode.K)) _h = -1;
+        else _h = 0;
 
-        if(Input.GetKey(KeyCode.L)) _hAngle++;
-        else if (Input.GetKey(KeyCode.J)) _hAngle--;
+        tEAngle.y += _v * 180 * Time.deltaTime;
+        tEAngle.x += _h * 180 * Time.deltaTime;
 
-        return new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * _radius;
-    }
 
-    Vector2 Vertical()
-    {
-        if (Mathf.Abs(_vAngle) / _moveRate >= 360) _vAngle = 0;
-
-        float rad = (_vAngle / _moveRate) * (Mathf.PI / 180);
-
-        if (Input.GetKey(KeyCode.I)) _vAngle++;
-        else if (Input.GetKey(KeyCode.K)) _vAngle--;
-
-        return new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * _radius;
+        target.rotation = Quaternion.Euler(tEAngle);
     }
 }
