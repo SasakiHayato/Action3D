@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
-    enum State
+    enum GroundState
     {
         Idle,
         Walk,
@@ -15,11 +15,26 @@ public class Player : MonoBehaviour
         None,
     }
 
-    State _state = State.None;
+    enum ActionState
+    { 
+        Avoid,
+
+        None,
+    }
+
+    enum FloatState
+    {
+        Jump,
+
+        None,
+    }
+
+    GroundState _state = GroundState.None;
 
     [SerializeField] float _walkSpeed = 1f;
     [SerializeField] float _dashSpeed = 1f;
     [SerializeField] float _avoidSpeed = 1f;
+    [SerializeField] float _avoidTime = 1f;
     [SerializeField] float _cmSpeed;
     [SerializeField] float _rotateSpeed;
 
@@ -28,6 +43,8 @@ public class Player : MonoBehaviour
 
     GameObject _core;
     GameObject _mainCm;
+
+    Animator _anim;
 
     bool _isDash = false;
 
@@ -42,10 +59,13 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        _state = State.Idle;
+        _state = GroundState.Idle;
         _rb = GetComponent<Rigidbody>();
+        _anim = GetComponent<Animator>();
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
         Inputter.Instance.Inputs.Player.Fire.started += context => Avoid();
+        Inputter.Instance.Inputs.Player.Jump.started += context => Jump();
+        Inputter.Instance.Inputs.Player.Attack.started += context => Attack();
     }
 
     void Update()
@@ -55,39 +75,42 @@ public class Player : MonoBehaviour
 
         switch (_state)
         {
-            case State.Idle:
+            case GroundState.Idle:
                 speed = 0;
                 break;
-            case State.Walk:
+            case GroundState.Walk:
                 speed = _walkSpeed;
                 break;
-            case State.Dash:
+            case GroundState.Dash:
                 speed = _dashSpeed;
                 break;
-            case State.Avoid:
+            case GroundState.Avoid:
                 speed = _avoidSpeed;
                 break;
-            case State.None:
+            case GroundState.None:
                 break;
         }
 
         _cm.Move(_cmSpeed);
 
         Vector2 move = MovePlayer();
+        
         if (move != Vector2.zero)
         {
-            if (!_isDash) _state = State.Walk;
+            if (!_isDash) _state = GroundState.Walk;
             Rotate();
         }
         else
         {
-            _state = State.Idle;
+            _state = GroundState.Idle;
         }
+        
         float max = float.MinValue;
         if (Mathf.Abs(move.x) >= Mathf.Abs(move.y)) max = move.x;
         else max = move.y;
-        
+
         if (Mathf.Abs(max) < 0.4f) _isDash = false;
+        
 
         _rb.velocity = new Vector3
             (move.x * speed, _rb.velocity.y, move.y * speed);
@@ -114,16 +137,31 @@ public class Player : MonoBehaviour
         return new Vector2(foward.x + right.x, foward.z + right.z);
     }
 
-    void Avoid()
+    float Jump()
     {
-        StartCoroutine(GoAvoid());
+        Debug.Log("ss");
+        return 0;
     }
 
+    void Attack()
+    {
+        _anim.Play("Attack");
+        
+    }
+
+    void Avoid() => StartCoroutine(GoAvoid());
     IEnumerator GoAvoid()
     {
-        _isDash = true;
-        _state = State.Avoid;
-        yield return new WaitForSeconds(1f);
-        _state = State.Dash;
+        float time = 0;
+        while (time < _avoidTime)
+        {
+            time += Time.deltaTime;
+            _isDash = true;
+            _state = GroundState.Avoid;
+
+            yield return null;
+        }
+     
+        _state = GroundState.Dash;
     }
 }

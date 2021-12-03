@@ -1,5 +1,5 @@
 {
-    "name": "Test",
+    "name": "InputData",
     "maps": [
         {
             "name": "Player",
@@ -34,6 +34,22 @@
                     "type": "Value",
                     "id": "75fc371e-1495-48f1-b069-a5ad658f0874",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "02d100c0-9d67-4cb5-8fa3-78b45c4f3554",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "03045563-2426-4046-b0f7-f067c70210d3",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -278,6 +294,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "MoveCm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f387356-e20b-43e9-8e76-16bd06560671",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "713d46bc-16f0-4c85-9640-8f3bf212cd1e",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
