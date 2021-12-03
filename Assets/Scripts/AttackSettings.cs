@@ -22,6 +22,7 @@ namespace AttackSetting
     public class AttackSettings : MonoBehaviour
     {
         [SerializeField] GameObject _parent;
+        [SerializeField] float _requestCoolTime;
         /// <summary>
         /// DefoultとなるWepon
         /// </summary>
@@ -47,7 +48,10 @@ namespace AttackSetting
             public EffectType[] Effects;
         }
 
-        int _combo = 0;
+        
+        float _coolTime = 0;
+        bool _isRequest = true;
+
         int _findIndex = 0;
 
         int _saveGroupID = 0;
@@ -113,7 +117,6 @@ namespace AttackSetting
 
         void InitParam()
         {
-            _combo = 0;
             _findIndex = 0;
             _effect = null;
             EffectSetter.Init();
@@ -126,12 +129,22 @@ namespace AttackSetting
                 IsAttack((IDamage)_iTarget.CallBack()[1]);
                 _iTarget.Init();
             }
+
+            if (!_isRequest) _coolTime += Time.deltaTime;
+            if (_coolTime > _requestCoolTime)
+            {
+                _isRequest = true;
+                _coolTime = 0;
+            }
         }
 
         /// <summary> 攻撃の申請 </summary>
         /// <param name="type">どのアクションなのか</param>
         public void Request(ActionType type)
         {
+            if (!_isRequest) return;
+            _isRequest = false;
+
             if (_saveActionType == ActionType.None || _saveActionType != type)
             {
                 Debug.Log($"Init. NextAttackType is {type}");
@@ -197,6 +210,7 @@ namespace AttackSetting
             _audio.volume = data.SEVol;
             if (data.SE != null) _audio.PlayOneShot(data.SE);
             else Debug.Log("Nothing SEData.");
+
             object[] datas = { _targetWeapon.gameObject, _anim };
             _effect = EffectSetter.Set(_effect, data.Effects, datas);
             _data = data;
@@ -206,6 +220,7 @@ namespace AttackSetting
         {
             iDamage.GetDamage(_data.Power);
             _effect.Invoke();
+            Debug.Log("AAAAAAAAAAa");
         }
     }
 }
