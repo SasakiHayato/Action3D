@@ -42,6 +42,7 @@ namespace AttackSetting
             public string AnimName;
             public int GroupID;
             public float Power;
+            public float NextActinTime;
             public AudioClip SE;
             public float SEVol;
             public ActionType Action;
@@ -50,6 +51,7 @@ namespace AttackSetting
 
         
         float _coolTime = 0;
+        float _resetCombTime = 0;
         bool _isRequest = true;
 
         int _findIndex = 0;
@@ -118,6 +120,7 @@ namespace AttackSetting
         void InitParam()
         {
             _findIndex = 0;
+            _resetCombTime = 0;
             _effect = null;
             EffectSetter.Init();
         }
@@ -131,11 +134,23 @@ namespace AttackSetting
             }
 
             if (!_isRequest) _coolTime += Time.deltaTime;
+            _resetCombTime += Time.deltaTime;
+
             if (_coolTime > _requestCoolTime)
             {
                 _isRequest = true;
                 _coolTime = 0;
             }
+            
+            // CheckComboTime
+            if (_data != null)
+                if (_resetCombTime > _data.NextActinTime)
+                {
+                    Debug.Log("ResetCombo");
+                    _isRequest = true;
+                    _coolTime = 0;
+                    InitParam();
+                }
         }
 
         /// <summary> çUåÇÇÃê\êø </summary>
@@ -206,6 +221,7 @@ namespace AttackSetting
 
         void SetData(AttackData data)
         {
+            _resetCombTime = 0;
             _anim.Play(data.AnimName);
             _audio.volume = data.SEVol;
             if (data.SE != null) _audio.PlayOneShot(data.SE);

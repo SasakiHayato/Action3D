@@ -373,15 +373,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 206278072}
+  _requestCoolTime: 0.75
   _targetWeapon: {fileID: 144424143}
   _attacks:
   - AnimName: Attack
     GroupID: 0
     Power: 0
+    NextActinTime: 1
     SE: {fileID: 0}
     SEVol: 0
     Action: 0
-    Effects: 01000000
+    Effects: 0200000000000000
+  - AnimName: Attack2
+    GroupID: 0
+    Power: 0
+    NextActinTime: 2
+    SE: {fileID: 0}
+    SEVol: 0
+    Action: 0
+    Effects: 02000000
 --- !u!1 &286906769
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: -1, y: 0, z: -1.3}
+  ShoulderOffset: {x: 0, y: 1, z: 1.7}
   VerticalArmLength: 0.4
   CameraSide: 1
   CameraDistance: 5
