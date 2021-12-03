@@ -6,7 +6,11 @@ namespace AttackSetting
 {
     public enum EffectType
     {
+        HitStop,
+        ShakeCm,
+        HitParticle,
 
+        None,
     }
 
     public class Effects : MonoBehaviour
@@ -29,7 +33,32 @@ namespace AttackSetting
             }
         }
 
+        public static void HitStop(Animator anim)
+        {
+            Debug.Log("EffctType HitStop");
+            Instance.StartCoroutine(Instance.WaitTime(anim));
+        }
+        IEnumerator WaitTime(Animator anim)
+        {
+            anim.speed = 0.1f;
+            yield return new WaitForSeconds(0.1f);
+            anim.speed = 1f;
+        }
 
+        public static void ShakeCm()
+        {
+            Debug.Log("EffctType ShakeCm");
+
+        }
+
+        public static void HitParticle(GameObject target)
+        {
+            Debug.Log("EffctType HitParticle");
+            GameObject obj = Instantiate((GameObject)Resources.Load("HitParticle"));
+            obj.transform.position = target.transform.position;
+        }
+
+        public static void None() => Debug.Log("EffctType None");
     }
 }
 

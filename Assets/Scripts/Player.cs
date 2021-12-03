@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using AttackSetting;
+
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
@@ -40,11 +42,10 @@ public class Player : MonoBehaviour
 
     Rigidbody _rb;
     CmCotrol _cm;
+    AttackSettings _attack;
 
     GameObject _core;
     GameObject _mainCm;
-
-    Animator _anim;
 
     bool _isDash = false;
 
@@ -61,7 +62,7 @@ public class Player : MonoBehaviour
     {
         _state = GroundState.Idle;
         _rb = GetComponent<Rigidbody>();
-        _anim = GetComponent<Animator>();
+        _attack = GetComponent<AttackSettings>();
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
         Inputter.Instance.Inputs.Player.Fire.started += context => Avoid();
         Inputter.Instance.Inputs.Player.Jump.started += context => Jump();
@@ -70,7 +71,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(_state);
+        //Debug.Log(_state);
         float speed = 0;
 
         switch (_state)
@@ -145,8 +146,7 @@ public class Player : MonoBehaviour
 
     void Attack()
     {
-        _anim.Play("Attack");
-        
+        _attack.Request(ActionType.Ground);
     }
 
     void Avoid() => StartCoroutine(GoAvoid());
