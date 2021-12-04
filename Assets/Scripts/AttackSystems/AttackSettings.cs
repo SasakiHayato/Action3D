@@ -236,7 +236,6 @@ namespace AttackSetting
         {
             iDamage.GetDamage(_data.Power);
             _effect.Invoke();
-            Debug.Log("AAAAAAAAAAa");
         }
     }
 }

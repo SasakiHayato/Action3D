@@ -4,7 +4,7 @@ using UnityEngine;
 
 using AttackSetting;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
 {
     enum GroundState
@@ -17,53 +17,35 @@ public class Player : MonoBehaviour
         None,
     }
 
-    enum ActionState
-    { 
-        Avoid,
-
-        None,
-    }
-
-    enum FloatState
-    {
-        Jump,
-
-        None,
-    }
-
-    GroundState _state = GroundState.None;
+    GroundState _state = GroundState.Idle;
 
     [SerializeField] float _walkSpeed = 1f;
     [SerializeField] float _dashSpeed = 1f;
     [SerializeField] float _avoidSpeed = 1f;
     [SerializeField] float _avoidTime = 1f;
-    [SerializeField] float _cmSpeed;
     [SerializeField] float _rotateSpeed;
 
-    Rigidbody _rb;
-    CmCotrol _cm;
     AttackSettings _attack;
+    Gravity _g;
 
-    GameObject _core;
+    CharacterController _cc;
+
     GameObject _mainCm;
 
     bool _isDash = false;
-
-    private void Awake()
-    {
-        _core = new GameObject("Core");
-        _core.AddComponent<Rigidbody>().useGravity = false;
-        _core.transform.position = transform.position;
-        _cm = GameObject.Find("3drParsonCm").GetComponent<CmCotrol>();
-        _cm.SetUp();
-    }
-
+    float _runTime;
+    
     void Start()
     {
-        _state = GroundState.Idle;
-        _rb = GetComponent<Rigidbody>();
         _attack = GetComponent<AttackSettings>();
+        _cc = GetComponent<CharacterController>();
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
+        _g = GetComponent<Gravity>();
+        InputSetUp();
+    }
+
+    void InputSetUp()
+    {
         Inputter.Instance.Inputs.Player.Fire.started += context => Avoid();
         Inputter.Instance.Inputs.Player.Jump.started += context => Jump();
         Inputter.Instance.Inputs.Player.Attack.started += context => Attack();
@@ -71,7 +53,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(_state);
         float speed = 0;
 
         switch (_state)
@@ -92,11 +73,9 @@ public class Player : MonoBehaviour
                 break;
         }
 
-        _cm.Move(_cmSpeed);
-
-        Vector2 move = MovePlayer();
+        Vector3 move = MovePlayer(speed);
         
-        if (move != Vector2.zero)
+        if (move != Vector3.zero)
         {
             if (!_isDash) _state = GroundState.Walk;
             Rotate();
@@ -104,19 +83,16 @@ public class Player : MonoBehaviour
         else
         {
             _state = GroundState.Idle;
+            _runTime = 0;
         }
         
         float max = float.MinValue;
         if (Mathf.Abs(move.x) >= Mathf.Abs(move.y)) max = move.x;
-        else max = move.y;
+        else max = move.z;
 
         if (Mathf.Abs(max) < 0.4f) _isDash = false;
-        
-
-        _rb.velocity = new Vector3
-            (move.x * speed, _rb.velocity.y, move.y * speed);
-        
-        _core.GetComponent<Rigidbody>().MovePosition(transform.position);
+        Vector3 velocity = Vector3.Scale(move, _g.Velocity);
+        _cc.Move(velocity * Time.deltaTime);
     }
 
     void Rotate()
@@ -129,27 +105,19 @@ public class Player : MonoBehaviour
         transform.localRotation = rotate;
     }
 
-    Vector2 MovePlayer()
+    Vector3 MovePlayer(float speed)
     {
         Vector2 move = (Vector2)Inputter.GetValue(InputType.PlayerMove);
-        Vector3 foward = _mainCm.transform.forward * move.y;
-        Vector3 right = _mainCm.transform.right * move.x;
-
-        return new Vector2(foward.x + right.x, foward.z + right.z);
+        Vector3 foward = _mainCm.transform.forward * move.y * speed;
+        Vector3 right = _mainCm.transform.right * move.x * speed;
+        
+        return new Vector3(foward.x + right.x, 1, foward.z + right.z);
     }
 
-    float Jump()
-    {
-        Debug.Log("ss");
-        return 0;
-    }
-
-    void Attack()
-    {
-        _attack.Request(ActionType.Ground);
-    }
-
+    void Jump() => _g.Force();
+    void Attack() => _attack.Request(ActionType.Ground);
     void Avoid() => StartCoroutine(GoAvoid());
+
     IEnumerator GoAvoid()
     {
         float time = 0;
