@@ -34,6 +34,8 @@ public class AttackCollision : MonoBehaviour, IAttack
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_parent == null) return;
+
         if (_parent.CompareTag("Player") == other.CompareTag("Enemy"))
         {
             Debug.Log("Player is Attack");
