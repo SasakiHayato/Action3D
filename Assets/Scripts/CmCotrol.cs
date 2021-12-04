@@ -6,26 +6,42 @@ using Cinemachine;
 
 public class CmCotrol : MonoBehaviour
 {
+    [SerializeField] float _rotateSpeed;
+    [SerializeField] Vector3 _offSet = Vector3.zero;
+
     CinemachineVirtualCamera _vCam;
     Cinemachine3rdPersonFollow _follow;
 
-    public void SetUp()
+    GameObject _target;
+    GameObject _core;
+
+    void Start()
     {
+        _target = GameObject.FindGameObjectWithTag("Player");
+
+        _core = new GameObject("Core");
+        _core.transform.position = _target.transform.position;
+
         _vCam = GetComponent<CinemachineVirtualCamera>();
         _follow = _vCam.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
-        _follow.ShoulderOffset = new Vector3(0, 1f, 1.7f);
+        _follow.ShoulderOffset = _offSet;
         if (_vCam.Follow == null) _vCam.Follow = GameObject.Find("Core").transform;
     }
 
-    public void Move(float speed)
+    void Update()
+    {
+        Move();
+        _core.transform.position = _target.transform.position;
+    }
+
+    void Move()
     {
         Vector2 move = (Vector2)Inputter.GetValue(InputType.CmMove);
-
         Transform t = _vCam.Follow;
         Vector3 tRotate = t.eulerAngles;
 
-        tRotate.y += move.x * speed;
-        tRotate.x += move.y * speed;
+        tRotate.y += move.x * _rotateSpeed;
+        tRotate.x += move.y * _rotateSpeed;
         t.rotation = Quaternion.Euler(tRotate);
     }
 

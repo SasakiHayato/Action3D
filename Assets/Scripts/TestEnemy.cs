@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class TestEnemy : MonoBehaviour, IDamage
 {
-    Rigidbody _rb;
-
-    void Start()
-    {
-        _rb = GetComponent<Rigidbody>();
-    }
-
     public float AddDamage()
     {
         return 0;

@@ -40,7 +40,7 @@ namespace AttackSetting
         }
         IEnumerator WaitTime(Animator anim)
         {
-            anim.speed = 0.1f;
+            anim.speed = 1 / 48;
             yield return new WaitForSeconds(0.15f);
             anim.speed = 1f;
         }
