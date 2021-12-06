@@ -10,6 +10,7 @@ public class AttackCollision : MonoBehaviour, IAttack
     public int GroupID { get => _groupID; }
 
     GameObject _parent;
+    GameObject _hitObj;
 
     IDamage _iDamage;
     bool _check;
@@ -22,7 +23,7 @@ public class AttackCollision : MonoBehaviour, IAttack
 
     public object[] CallBack()
     {
-        object[] call = { _check, _iDamage };
+        object[] call = { _check, _iDamage, _hitObj };
         return call;
     }
 
@@ -41,12 +42,14 @@ public class AttackCollision : MonoBehaviour, IAttack
             Debug.Log("Player is Attack");
             _check = true;
             _iDamage = other.GetComponent<IDamage>();
+            _hitObj = other.gameObject;
         }
         else if (_parent.CompareTag("Enemy") == other.CompareTag("Player"))
         {
             Debug.Log("Enemy is Attack");
             _check = true;
             _iDamage = other.GetComponent<IDamage>();
+            _hitObj = other.gameObject;
         }
     }
 }

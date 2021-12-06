@@ -20,56 +20,61 @@ public class Gravity : MonoBehaviour
     float _currentForceTime;
     float _initialVel;
 
+    float _g = Physics.gravity.y;
+
     bool _isforce = false;
 
     void Start()
     {
         _charaCtrl = _parent.GetComponent<CharacterController>();
         // ‰‘¬“x
-        float g = Physics.gravity.y * -1;
-        float t = _forceTime;
-        _initialVel = _forceHeight / t + (g * t / 2);
+        _initialVel = _forceHeight / _forceTime + (_g * _forceTime / 2);
     }
 
     void Init()
     {
         _vel.y = 0;
         _currentFallTime = 0;
+        _currentForceTime = 0;
     }
 
     private void FixedUpdate()
     {
         _vel.y = 0;
 
-        if (!_charaCtrl.isGrounded && !_isforce) _vel.y += IsGravity();
-        else Init();
-
         if (_isforce) _vel.y += ChangeOfPosY();
+        else
+        {
+            if (!_charaCtrl.isGrounded) _vel.y += IsGravity();
+            else Init();
+        }
     }
 
     float IsGravity()
     {   
         _currentFallTime += Time.fixedDeltaTime;
-        float velY = Physics.gravity.y * _currentFallTime * _fallSpeed;
+        float velY = _g * _currentFallTime * _fallSpeed;
 
         return velY;
     }
 
     float ChangeOfPosY()
     {
-        float g = Physics.gravity.y * -1;
+        float g = _g * -1;
 
         _currentForceTime += Time.fixedDeltaTime * _forceSpeed;
         float t = _currentForceTime;
         float v0 = _initialVel;
         float y = (v0 * t) - (g * t * t / 2);
-        if (y > _forceHeight)
+
+        float v = v0 - g * _currentForceTime;
+        if (v < 0)
         {
             _isforce = false;
-            _currentForceTime = 0;
-            return 0;
+            Init();
         }
-        else return y;
+        Debug.Log(v);
+        return y;
     }
 
     public void Force() => _isforce = true;

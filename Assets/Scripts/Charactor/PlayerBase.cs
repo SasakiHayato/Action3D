@@ -5,20 +5,8 @@ using UnityEngine;
 using AttackSetting;
 
 [RequireComponent(typeof(CharacterController))]
-public class Player : MonoBehaviour
+public class PlayerBase : MonoBehaviour
 {
-    enum GroundState
-    {
-        Idle,
-        Walk,
-        Dash,
-        Avoid,
-
-        None,
-    }
-
-    GroundState _state = GroundState.Idle;
-
     [SerializeField] float _walkSpeed = 1f;
     [SerializeField] float _dashSpeed = 1f;
     [SerializeField] float _avoidSpeed = 1f;
@@ -26,21 +14,21 @@ public class Player : MonoBehaviour
     [SerializeField] float _rotateSpeed;
 
     AttackSettings _attack;
-    Gravity _g;
+    Gravity _gravity;
 
     CharacterController _cc;
 
     GameObject _mainCm;
 
-    bool _isDash = false;
-    float _runTime;
+    MoveController _move;
     
     void Start()
     {
+        _move = GetComponent<MoveController>();
         _attack = GetComponent<AttackSettings>();
         _cc = GetComponent<CharacterController>();
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
-        _g = GetComponent<Gravity>();
+        _gravity = GetComponent<Gravity>();
         InputSetUp();
     }
 
@@ -53,45 +41,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        float speed = 0;
-
-        switch (_state)
+        Vector3 move = MovePlayer();
+        if (move.x != 0 || move.z != 0)
         {
-            case GroundState.Idle:
-                speed = 0;
-                break;
-            case GroundState.Walk:
-                speed = _walkSpeed;
-                break;
-            case GroundState.Dash:
-                speed = _dashSpeed;
-                break;
-            case GroundState.Avoid:
-                speed = _avoidSpeed;
-                break;
-            case GroundState.None:
-                break;
-        }
-
-        Vector3 move = MovePlayer(speed);
-        
-        if (move != Vector3.zero)
-        {
-            if (!_isDash) _state = GroundState.Walk;
             Rotate();
         }
-        else
-        {
-            _state = GroundState.Idle;
-            _runTime = 0;
-        }
-        
-        float max = float.MinValue;
-        if (Mathf.Abs(move.x) >= Mathf.Abs(move.y)) max = move.x;
-        else max = move.z;
 
-        if (Mathf.Abs(max) < 0.4f) _isDash = false;
-        Vector3 velocity = Vector3.Scale(move, _g.Velocity);
+        Vector3 velocity = Vector3.Scale(move, _gravity.Velocity);
         _cc.Move(velocity * Time.deltaTime);
     }
 
@@ -105,16 +61,17 @@ public class Player : MonoBehaviour
         transform.localRotation = rotate;
     }
 
-    Vector3 MovePlayer(float speed)
+    Vector3 MovePlayer()
     {
         Vector2 move = (Vector2)Inputter.GetValue(InputType.PlayerMove);
-        Vector3 foward = _mainCm.transform.forward * move.y * speed;
-        Vector3 right = _mainCm.transform.right * move.x * speed;
+        _move.GetInput(move);
+        Vector3 foward = _mainCm.transform.forward * move.y * _move.GetSpeed;
+        Vector3 right = _mainCm.transform.right * move.x * _move.GetSpeed;
         
         return new Vector3(foward.x + right.x, 1, foward.z + right.z);
     }
 
-    void Jump() => _g.Force();
+    void Jump() => _gravity.Force();
     void Attack() => _attack.Request(ActionType.Ground);
     void Avoid() => StartCoroutine(GoAvoid());
 
@@ -124,12 +81,9 @@ public class Player : MonoBehaviour
         while (time < _avoidTime)
         {
             time += Time.deltaTime;
-            _isDash = true;
-            _state = GroundState.Avoid;
-
+            
             yield return null;
         }
      
-        _state = GroundState.Dash;
     }
 }
