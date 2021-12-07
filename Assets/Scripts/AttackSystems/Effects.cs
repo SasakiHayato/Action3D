@@ -66,7 +66,7 @@ namespace AttackSetting
         {
             Debug.Log("EffctType KnockBack");
             Rigidbody rb = target.GetComponent<Rigidbody>();
-            rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
         }
 
         public static void None() => Debug.Log("EffctType None");

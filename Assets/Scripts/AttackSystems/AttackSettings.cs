@@ -21,14 +21,6 @@ namespace AttackSetting
 
     public class AttackSettings : MonoBehaviour
     {
-        enum CollisionBool
-        {
-            True,
-            False,
-
-            None,
-        }
-
         [SerializeField] GameObject _parent;
         [SerializeField] float _requestCoolTime;
         /// <summary>
@@ -50,7 +42,7 @@ namespace AttackSetting
             public string AnimName;
             public int GroupID;
             public float Power;
-            public float NextActinTime;
+            public float NextAcceptTime;
             public AudioClip SE;
             public float SEVol;
             public ActionType Action;
@@ -162,7 +154,7 @@ namespace AttackSetting
             
             // CheckComboTime
             if (_data != null)
-                if (_resetCombTime > _data.NextActinTime)
+                if (_resetCombTime > _data.NextAcceptTime)
                 {
                     Debug.Log("ResetCombo");
                     _isRequest = true;
@@ -175,8 +167,13 @@ namespace AttackSetting
         /// <param name="type">どのアクションなのか</param>
         public void Request(ActionType type)
         {
-            if (!_isRequest) return;
-            if (_attacking) return;
+            if (!_isRequest || _attacking)
+            {
+                Debug.Log("IsRunning");
+                return;
+            }
+
+            Debug.Log("AcceptRequest");
             _isRequest = false;
 
             if (_saveActionType == ActionType.None || _saveActionType != type)
@@ -231,7 +228,7 @@ namespace AttackSetting
         }
 
         /// <summary> AnimEventでの呼び出し </summary>
-        void ColliderActive(CollisionBool set)
+        void ColliderActive()
         {
             Collider collider = _targetWeapon.GetComponent<Collider>();
             if (collider.enabled)
@@ -239,7 +236,8 @@ namespace AttackSetting
                 collider.enabled = false;
                 _attacking = false;
             }
-            else collider.enabled = true;
+            else 
+                collider.enabled = true;
         }
 
         void SetData(AttackData data)

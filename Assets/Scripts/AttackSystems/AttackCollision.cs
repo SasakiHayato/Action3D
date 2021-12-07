@@ -11,8 +11,8 @@ public class AttackCollision : MonoBehaviour, IAttack
 
     GameObject _parent;
     GameObject _hitObj;
-
     IDamage _iDamage;
+
     bool _check;
 
     public void SetUp(GameObject parent)
@@ -31,6 +31,7 @@ public class AttackCollision : MonoBehaviour, IAttack
     {
         _check = false;
         _iDamage = null;
+        _hitObj = null;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,16 +41,19 @@ public class AttackCollision : MonoBehaviour, IAttack
         if (_parent.CompareTag("Player") == other.CompareTag("Enemy"))
         {
             Debug.Log("Player is Attack");
-            _check = true;
-            _iDamage = other.GetComponent<IDamage>();
-            _hitObj = other.gameObject;
+            SetParam(other);
         }
         else if (_parent.CompareTag("Enemy") == other.CompareTag("Player"))
         {
             Debug.Log("Enemy is Attack");
-            _check = true;
-            _iDamage = other.GetComponent<IDamage>();
-            _hitObj = other.gameObject;
+            SetParam(other);
         }
+    }
+
+    void SetParam(Collider other)
+    {
+        _check = true;
+        _iDamage = other.GetComponent<IDamage>();
+        _hitObj = other.gameObject;
     }
 }
