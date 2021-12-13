@@ -303,7 +303,6 @@ GameObject:
   - component: {fileID: 1960500428104737936}
   - component: {fileID: 8089525330003340104}
   - component: {fileID: 8089525330003340082}
-  - component: {fileID: 3573266780257617339}
   - component: {fileID: 597168962257186080}
   m_Layer: 0
   m_Name: Player
@@ -429,6 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adaa36985b297349b60c577b6b1ed76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 0
 --- !u!114 &8089525330003340082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,23 +461,6 @@ MonoBehaviour:
     SEVol: 0
     Action: 0
     Effects: 02000000
---- !u!114 &3573266780257617339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8089525330003340106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ce5b61510c68db42a0081713403e344, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parent: {fileID: 0}
-  _fallSpeed: 1
-  _forceSpeed: 1
-  _forceHeight: 5
-  _forceTime: 0.5
 --- !u!114 &597168962257186080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,6 +473,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d201f099bcadf7947a3fba3131a2e429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _charaBase: {fileID: 0}
+  _stateList: []
+  references:
+    version: 1
 --- !u!1 &8089525330073590328
 GameObject:
   m_ObjectHideFlags: 0

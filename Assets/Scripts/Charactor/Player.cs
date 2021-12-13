@@ -4,36 +4,34 @@ using UnityEngine;
 
 using AttackSetting;
 
-[RequireComponent(typeof(CharacterController))]
-public class Player : MonoBehaviour
+public class Player : CharaBase
 {
     [SerializeField] float _speed;
 
     AttackSettings _attack;
-    Gravity _gravity;
-    StateManage _state;
+    StateMachine _state;
     
     void Start()
     {
-        _state = GetComponent<StateManage>();
+        _state = GetComponent<StateMachine>();
         _attack = GetComponent<AttackSettings>();
-        _gravity = GetComponent<Gravity>();
         InputSetUp();
     }
 
     void InputSetUp()
     {
-        Inputter.Instance.Inputs.Player.Fire.started += context => _state.ChangeState(StateManage.StateType.Avoid);
+        Inputter.Instance.Inputs.Player.Fire.started += context => _state.ChangeState(StateMachine.StateType.Avoid);
         Inputter.Instance.Inputs.Player.Jump.started += context => Jump();
         Inputter.Instance.Inputs.Player.Attack.started += context => Attack();
     }
 
     void Update()
     {
-        _state.SetInput((Vector2)Inputter.GetValue(InputType.PlayerMove));
         _state.StateUpdate();
+        Vector3 set = Vector3.Scale(_state.Move * _speed, Gravity.Velocity);
+        Character.Move(set * Time.deltaTime);
     }
 
-    void Jump() => _gravity.Force();
+    void Jump() => Debug.Log("Jump");
     void Attack() => _attack.Request(ActionType.Ground);
 }

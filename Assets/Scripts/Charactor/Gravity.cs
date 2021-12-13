@@ -26,7 +26,7 @@ public class Gravity : MonoBehaviour
 
     void Start()
     {
-        _charaCtrl = _parent.GetComponent<CharacterController>();
+        
         // èâë¨ìx
         _initialVel = _forceHeight / _forceTime + (_g * _forceTime / 2);
     }
@@ -45,15 +45,14 @@ public class Gravity : MonoBehaviour
         if (_isforce) _vel.y += ChangeOfPosY();
         else
         {
-            if (!_charaCtrl.isGrounded) _vel.y += IsGravity();
-            else Init();
+            _vel.y += IsGravity();
         }
     }
 
     float IsGravity()
     {   
         _currentFallTime += Time.fixedDeltaTime;
-        float velY = _g * _currentFallTime * _fallSpeed;
+        float velY = _g * _currentFallTime /** _fallSpeed*/;
 
         return velY;
     }

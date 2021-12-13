@@ -11,6 +11,7 @@ namespace AttackSetting
         HitParticle,
         KnonkBack,
 
+
         None,
     }
 
@@ -68,6 +69,8 @@ namespace AttackSetting
             Rigidbody rb = target.GetComponent<Rigidbody>();
             rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
         }
+
+        //public static 
 
         public static void None() => Debug.Log("EffctType None");
     }
