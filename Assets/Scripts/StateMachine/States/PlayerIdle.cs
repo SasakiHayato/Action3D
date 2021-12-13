@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class PlayerIdle : StateMachine.State
 {
-    Vector2 _input = Vector2.zero;
+    Vector2 _input;
 
-    public override void Entry()
+    public override void Entry(StateMachine.StateType beforeType)
     {
         Debug.Log("EntryIdle");
+        _input = Vector2.zero;
     }
 
     public override void Run(out Vector3 move)
     {
         _input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
-        Debug.Log(_input);
-        Debug.Log("IdleUpdate");
         move = new Vector3(0, 1, 0);
     }
 

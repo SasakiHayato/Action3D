@@ -19,7 +19,7 @@ public class StateMachine : MonoBehaviour
     {
         [SerializeField] public StateType StateID;
 
-        public abstract void Entry();
+        public abstract void Entry(StateType beforeType);
         public abstract void Run(out Vector3 move);
         public abstract StateType Exit();
     }
@@ -28,17 +28,12 @@ public class StateMachine : MonoBehaviour
     List<State> _stateList = new List<State>();
     
     StateType _type = StateType.None;
-    StateType _saveType;
+    StateType _saveType = StateType.None;
     
     State _state = null;
 
     Vector3 _move;
     public Vector3 Move { get => _move; }
-
-    void Start()
-    {
-        _saveType = _type;
-    }
 
     public void StateUpdate()
     {
@@ -56,22 +51,13 @@ public class StateMachine : MonoBehaviour
 
         if (_type != _saveType)
         {
+            _state.Entry(_saveType);
             _saveType = _type;
-            _state.Entry();
         }
-        Debug.Log(_state);
+        
         _state.Run(out _move);
         _type = _state.Exit();
     }
 
-    public void SetInput(Vector2 input)
-    {
-
-    }
-
-    public void ChangeState(StateType type)
-    {
-        Debug.Log($"StateChange. Next:{type}");
-        _type = type;
-    }
+    public void ChangeState(StateType type) => _type = type;
 }

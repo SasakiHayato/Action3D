@@ -1007,7 +1007,7 @@ PrefabInstance:
     - target: {fileID: 597168962257186080, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}
       propertyPath: _stateList.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 597168962257186080, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}
@@ -1027,12 +1027,12 @@ PrefabInstance:
     - target: {fileID: 597168962257186080, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}
       propertyPath: _stateList.Array.data[2]
-      value: 
+      value: Assembly-CSharp PlayerAvoid
       objectReference: {fileID: 0}
     - target: {fileID: 597168962257186080, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}
       propertyPath: _stateList.Array.data[3]
-      value: 
+      value: Assembly-CSharp StateNone
       objectReference: {fileID: 0}
     - target: {fileID: 597168962257186080, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}
@@ -1081,6 +1081,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 597168962257186080, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}
+      propertyPath: _stateList.Array.data[2]._speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 597168962257186080, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
       propertyPath: _stateList.Array.data[0].StateID
       value: 0
       objectReference: {fileID: 0}
@@ -1097,12 +1102,22 @@ PrefabInstance:
     - target: {fileID: 597168962257186080, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}
       propertyPath: _stateList.Array.data[3].StateID
-      value: 3
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 597168962257186080, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}
       propertyPath: _stateList.Array.data[4].StateID
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 597168962257186080, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _stateList.Array.data[2]._avoidTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 597168962257186080, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _stateList.Array.data[1]._dashSpeedRate
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3573266780257617339, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}
@@ -1233,6 +1248,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _attacks.Array.data[2].Effects.Array.data[0]
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8089525330003340104, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _speed
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8089525330003340104, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}

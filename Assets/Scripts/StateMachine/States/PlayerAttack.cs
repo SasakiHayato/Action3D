@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PlayerAttack : StateMachine.State
 {
-    public override void Entry()
+    public override void Entry(StateMachine.StateType beforeType)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("EntryAttack");
     }
 
     public override void Run(out Vector3 move)
     {
-        throw new System.NotImplementedException();
+        move = Vector3.zero;
     }
 
     public override StateMachine.StateType Exit()
     {
-        throw new System.NotImplementedException();
+        return StateMachine.StateType.None;
     }
 }
