@@ -9,6 +9,8 @@ namespace AttackSetting
         HitStop,
         ShakeCm,
         HitParticle,
+        KnonkBack,
+
 
         None,
     }
@@ -60,6 +62,15 @@ namespace AttackSetting
             obj.transform.position = target.transform.position;
             obj.transform.rotation = Quaternion.Euler(rotate);
         }
+
+        public static void KnockBack(GameObject target)
+        {
+            Debug.Log("EffctType KnockBack");
+            Rigidbody rb = target.GetComponent<Rigidbody>();
+            rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        }
+
+        //public static 
 
         public static void None() => Debug.Log("EffctType None");
     }
