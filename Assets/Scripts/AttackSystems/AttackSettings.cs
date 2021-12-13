@@ -6,7 +6,9 @@ namespace AttackSetting
 {
     public enum ActionType
     {
-        Ground,
+        WeakGround,
+        StrengthGround,
+
         Float,
 
         None,
@@ -21,6 +23,7 @@ namespace AttackSetting
 
     public class AttackSettings : MonoBehaviour
     {
+        #region メンバー変数
         [SerializeField] GameObject _parent;
         [SerializeField] float _requestCoolTime;
         /// <summary>
@@ -35,6 +38,7 @@ namespace AttackSetting
         AttackCollision _saveDefWeapon;
         ActionType _saveActionType = ActionType.None;
         IAttack _iTarget;
+        #endregion
 
         [System.Serializable]
         class AttackData
@@ -42,32 +46,38 @@ namespace AttackSetting
             public string AnimName;
             public int GroupID;
             public float Power;
-            public float NextActinTime;
+            public float NextAcceptTime;
             public AudioClip SE;
             public float SEVol;
             public ActionType Action;
             public EffectType[] Effects;
         }
 
-        
+        #region メンバー変数
         float _coolTime = 0;
         float _resetCombTime = 0;
         bool _isRequest = true;
+        bool _attacking = false;
 
         int _findIndex = 0;
 
         int _saveGroupID = 0;
         AttackData _data;
+        #endregion
 
+        #region Class EffectSetter
         class EffectSetter
         {
-            static GameObject _target;
+            static GameObject _weapon;
+            static GameObject _hitObj;
             static Animator _anim;
 
             public static EffectData Set(EffectData effect, EffectType[] types, object[] target)
             {
-                _target = (GameObject)target[0];
+                _weapon = (GameObject)target[0];
                 _anim = (Animator)target[1];
+                _hitObj = (GameObject)target[2];
+
                 foreach (EffectType type in types)
                 {
                     switch (type)
@@ -81,6 +91,9 @@ namespace AttackSetting
                         case EffectType.HitParticle:
                             effect += HitParticle;
                             break;
+                        case EffectType.KnonkBack:
+                            effect += KnockBack;
+                            break;
                         case EffectType.None:
                             effect += Effects.None;
                             break;
@@ -90,20 +103,24 @@ namespace AttackSetting
                 return effect;
             }
 
-            static void HitParticle() => Effects.HitParticle(_target);
+            static void HitParticle() => Effects.HitParticle(_weapon);
             static void HitStop() => Effects.HitStop(_anim);
+            static void KnockBack() => Effects.KnockBack(_hitObj);
 
             public static void Init()
             {
-                _target = null;
+                _weapon = null;
                 _anim = null;
+                _hitObj = null;
             }
         }
+        #endregion
 
         delegate void EffectData();
-        EffectData _effect = null;
-
-        // SetUp
+        
+        public ActionType SetAction { private get; set; }
+        public ActionType ReadAction { get => SetAction; }
+        
         void Start()
         {
             _anim = _parent.GetComponent<Animator>();
@@ -121,7 +138,6 @@ namespace AttackSetting
         {
             _findIndex = 0;
             _resetCombTime = 0;
-            _effect = null;
             EffectSetter.Init();
         }
 
@@ -129,22 +145,26 @@ namespace AttackSetting
         {
             if ((bool)_iTarget.CallBack()[0])
             {
-                IsAttack((IDamage)_iTarget.CallBack()[1]);
+                IDamage iDamage = (IDamage)_iTarget.CallBack()[1];
+                GameObject obj = (GameObject)_iTarget.CallBack()[2];
+                IsAttack(iDamage, obj);
                 _iTarget.Init();
             }
 
             if (!_isRequest) _coolTime += Time.deltaTime;
             _resetCombTime += Time.deltaTime;
 
+            //CheckAttackCoolTime
             if (_coolTime > _requestCoolTime)
             {
+                Debug.Log("CanAttack");
                 _isRequest = true;
                 _coolTime = 0;
             }
             
             // CheckComboTime
             if (_data != null)
-                if (_resetCombTime > _data.NextActinTime)
+                if (_resetCombTime > _data.NextAcceptTime)
                 {
                     Debug.Log("ResetCombo");
                     _isRequest = true;
@@ -157,7 +177,13 @@ namespace AttackSetting
         /// <param name="type">どのアクションなのか</param>
         public void Request(ActionType type)
         {
-            if (!_isRequest) return;
+            if (!_isRequest || _attacking)
+            {
+                Debug.Log("IsRunning");
+                return;
+            }
+
+            Debug.Log("AcceptRequest");
             _isRequest = false;
 
             if (_saveActionType == ActionType.None || _saveActionType != type)
@@ -179,12 +205,12 @@ namespace AttackSetting
                 }
             }
 
-            Debug.Log($"EndedCombo. Reset,CurrentAction");
             InitParam();
             for (int i = _findIndex; i < _attacks.Count; i++)
             {
                 if (_attacks[i].Action == type && _attacks[i].GroupID == _saveGroupID)
                 {
+                    Debug.Log($"EndedCombo. Reset,CurrentAction");
                     _findIndex = i + 1;
                     SetData(_attacks[i]);
                     return;
@@ -211,14 +237,6 @@ namespace AttackSetting
             _saveGroupID = set.GroupID;
         }
 
-        /// <summary> AnimEventでの呼び出し </summary>
-        public void ColliderActive()
-        {
-            Collider collider = _targetWeapon.GetComponent<Collider>();
-            if (collider.enabled) collider.enabled = false;
-            else collider.enabled = true;
-        }
-
         void SetData(AttackData data)
         {
             _resetCombTime = 0;
@@ -226,16 +244,30 @@ namespace AttackSetting
             _audio.volume = data.SEVol;
             if (data.SE != null) _audio.PlayOneShot(data.SE);
             else Debug.Log("Nothing SEData.");
-
-            object[] datas = { _targetWeapon.gameObject, _anim };
-            _effect = EffectSetter.Set(_effect, data.Effects, datas);
+            _attacking = true;
             _data = data;
         }
 
-        void IsAttack(IDamage iDamage)
+        void IsAttack(IDamage iDamage, GameObject obj)
         {
+            object[] datas = { _targetWeapon.gameObject, _anim, obj };
+            EffectData effect = null;
+            EffectSetter.Set(effect, _data.Effects, datas).Invoke();
             iDamage.GetDamage(_data.Power);
-            _effect.Invoke();
         }
+
+        /// <summary> AnimEventでの呼び出し </summary>
+        void ColliderActive()
+        {
+            Collider collider = _targetWeapon.GetComponent<Collider>();
+            if (collider.enabled)
+            {
+                collider.enabled = false;
+                _attacking = false;
+            }
+            else
+                collider.enabled = true;
+        }
+
     }
 }

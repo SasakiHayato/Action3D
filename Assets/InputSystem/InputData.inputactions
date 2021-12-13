@@ -46,9 +46,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Attack",
+                    "name": "WeakAttack",
                     "type": "Button",
                     "id": "03045563-2426-4046-b0f7-f067c70210d3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "StrengthAttack",
+                    "type": "Button",
+                    "id": "1bc9b935-00eb-4864-8e88-1c8239afc44e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -315,7 +323,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Attack",
+                    "action": "WeakAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a149198-917f-4d17-a413-28c13f8763a3",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StrengthAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
