@@ -59,9 +59,17 @@ public class @InputData : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""WeakAttack"",
                     ""type"": ""Button"",
                     ""id"": ""03045563-2426-4046-b0f7-f067c70210d3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""StrengthAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""1bc9b935-00eb-4864-8e88-1c8239afc44e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -328,7 +336,18 @@ public class @InputData : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Attack"",
+                    ""action"": ""WeakAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a149198-917f-4d17-a413-28c13f8763a3"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StrengthAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -911,7 +930,8 @@ public class @InputData : IInputActionCollection, IDisposable
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_MoveCm = m_Player.FindAction("MoveCm", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Player_WeakAttack = m_Player.FindAction("WeakAttack", throwIfNotFound: true);
+        m_Player_StrengthAttack = m_Player.FindAction("StrengthAttack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -978,7 +998,8 @@ public class @InputData : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_MoveCm;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_WeakAttack;
+    private readonly InputAction m_Player_StrengthAttack;
     public struct PlayerActions
     {
         private @InputData m_Wrapper;
@@ -988,7 +1009,8 @@ public class @InputData : IInputActionCollection, IDisposable
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @MoveCm => m_Wrapper.m_Player_MoveCm;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        public InputAction @WeakAttack => m_Wrapper.m_Player_WeakAttack;
+        public InputAction @StrengthAttack => m_Wrapper.m_Player_StrengthAttack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1013,9 +1035,12 @@ public class @InputData : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                @WeakAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeakAttack;
+                @WeakAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeakAttack;
+                @WeakAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeakAttack;
+                @StrengthAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrengthAttack;
+                @StrengthAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrengthAttack;
+                @StrengthAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrengthAttack;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1035,9 +1060,12 @@ public class @InputData : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Attack.started += instance.OnAttack;
-                @Attack.performed += instance.OnAttack;
-                @Attack.canceled += instance.OnAttack;
+                @WeakAttack.started += instance.OnWeakAttack;
+                @WeakAttack.performed += instance.OnWeakAttack;
+                @WeakAttack.canceled += instance.OnWeakAttack;
+                @StrengthAttack.started += instance.OnStrengthAttack;
+                @StrengthAttack.performed += instance.OnStrengthAttack;
+                @StrengthAttack.canceled += instance.OnStrengthAttack;
             }
         }
     }
@@ -1199,7 +1227,8 @@ public class @InputData : IInputActionCollection, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnMoveCm(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
+        void OnWeakAttack(InputAction.CallbackContext context);
+        void OnStrengthAttack(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -6,7 +6,9 @@ namespace AttackSetting
 {
     public enum ActionType
     {
-        Ground,
+        WeakGround,
+        StrengthGround,
+
         Float,
 
         None,
@@ -21,6 +23,7 @@ namespace AttackSetting
 
     public class AttackSettings : MonoBehaviour
     {
+        #region メンバー変数
         [SerializeField] GameObject _parent;
         [SerializeField] float _requestCoolTime;
         /// <summary>
@@ -35,6 +38,7 @@ namespace AttackSetting
         AttackCollision _saveDefWeapon;
         ActionType _saveActionType = ActionType.None;
         IAttack _iTarget;
+        #endregion
 
         [System.Serializable]
         class AttackData
@@ -49,7 +53,7 @@ namespace AttackSetting
             public EffectType[] Effects;
         }
 
-        
+        #region メンバー変数
         float _coolTime = 0;
         float _resetCombTime = 0;
         bool _isRequest = true;
@@ -59,7 +63,9 @@ namespace AttackSetting
 
         int _saveGroupID = 0;
         AttackData _data;
+        #endregion
 
+        #region Class EffectSetter
         class EffectSetter
         {
             static GameObject _weapon;
@@ -108,8 +114,12 @@ namespace AttackSetting
                 _hitObj = null;
             }
         }
+        #endregion
 
         delegate void EffectData();
+        
+        public ActionType SetAction { private get; set; }
+        public ActionType ReadAction { get => SetAction; }
         
         void Start()
         {
@@ -227,19 +237,6 @@ namespace AttackSetting
             _saveGroupID = set.GroupID;
         }
 
-        /// <summary> AnimEventでの呼び出し </summary>
-        void ColliderActive()
-        {
-            Collider collider = _targetWeapon.GetComponent<Collider>();
-            if (collider.enabled)
-            {
-                collider.enabled = false;
-                _attacking = false;
-            }
-            else 
-                collider.enabled = true;
-        }
-
         void SetData(AttackData data)
         {
             _resetCombTime = 0;
@@ -258,5 +255,19 @@ namespace AttackSetting
             EffectSetter.Set(effect, _data.Effects, datas).Invoke();
             iDamage.GetDamage(_data.Power);
         }
+
+        /// <summary> AnimEventでの呼び出し </summary>
+        void ColliderActive()
+        {
+            Collider collider = _targetWeapon.GetComponent<Collider>();
+            if (collider.enabled)
+            {
+                collider.enabled = false;
+                _attacking = false;
+            }
+            else
+                collider.enabled = true;
+        }
+
     }
 }

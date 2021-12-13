@@ -35,7 +35,7 @@ public class StateMachine : MonoBehaviour
     Vector3 _move;
     public Vector3 Move { get => _move; }
 
-    public void StateUpdate()
+    public void Base()
     {
         foreach (State state in _stateList)
             if (state.StateID == _type)
@@ -59,5 +59,9 @@ public class StateMachine : MonoBehaviour
         _type = _state.Exit();
     }
 
-    public void ChangeState(StateType type) => _type = type;
+    public void ChangeState(StateType type)
+    {
+        _state.Exit();
+        _type = type;
+    }
 }
