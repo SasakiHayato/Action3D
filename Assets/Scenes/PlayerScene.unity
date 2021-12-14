@@ -615,6 +615,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &908779793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 908779795}
+  - component: {fileID: 908779794}
+  m_Layer: 0
+  m_Name: BulletSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &908779794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908779793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc8a57c7d3aa1384bb5e07f2fe335874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _datas:
+  - Name: Weak
+    ID: 0
+    Prefab: {fileID: 4938570363195100858, guid: d675abc6028724740af73a1bab6ef350,
+      type: 3}
+    Power: 10
+  - Name: Noarmal
+    ID: 1
+    Prefab: {fileID: 3171087632790468475, guid: 9945c5dd8e2eee84cb55f1d794e62df0,
+      type: 3}
+    Power: 10
+--- !u!4 &908779795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908779793}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3964248, y: 1.8692871, z: 2.5141997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1764692142
 GameObject:
   m_ObjectHideFlags: 0

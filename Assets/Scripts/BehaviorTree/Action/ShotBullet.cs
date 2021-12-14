@@ -10,7 +10,8 @@ public class ShotBullet : IAction
 
     public void Execute()
     {
-        Debug.Log("aaaa");
+        GameObject obj = BulletSettings.UseBullet(0);
+        obj.GetComponent<Bullet>().Shot(Vector3.forward, 50);
     }
 
     public bool End() => _check;
