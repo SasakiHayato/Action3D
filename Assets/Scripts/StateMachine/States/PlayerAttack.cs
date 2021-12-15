@@ -11,7 +11,6 @@ public class PlayerAttack : StateMachine.State
 
     public override void Entry(StateMachine.StateType beforeType)
     {
-        Debug.Log("EntryAttack");
         _attack.Request(_attack.ReadAction);
         _input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
     }

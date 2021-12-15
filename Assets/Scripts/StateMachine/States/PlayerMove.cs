@@ -16,14 +16,10 @@ public class PlayerMove : StateMachine.State
         Debug.Log("EntryMove");
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
 
-        if (beforeType == StateMachine.StateType.Avoid)
-        {
+        if (beforeType == StateMachine.StateType.Avoid) 
             _setSpeedRate = _dashSpeedRate;
-        }
-        else
-        {
+        else 
             _setSpeedRate = 1;
-        }
     }
 
     public override void Run(out Vector3 move)
@@ -38,12 +34,8 @@ public class PlayerMove : StateMachine.State
     public override StateMachine.StateType Exit()
     {
         if (_input == Vector2.zero)
-        {
             return StateMachine.StateType.Idle;
-        }
-        else
-        {
+        else 
             return StateMachine.StateType.Move;
-        }
     }
 }

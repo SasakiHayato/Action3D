@@ -4,7 +4,7 @@ using UnityEngine;
 
 using AttackSetting;
 
-public class Player : CharaBase
+public class Player : CharaBase, IDamage
 {
     [SerializeField] float _speed;
     StateMachine _state;
@@ -44,5 +44,18 @@ public class Player : CharaBase
     {
         GetComponent<AttackSettings>().SetAction = ActionType.StrengthGround;
         _state.ChangeState(StateMachine.StateType.Attack);
+    }
+
+    public float AddDamage() => 1;
+    public void GetDamage(float damage)
+    {
+        if (_state.GetCurrentState == StateMachine.StateType.Avoid)
+        {
+            FieldManager.FieldTimeRate(5, 0.5f);
+            Debug.Log("Avoid");
+            return;
+        }
+
+        Debug.Log("Damage");
     }
 }

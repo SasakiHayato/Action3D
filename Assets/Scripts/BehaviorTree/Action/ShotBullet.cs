@@ -6,12 +6,22 @@ using BehaviorAI;
 
 public class ShotBullet : IAction
 {
+    [SerializeField] float _speed;
+    [SerializeField] float _coolTime;
+    
     bool _check = false;
+    float _currentTime = 0;
 
     public void Execute()
     {
-        GameObject obj = BulletSettings.UseBullet(0);
-        obj.GetComponent<Bullet>().Shot(Vector3.forward, 50);
+        _currentTime += Time.deltaTime;
+        if (_currentTime > _coolTime)
+        {
+            _currentTime = 0;
+            GameObject obj = BulletSettings.UseBullet(1);
+            obj.transform.position = Target.transform.position;
+            obj.GetComponent<Bullet>().Shot(Target.transform.forward, _speed * 10, Bullet.Parent.Enemy);
+        }
     }
 
     public bool End() => _check;

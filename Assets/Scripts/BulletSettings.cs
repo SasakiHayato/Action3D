@@ -5,32 +5,21 @@ using UnityEngine;
 public class BulletSettings : MonoBehaviour
 {
     private static BulletSettings _instance = null;
-    public static BulletSettings Instance = _instance;
+    public static BulletSettings Instance => _instance;
+    //public static BulletSettings Instance { get; private set; }
 
     BulletPool<BulletData> _pool = new BulletPool<BulletData>();
 
     private void Awake()
     {
-        #region InstanceÇàÍÇ¬Ç…ï€èÿ
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        #endregion
+        _instance = this;
 
-        //_pool = new BulletPool<BulletData>();
-
+        Instance._pool.SetUp(_datas);
         for (int i = 0; i < _datas.Count; i++)
-        {
-            _pool.Create(_datas[i]);
-        }
+            Instance._pool.Create(_datas[i], _createOneData);
     }
 
+    [SerializeField] int _createOneData = 0;
     [SerializeField] List<BulletData> _datas = new List<BulletData>();
 
     [System.Serializable]
@@ -52,12 +41,14 @@ public class BulletSettings : MonoBehaviour
 
 public class BulletPool<T> where T : BulletSettings.BulletData
 {
-    T BulletData;
-
     GameObject _pool = null;
     List<GameObject> _bulletsPool = new List<GameObject>();
-
-    int _count = 1;
+    List<BulletSettings.BulletData> _datas;
+    
+    public void SetUp(List<BulletSettings.BulletData> datas)
+    {
+        _datas = datas;
+    }
 
     public void Create(BulletSettings.BulletData data, int count = 50)
     {
@@ -70,14 +61,13 @@ public class BulletPool<T> where T : BulletSettings.BulletData
         for (int i = 0; i < count; i++)
         {
             GameObject obj = Object.Instantiate(data.Prefab);
+            obj.GetComponent<Collider>().isTrigger = true;
             obj.name = $"ID:{data.ID}. Name.{data.Name}";
-            obj.AddComponent<Bullet>().SetUp(data);
+            obj.AddComponent<Bullet>().SetUp(data, Delete);
 
             _bulletsPool.Add(obj);
             obj.transform.SetParent(_pool.transform);
             obj.SetActive(false);
-
-            _count++;
         }
     }
 
@@ -92,8 +82,14 @@ public class BulletPool<T> where T : BulletSettings.BulletData
                 else obj.SetActive(false);
             }
         }
-
-        Create(BulletData, 15);
+        
+        Create(_datas[id], 15);
         return Use(id);
+    }
+
+    public void Delete(GameObject obj)
+    {
+        obj.GetComponent<Bullet>().Init();
+        obj.SetActive(false);
     }
 }
