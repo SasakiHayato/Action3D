@@ -28,6 +28,8 @@ public class StateMachine : MonoBehaviour
     List<State> _stateList = new List<State>();
     
     StateType _type = StateType.None;
+    public StateType GetCurrentState { get => _type; }
+
     StateType _saveType = StateType.None;
     
     State _state = null;
