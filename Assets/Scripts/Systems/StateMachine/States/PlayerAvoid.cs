@@ -12,7 +12,6 @@ public class PlayerAvoid : StateMachine.State
 
     public override void Entry(StateMachine.StateType beforeType)
     {
-        Debug.Log("EntryAvoid");
         _currentTime = 0;
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
         _input = (Vector2)Inputter.GetValue(InputType.PlayerMove);

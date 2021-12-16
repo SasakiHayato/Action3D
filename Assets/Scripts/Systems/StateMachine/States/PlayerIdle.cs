@@ -8,7 +8,6 @@ public class PlayerIdle : StateMachine.State
 
     public override void Entry(StateMachine.StateType beforeType)
     {
-        Debug.Log("EntryIdle");
         _input = Vector2.zero;
     }
 

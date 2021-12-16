@@ -1,35 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+using System;
 
 public class FieldManager : MonoBehaviour
 {
-    [SerializeField] PostProcessProfile _profile;
-    Vignette _vignette;
-    
+    [SerializeField] float _rate;
+    [SerializeField] float _time;
+
     private static FieldManager _instance = null;
     public static FieldManager Instance => _instance;
 
     private void Awake()
     {
         _instance = this;
-        
-        _vignette = _profile.GetSetting<Vignette>();
-        _vignette.active = false;
     }
 
-    public static void FieldTimeRate(float rate, float time)
+    public static void FieldTimeRate(Action<UIType, int, object[]> action, UIType type, int id)
     {
-        Instance.StartCoroutine(Instance.SetRate(rate, time));
+        Instance.StartCoroutine(Instance.SetRate(action, type, id));
     }
 
-    IEnumerator SetRate(float rate, float time)
+    IEnumerator SetRate(Action<UIType, int, object[]> action, UIType type, int id)
     {
-        Time.timeScale = 1 / rate;
-        _vignette.active = true;
-        yield return new WaitForSecondsRealtime(time);
-        _vignette.active = false;
+        Time.timeScale = 1 / _rate;
+        yield return new WaitForSecondsRealtime(_time);
         Time.timeScale = 1;
+        action.Invoke(type, id, null);
     }
 }

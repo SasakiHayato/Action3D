@@ -14,7 +14,6 @@ public class PlayerMove : StateMachine.State
     
     public override void Entry(StateMachine.StateType beforeType)
     {
-        Debug.Log("EntryMove");
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
         
         if (beforeType == StateMachine.StateType.Avoid) 

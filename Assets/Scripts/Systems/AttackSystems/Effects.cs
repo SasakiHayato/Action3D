@@ -41,6 +41,7 @@ namespace AttackSetting
             Debug.Log("EffctType HitStop");
             Instance.StartCoroutine(Instance.WaitTime(anim));
         }
+
         IEnumerator WaitTime(Animator anim)
         {
             anim.speed = 1 / 48;

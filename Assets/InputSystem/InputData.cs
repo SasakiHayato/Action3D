@@ -73,6 +73,14 @@ public class @InputData : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""RockOn"",
+                    ""type"": ""Button"",
+                    ""id"": ""5bd1c53a-3267-48ad-a2ec-ac117fe157f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -348,6 +356,17 @@ public class @InputData : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""StrengthAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7662aa6-05be-479a-bdf6-6fdf3857bbec"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RockOn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -932,6 +951,7 @@ public class @InputData : IInputActionCollection, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_WeakAttack = m_Player.FindAction("WeakAttack", throwIfNotFound: true);
         m_Player_StrengthAttack = m_Player.FindAction("StrengthAttack", throwIfNotFound: true);
+        m_Player_RockOn = m_Player.FindAction("RockOn", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1000,6 +1020,7 @@ public class @InputData : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_WeakAttack;
     private readonly InputAction m_Player_StrengthAttack;
+    private readonly InputAction m_Player_RockOn;
     public struct PlayerActions
     {
         private @InputData m_Wrapper;
@@ -1011,6 +1032,7 @@ public class @InputData : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @WeakAttack => m_Wrapper.m_Player_WeakAttack;
         public InputAction @StrengthAttack => m_Wrapper.m_Player_StrengthAttack;
+        public InputAction @RockOn => m_Wrapper.m_Player_RockOn;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1041,6 +1063,9 @@ public class @InputData : IInputActionCollection, IDisposable
                 @StrengthAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrengthAttack;
                 @StrengthAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrengthAttack;
                 @StrengthAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrengthAttack;
+                @RockOn.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRockOn;
+                @RockOn.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRockOn;
+                @RockOn.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRockOn;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1066,6 +1091,9 @@ public class @InputData : IInputActionCollection, IDisposable
                 @StrengthAttack.started += instance.OnStrengthAttack;
                 @StrengthAttack.performed += instance.OnStrengthAttack;
                 @StrengthAttack.canceled += instance.OnStrengthAttack;
+                @RockOn.started += instance.OnRockOn;
+                @RockOn.performed += instance.OnRockOn;
+                @RockOn.canceled += instance.OnRockOn;
             }
         }
     }
@@ -1229,6 +1257,7 @@ public class @InputData : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnWeakAttack(InputAction.CallbackContext context);
         void OnStrengthAttack(InputAction.CallbackContext context);
+        void OnRockOn(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -8,6 +8,8 @@ public class Player : CharaBase, IDamage
 {
     [SerializeField] float _speed;
     StateMachine _state;
+
+    bool _isAvoid = false;
     
     void Start()
     {
@@ -23,11 +25,16 @@ public class Player : CharaBase, IDamage
 
         Inputter.Instance.Inputs.Player.StrengthAttack.started += context
             => StrengthAttack();
+
+        Inputter.Instance.Inputs.Player.RockOn.started += context
+            => SetRockOn();
     }
 
     void Update()
     {
         _state.Base();
+        if (_state.GetCurrentState != StateMachine.StateType.Avoid) _isAvoid = false;
+
         Vector3 set = Vector3.Scale(_state.Move * _speed, Gravity.Velocity);
         Character.Move(set * Time.deltaTime);
     }
@@ -46,12 +53,21 @@ public class Player : CharaBase, IDamage
         _state.ChangeState(StateMachine.StateType.Attack);
     }
 
+    void SetRockOn()
+    {
+        UIManager.CallBack(UIType.Player, 2);
+    }
+
     public void GetDamage(float damage)
     {
         if (_state.GetCurrentState == StateMachine.StateType.Avoid)
         {
-            FieldManager.FieldTimeRate(5, 0.5f);
-            Debug.Log("Avoid");
+            if (_isAvoid) return;
+            _isAvoid = true;
+
+            UIManager.CallBack(UIType.Player, 1);
+            FieldManager.FieldTimeRate(UIManager.CallBack, UIType.Player, 1);
+            
             return;
         }
 
