@@ -34,7 +34,6 @@ public class BulletSettings : MonoBehaviour
     public static GameObject UseBullet(int id)
     {
         GameObject obj = Instance._pool.Use(id);
-        
         return obj;
     }
 }

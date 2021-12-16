@@ -44,24 +44,4 @@ public class CmCotrol : MonoBehaviour
         tRotate.x += move.y * _rotateSpeed;
         t.rotation = Quaternion.Euler(tRotate);
     }
-
-    public void RequestShake() => StartCoroutine(GoShake());
-
-    IEnumerator GoShake()
-    {
-        Vector3 vec = _follow.ShoulderOffset;
-        float time = 0.1f;
-        while (time > 0)
-        {
-            time -= Time.deltaTime;
-            float posX = Random.Range(-1, 1);
-            float posY = Random.Range(-1, 1);
-            float posZ = Random.Range(-1, 1);
-            Vector3 set = new Vector3(vec.x + posX, vec.y + posY, vec.z + posZ);
-            _follow.ShoulderOffset = set;
-            yield return null;
-        }
-
-        _follow.ShoulderOffset = vec;
-    }
 }

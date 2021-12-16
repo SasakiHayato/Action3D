@@ -9,7 +9,6 @@ public class Enemy : EnemyBase, IDamage
         Tree.Repeater(this);
     }
 
-    public float AddDamage() => 1;
     public void GetDamage(float damage)
     {
 

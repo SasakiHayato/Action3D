@@ -8,6 +8,7 @@ namespace AttackSetting
     {
         WeakGround,
         StrengthGround,
+        Counter,
 
         Float,
 

@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IStateTarget
+{
+    void SetTarget(GameObject target);
+}
+
 public class StateMachine : MonoBehaviour
 {
     public enum StateType
@@ -18,7 +23,8 @@ public class StateMachine : MonoBehaviour
     public abstract class State
     {
         [SerializeField] public StateType StateID;
-
+        
+        public GameObject Target { get; set; }
         public abstract void Entry(StateType beforeType);
         public abstract void Run(out Vector3 move);
         public abstract StateType Exit();
@@ -53,6 +59,7 @@ public class StateMachine : MonoBehaviour
 
         if (_type != _saveType)
         {
+            _state.Target = gameObject;
             _state.Entry(_saveType);
             _saveType = _type;
         }
