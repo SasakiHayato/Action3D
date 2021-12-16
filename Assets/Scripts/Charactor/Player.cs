@@ -12,7 +12,7 @@ public class Player : CharaBase, IDamage
     void Start()
     {
         _state = GetComponent<StateMachine>();
-
+        
         Inputter.Instance.Inputs.Player.Fire.started += context
             => _state.ChangeState(StateMachine.StateType.Avoid);
 
@@ -46,7 +46,6 @@ public class Player : CharaBase, IDamage
         _state.ChangeState(StateMachine.StateType.Attack);
     }
 
-    public float AddDamage() => 1;
     public void GetDamage(float damage)
     {
         if (_state.GetCurrentState == StateMachine.StateType.Avoid)

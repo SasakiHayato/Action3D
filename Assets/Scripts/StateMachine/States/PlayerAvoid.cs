@@ -16,6 +16,7 @@ public class PlayerAvoid : StateMachine.State
         _currentTime = 0;
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
         _input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
+        _input = _input.normalized;
     }
 
     public override void Run(out Vector3 move)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 namespace AttackSetting
 {
@@ -50,7 +51,9 @@ namespace AttackSetting
         public static void ShakeCm()
         {
             Debug.Log("EffctType ShakeCm");
-            FindObjectOfType<CmCotrol>().RequestShake();
+            GameObject obj = GameObject.Find("3drParsonCm");
+            CinemachineImpulseSource source = obj.GetComponent<CinemachineImpulseSource>();
+            source.GenerateImpulse();
         }
 
         public static void HitParticle(GameObject target)

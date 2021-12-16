@@ -11,8 +11,16 @@ public class PlayerAttack : StateMachine.State
 
     public override void Entry(StateMachine.StateType beforeType)
     {
-        _attack.Request(_attack.ReadAction);
-        _input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
+        if (beforeType == StateMachine.StateType.Avoid)
+        {
+            Debug.Log("Counter");
+            //_attack.Request(ActionType.Counter);
+        }
+        else
+        {
+            _attack.Request(_attack.ReadAction);
+            _input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
+        }
     }
 
     public override void Run(out Vector3 move)

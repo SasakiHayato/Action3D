@@ -12,14 +12,19 @@ public class ShotBullet : IAction
     bool _check = false;
     float _currentTime = 0;
 
+    GameObject _player = null;
+
     public void Execute()
     {
+        if (_player == null) _player = GameObject.FindGameObjectWithTag("Player");
+
         _currentTime += Time.deltaTime;
         if (_currentTime > _coolTime)
         {
             _currentTime = 0;
-            GameObject obj = BulletSettings.UseBullet(1);
+            GameObject obj = BulletSettings.UseBullet(0);
             obj.transform.position = Target.transform.position;
+            
             obj.GetComponent<Bullet>().Shot(Target.transform.forward, _speed * 10, Bullet.Parent.Enemy);
         }
     }

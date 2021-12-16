@@ -20,13 +20,8 @@ public class PlayerIdle : StateMachine.State
 
     public override StateMachine.StateType Exit()
     {
-        if (_input != Vector2.zero)
-        {
-            return StateMachine.StateType.Move;
-        }
-        else
-        {
-            return StateMachine.StateType.Idle;
-        }
+        if (_input != Vector2.zero) return StateMachine.StateType.Move;
+        else return StateMachine.StateType.Idle;
+
     }
 }
