@@ -42,12 +42,19 @@ public class Bullet : MonoBehaviour, IDamage
 
     }
 
+
+    // 初期化
     public void Init()
     {
         _time = 0;
         _isSet = false;
     }
 
+    /// <summary>
+    /// BulletDataを参照して、Bullet自身にデータを入れ込む
+    /// </summary>
+    /// <param name="data">参照するデータ</param>
+    /// <param name="callBack">PoolのDeleteの関数を登録</param>
     public void SetUp(BulletSettings.BulletData data, Action<GameObject> callBack)
     {
         _id = data.ID;
@@ -58,6 +65,7 @@ public class Bullet : MonoBehaviour, IDamage
         _callBack += callBack;
     }
 
+    // Bulletをとばす処理
     public void Shot(Vector3 dir, float speed, Parent parent, float powerRate = 1)
     {
         _rb.velocity = Vector3.zero;

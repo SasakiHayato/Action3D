@@ -22,7 +22,8 @@ public class ShotBullet : IAction
         if (_currentTime > _coolTime)
         {
             _currentTime = 0;
-            GameObject obj = BulletSettings.UseBullet(0);
+
+            GameObject obj = BulletSettings.UseRequest(0);
             obj.transform.position = Target.transform.position;
             
             obj.GetComponent<Bullet>().Shot(Target.transform.forward, _speed * 10, Bullet.Parent.Enemy);

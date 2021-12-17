@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BulletSettings : MonoBehaviour
 {
+    // どこからでも呼び出せるように
     private static BulletSettings _instance = null;
     public static BulletSettings Instance => _instance;
-    //public static BulletSettings Instance { get; private set; }
 
     BulletPool<BulletData> _pool = new BulletPool<BulletData>();
 
@@ -15,6 +15,7 @@ public class BulletSettings : MonoBehaviour
         _instance = this;
 
         Instance._pool.SetUp(_datas);
+
         for (int i = 0; i < _datas.Count; i++)
             Instance._pool.Create(_datas[i], _createOneData);
     }
@@ -22,6 +23,7 @@ public class BulletSettings : MonoBehaviour
     [SerializeField] int _createOneData = 0;
     [SerializeField] List<BulletData> _datas = new List<BulletData>();
 
+    // バレットのデータ
     [System.Serializable]
     public class BulletData
     {
@@ -31,7 +33,12 @@ public class BulletSettings : MonoBehaviour
         public float Power;
     }
 
-    public static GameObject UseBullet(int id)
+    /// <summary>
+    /// 使いたい側で呼び出す
+    /// </summary>
+    /// <param name="id">BulletDataのIDを指定</param>
+    /// <returns></returns>
+    public static GameObject UseRequest(int id)
     {
         GameObject obj = Instance._pool.Use(id);
         return obj;

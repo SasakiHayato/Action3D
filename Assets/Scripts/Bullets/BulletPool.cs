@@ -6,14 +6,20 @@ public class BulletPool<T> where T : BulletSettings.BulletData
 {
     GameObject _pool = null;
     List<GameObject> _bulletsPool = new List<GameObject>();
-    List<BulletSettings.BulletData> _datas;
+    List<T> _datas;
 
-    public void SetUp(List<BulletSettings.BulletData> datas)
+    // Poolさせるデータを入れる
+    public void SetUp(List<T> datas)
     {
         _datas = datas;
     }
 
-    public void Create(BulletSettings.BulletData data, int count = 50)
+    /// <summary>
+    /// BulletSettings.BulletDataを元にPoolを作成
+    /// </summary>
+    /// <param name="data">元となるデータ</param>
+    /// <param name="count">何個作るかの指定</param>
+    public void Create(T data, int count = 50)
     {
         if (_pool == null)
         {
@@ -34,6 +40,11 @@ public class BulletPool<T> where T : BulletSettings.BulletData
         }
     }
 
+    /// <summary>
+    /// 使用可能Objectを調べて可能ならそのObjectを返す
+    /// </summary>
+    /// <param name="id">使いたいBulletDataのID</param>
+    /// <returns></returns>
     public GameObject Use(int id)
     {
         foreach (GameObject obj in _bulletsPool)
@@ -50,6 +61,10 @@ public class BulletPool<T> where T : BulletSettings.BulletData
         return Use(id);
     }
 
+    /// <summary>
+    /// 使い終わったデータをPoolに戻す
+    /// </summary>
+    /// <param name="obj">戻す対象となるObject</param>
     public void Delete(GameObject obj)
     {
         obj.GetComponent<Bullet>().Init();
