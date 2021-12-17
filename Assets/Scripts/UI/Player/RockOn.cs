@@ -19,6 +19,7 @@ public class RockOn : UIWindowParent.UIWindowChild
 
     public override void CallBack(object[] data)
     {
+        _target = (GameObject)data[0];
         Debug.Log("Rock");
     }
 }

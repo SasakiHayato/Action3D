@@ -6,7 +6,11 @@ using UnityEngine.Rendering.PostProcessing;
 public class PostProcessData : UIWindowParent.UIWindowChild
 {
     [SerializeField] PostProcessProfile _profile;
+    [SerializeField] float _fadeSpeed = 1;
+    [SerializeField] float _intencity;
+
     Vignette _vignette;
+    float _time = 0;
 
     public override void SetUp()
     {
@@ -16,11 +20,25 @@ public class PostProcessData : UIWindowParent.UIWindowChild
 
     public override void UpDate()
     {
+        float set = 0;
+        _time += Time.unscaledDeltaTime * _fadeSpeed;
         
+        if (_vignette.active)
+        {
+            set = Mathf.Lerp(0, _intencity, _time);
+        }
+        else
+        {
+            set = Mathf.Lerp(_intencity, 0, _time);
+            if (set <= 0) _vignette.active = false;
+        }
+
+        _vignette.intensity.value = set;
     }
 
     public override void CallBack(object[] data)
     {
+        _time = 0;
         if (!_vignette.active) _vignette.active = true;
         else _vignette.active = false;
     }

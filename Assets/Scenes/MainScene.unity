@@ -1184,6 +1184,8 @@ MonoBehaviour:
       type: {class: PostProcessData, ns: , asm: Assembly-CSharp}
       data:
         _profile: {fileID: 11400000, guid: 3e14f8bf63d929f479475d178826acba, type: 2}
+        _fadeSpeed: 10
+        _intencity: 0.2
     00000002:
       type: {class: RockOn, ns: , asm: Assembly-CSharp}
 --- !u!4 &2068501204
