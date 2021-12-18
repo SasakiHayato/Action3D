@@ -4,15 +4,17 @@ using UnityEngine;
 
 using BehaviorAI;
 
-public class ShotBullet : IAction
+public class ShotBulletDeviation : IAction
 {
     [SerializeField] float _speed;
     [SerializeField] float _coolTime;
-    
+    [SerializeField] int _bulletID;
+
     bool _check = false;
     float _currentTime = 0;
 
     GameObject _player = null;
+    Vector3 _savePos;
 
     public void Execute()
     {
@@ -23,11 +25,24 @@ public class ShotBullet : IAction
         {
             _currentTime = 0;
 
-            GameObject obj = BulletSettings.UseRequest(0);
+            GameObject obj = BulletSettings.UseRequest(_bulletID);
             obj.transform.position = Target.transform.position;
-            
-            obj.GetComponent<Bullet>().Shot(Target.transform.forward, _speed * 10, Bullet.Parent.Enemy);
+            obj.GetComponent<Bullet>().Shot(Set().normalized, _speed * 10, Bullet.Parent.Enemy);
         }
+
+        _savePos = _player.transform.position;
+    }
+
+    Vector3 Set()
+    {
+        Vector3 set = Vector3.zero;
+        Vector3 currentPos = _player.transform.position;
+        Vector3 predictPos = currentPos + _savePos;
+
+        Vector3 forward = currentPos - Target.transform.position;
+        
+
+        return set.normalized;
     }
 
     public bool End() => _check;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RockOn : UIWindowParent.UIWindowChild
+public class Lockon : UIWindowParent.UIWindowChild
 {
     bool _isRockOn = false;
     GameObject _target;

@@ -42,7 +42,6 @@ public class Bullet : MonoBehaviour, IDamage
 
     }
 
-
     // ‰Šú‰»
     public void Init()
     {

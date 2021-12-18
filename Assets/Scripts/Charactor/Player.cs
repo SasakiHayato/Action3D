@@ -10,6 +10,8 @@ public class Player : CharaBase, IDamage
     StateMachine _state;
 
     bool _isAvoid = false;
+    bool _isLockon = false;
+    public bool IsLockon => _isLockon;
     
     void Start()
     {
@@ -27,7 +29,7 @@ public class Player : CharaBase, IDamage
             => StrengthAttack();
 
         Inputter.Instance.Inputs.Player.RockOn.started += context
-            => SetRockOn();
+            => SetLockon();
     }
 
     void Update()
@@ -53,11 +55,15 @@ public class Player : CharaBase, IDamage
         _state.ChangeState(StateMachine.StateType.Attack);
     }
 
-    void SetRockOn()
+    void SetLockon()
     {
         GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
-        object[] data = { enemy }; 
-        UIManager.CallBack(UIType.Player, 2, data);
+        if (enemy != null)
+        {
+            _isLockon = true;
+            object[] data = { enemy };
+            UIManager.CallBack(UIType.Player, 2, data);
+        }
     }
 
     public void GetDamage(float damage)

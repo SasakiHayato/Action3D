@@ -15,9 +15,12 @@ public class CmCotrol : MonoBehaviour
     GameObject _target;
     GameObject _core;
 
+    Player _player;
+
     void Start()
     {
         _target = GameObject.FindGameObjectWithTag("Player");
+        _player = _target.GetComponent<Player>();
 
         _core = new GameObject("Core");
         _core.transform.position = _target.transform.position;

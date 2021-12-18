@@ -885,8 +885,8 @@ MonoBehaviour:
     00000001:
       type: {class: ShotBullet, ns: , asm: Assembly-CSharp}
       data:
-        _speed: 5
-        _coolTime: 0.02
+        _speed: 1
+        _coolTime: 2
 --- !u!114 &1764692144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1187,7 +1187,7 @@ MonoBehaviour:
         _fadeSpeed: 10
         _intencity: 0.2
     00000002:
-      type: {class: RockOn, ns: , asm: Assembly-CSharp}
+      type: {class: Lockon, ns: , asm: Assembly-CSharp}
 --- !u!4 &2068501204
 Transform:
   m_ObjectHideFlags: 0
