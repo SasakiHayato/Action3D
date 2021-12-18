@@ -55,7 +55,9 @@ public class Player : CharaBase, IDamage
 
     void SetRockOn()
     {
-        UIManager.CallBack(UIType.Player, 2);
+        GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
+        object[] data = { enemy }; 
+        UIManager.CallBack(UIType.Player, 2, data);
     }
 
     public void GetDamage(float damage)
