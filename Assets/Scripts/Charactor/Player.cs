@@ -20,16 +20,17 @@ public class Player : CharaBase, IDamage
         Inputter.Instance.Inputs.Player.Fire.started += context
             => _state.ChangeState(StateMachine.StateType.Avoid);
 
-        Inputter.Instance.Inputs.Player.Jump.started += context => Jump();
+        Inputter.Instance.Inputs.Player
+            .Jump.started += context => Jump();
 
-        Inputter.Instance.Inputs.Player.WeakAttack.started += context
-            => WeakAttack();
+        Inputter.Instance.Inputs.Player
+            .WeakAttack.started += context => WeakAttack();
 
-        Inputter.Instance.Inputs.Player.StrengthAttack.started += context
-            => StrengthAttack();
+        Inputter.Instance.Inputs.Player
+            .StrengthAttack.started += context => StrengthAttack();
 
-        Inputter.Instance.Inputs.Player.RockOn.started += context
-            => SetLockon();
+        Inputter.Instance.Inputs.Player
+            .RockOn.started += context => SetLockon();
     }
 
     void Update()
@@ -37,11 +38,16 @@ public class Player : CharaBase, IDamage
         _state.Base();
         if (_state.GetCurrentState != StateMachine.StateType.Avoid) _isAvoid = false;
 
-        Vector3 set = Vector3.Scale(_state.Move * _speed, Gravity.Velocity);
+        Vector3 set = Vector3.Scale(_state.Move * _speed, Gravity.GetVelocity);
         Character.Move(set * Time.deltaTime);
     }
 
-    void Jump() => Debug.Log("Jump");
+    void Jump()
+    {
+        _state.ChangeState(StateMachine.StateType.Floating);
+        Debug.Log("Jump");
+        Gravity.Floating();
+    }
 
     void WeakAttack()
     {
@@ -61,8 +67,7 @@ public class Player : CharaBase, IDamage
         if (enemy != null)
         {
             _isLockon = true;
-            object[] data = { enemy };
-            UIManager.CallBack(UIType.Player, 2, data);
+            UIManager.CallBack(UIType.Player, 2, new object[] { enemy});
         }
     }
 

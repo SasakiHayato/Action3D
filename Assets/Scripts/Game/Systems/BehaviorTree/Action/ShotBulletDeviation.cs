@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using BehaviorAI;
 
 public class ShotBulletDeviation : IAction
 {
-    [SerializeField] float _speed;
     [SerializeField] float _coolTime;
     [SerializeField] int _bulletID;
 
@@ -27,7 +25,7 @@ public class ShotBulletDeviation : IAction
 
             GameObject obj = BulletSettings.UseRequest(_bulletID);
             obj.transform.position = Target.transform.position;
-            obj.GetComponent<Bullet>().Shot(Set().normalized, _speed * 10, Bullet.Parent.Enemy);
+            obj.GetComponent<Bullet>().Shot(Set().normalized, 1 * 10, Bullet.Parent.Enemy);
         }
 
         _savePos = _player.transform.position;
@@ -35,14 +33,14 @@ public class ShotBulletDeviation : IAction
 
     Vector3 Set()
     {
-        Vector3 set = Vector3.zero;
-        Vector3 currentPos = _player.transform.position;
-        Vector3 predictPos = currentPos + _savePos;
+        Vector3 cPlayerPos = _player.transform.position;
+        Vector3 pPlayerPos = cPlayerPos + _savePos;
 
-        Vector3 forward = currentPos - Target.transform.position;
+        Vector3 cForward = (cPlayerPos - Target.transform.position).normalized;
+        Vector3 pForward = (pPlayerPos - Target.transform.position).normalized;
+        float rad = Vector3.Dot(cForward, pForward);
         
-
-        return set.normalized;
+        return pForward;
     }
 
     public bool End() => _check;

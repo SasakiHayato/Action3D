@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IStateTarget
-{
-    void SetTarget(GameObject target);
-}
-
 public class StateMachine : MonoBehaviour
 {
     public enum StateType
@@ -15,6 +10,7 @@ public class StateMachine : MonoBehaviour
         Move = 1,
         Avoid = 2,
         Attack = 3,
+        Floating = 4,
 
         None = -1,
     }

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 9036557377486228436}
   - component: {fileID: 9036557377486228442}
   - component: {fileID: 9036557377486228441}
+  - component: {fileID: 545310835792815239}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -140,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adaa36985b297349b60c577b6b1ed76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gravityScale: 1
   _speed: 9
 --- !u!114 &9036557377486228442
 MonoBehaviour:
@@ -241,6 +243,18 @@ MonoBehaviour:
       type: {class: StateNone, ns: , asm: Assembly-CSharp}
       data:
         StateID: -1
+--- !u!114 &545310835792815239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9036557377486228440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba89b7381b7f99e4dbd261359b841053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9036557378094096780
 GameObject:
   m_ObjectHideFlags: 0

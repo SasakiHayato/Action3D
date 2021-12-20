@@ -4,77 +4,54 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
-    [SerializeField] GameObject _parent;
+    public Vector3 GetVelocity { get => _vel; }
 
-    [SerializeField] float _fallSpeed = 1f;
-    [SerializeField] float _forceSpeed = 1f;
-    [SerializeField] float _forceHeight = 5f;
-    [SerializeField] float _forceTime = 0.5f;
-
-    CharacterController _charaCtrl;
-
+    public float SetScale { set { _scale = value; } }
+    public CharacterController SetCharactor { set { _charactor = value; } }
+    
     Vector3 _vel = Vector3.one;
-    public Vector3 Velocity { get => _vel; }
+
+    float _scale = 1f;
+    CharacterController _charactor;
+    JumpSettings _jumpSettings;
 
     float _currentFallTime;
-    float _currentForceTime;
-    float _initialVel;
-
     float _g = Physics.gravity.y;
-
-    bool _isforce = false;
+    bool _isFloating = false;
 
     void Start()
     {
-        
-        // èâë¨ìx
-        _initialVel = _forceHeight / _forceTime + (_g * _forceTime / 2);
-    }
-
-    void Init()
-    {
-        _vel.y = 0;
-        _currentFallTime = 0;
-        _currentForceTime = 0;
+        _jumpSettings = GetComponent<JumpSettings>();
     }
 
     private void FixedUpdate()
     {
-        _vel.y = 0;
-
-        if (_isforce) _vel.y += ChangeOfPosY();
+        if(_isFloating)
+        {
+            Debug.Log("aaa");
+            _vel.y = _jumpSettings.UpdateMovePosY();
+            //if (_charactor.isGrounded) _isFloating = false;
+        }
         else
         {
-            _vel.y += IsGravity();
+            if (_charactor.isGrounded) _currentFallTime = 0;
+            else _vel.y = IsGravity();
         }
     }
 
     float IsGravity()
     {   
         _currentFallTime += Time.fixedDeltaTime;
-        float velY = _g * _currentFallTime /** _fallSpeed*/;
+        float velY = _g * _currentFallTime * _scale;
 
         return velY;
     }
 
-    float ChangeOfPosY()
+    public void Floating()
     {
-        float g = _g * -1;
+        if (_jumpSettings == null) return;
 
-        _currentForceTime += Time.fixedDeltaTime * _forceSpeed;
-        float t = _currentForceTime;
-        float v0 = _initialVel;
-        float y = (v0 * t) - (g * t * t / 2);
-
-        float v = v0 - g * _currentForceTime;
-        if (v < 0)
-        {
-            _isforce = false;
-            Init();
-        }
-        Debug.Log(v);
-        return y;
+        _isFloating = true;
+        _jumpSettings.SetJump();
     }
-
-    public void Force() => _isforce = true;
 }
