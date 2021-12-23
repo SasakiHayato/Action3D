@@ -6,34 +6,34 @@ public class JumpSettings : MonoBehaviour
 {
     [SerializeField] int _count;
     [SerializeField] float _speed;
-    [SerializeField] float _v0;
+    [SerializeField] float _InitialVelo;
     [SerializeField] float _y;
 
-    float _g = Physics.gravity.y;
+    float _gravityY = Physics.gravity.y;
     bool _isJump = false;
-    float _t = 0;
+    float _currentTime = 0;
 
     float _saveY;
     
     private void Start()
     {
         _saveY = _y;
-        _g *= -1;
+        _gravityY *= -1;
     }
 
     public void SetJump()
     {
         if (_isJump) return;
 
-        _isJump = true;
+        //_isJump = true;
         _count--;
-        _t = 0;
+        _currentTime = 0;
     }
 
     public float UpdateMovePosY()
     {
-        _t += Time.deltaTime * _speed;
-        float y = (_v0 * _t) - ((_g * _t * _t) * 0.5f);
+        _currentTime += Time.deltaTime * _speed;
+        float y = (_InitialVelo * _currentTime) - ((_gravityY * _currentTime * _currentTime) * 0.5f);
 
         return y;
     }

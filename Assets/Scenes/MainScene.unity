@@ -172,7 +172,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6006098, y: 1}
+    m_SensorSize: {x: 1.6013288, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -410,6 +410,7 @@ GameObject:
   - component: {fileID: 286906770}
   - component: {fileID: 286906773}
   - component: {fileID: 286906774}
+  - component: {fileID: 286906775}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -577,6 +578,21 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &286906775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286906769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e82c7ebf93e7c45846278e098fd2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shader: {fileID: 4800000, guid: 8009d84e197cadf408881568433f3803, type: 3}
+  _sampleCount: 6
+  _strenght: 0.489
 --- !u!1 &711806061
 GameObject:
   m_ObjectHideFlags: 3
@@ -885,7 +901,8 @@ MonoBehaviour:
     00000001:
       type: {class: ShotBulletDeviation, ns: , asm: Assembly-CSharp}
       data:
-        _coolTime: 999
+        _coolTime: 0
+        _speed: 4
         _bulletID: 0
 --- !u!114 &1764692144
 MonoBehaviour:
@@ -1219,7 +1236,12 @@ PrefabInstance:
     - target: {fileID: 545310835792815239, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}
       propertyPath: _speed
-      value: 1
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 545310835792815239, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _InitialVelo
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9036557377486228432, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}

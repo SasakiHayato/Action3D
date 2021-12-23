@@ -6,6 +6,7 @@ using BehaviorAI;
 public class ShotBulletDeviation : IAction
 {
     [SerializeField] float _coolTime;
+    [SerializeField] float _speed;
     [SerializeField] int _bulletID;
 
     bool _check = false;
@@ -25,7 +26,7 @@ public class ShotBulletDeviation : IAction
 
             GameObject obj = BulletSettings.UseRequest(_bulletID);
             obj.transform.position = Target.transform.position;
-            obj.GetComponent<Bullet>().Shot(Set().normalized, 1 * 10, Bullet.Parent.Enemy);
+            obj.GetComponent<Bullet>().Shot(Set(), 1 * 10, Bullet.Parent.Enemy);
         }
 
         _savePos = _player.transform.position;
@@ -33,14 +34,9 @@ public class ShotBulletDeviation : IAction
 
     Vector3 Set()
     {
-        Vector3 cPlayerPos = _player.transform.position;
-        Vector3 pPlayerPos = cPlayerPos + _savePos;
-
-        Vector3 cForward = (cPlayerPos - Target.transform.position).normalized;
-        Vector3 pForward = (pPlayerPos - Target.transform.position).normalized;
-        float rad = Vector3.Dot(cForward, pForward);
-        
-        return pForward;
+        Vector3 diff = _player.transform.position - _savePos;
+        Debug.Log(diff);
+        return Vector3.zero;
     }
 
     public bool End() => _check;

@@ -28,9 +28,7 @@ public class Gravity : MonoBehaviour
     {
         if(_isFloating)
         {
-            Debug.Log("aaa");
             _vel.y = _jumpSettings.UpdateMovePosY();
-            //if (_charactor.isGrounded) _isFloating = false;
         }
         else
         {
