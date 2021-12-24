@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class RadialBlur : MonoBehaviour
 {
     [SerializeField] Shader _shader;
     [SerializeField, Range(4, 16)] int _sampleCount = 8;
     [SerializeField, Range(0, 1)] float _strenght = 0.5f;
+    public float SetStrength { set { _strenght = value; } }
 
     Material _material = null;
 
