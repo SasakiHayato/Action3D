@@ -26,14 +26,19 @@ public class Gravity : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(_isFloating)
+        if (_charactor.isGrounded)
+        {
+            _currentFallTime = 0;
+            _jumpSettings.ResetCount();
+        }
+
+        if (_isFloating)
         {
             _vel.y = _jumpSettings.UpdateMovePosY();
         }
         else
         {
-            if (_charactor.isGrounded) _currentFallTime = 0;
-            else _vel.y = IsGravity();
+            _vel.y = IsGravity();
         }
     }
 

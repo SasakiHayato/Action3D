@@ -45,7 +45,6 @@ public class Player : CharaBase, IDamage
     void Jump()
     {
         _state.ChangeState(StateMachine.StateType.Floating);
-        Debug.Log("Jump");
         Gravity.Floating();
     }
 

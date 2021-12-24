@@ -7,25 +7,21 @@ public class JumpSettings : MonoBehaviour
     [SerializeField] int _count;
     [SerializeField] float _speed;
     [SerializeField] float _InitialVelo;
-    [SerializeField] float _y;
 
     float _gravityY = Physics.gravity.y;
-    bool _isJump = false;
     float _currentTime = 0;
+    int _saveCount;
 
-    float _saveY;
-    
     private void Start()
     {
-        _saveY = _y;
         _gravityY *= -1;
+        _saveCount = _count;
     }
 
     public void SetJump()
     {
-        if (_isJump) return;
+        if (_count == 0) return;
 
-        //_isJump = true;
         _count--;
         _currentTime = 0;
     }
@@ -36,5 +32,10 @@ public class JumpSettings : MonoBehaviour
         float y = (_InitialVelo * _currentTime) - ((_gravityY * _currentTime * _currentTime) * 0.5f);
 
         return y;
+    }
+
+    public void ResetCount()
+    {
+        _count = _saveCount;
     }
 }
