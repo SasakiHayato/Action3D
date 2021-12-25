@@ -11,15 +11,21 @@ public class FieldManager : MonoBehaviour
     private static FieldManager _instance = null;
     public static FieldManager Instance => _instance;
 
-    ObjectPool<HitParticle> _hitParticlePool = new ObjectPool<HitParticle>();
-    public ObjectPool<HitParticle> GetHitParticle => _hitParticlePool;
+    ObjectPool<ParticleUser> _hitParticlePool = new ObjectPool<ParticleUser>();
+    public ObjectPool<ParticleUser> GetHitParticle => _hitParticlePool;
+
+    ObjectPool<ParticleUser> _deadParticlePool = new ObjectPool<ParticleUser>();
+    public ObjectPool<ParticleUser> GetDeadParticle => _deadParticlePool;
 
     private void Awake()
     {
         _instance = this;
 
-        GameObject obj = (GameObject)Resources.Load("HitParticle");
-        _hitParticlePool.SetUp(obj.GetComponent<HitParticle>(), transform, 10);
+        GameObject hitParticle = (GameObject)Resources.Load("HitParticle");
+        _hitParticlePool.SetUp(hitParticle.GetComponent<ParticleUser>(), transform, 10);
+
+        GameObject deadParticle = (GameObject)Resources.Load("DeadParticle");
+        _deadParticlePool.SetUp(deadParticle.GetComponent<ParticleUser>(), transform, 10);
     }
 
     public static void FieldTimeRate(Action<UIType, int, object[]> action, UIType type, int id)

@@ -67,6 +67,7 @@ public class StateMachine : MonoBehaviour
 
     public void ChangeState(StateType type)
     {
+        if (_state == null) return;
         _state.Exit();
         _type = type;
     }

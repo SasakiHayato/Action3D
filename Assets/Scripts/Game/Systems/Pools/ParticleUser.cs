@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HitParticle : MonoBehaviour, IPool
+public class ParticleUser : MonoBehaviour, IPool
 {
     Transform _parent;
     ParticleSystem.MainModule _particleMain;
@@ -20,7 +18,7 @@ public class HitParticle : MonoBehaviour, IPool
         gameObject.SetActive(false);
     }
 
-    public void Use(Transform target, Quaternion rotate)
+    public void Use(Transform target, Quaternion rotate = default)
     {
         IsUse = true;
         gameObject.SetActive(true);

@@ -232,7 +232,7 @@ namespace AttackSetting
             _anim.Play(data.AnimName);
             _audio.volume = data.SEVol;
             if (data.SE != null) _audio.PlayOneShot(data.SE);
-            //else Debug.Log("Nothing SEData.");
+            else Debug.Log("Nothing SEData.");
             _attacking = true;
             _data = data;
 

@@ -60,7 +60,7 @@ namespace AttackSetting
             float rotateX = Random.Range(-180, 180);
             Vector3 rotate = new Vector3(rotateX, 90, 0);
 
-            HitParticle particle = FieldManager.Instance.GetHitParticle.Respons();
+            ParticleUser particle = FieldManager.Instance.GetHitParticle.Respons();
             particle.Use(target.transform, Quaternion.Euler(rotate));
         }
 

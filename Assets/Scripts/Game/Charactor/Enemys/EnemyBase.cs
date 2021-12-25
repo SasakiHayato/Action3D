@@ -17,6 +17,13 @@ public abstract class EnemyBase : CharaBase, IBehavior
 
     public GameObject SetTarget() => gameObject;
     public void Call(IAction action) => action.Execute();
+
+    public virtual void Dead(GameObject target)
+    {
+        ParticleUser particle = FieldManager.Instance.GetDeadParticle.Respons();
+        particle.Use(target.transform);
+        Destroy(target);
+    }
     
     public abstract void KnockBack(Vector3 dir);
 }

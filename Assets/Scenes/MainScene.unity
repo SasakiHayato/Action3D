@@ -172,7 +172,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.601282, y: 1}
+    m_SensorSize: {x: 1.5981563, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1016,6 +1016,7 @@ MonoBehaviour:
   _knockBackPower: 3
   _knockBackTime: 0.2
   _tree: {fileID: 1764692143}
+  _hp: 0
 --- !u!143 &1764692145
 CharacterController:
   m_ObjectHideFlags: 0

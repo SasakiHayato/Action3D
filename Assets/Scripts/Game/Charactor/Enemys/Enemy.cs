@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : EnemyBase, IDamage
 {
+    [SerializeField] float _hp;
+
     bool _isKnockBack = false;
     Vector3 _moveDir = Vector3.zero;
     float _timer = 0;
@@ -23,7 +25,8 @@ public class Enemy : EnemyBase, IDamage
 
     public void GetDamage(float damage)
     {
-
+        _hp -= damage;
+        if (_hp <= 0) base.Dead(gameObject);
     }
 
     public override void KnockBack(Vector3 dir)
