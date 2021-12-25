@@ -172,7 +172,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6014544, y: 1}
+    m_SensorSize: {x: 1.5987177, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -993,12 +993,12 @@ MonoBehaviour:
     00000000:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 25
+        _range: 50
     00000001:
-      type: {class: ShotBulletLockon, ns: , asm: Assembly-CSharp}
+      type: {class: ShotBulletDeviation, ns: , asm: Assembly-CSharp}
       data:
         _speed: 5
-        _coolTime: 999
+        _coolTime: 0.2
         _bulletID: 0
 --- !u!114 &1764692144
 MonoBehaviour:
@@ -1356,6 +1356,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9036557377486228436, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _speed
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9036557377486228436, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}

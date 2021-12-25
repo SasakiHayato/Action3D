@@ -38,14 +38,14 @@ public class Player : CharaBase, IDamage
         _state.Base();
         if (_state.GetCurrentState != StateMachine.StateType.Avoid) _isAvoid = false;
 
-        Vector3 set = Vector3.Scale(_state.Move * _speed, Gravity.GetVelocity);
+        Vector3 set = Vector3.Scale(_state.Move * _speed, PhsicsBase.GetVelocity);
         Character.Move(set * Time.deltaTime);
     }
 
     void Jump()
     {
         _state.ChangeState(StateMachine.StateType.Floating);
-        Gravity.Floating();
+        PhsicsBase.SetJump();
     }
 
     void WeakAttack()

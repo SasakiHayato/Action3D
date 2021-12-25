@@ -2,28 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using ObjectPhysics;
+
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(PhysicsBase))]
 public class CharaBase : MonoBehaviour
 {
-    [SerializeField] float _gravityScale = 1;
-    
-    Gravity _selfRB;
-    public Gravity Gravity { get => _selfRB; }
+    PhysicsBase _phsicsBase;
+    public PhysicsBase PhsicsBase { get => _phsicsBase; }
 
     CharacterController _character;
     public CharacterController Character { get => _character; }
 
     private void Awake()
     {
-        _selfRB = gameObject.AddComponent<Gravity>();
+        _phsicsBase = gameObject.AddComponent<PhysicsBase>();
         _character = GetComponent<CharacterController>();
-        
-        SetUpRigid();
-    }
-
-    void SetUpRigid()
-    {
-        _selfRB.SetCharactor = _character;
-        _selfRB.SetScale = _gravityScale;
     }
 }
