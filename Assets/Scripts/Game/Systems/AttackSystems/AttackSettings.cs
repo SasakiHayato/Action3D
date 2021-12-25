@@ -241,11 +241,9 @@ namespace AttackSetting
 
         IEnumerator WaitAnim()
         {
-            Debug.Log("Strat");
             EndCurrentAnim = false;
             yield return null;
             yield return new WaitAnim(_anim);
-            Debug.Log("End");
             EndCurrentAnim = true;
         }
 

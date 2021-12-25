@@ -961,9 +961,9 @@ GameObject:
   - component: {fileID: 1764692147}
   - component: {fileID: 1764692145}
   - component: {fileID: 1764692144}
-  - component: {fileID: 1764692143}
   - component: {fileID: 1764692150}
   - component: {fileID: 1764692146}
+  - component: {fileID: 1764692143}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1305,6 +1305,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _attacks.Array.data[2].Effects.Array.data[2]
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006167551908924747, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _stateList.Array.data[3]._moveTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006167551908924747, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _stateList.Array.data[3]._moveSpeed
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1006167551908924750, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}

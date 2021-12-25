@@ -29,7 +29,7 @@ namespace AttackSetting
                 {
                     GameObject obj = new GameObject("Effects");
                     _instance = obj.AddComponent<Effects>();
-                    obj.hideFlags = HideFlags.HideInHierarchy;
+                    //obj.hideFlags = HideFlags.HideInHierarchy;
                 }
 
                 return _instance;
@@ -57,11 +57,11 @@ namespace AttackSetting
 
         public static void HitParticle(GameObject target)
         {
-            GameObject obj = Instantiate((GameObject)Resources.Load("HitParticle"));
             float rotateX = Random.Range(-180, 180);
             Vector3 rotate = new Vector3(rotateX, 90, 0);
-            obj.transform.position = target.transform.position;
-            obj.transform.rotation = Quaternion.Euler(rotate);
+
+            HitParticle particle = FieldManager.Instance.GetHitParticle.Respons();
+            particle.Use(target.transform, Quaternion.Euler(rotate));
         }
 
         public static void KnockBack(GameObject target, AttackCollision.Parent parent, Transform parentT)
