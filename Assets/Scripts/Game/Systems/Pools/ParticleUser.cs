@@ -5,11 +5,6 @@ public class ParticleUser : MonoBehaviour, IPool
     Transform _parent;
     ParticleSystem.MainModule _particleMain;
 
-    void Update()
-    {
-        if (!IsUse) return;
-    }
-
     public void SetUp(Transform parent)
     {
         _parent = parent;
