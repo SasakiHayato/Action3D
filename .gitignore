@@ -73,7 +73,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 © 2021 GitHub, Inc.
 .vsconfig
-Assets/Waldemarst/
-Assets/Waldemarst.meta
-Assets/SkySerie Freebie/
-Assets/SkySerie Freebie.meta
+
+Assets/AssetStore/
+Assets/AssetStore.meta
