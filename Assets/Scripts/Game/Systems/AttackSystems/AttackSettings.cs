@@ -123,6 +123,7 @@ namespace AttackSetting
         
         public ActionType SetAction { private get; set; }
         public ActionType ReadAction { get => SetAction; }
+        public bool EndCurrentAnim { get; private set; } = true;
         
         void Start()
         {
@@ -231,9 +232,21 @@ namespace AttackSetting
             _anim.Play(data.AnimName);
             _audio.volume = data.SEVol;
             if (data.SE != null) _audio.PlayOneShot(data.SE);
-            else Debug.Log("Nothing SEData.");
+            //else Debug.Log("Nothing SEData.");
             _attacking = true;
             _data = data;
+
+            StartCoroutine(WaitAnim());
+        }
+
+        IEnumerator WaitAnim()
+        {
+            Debug.Log("Strat");
+            EndCurrentAnim = false;
+            yield return null;
+            yield return new WaitAnim(_anim);
+            Debug.Log("End");
+            EndCurrentAnim = true;
         }
 
         void IsAttack(IDamage iDamage, GameObject obj)

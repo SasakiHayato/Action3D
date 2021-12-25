@@ -30,13 +30,20 @@ public class PlayerAttack : StateMachine.State
 
     public override StateMachine.StateType Exit()
     {
-        if (_input == Vector2.zero)
+        if (!_attack.EndCurrentAnim)
         {
-            return StateMachine.StateType.None;
+            return StateMachine.StateType.Attack;
         }
         else
         {
-            return StateMachine.StateType.Move;
+            if (_input == Vector2.zero)
+            {
+                return StateMachine.StateType.None;
+            }
+            else
+            {
+                return StateMachine.StateType.Move;
+            }
         }
     }
 }
