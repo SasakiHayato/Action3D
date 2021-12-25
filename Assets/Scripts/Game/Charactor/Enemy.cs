@@ -13,4 +13,9 @@ public class Enemy : EnemyBase, IDamage
     {
 
     }
+
+    public override void KnockBack(Vector3 dir)
+    {
+        
+    }
 }

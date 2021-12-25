@@ -6,8 +6,15 @@ using AttackSetting;
 
 public class AttackCollision : MonoBehaviour, IAttack
 {
+    public enum Parent
+    {
+        Player,
+        Enemy,
+    }
+
     [SerializeField] int _groupID;
     public int GroupID { get => _groupID; }
+    public Parent ParentID { get; private set; }
 
     GameObject _parent;
     GameObject _hitObj;
@@ -18,6 +25,8 @@ public class AttackCollision : MonoBehaviour, IAttack
     public void SetUp(GameObject parent)
     {
         _parent = parent;
+        if (_parent.CompareTag("Player")) ParentID = Parent.Player;
+        else ParentID = Parent.Player;
         Init();
     }
 

@@ -142,7 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3adaa36985b297349b60c577b6b1ed76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gravityScale: 1
   _speed: 9
 --- !u!114 &9036557377486228442
 MonoBehaviour:
@@ -218,6 +217,7 @@ MonoBehaviour:
   - id: 2
   - id: 3
   - id: 4
+  - id: 5
   references:
     version: 1
     00000000:
@@ -241,6 +241,12 @@ MonoBehaviour:
         StateID: 3
         _attack: {fileID: 9036557377486228442}
     00000004:
+      type: {class: PlayerKnockBack, ns: , asm: Assembly-CSharp}
+      data:
+        StateID: 5
+        _player: {fileID: 9036557377486228436}
+        _knockTime: 1
+    00000005:
       type: {class: StateNone, ns: , asm: Assembly-CSharp}
       data:
         StateID: -1

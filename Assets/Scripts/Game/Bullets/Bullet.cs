@@ -70,18 +70,22 @@ public class Bullet : MonoBehaviour, IDamage
         _rb.velocity = Vector3.zero;
         _power *= powerRate;
         _parent = parent;
+        
         _rb.AddForce(dir * speed, ForceMode.Impulse);
         _isSet = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Vector3 dir = transform.position - other.gameObject.transform.position;
+
         switch (_parent)
         {
             case Parent.Player:
                 if (other.CompareTag("Enemy"))
                 {
                     other.GetComponent<IDamage>().GetDamage(_power);
+                    other.GetComponent<EnemyBase>().KnockBack(dir);
                     _callBack.Invoke(gameObject);
                 }
                 break;
@@ -89,6 +93,7 @@ public class Bullet : MonoBehaviour, IDamage
                 if (other.CompareTag("Player"))
                 {
                     other.GetComponent<IDamage>().GetDamage(_power);
+                    other.GetComponent<Player>().KnockBack(dir);
                     _callBack.Invoke(gameObject);
                 }
                 break;

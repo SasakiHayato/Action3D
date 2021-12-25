@@ -69,15 +69,17 @@ namespace AttackSetting
         #region Class EffectSetter
         class EffectSetter
         {
-            static GameObject _weapon;
+            static AttackCollision _weapon;
             static GameObject _hitObj;
+            static GameObject _parent;
             static Animator _anim;
 
             public static EffectData Set(EffectData effect, EffectType[] types, object[] target)
             {
-                _weapon = (GameObject)target[0];
+                _weapon = (AttackCollision)target[0];
                 _anim = (Animator)target[1];
                 _hitObj = (GameObject)target[2];
+                _parent = (GameObject)target[3];
 
                 foreach (EffectType type in types)
                 {
@@ -104,9 +106,9 @@ namespace AttackSetting
                 return effect;
             }
 
-            static void HitParticle() => Effects.HitParticle(_weapon);
+            static void HitParticle() => Effects.HitParticle(_weapon.gameObject);
             static void HitStop() => Effects.HitStop(_anim);
-            static void KnockBack() => Effects.KnockBack(_hitObj);
+            static void KnockBack() => Effects.KnockBack(_hitObj, _weapon.ParentID, _parent.transform);
 
             public static void Init()
             {
@@ -158,7 +160,6 @@ namespace AttackSetting
             //CheckAttackCoolTime
             if (_coolTime > _requestCoolTime)
             {
-                Debug.Log("CanAttack");
                 _isRequest = true;
                 _coolTime = 0;
             }
@@ -167,7 +168,6 @@ namespace AttackSetting
             if (_data != null)
                 if (_resetCombTime > _data.NextAcceptTime)
                 {
-                    Debug.Log("ResetCombo");
                     _isRequest = true;
                     _coolTime = 0;
                     InitParam();
@@ -178,23 +178,14 @@ namespace AttackSetting
         /// <param name="type">どのアクションなのか</param>
         public void Request(ActionType type)
         {
-            if (!_isRequest || _attacking)
-            {
-                Debug.Log("IsRunning");
-                return;
-            }
-
-            Debug.Log("AcceptRequest");
+            if (!_isRequest || _attacking) return;
             _isRequest = false;
 
             if (_saveActionType == ActionType.None || _saveActionType != type)
             {
-                Debug.Log($"Init. NextAttackType is {type}");
                 _saveActionType = type;
                 InitParam();
             }
-            else
-                Debug.Log($"NextAttck. CurrentType is {_saveActionType}");
 
             for (int i = _findIndex; i < _attacks.Count; i++)
             {
@@ -211,14 +202,11 @@ namespace AttackSetting
             {
                 if (_attacks[i].Action == type && _attacks[i].GroupID == _saveGroupID)
                 {
-                    Debug.Log($"EndedCombo. Reset,CurrentAction");
                     _findIndex = i + 1;
                     SetData(_attacks[i]);
                     return;
                 }
             }
-
-            Debug.LogError("Nothing MacthDate");
         }
 
         /// <summary> 武器の変更 </summary>
@@ -227,7 +215,6 @@ namespace AttackSetting
         {
             if (set == null)
             {
-                Debug.Log($"Nothing,ChangeData. AddDefWeapon{_saveDefWeapon}");
                 _targetWeapon = _saveDefWeapon;
                 return;
             }
@@ -251,7 +238,7 @@ namespace AttackSetting
 
         void IsAttack(IDamage iDamage, GameObject obj)
         {
-            object[] datas = { _targetWeapon.gameObject, _anim, obj };
+            object[] datas = { _targetWeapon, _anim, obj, _parent };
             EffectData effect = null;
             EffectSetter.Set(effect, _data.Effects, datas).Invoke();
             iDamage.GetDamage(_data.Power);

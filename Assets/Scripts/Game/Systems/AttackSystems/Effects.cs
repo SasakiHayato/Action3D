@@ -38,7 +38,6 @@ namespace AttackSetting
 
         public static void HitStop(Animator anim)
         {
-            Debug.Log("EffctType HitStop");
             Instance.StartCoroutine(Instance.WaitTime(anim));
         }
 
@@ -51,7 +50,6 @@ namespace AttackSetting
 
         public static void ShakeCm()
         {
-            Debug.Log("EffctType ShakeCm");
             GameObject obj = GameObject.Find("3drParsonCm");
             CinemachineImpulseSource source = obj.GetComponent<CinemachineImpulseSource>();
             source.GenerateImpulse();
@@ -59,7 +57,6 @@ namespace AttackSetting
 
         public static void HitParticle(GameObject target)
         {
-            Debug.Log("EffctType HitParticle");
             GameObject obj = Instantiate((GameObject)Resources.Load("HitParticle"));
             float rotateX = Random.Range(-180, 180);
             Vector3 rotate = new Vector3(rotateX, 90, 0);
@@ -67,14 +64,19 @@ namespace AttackSetting
             obj.transform.rotation = Quaternion.Euler(rotate);
         }
 
-        public static void KnockBack(GameObject target)
+        public static void KnockBack(GameObject target, AttackCollision.Parent parent, Transform parentT)
         {
-            Debug.Log("EffctType KnockBack");
-            Rigidbody rb = target.GetComponent<Rigidbody>();
-            rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+            if (parent == AttackCollision.Parent.Player)
+            {
+                EnemyBase enemyBase = target.GetComponent<EnemyBase>();
+                if (enemyBase != null) enemyBase.KnockBack(parentT.forward);
+            }
+            else
+            {
+                Player player = target.GetComponent<Player>();
+                if (player != null) player.KnockBack(parentT.forward);
+            }
         }
-
-        //public static 
 
         public static void None() => Debug.Log("EffctType None");
     }

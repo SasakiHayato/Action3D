@@ -11,6 +11,7 @@ public class StateMachine : MonoBehaviour
         Avoid = 2,
         Attack = 3,
         Floating = 4,
+        KnockBack = 5,
 
         None = -1,
     }

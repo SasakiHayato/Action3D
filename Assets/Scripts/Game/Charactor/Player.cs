@@ -10,8 +10,11 @@ public class Player : CharaBase, IDamage
     StateMachine _state;
 
     bool _isAvoid = false;
+
     bool _isLockon = false;
     public bool IsLockon => _isLockon;
+
+    public Vector3 GetKnockDir { get; private set; }
     
     void Start()
     {
@@ -84,5 +87,13 @@ public class Player : CharaBase, IDamage
         }
 
         Debug.Log("Damage");
+    }
+
+    public void KnockBack(Vector3 dir)
+    {
+        if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
+        if (_state.GetCurrentState == StateMachine.StateType.Avoid) return;
+        GetKnockDir = dir;
+        _state.ChangeState(StateMachine.StateType.KnockBack);
     }
 }
