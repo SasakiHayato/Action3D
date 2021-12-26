@@ -179,7 +179,13 @@ namespace AttackSetting
         /// <param name="type">‚Ç‚ÌƒAƒNƒVƒ‡ƒ“‚È‚Ì‚©</param>
         public void Request(ActionType type)
         {
-            if (!_isRequest || _attacking) return;
+            if (!_isRequest || _attacking)
+            {
+                Debug.Log("ReturnRequest");
+                Debug.Log($"IsRequest{_isRequest} : Attaking {_attacking}");
+                return;
+            }
+            Debug.Log("IsRequest");
             _isRequest = false;
 
             if (_saveActionType == ActionType.None || _saveActionType != type)
@@ -228,6 +234,7 @@ namespace AttackSetting
 
         void SetData(AttackData data)
         {
+            EndCurrentAnim = false;
             _resetCombTime = 0;
             _anim.Play(data.AnimName);
             _audio.volume = data.SEVol;
@@ -241,7 +248,6 @@ namespace AttackSetting
 
         IEnumerator WaitAnim()
         {
-            EndCurrentAnim = false;
             yield return null;
             yield return new WaitAnim(_anim);
             EndCurrentAnim = true;
@@ -261,6 +267,7 @@ namespace AttackSetting
             Collider collider = _targetWeapon.GetComponent<Collider>();
             if (collider.enabled)
             {
+                Debug.Log("aaa");
                 collider.enabled = false;
                 _attacking = false;
             }

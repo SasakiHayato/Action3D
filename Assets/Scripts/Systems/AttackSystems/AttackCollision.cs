@@ -26,7 +26,7 @@ public class AttackCollision : MonoBehaviour, IAttack
     {
         _parent = parent;
         if (_parent.CompareTag("Player")) ParentID = Parent.Player;
-        else ParentID = Parent.Player;
+        else ParentID = Parent.Enemy;
         Init();
     }
 
