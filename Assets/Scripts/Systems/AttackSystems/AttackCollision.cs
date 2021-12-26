@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 using AttackSetting;
 
 public class AttackCollision : MonoBehaviour, IAttack
@@ -25,6 +22,7 @@ public class AttackCollision : MonoBehaviour, IAttack
     public void SetUp(GameObject parent)
     {
         _parent = parent;
+        GetComponent<Collider>().enabled = false;
         if (_parent.CompareTag("Player")) ParentID = Parent.Player;
         else ParentID = Parent.Enemy;
         Init();

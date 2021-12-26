@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 7276359008978338106}
   - component: {fileID: 7276359008978338240}
   m_Layer: 0
-  m_Name: Skeleton
+  m_Name: WalkSkeleton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,6 +744,7 @@ MonoBehaviour:
   _knockBackPower: 0
   _knockBackTime: 0
   _tree: {fileID: 7276359008978338106}
+  _speed: 1
 --- !u!114 &7276359008978338106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,12 +767,16 @@ MonoBehaviour:
         id: 2
       Action:
         id: 3
+    - Conditional:
+        id: 4
+      Action:
+        id: 3
   references:
     version: 1
     00000000:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 3
+        _range: 3.5
     00000001:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
     00000002:
@@ -782,6 +787,10 @@ MonoBehaviour:
       type: {class: MoveTowardsPlayer, ns: , asm: Assembly-CSharp}
       data:
         _animName: SkeletonWalk
+    00000004:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 15
 --- !u!114 &7276359008978338240
 MonoBehaviour:
   m_ObjectHideFlags: 0

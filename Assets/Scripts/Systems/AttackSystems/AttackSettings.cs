@@ -232,6 +232,8 @@ namespace AttackSetting
             _saveGroupID = set.GroupID;
         }
 
+        public void Cansel() => _attacking = false;
+
         void SetData(AttackData data)
         {
             EndCurrentAnim = false;
@@ -267,7 +269,6 @@ namespace AttackSetting
             Collider collider = _targetWeapon.GetComponent<Collider>();
             if (collider.enabled)
             {
-                Debug.Log("aaa");
                 collider.enabled = false;
                 _attacking = false;
             }
