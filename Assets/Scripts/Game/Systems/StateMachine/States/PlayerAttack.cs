@@ -35,7 +35,7 @@ public class PlayerAttack : StateMachine.State
         if (_timer > _moveTime) move = Vector3.zero;
         else move = Target.transform.forward * _moveSpeed;
 
-        Rotate();
+        //Rotate();
     }
 
     void Rotate()

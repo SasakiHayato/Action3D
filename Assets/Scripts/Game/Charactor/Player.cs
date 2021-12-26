@@ -73,7 +73,7 @@ public class Player : CharaBase, IDamage
         }
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(int damage)
     {
         if (_state.GetCurrentState == StateMachine.StateType.Avoid)
         {

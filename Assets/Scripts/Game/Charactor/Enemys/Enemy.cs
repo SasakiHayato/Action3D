@@ -4,26 +4,16 @@ using UnityEngine;
 
 public class Enemy : EnemyBase, IDamage
 {
-    [SerializeField] float _hp;
-
+    [SerializeField] int _hp;
     bool _isKnockBack = false;
-    Vector3 _moveDir = Vector3.zero;
-    float _timer = 0;
 
     void Update()
     {
-        if (_isKnockBack)
-        {
-            _timer += Time.deltaTime;
-            if (_timer > GetKnockBackTime) _isKnockBack = false;
-            Character.Move(_moveDir * Time.deltaTime * GetKnockBackPower);
-            return;
-        }
-
+        SetKnockBack(ref _isKnockBack);
         Tree.Repeater(this);
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(int damage)
     {
         _hp -= damage;
         if (_hp <= 0) base.Dead(gameObject);
@@ -31,8 +21,7 @@ public class Enemy : EnemyBase, IDamage
 
     public override void KnockBack(Vector3 dir)
     {
-        _timer = 0;
         _isKnockBack = true;
-        _moveDir = dir;
+        MoveDir = dir;
     }
 }

@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour, IDamage
 
     int _id;
     public float GetID { get => _id; }
-    float _power;
+    int _power;
     Action<GameObject> _callBack;
 
     float _time = 0;
@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour, IDamage
         }
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(int damage)
     {
 
     }
@@ -65,7 +65,7 @@ public class Bullet : MonoBehaviour, IDamage
     }
 
     // BulletÇÇ∆ÇŒÇ∑èàóù
-    public void Shot(Vector3 dir, float speed, Parent parent, float powerRate = 1)
+    public void Shot(Vector3 dir, float speed, Parent parent, int powerRate = 1)
     {
         _rb.velocity = Vector3.zero;
         _power *= powerRate;

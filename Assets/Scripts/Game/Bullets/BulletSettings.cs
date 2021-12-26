@@ -30,7 +30,7 @@ public class BulletSettings : MonoBehaviour
         public string Name;
         public int ID;
         public GameObject Prefab;
-        public float Power;
+        public int Power;
     }
 
     /// <summary>

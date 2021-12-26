@@ -46,7 +46,7 @@ namespace AttackSetting
         {
             public string AnimName;
             public int GroupID;
-            public float Power;
+            public int Power;
             public float NextAcceptTime;
             public AudioClip SE;
             public float SEVol;
