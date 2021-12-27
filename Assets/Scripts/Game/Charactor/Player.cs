@@ -70,6 +70,7 @@ public class Player : CharaBase, IDamage
         {
             _isLockon = true;
             UIManager.CallBack(UIType.Player, 2, new object[] { enemy});
+            FindObjectOfType<CmCotrol>().Lockon(enemy);
         }
     }
 

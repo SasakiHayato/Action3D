@@ -944,7 +944,7 @@ MonoBehaviour:
       type: {class: ShotBulletDeviation, ns: , asm: Assembly-CSharp}
       data:
         _speed: 7
-        _coolTime: 0.2
+        _coolTime: 999
         _bulletID: 1
 --- !u!114 &1764692144
 MonoBehaviour:
