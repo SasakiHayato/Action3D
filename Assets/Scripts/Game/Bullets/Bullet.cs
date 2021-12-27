@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour, IDamage
 
     public void GetDamage(int damage)
     {
-
+        _callBack.Invoke(gameObject);
     }
 
     // ‰Šú‰»
