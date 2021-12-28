@@ -8,6 +8,7 @@ public class CmCotrol : MonoBehaviour
 {
     [SerializeField] float _rotateSpeed;
     [SerializeField] Vector3 _offSet = Vector3.zero;
+    [SerializeField] float _lockonCollection;
     
     CinemachineVirtualCamera _vCam;
     Cinemachine3rdPersonFollow _follow;
@@ -41,12 +42,10 @@ public class CmCotrol : MonoBehaviour
         Vector2 move = (Vector2)Inputter.GetValue(InputType.CmMove);
         Transform t = _vCam.Follow;
         Vector3 tRotate = t.eulerAngles;
-        if (move.x != 0 || move.y != 0) GameManager.Instance.IsLockOn = false;
+        
         if(GameManager.Instance.IsLockOn)
         {
-            Vector3 set = _player.transform.position - _target.transform.position;
-            set.z = 0;
-            tRotate = set;
+            LockOn(out tRotate);
         }
         else
         {
@@ -57,9 +56,12 @@ public class CmCotrol : MonoBehaviour
         t.rotation = Quaternion.Euler(tRotate);
     }
 
-    public void Lockon(GameObject target)
+    void LockOn(out Vector3 rotate)
     {
-        if (GameManager.Instance.IsLockOn) _target = target;
-        else _target = null;
+        Transform t = GameManager.Instance.LockonTarget.transform;
+        Vector3 forward = (t.position - _player.transform.position).normalized;
+        float angle = Mathf.Atan2(forward.z, forward.x) * Mathf.Rad2Deg;
+        
+        rotate = Quaternion.Euler(0, ((angle - 90) * -1) - _lockonCollection, 0).eulerAngles;
     }
 }

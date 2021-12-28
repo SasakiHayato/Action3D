@@ -73,7 +73,6 @@ public class Player : CharaBase, IDamage
             GameManager.Instance.IsLockOn = true;
             GameManager.Instance.LockonTarget = enemy;
             UIManager.CallBack(UIType.Player, 2, new object[] { enemy });
-            FindObjectOfType<CmCotrol>().Lockon(enemy);
         }
         else
         {

@@ -172,7 +172,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5982659, y: 1}
+    m_SensorSize: {x: 1.6011561, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -210,6 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateSpeed: 2
   _offSet: {x: 0.5, y: 1, z: 0.5}
+  _lockonCollection: 28
 --- !u!114 &52486416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1106,11 +1107,11 @@ MonoBehaviour:
       data:
         _range: 100
     00000001:
-      type: {class: ShotBulletDeviation, ns: , asm: Assembly-CSharp}
+      type: {class: ShotBulletLockon, ns: , asm: Assembly-CSharp}
       data:
-        _speed: 7
-        _coolTime: 999
-        _bulletID: 1
+        _speed: 2
+        _coolTime: 0.3
+        _bulletID: 0
 --- !u!114 &1764692144
 MonoBehaviour:
   m_ObjectHideFlags: 0
