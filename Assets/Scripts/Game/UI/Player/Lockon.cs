@@ -5,7 +5,7 @@ public class Lockon : UIWindowParent.UIWindowChild
 {
     [SerializeField] Sprite _sprite;
     [SerializeField] Color _color;
-    bool _isLockOn = false;
+    
     GameObject _target;
     GameObject _setUI;
 
@@ -30,7 +30,11 @@ public class Lockon : UIWindowParent.UIWindowChild
 
     public override void UpDate()
     {
-        if (!_isLockOn) return;
+        if (!GameManager.Instance.IsLockOn)
+        {
+            _setUI.SetActive(false);
+            return;
+        }
 
         var pos = RectTransformUtility.WorldToScreenPoint(Camera.main, _target.transform.position);
         _rect.position = pos;
@@ -38,16 +42,10 @@ public class Lockon : UIWindowParent.UIWindowChild
 
     public override void CallBack(object[] data)
     {
-        if (!_isLockOn)
+        if (GameManager.Instance.IsLockOn)
         {
-            _isLockOn = true;
             _target = (GameObject)data[0];
             _setUI.SetActive(true);
-        }
-        else
-        {
-            _isLockOn = false;
-            _setUI.SetActive(false);
         }
     }
 }
