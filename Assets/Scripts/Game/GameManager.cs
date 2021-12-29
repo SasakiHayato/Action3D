@@ -20,7 +20,11 @@ public class GameManager
 
     public bool IsLockOn
     {
-        get => _islockOn;
+        get
+        {
+            if (Instance.LockonTarget != null) return _islockOn;
+            else return false;
+        }
         set
         {
             _islockOn = value;
