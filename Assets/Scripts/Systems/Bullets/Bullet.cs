@@ -109,7 +109,7 @@ public class Bullet : MonoBehaviour, IDamage
                 if (other.CompareTag("Player"))
                 {
                     other.GetComponent<IDamage>().GetDamage(_power);
-                    other.GetComponent<Player>().KnockBack(dir * -1);
+                    other.GetComponent<Player>().KnockBack(dir);
                     _callBack.Invoke(gameObject);
                 }
                 break;
