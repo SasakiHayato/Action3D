@@ -172,7 +172,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6011561, y: 1}
+    m_SensorSize: {x: 1.5982659, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1400,12 +1400,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1006167551908924746, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}
+      propertyPath: _attacks.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006167551908924746, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _attacks.Array.data[5].Power
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006167551908924746, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _attacks.Array.data[5].Action
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006167551908924746, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _attacks.Array.data[5].AnimName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006167551908924746, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _attacks.Array.data[5].NextAcceptTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006167551908924746, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
       propertyPath: _attacks.Array.data[1].Effects.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1006167551908924746, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}
       propertyPath: _attacks.Array.data[2].Effects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006167551908924746, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _attacks.Array.data[5].Effects.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1006167551908924746, guid: d7eb422424236c447bbdf924bc5b675a,
@@ -1417,6 +1447,26 @@ PrefabInstance:
         type: 3}
       propertyPath: _attacks.Array.data[2].Effects.Array.data[2]
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006167551908924746, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _attacks.Array.data[5].Effects.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006167551908924746, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _attacks.Array.data[5].Effects.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006167551908924746, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _attacks.Array.data[5].Effects.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006167551908924746, guid: d7eb422424236c447bbdf924bc5b675a,
+        type: 3}
+      propertyPath: _attacks.Array.data[5].Effects.Array.data[3]
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1006167551908924747, guid: d7eb422424236c447bbdf924bc5b675a,
         type: 3}

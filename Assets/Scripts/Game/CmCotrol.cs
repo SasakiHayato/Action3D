@@ -16,8 +16,6 @@ public class CmCotrol : MonoBehaviour
     GameObject _player;
     GameObject _core;
 
-    GameObject _target = null;
-
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");

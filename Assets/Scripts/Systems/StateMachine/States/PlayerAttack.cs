@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using AttackSetting;
 
 public class PlayerAttack : StateMachine.State
@@ -20,8 +19,11 @@ public class PlayerAttack : StateMachine.State
         _timer = 0;
         if (beforeType == StateMachine.StateType.Avoid)
         {
-            Debug.Log("Counter");
-            //_attack.Request(ActionType.Counter);
+            if(GameManager.Instance.IsLockOn)
+            {
+                Debug.Log("Counter");
+                _attack.Request(ActionType.Counter);
+            }
         }
         else
         {

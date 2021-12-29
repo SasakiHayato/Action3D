@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 using System;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -78,6 +75,7 @@ public class Bullet : MonoBehaviour, IDamage
     private void OnTriggerEnter(Collider other)
     {
         Vector3 dir = transform.position - other.gameObject.transform.position;
+        dir.y = 0;
 
         switch (_parent)
         {
@@ -93,7 +91,7 @@ public class Bullet : MonoBehaviour, IDamage
                 if (other.CompareTag("Player"))
                 {
                     other.GetComponent<IDamage>().GetDamage(_power);
-                    other.GetComponent<Player>().KnockBack(dir);
+                    other.GetComponent<Player>().KnockBack(dir * -1);
                     _callBack.Invoke(gameObject);
                 }
                 break;
