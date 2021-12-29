@@ -19,11 +19,7 @@ public class PlayerAttack : StateMachine.State
         _timer = 0;
         if (beforeType == StateMachine.StateType.Avoid)
         {
-            if(GameManager.Instance.IsLockOn)
-            {
-                Debug.Log("Counter");
-                _attack.Request(ActionType.Counter);
-            }
+            if(GameManager.Instance.IsLockOn) _attack.Request(ActionType.Counter);
         }
         else
         {
@@ -37,19 +33,23 @@ public class PlayerAttack : StateMachine.State
         if (_timer > _moveTime) move = Vector3.zero;
         else move = Target.transform.forward * _moveSpeed;
 
-        //Rotate();
+        if (GameManager.Instance.IsLockOn)
+        {
+            Rotate();
+        }
+        
     }
 
     void Rotate()
     {
-        Vector3 forward = Target.transform.position - _beforePos;
+        Vector3 t = GameManager.Instance.LockonTarget.transform.position;
+        Vector3 forward = t - Target.transform.position;
         _beforePos = Target.transform.position;
         forward.y = 0;
         if (forward.magnitude > 0.01f)
         {
             Quaternion rotation = Quaternion.LookRotation(forward);
-            Target.transform.rotation =
-                Quaternion.Lerp(Target.transform.rotation, rotation, Time.deltaTime * 100);
+            Target.transform.rotation = rotation;
         }
     }
 
