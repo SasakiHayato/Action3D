@@ -51,6 +51,7 @@ namespace AttackSetting
         public static void ShakeCm()
         {
             GameObject obj = GameObject.Find("3drParsonCm");
+            //GameObject obj = GameObject.Find("CM FreeLook1");
             CinemachineImpulseSource source = obj.GetComponent<CinemachineImpulseSource>();
             source.GenerateImpulse();
         }
@@ -64,17 +65,17 @@ namespace AttackSetting
             particle.Use(target.transform, Quaternion.Euler(rotate));
         }
 
-        public static void KnockBack(GameObject target, AttackCollision.Parent parent, Transform parentT)
+        public static void KnockBack(GameObject target, AttackCollision.Parent parent, Transform parentT, float power = 1)
         {
             if (parent == AttackCollision.Parent.Player)
             {
                 EnemyBase enemyBase = target.GetComponent<EnemyBase>();
-                if (enemyBase != null) enemyBase.KnockBack(parentT.forward);
+                if (enemyBase != null) enemyBase.KnockBack(parentT.forward * power);
             }
             else
             {
                 Player player = target.GetComponent<Player>();
-                if (player != null) player.KnockBack(parentT.forward);
+                if (player != null) player.KnockBack(parentT.forward * power);
             }
         }
 

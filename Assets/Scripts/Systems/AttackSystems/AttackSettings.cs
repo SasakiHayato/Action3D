@@ -47,6 +47,7 @@ namespace AttackSetting
             public string AnimName;
             public int GroupID;
             public int Power;
+            public float KnockBackPower;
             public float NextAcceptTime;
             public AudioClip SE;
             public float SEVol;
@@ -73,6 +74,7 @@ namespace AttackSetting
             static GameObject _hitObj;
             static GameObject _parent;
             static Animator _anim;
+            static float _knockBackPower;
 
             public static EffectData Set(EffectData effect, EffectType[] types, object[] target)
             {
@@ -80,6 +82,7 @@ namespace AttackSetting
                 _anim = (Animator)target[1];
                 _hitObj = (GameObject)target[2];
                 _parent = (GameObject)target[3];
+                _knockBackPower = (float)target[4];
 
                 foreach (EffectType type in types)
                 {
@@ -108,7 +111,7 @@ namespace AttackSetting
 
             static void HitParticle() => Effects.HitParticle(_weapon.gameObject);
             static void HitStop() => Effects.HitStop(_anim);
-            static void KnockBack() => Effects.KnockBack(_hitObj, _weapon.ParentID, _parent.transform);
+            static void KnockBack() => Effects.KnockBack(_hitObj, _weapon.ParentID, _parent.transform, _knockBackPower);
 
             public static void Init()
             {
@@ -257,7 +260,7 @@ namespace AttackSetting
 
         void IsAttack(IDamage iDamage, GameObject obj)
         {
-            object[] datas = { _targetWeapon, _anim, obj, _parent };
+            object[] datas = { _targetWeapon, _anim, obj, _parent, _data.KnockBackPower };
             EffectData effect = null;
             EffectSetter.Set(effect, _data.Effects, datas).Invoke();
             iDamage.GetDamage(_data.Power);
