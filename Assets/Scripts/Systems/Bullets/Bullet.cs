@@ -20,7 +20,9 @@ public class Bullet : MonoBehaviour, IDamage
     public float GetID { get => _id; }
     int _power;
     Action<GameObject> _callBack;
+
     GameObject _target;
+    Vector3 _beforePos = Vector3.zero;
 
     float _time = 0;
     bool _isSet = false;
@@ -39,6 +41,24 @@ public class Bullet : MonoBehaviour, IDamage
         if (_time > 5)
         {
             _callBack.Invoke(gameObject);
+        }
+
+        Rotate();
+    }
+
+    void Rotate()
+    {
+        if (_beforePos == Vector3.zero)
+        {
+            _beforePos = transform.position;
+            return;
+        }
+        Vector3 forward = (transform.position - _beforePos).normalized;
+        _beforePos = transform.position;
+        if (forward.magnitude > 0.01f)
+        {
+            Quaternion rotation = Quaternion.LookRotation(forward);
+            transform.rotation = rotation;
         }
     }
 
@@ -72,6 +92,7 @@ public class Bullet : MonoBehaviour, IDamage
     // BulletÇÇ∆ÇŒÇ∑èàóù
     public void Shot(Vector3 dir, float speed, Parent parent, int powerRate = 1)
     {
+        _beforePos = Vector3.zero;
         _rb.velocity = Vector3.zero;
         _power *= powerRate;
         _parent = parent;
@@ -92,16 +113,13 @@ public class Bullet : MonoBehaviour, IDamage
 
     private void OnTriggerEnter(Collider other)
     {
-        Vector3 dir = transform.position - other.gameObject.transform.position;
-        dir.y = 0;
-
         switch (_parent)
         {
             case Parent.Player:
                 if (other.CompareTag("Enemy"))
                 {
                     other.GetComponent<IDamage>().GetDamage(_power);
-                    other.GetComponent<EnemyBase>().KnockBack(dir);
+                    other.GetComponent<EnemyBase>().KnockBack(transform.forward);
                     _callBack.Invoke(gameObject);
                 }
                 break;
@@ -109,7 +127,7 @@ public class Bullet : MonoBehaviour, IDamage
                 if (other.CompareTag("Player"))
                 {
                     other.GetComponent<IDamage>().GetDamage(_power);
-                    other.GetComponent<Player>().KnockBack(dir);
+                    other.GetComponent<Player>().KnockBack(transform.forward);
                     _callBack.Invoke(gameObject);
                 }
                 break;
