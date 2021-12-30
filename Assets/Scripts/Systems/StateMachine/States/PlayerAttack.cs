@@ -5,13 +5,13 @@ using AttackSetting;
 
 public class PlayerAttack : StateMachine.State
 {
+    [SerializeField] Player _player;
     [SerializeField] float _moveTime;
     [SerializeField] float _moveSpeed = 1;
 
     float _timer;
     AttackSettings _attack = null;
-    Vector3 _beforePos;
-
+   
     public override void Entry(StateMachine.StateType beforeType)
     {
         if (_attack == null) _attack = Target.GetComponent<AttackSettings>();
@@ -19,7 +19,8 @@ public class PlayerAttack : StateMachine.State
         _timer = 0;
         if (beforeType == StateMachine.StateType.Avoid)
         {
-            if(GameManager.Instance.IsLockOn) _attack.Request(ActionType.Counter);
+            if(GameManager.Instance.IsLockOn && _player.IsAvoid) 
+                _attack.Request(ActionType.Counter);
         }
         else
         {
@@ -44,7 +45,7 @@ public class PlayerAttack : StateMachine.State
     {
         Vector3 t = GameManager.Instance.LockonTarget.transform.position;
         Vector3 forward = t - Target.transform.position;
-        _beforePos = Target.transform.position;
+
         forward.y = 0;
         if (forward.magnitude > 0.01f)
         {

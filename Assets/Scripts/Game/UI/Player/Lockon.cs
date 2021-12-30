@@ -9,22 +9,24 @@ public class Lockon : UIWindowParent.UIWindowChild
     GameObject _target;
     GameObject _setUI;
 
-    Canvas _canvas;
     RectTransform _rect;
 
     public override void SetUp()
     {
-        _canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         GameObject obj = new GameObject("LockonUI");
+
         Image image = obj.AddComponent<Image>();
         image.sprite = _sprite;
         image.color = _color;
+
         _setUI = obj;
-        obj.transform.SetParent(_canvas.transform);
+        obj.transform.SetParent(ParentPanel.gameObject.transform);
+
         RectTransform rect = obj.GetComponent<RectTransform>();
         rect.anchoredPosition = Vector3.zero;
         rect.localScale = Vector3.one;
         _rect = rect;
+
         _setUI.SetActive(false);
     }
 

@@ -41,6 +41,11 @@ public class Inputter : MonoBehaviour
         _inputs.Enable();
     }
 
+    public static void Init()
+    {
+        _instance._inputs.Dispose();
+    }
+
     public static object GetValue(InputType type)
     {
         object obj = null;

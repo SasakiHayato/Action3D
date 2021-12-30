@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,6 +13,26 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         _instance = this;
+        GameObject obj = GameObject.Find("Canvas");
+        if (obj == null) obj = CreateCanvas();
+
+        foreach (UIWindowParent ui in Instance._windows)
+        {
+            GameObject parent = Instantiate(ui.GetPanel.gameObject);
+            parent.transform.SetParent(obj.transform);
+            parent.transform.position = obj.transform.position;
+            parent.transform.localScale = Vector3.one;
+
+            ui.SetPanel = parent.GetComponent<Image>();
+        }
+    }
+
+    GameObject CreateCanvas()
+    {
+        GameObject canvas = new GameObject("Canvas");
+        canvas.AddComponent<Canvas>();
+
+        return canvas;
     }
 
     void Start()
@@ -38,6 +58,18 @@ public class UIManager : MonoBehaviour
             if (ui.GetUIType == type)
             {
                 ui.CallBack(id, data);
+                return;
+            }
+        }
+    }
+
+    public static void SetActivePanel(UIType type, bool active)
+    {
+        foreach (UIWindowParent ui in Instance._windows)
+        {
+            if (ui.GetUIType == type)
+            {
+                ui.GetPanel.gameObject.SetActive(active);
                 return;
             }
         }

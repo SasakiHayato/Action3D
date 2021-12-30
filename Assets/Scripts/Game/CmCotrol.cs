@@ -50,7 +50,8 @@ public class CmCotrol : MonoBehaviour
             tRotate.y += move.x * _rotateSpeed;
             tRotate.x += move.y * _rotateSpeed;
         }
-
+        //Debug.Log("");
+        //if (tRotate.x > 85) tRotate.x = 85;
         t.rotation = Quaternion.Euler(tRotate);
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager
 {
@@ -11,12 +12,12 @@ public class GameManager
         get
         {
             if (_instance == null) _instance = new GameManager();
-
             return _instance;
         }
     }
 
     bool _islockOn = false;
+    public bool IsFirst { get; set; }
 
     public bool IsLockOn
     {
@@ -33,4 +34,10 @@ public class GameManager
     }
 
     public GameObject LockonTarget { get; set; }
+    public static void End()
+    {
+        Instance.IsLockOn = false;
+        Inputter.Init();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

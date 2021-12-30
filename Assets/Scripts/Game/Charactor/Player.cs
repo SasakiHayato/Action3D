@@ -6,22 +6,25 @@ using AttackSetting;
 
 public class Player : CharaBase, IDamage
 {
-    [SerializeField] float _speed;
+    [SerializeField] int _hp;
+    [SerializeField] float _masterSpeed;
     StateMachine _state;
 
     bool _isAvoid = false;
+    public bool IsAvoid => _isAvoid;
 
     bool _isLockon = false;
     public bool IsLockon => _isLockon;
 
+    public int GetHP => _hp;
     public Vector3 GetKnockDir { get; private set; }
     
     void Start()
     {
         _state = GetComponent<StateMachine>();
-        
+
         Inputter.Instance.Inputs.Player.Fire.started += context
-            => _state.ChangeState(StateMachine.StateType.Avoid);
+        => _state.ChangeState(StateMachine.StateType.Avoid);
 
         Inputter.Instance.Inputs.Player
             .Jump.started += context => Jump();
@@ -41,7 +44,7 @@ public class Player : CharaBase, IDamage
         _state.Base();
         if (_state.GetCurrentState != StateMachine.StateType.Avoid) _isAvoid = false;
 
-        Vector3 set = Vector3.Scale(_state.Move * _speed, PhsicsBase.GetVelocity);
+        Vector3 set = Vector3.Scale(_state.Move * _masterSpeed, PhsicsBase.GetVelocity);
         Character.Move(set * Time.deltaTime);
     }
 
@@ -65,6 +68,7 @@ public class Player : CharaBase, IDamage
 
     void SetLockon()
     {
+        Debug.Log("SetLockOn");
         if (!GameManager.Instance.IsLockOn)
         {
             GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
@@ -93,7 +97,12 @@ public class Player : CharaBase, IDamage
             return;
         }
 
-        Debug.Log("Damage");
+        _hp -= damage;
+        if (_hp <= 0)
+        {
+            Destroy(gameObject);
+            GameManager.End();
+        }
     }
 
     public void KnockBack(Vector3 dir)

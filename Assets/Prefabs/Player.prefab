@@ -298,6 +298,7 @@ MonoBehaviour:
       type: {class: PlayerAttack, ns: , asm: Assembly-CSharp}
       data:
         StateID: 3
+        _player: {fileID: 4440558316718758921}
         _moveTime: 0.1
         _moveSpeed: 0.5
     00000004:
