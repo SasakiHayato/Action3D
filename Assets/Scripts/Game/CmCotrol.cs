@@ -9,6 +9,7 @@ public class CmCotrol : MonoBehaviour
     [SerializeField] float _rotateSpeed;
     [SerializeField] Vector3 _offSet = Vector3.zero;
     [SerializeField] float _lockonCollection;
+    [SerializeField] float _maxAngle = 50;
     
     CinemachineVirtualCamera _vCam;
     Cinemachine3rdPersonFollow _follow;
@@ -50,8 +51,14 @@ public class CmCotrol : MonoBehaviour
             tRotate.y += move.x * _rotateSpeed;
             tRotate.x += move.y * _rotateSpeed;
         }
-        //Debug.Log("");
-        //if (tRotate.x > 85) tRotate.x = 85;
+        
+        float sin = Mathf.Sin(Mathf.Abs(tRotate.x) * Mathf.Deg2Rad);
+        if (Mathf.Abs(sin * Mathf.Rad2Deg) >= _maxAngle)
+        {
+            float sign = Mathf.Sign(tRotate.x - 180) * -1;
+            tRotate.x = _maxAngle * sign;
+        }
+
         t.rotation = Quaternion.Euler(tRotate);
     }
 
