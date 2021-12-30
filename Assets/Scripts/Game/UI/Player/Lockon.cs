@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Lockon : UIWindowParent.UIWindowChild
 {
@@ -10,6 +11,7 @@ public class Lockon : UIWindowParent.UIWindowChild
     GameObject _setUI;
 
     RectTransform _rect;
+    Vector3 _setVec = new Vector3(10, 10);
 
     public override void SetUp()
     {
@@ -32,7 +34,7 @@ public class Lockon : UIWindowParent.UIWindowChild
 
     public override void UpDate()
     {
-        if (!GameManager.Instance.IsLockOn)
+        if (!GameManager.Instance.IsLockOn && _setUI.activeSelf)
         {
             _setUI.SetActive(false);
             return;
@@ -48,6 +50,12 @@ public class Lockon : UIWindowParent.UIWindowChild
         {
             _target = (GameObject)data[0];
             _setUI.SetActive(true);
+            _setUI.transform.localScale = _setVec;
+
+            _setUI.transform
+                .DOScale(Vector3.one, 0.1f)
+                .SetEase(Ease.Linear)
+                .OnComplete(() => { _setUI.transform.DOKill(); });
         }
     }
 }

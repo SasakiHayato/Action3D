@@ -17,8 +17,6 @@ public class GameManager
     }
 
     bool _islockOn = false;
-    public bool IsFirst { get; set; }
-
     public bool IsLockOn
     {
         get

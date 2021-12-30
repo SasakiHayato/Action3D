@@ -51,7 +51,7 @@ public class CmCotrol : MonoBehaviour
             tRotate.y += move.x * _rotateSpeed;
             tRotate.x += move.y * _rotateSpeed;
         }
-        
+
         float sin = Mathf.Sin(Mathf.Abs(tRotate.x) * Mathf.Deg2Rad);
         if (Mathf.Abs(sin * Mathf.Rad2Deg) >= _maxAngle)
         {
@@ -66,8 +66,16 @@ public class CmCotrol : MonoBehaviour
     {
         Transform t = GameManager.Instance.LockonTarget.transform;
         Vector3 forward = (t.position - _player.transform.position).normalized;
-        float angle = Mathf.Atan2(forward.z, forward.x) * Mathf.Rad2Deg;
+        float angleY = Mathf.Atan2(forward.z, forward.x) * Mathf.Rad2Deg;
+        float angleX = Mathf.Atan2(forward.y, forward.z) * Mathf.Rad2Deg;
+        float sin = Mathf.Sin(angleX * Mathf.Deg2Rad);
         
-        rotate = Quaternion.Euler(0, ((angle - 90) * -1) - _lockonCollection, 0).eulerAngles;
+        if (Mathf.Abs(sin) > 0.6f)
+        {
+            angleX = Mathf.Sin(0.6f) * Mathf.Rad2Deg;
+        }
+
+        rotate = Quaternion.Euler
+            (0, ((angleY - 90) * -1) - _lockonCollection, 0).eulerAngles;
     }
 }
