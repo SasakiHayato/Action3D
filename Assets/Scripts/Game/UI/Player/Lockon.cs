@@ -34,7 +34,7 @@ public class Lockon : UIWindowParent.UIWindowChild
 
     public override void UpDate()
     {
-        if (!GameManager.Instance.IsLockOn && _setUI.activeSelf)
+        if (!GameManager.Instance.IsLockOn)
         {
             _setUI.SetActive(false);
             return;

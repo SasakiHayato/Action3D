@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 using AttackSetting;
 
 public class Player : CharaBase, IDamage
 {
     [SerializeField] int _hp;
     [SerializeField] float _masterSpeed;
+    [SerializeField] float _lockOnDist;
     StateMachine _state;
 
     bool _isAvoid = false;
@@ -68,15 +69,35 @@ public class Player : CharaBase, IDamage
 
     void SetLockon()
     {
-        Debug.Log("SetLockOn");
         if (!GameManager.Instance.IsLockOn)
         {
-            GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
-            if (enemy == null) return;
-
+            var finds = GameObject.FindGameObjectsWithTag("Enemy")
+                .Where(e => 
+                {
+                      float dist = Vector3.Distance(e.transform.position, transform.position);
+                      if (dist < _lockOnDist) return e;
+                      else return false;
+                });
+            
+            if (finds.Count() <= 0) return;
             GameManager.Instance.IsLockOn = true;
-            GameManager.Instance.LockonTarget = enemy;
-            UIManager.CallBack(UIType.Player, 2, new object[] { enemy });
+
+            Vector3 cmForwrad = Camera.main.transform.forward;
+            GameObject set = null;
+            float saveAngle = float.MinValue;
+            foreach (var e in finds)
+            {
+                Vector3 dir = transform.position - e.transform.position;
+                float angle = Mathf.Abs(Vector3.Dot(cmForwrad, dir.normalized) * Mathf.Rad2Deg);
+                if (saveAngle < angle)
+                {
+                    set = e;
+                    saveAngle = angle;
+                }
+            }
+
+            GameManager.Instance.LockonTarget = set;
+            UIManager.CallBack(UIType.Player, 2, new object[] { set });
         }
         else
         {
