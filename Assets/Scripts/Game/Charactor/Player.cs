@@ -123,6 +123,7 @@ public class Player : CharaBase, IDamage
             return;
         }
 
+        if (GetComponent<AttackSettings>().IsCounter) return;
         Sounds.SoundMaster.Request(transform, "Damage", 0);
         _hp -= damage;
         if (_hp <= 0)
@@ -136,6 +137,8 @@ public class Player : CharaBase, IDamage
     {
         if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
         if (_state.GetCurrentState == StateMachine.StateType.Avoid) return;
+        if (GetComponent<AttackSettings>().IsCounter) return;
+
         GetKnockDir = dir;
         _state.ChangeState(StateMachine.StateType.KnockBack);
     }

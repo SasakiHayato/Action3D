@@ -145,6 +145,7 @@ namespace AttackSetting
         public bool EndCurrentAnim { get; private set; } = true;
         
         public bool IsNextRequest { get; private set; } = false;
+        public bool IsCounter { get; private set; } = false;
         
         void Start()
         {
@@ -210,6 +211,7 @@ namespace AttackSetting
                 //Debug.Log($"IsRequest{_isRequest} : Attaking {_attacking}");
                 return;
             }
+
             Debug.Log("IsRequest");
             _isRequest = false;
             IsNextRequest = false;
@@ -244,15 +246,8 @@ namespace AttackSetting
 
         public void NextRequest()
         {
-            if (_nextRequest)
-            {
-                IsNextRequest = true;
-                Debug.Log("SetNext");
-            }
-            else
-            {
-                Debug.Log("NoneData");
-            }
+            if (_nextRequest) IsNextRequest = true;
+            else Debug.Log("NoneData");
         }
 
 
@@ -276,10 +271,14 @@ namespace AttackSetting
         {
             _attacking = false;
             _targetWeapon.GetComponent<Collider>().enabled = false;
+            IsCounter = false;
         }
 
         void SetData(AttackData data)
         {
+            if (data.Action == ActionType.Counter) IsCounter = true;
+            else IsCounter = false;
+
             _nextRequest = false;
             EndCurrentAnim = false;
             _resetCombTime = 0;
@@ -301,6 +300,7 @@ namespace AttackSetting
             _nextRequest = false;
            
             if (!IsNextRequest) InitParam();
+            if (IsCounter) IsCounter = false;
         }
 
         void IsAttack(IDamage iDamage, GameObject obj)
