@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : EnemyBase, IDamage
+public class CubeEnemy : EnemyBase, IDamage
 {
     [SerializeField] int _hp;
     bool _isKnockBack = false;

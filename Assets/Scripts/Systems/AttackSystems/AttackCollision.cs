@@ -45,16 +45,8 @@ public class AttackCollision : MonoBehaviour, IAttack
     {
         if (_parent == null) return;
 
-        if (_parent.CompareTag("Player") == other.CompareTag("Enemy"))
-        {
-            Debug.Log("Player is Attack");
-            SetParam(other);
-        }
-        else if (_parent.CompareTag("Enemy") == other.CompareTag("Player"))
-        {
-            Debug.Log("Enemy is Attack");
-            SetParam(other);
-        }
+        if (_parent.CompareTag("Player") == other.CompareTag("Enemy")) SetParam(other);
+        else if (_parent.CompareTag("Enemy") == other.CompareTag("Player")) SetParam(other);
     }
 
     void SetParam(Collider other)

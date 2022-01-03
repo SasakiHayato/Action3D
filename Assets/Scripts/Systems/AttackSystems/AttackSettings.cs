@@ -207,12 +207,11 @@ namespace AttackSetting
         {
             if (!_isRequest || _attacking)
             {
-                //Debug.Log("ReturnRequest");
-                //Debug.Log($"IsRequest{_isRequest} : Attaking {_attacking}");
+                Debug.Log("ReturnRequest");
+                Debug.Log($"IsRequest{_isRequest} : Attaking {_attacking}");
                 return;
             }
 
-            Debug.Log("IsRequest");
             _isRequest = false;
             IsNextRequest = false;
 
@@ -247,7 +246,6 @@ namespace AttackSetting
         public void NextRequest()
         {
             if (_nextRequest) IsNextRequest = true;
-            else Debug.Log("NoneData");
         }
 
 
@@ -324,6 +322,5 @@ namespace AttackSetting
             else
                 collider.enabled = true;
         }
-
     }
 }

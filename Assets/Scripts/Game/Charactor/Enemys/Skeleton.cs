@@ -10,6 +10,7 @@ public class Skeleton : EnemyBase, IDamage
     Animator _anim;
     AttackSettings _attack;
     bool _isDamage = false;
+    bool _isBackKnock = false;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class Skeleton : EnemyBase, IDamage
 
     void Update()
     {
+        SetKnockBack(ref _isBackKnock);
         if (_isDamage) return;
 
         Tree.Repeater(this);
@@ -29,6 +31,7 @@ public class Skeleton : EnemyBase, IDamage
     public void GetDamage(int damage)
     {
         _anim.Play("SkeletonDamage");
+        Sounds.SoundMaster.Request(transform, "Damage", 2);
         _isDamage = true;
         _attack.Cansel();
         StartCoroutine(EndAnim());
@@ -43,6 +46,7 @@ public class Skeleton : EnemyBase, IDamage
 
     public override void KnockBack(Vector3 dir)
     {
-        
+        _isBackKnock = true;
+        MoveDir = dir;
     }
 }

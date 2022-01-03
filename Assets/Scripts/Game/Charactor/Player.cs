@@ -12,6 +12,7 @@ public class Player : CharaBase, IDamage
 
     StateMachine _state;
     Animator _anim;
+    AttackSettings _attack;
 
     bool _isAvoid = false;
     public bool IsAvoid => _isAvoid;
@@ -28,6 +29,7 @@ public class Player : CharaBase, IDamage
     {
         _state = GetComponent<StateMachine>();
         _anim = GetComponent<Animator>();
+        _attack = GetComponent<AttackSettings>();
 
         Inputter.Instance.Inputs.Player.Fire.started += context
         => _state.ChangeState(StateMachine.StateType.Avoid);
@@ -62,15 +64,17 @@ public class Player : CharaBase, IDamage
 
     void WeakAttack()
     {
-        GetComponent<AttackSettings>().SetAction = ActionType.WeakGround;
-        GetComponent<AttackSettings>().NextRequest();
+        if (_attack.IsCounter) return;
+        _attack.SetAction = ActionType.WeakGround;
+        _attack.NextRequest();
         _state.ChangeState(StateMachine.StateType.Attack);
     }
 
     void StrengthAttack()
     {
-        GetComponent<AttackSettings>().SetAction = ActionType.StrengthGround;
-        GetComponent<AttackSettings>().NextRequest();
+        if (_attack.IsCounter) return;
+        _attack.SetAction = ActionType.StrengthGround;
+        _attack.NextRequest();
         _state.ChangeState(StateMachine.StateType.Attack);
     }
 
@@ -123,7 +127,7 @@ public class Player : CharaBase, IDamage
             return;
         }
 
-        if (GetComponent<AttackSettings>().IsCounter) return;
+        if (_attack.IsCounter) return;
         Sounds.SoundMaster.Request(transform, "Damage", 0);
         _hp -= damage;
         if (_hp <= 0)
@@ -137,7 +141,7 @@ public class Player : CharaBase, IDamage
     {
         if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
         if (_state.GetCurrentState == StateMachine.StateType.Avoid) return;
-        if (GetComponent<AttackSettings>().IsCounter) return;
+        if (_attack.IsCounter) return;
 
         GetKnockDir = dir;
         _state.ChangeState(StateMachine.StateType.KnockBack);

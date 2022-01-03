@@ -19,7 +19,7 @@ public class FindPlayer : IAction
             _enemyBase = Target.GetComponent<EnemyBase>();
         }
         _anim.Play(_idleAnimName);
-        _enemyBase.MoveDir = Vector3.zero;
+        _enemyBase.MoveDir = new Vector3(0, 1, 0);
         _check = true;
     }
 

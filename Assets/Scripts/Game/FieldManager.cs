@@ -11,6 +11,8 @@ public class FieldManager : MonoBehaviour
     private static FieldManager _instance = null;
     public static FieldManager Instance => _instance;
 
+    [SerializeField] List<SpownData> _spowns;
+
     ObjectPool<ParticleUser> _hitParticlePool = new ObjectPool<ParticleUser>();
     public ObjectPool<ParticleUser> GetHitParticle => _hitParticlePool;
 
@@ -28,6 +30,11 @@ public class FieldManager : MonoBehaviour
         _deadParticlePool.SetUp(deadParticle.GetComponent<ParticleUser>(), transform, 10);
     }
 
+    void Start()
+    {
+        Sounds.SoundMaster.Request(null, "FieldBGM", 3);
+    }
+
     public static void FieldTimeRate(Action<UIType, int, object[]> action, UIType type, int id)
     {
         Sounds.SoundMaster.Request(null, "StartSlowMotion", 1);
@@ -41,4 +48,13 @@ public class FieldManager : MonoBehaviour
         Time.timeScale = 1;
         action.Invoke(type, id, null);
     }
+}
+
+[Serializable]
+class SpownData
+{
+    public int Level;
+    public Vector3 Point;
+    public float Range;
+    public EnemyDataBase EnemyDatas;
 }
