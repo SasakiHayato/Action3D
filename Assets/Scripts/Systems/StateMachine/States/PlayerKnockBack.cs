@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using AttackSetting;
 
 public class PlayerKnockBack : StateMachine.State
 {
@@ -12,8 +11,19 @@ public class PlayerKnockBack : StateMachine.State
     float _timer = 0;
     bool _isKnockBack = false;
 
+    Animator _anim = null;
+    AttackSettings _attack;
+
     public override void Entry(StateMachine.StateType beforeType)
     {
+        if (_anim == null)
+        {
+            _anim = Target.GetComponent<Animator>();
+            _attack = Target.GetComponent<AttackSettings>();
+        }
+        _attack.Cansel();
+        _anim.Play("Damage_Front_Big_ver_C");
+
         _isKnockBack = true;
         _setDir = _player.GetKnockDir;
         _setDir.y = 0;
