@@ -123,6 +123,7 @@ public class Player : CharaBase, IDamage
             return;
         }
 
+        Sounds.SoundMaster.Request(transform, "Damage", 0);
         _hp -= damage;
         if (_hp <= 0)
         {

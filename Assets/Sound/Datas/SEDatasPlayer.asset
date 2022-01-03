@@ -10,12 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88285ea6a1ffd7347951d3ea01085d7c, type: 3}
-  m_Name: SampleSEDatas
+  m_Name: SEDatasPlayer
   m_EditorClassIdentifier: 
   _datas:
-  - Name: Test
-    ID: 999
-    Clip: {fileID: 0}
-    Volume: 10
-    SpatialBrend: 1
-    Loop: 1
+  - Name: Avoid
+    ID: 0
+    Clip: {fileID: 8300000, guid: 53a3981dbaf49914286becbabcbd1ae7, type: 3}
+    Volume: 6.71
+    SpatialBrend: 0
+    Loop: 0
+  - Name: Damage
+    ID: 0
+    Clip: {fileID: 8300000, guid: bf909781e65ca2546a127904b4cb731f, type: 3}
+    Volume: 6.71
+    SpatialBrend: 0
+    Loop: 0

@@ -30,6 +30,7 @@ public class FieldManager : MonoBehaviour
 
     public static void FieldTimeRate(Action<UIType, int, object[]> action, UIType type, int id)
     {
+        Sounds.SoundMaster.Request(null, "StartSlowMotion", 1);
         Instance.StartCoroutine(Instance.SetRate(action, type, id));
     }
 
