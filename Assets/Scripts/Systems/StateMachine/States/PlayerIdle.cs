@@ -8,7 +8,9 @@ public class PlayerIdle : StateMachine.State
 
     public override void Entry(StateMachine.StateType beforeType)
     {
+        //Debug.Log("EntryIdle");
         _input = Vector2.zero;
+        Target.GetComponent<Animator>().Play("Idle");
     }
 
     public override void Run(out Vector3 move)

@@ -58,6 +58,7 @@ public class Player : CharaBase, IDamage
     void WeakAttack()
     {
         GetComponent<AttackSettings>().SetAction = ActionType.WeakGround;
+        GetComponent<AttackSettings>().NextRequest();
         _state.ChangeState(StateMachine.StateType.Attack);
     }
 
@@ -100,9 +101,7 @@ public class Player : CharaBase, IDamage
             UIManager.CallBack(UIType.Player, 2, new object[] { set });
         }
         else
-        {
             GameManager.Instance.IsLockOn = false;
-        }
     }
 
     public void GetDamage(int damage)

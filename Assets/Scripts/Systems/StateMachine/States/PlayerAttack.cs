@@ -1,25 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using AttackSetting;
 
 public class PlayerAttack : StateMachine.State
 {
-    [SerializeField] Player _player;
     [SerializeField] float _moveTime;
     [SerializeField] float _moveSpeed = 1;
 
     float _timer;
+    Player _player;
     AttackSettings _attack = null;
-   
+    
     public override void Entry(StateMachine.StateType beforeType)
     {
-        if (_attack == null) _attack = Target.GetComponent<AttackSettings>();
+        Debug.Log("EntryAttack");
+        if (_attack == null)
+        {
+            _attack = Target.GetComponent<AttackSettings>();
+            _player = Target.GetComponent<Player>();
+        }
 
         _timer = 0;
         if (beforeType == StateMachine.StateType.Avoid)
         {
-            if(GameManager.Instance.IsLockOn && _player.IsAvoid) 
+            if(GameManager.Instance.IsLockOn && _player.IsAvoid)
                 _attack.Request(ActionType.Counter);
         }
         else
@@ -31,14 +34,11 @@ public class PlayerAttack : StateMachine.State
     public override void Run(out Vector3 move)
     {
         _timer += Time.deltaTime;
+        
         if (_timer > _moveTime) move = Vector3.zero;
         else move = Target.transform.forward * _moveSpeed;
 
-        if (GameManager.Instance.IsLockOn)
-        {
-            Rotate();
-        }
-        
+        if (GameManager.Instance.IsLockOn) Rotate();
     }
 
     void Rotate()
@@ -62,7 +62,14 @@ public class PlayerAttack : StateMachine.State
         }
         else
         {
-            return StateMachine.StateType.None;
+            if (_attack.IsNextRequest)
+            {
+                return Target.GetComponent<StateMachine>().RetuneState(StateMachine.StateType.Attack);
+            }
+            else
+            {
+                return StateMachine.StateType.None;
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ public class PlayerAvoid : StateMachine.State
     public override void Entry(StateMachine.StateType beforeType)
     {
         _currentTime = 0;
+        Target.GetComponent<AttackSetting.AttackSettings>().Cansel();
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
         _input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
         _input = _input.normalized;
@@ -20,6 +21,7 @@ public class PlayerAvoid : StateMachine.State
 
     public override void Run(out Vector3 move)
     {
+        Target.GetComponent<Animator>().Play("Dodge");
         if (_input == Vector2.zero) _input = Vector2.up * -1;
         _currentTime += Time.deltaTime;
         

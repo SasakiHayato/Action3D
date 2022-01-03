@@ -60,6 +60,7 @@ namespace AttackSetting
         float _resetCombTime = 0;
         bool _isRequest = true;
         bool _attacking = false;
+        bool _nextRequest = false;
 
         int _findIndex = 0;
 
@@ -128,6 +129,8 @@ namespace AttackSetting
         public ActionType ReadAction { get => SetAction; }
         public bool EndCurrentAnim { get; private set; } = true;
         
+        public bool IsNextRequest { get; private set; } = false;
+        
         void Start()
         {
             _anim = _parent.GetComponent<Animator>();
@@ -168,14 +171,18 @@ namespace AttackSetting
                 _coolTime = 0;
             }
             
-            // CheckComboTime
-            if (_data != null)
-                if (_resetCombTime > _data.NextAcceptTime)
-                {
-                    _isRequest = true;
-                    _coolTime = 0;
-                    InitParam();
-                }
+            if (_nextRequest)
+            {
+                // CheckComboTime
+                if (_data != null)
+                    if (_resetCombTime > _data.NextAcceptTime)
+                    {
+                        _isRequest = true;
+                        _nextRequest = false;
+                        _coolTime = 0;
+                        InitParam();
+                    }
+            }
         }
 
         /// <summary> çUåÇÇÃê\êø </summary>
@@ -184,12 +191,13 @@ namespace AttackSetting
         {
             if (!_isRequest || _attacking)
             {
-                Debug.Log("ReturnRequest");
-                Debug.Log($"IsRequest{_isRequest} : Attaking {_attacking}");
+                //Debug.Log("ReturnRequest");
+                //Debug.Log($"IsRequest{_isRequest} : Attaking {_attacking}");
                 return;
             }
             Debug.Log("IsRequest");
             _isRequest = false;
+            IsNextRequest = false;
 
             if (_saveActionType == ActionType.None || _saveActionType != type)
             {
@@ -219,6 +227,20 @@ namespace AttackSetting
             }
         }
 
+        public void NextRequest()
+        {
+            if (_nextRequest)
+            {
+                IsNextRequest = true;
+                Debug.Log("SetNext");
+            }
+            else
+            {
+                Debug.Log("NoneData");
+            }
+        }
+
+
         /// <summary> ïêäÌÇÃïœçX </summary>
         /// <param name="set">NextWeapon</param>
         public void ChangeWeapon(AttackCollision set = null)
@@ -239,12 +261,14 @@ namespace AttackSetting
 
         void SetData(AttackData data)
         {
+            Debug.Log(data.AnimName);
+            _nextRequest = false;
             EndCurrentAnim = false;
             _resetCombTime = 0;
             _anim.Play(data.AnimName);
             _audio.volume = data.SEVol;
             if (data.SE != null) _audio.PlayOneShot(data.SE);
-            else Debug.Log("Nothing SEData.");
+            //else Debug.Log("Nothing SEData.");
             _attacking = true;
             _data = data;
 
@@ -256,6 +280,9 @@ namespace AttackSetting
             yield return null;
             yield return new WaitAnim(_anim);
             EndCurrentAnim = true;
+            _nextRequest = false;
+           
+            if (!IsNextRequest) InitParam();
         }
 
         void IsAttack(IDamage iDamage, GameObject obj)
@@ -274,6 +301,7 @@ namespace AttackSetting
             {
                 collider.enabled = false;
                 _attacking = false;
+                _nextRequest = true;
             }
             else
                 collider.enabled = true;

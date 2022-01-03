@@ -5,6 +5,7 @@ public class PlayerMove : StateMachine.State
 {
     [SerializeField] float _dashSpeedRate;
 
+    Animator _anim = null;
     GameObject _mainCm;
     Vector2 _input = Vector2.zero;
 
@@ -14,11 +15,19 @@ public class PlayerMove : StateMachine.State
     public override void Entry(StateMachine.StateType beforeType)
     {
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
+        if (_anim == null) _anim = Target.GetComponent<Animator>();
         
-        if (beforeType == StateMachine.StateType.Avoid) 
+        if (beforeType == StateMachine.StateType.Avoid)
+        {
+            _anim.Play("Run");
             _setSpeedRate = _dashSpeedRate;
-        else 
+        }
+        else
+        {
+            _anim.Play("RunNoamal");
             _setSpeedRate = 1;
+        }
+            
     }
 
     public override void Run(out Vector3 move)

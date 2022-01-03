@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -26,23 +27,16 @@ public class Bullet : MonoBehaviour, IDamage
 
     float _time = 0;
     bool _isSet = false;
-    bool _isHoming = false;
 
     void Update()
     {
         if (!_isSet) return;
-
-        if(_isHoming)
-        {
-
-        }
-
         _time += Time.deltaTime;
+       
         if (_time > 5)
         {
             _callBack.Invoke(gameObject);
         }
-
         Rotate();
     }
 
@@ -98,16 +92,6 @@ public class Bullet : MonoBehaviour, IDamage
         _parent = parent;
         
         _rb.AddForce(dir * speed, ForceMode.Impulse);
-        _isSet = true;
-    }
-
-    public void ShotHoming(float speed, GameObject target, Parent parent, int powerRate = 1)
-    {
-        _rb.velocity = Vector3.zero;
-        _power *= powerRate;
-        _parent = parent;
-        _target = target;
-        _isHoming = true;
         _isSet = true;
     }
 

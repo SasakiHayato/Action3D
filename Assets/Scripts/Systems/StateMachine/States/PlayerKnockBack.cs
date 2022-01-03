@@ -16,6 +16,7 @@ public class PlayerKnockBack : StateMachine.State
     {
         _isKnockBack = true;
         _setDir = _player.GetKnockDir;
+        _setDir.y = 0;
         _timer = 0;
     }
 

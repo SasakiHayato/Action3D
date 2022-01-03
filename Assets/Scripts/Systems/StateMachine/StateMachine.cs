@@ -14,6 +14,7 @@ public class StateMachine : MonoBehaviour
         KnockBack = 5,
 
         None = -1,
+        RetuneNext = -2,
     }
 
     [System.Serializable]
@@ -42,17 +43,20 @@ public class StateMachine : MonoBehaviour
 
     public void Base()
     {
-        foreach (State state in _stateList)
-            if (state.StateID == _type)
-                if (state.StateID == StateType.None)
-                {
-                    _type = StateType.Idle;
-                    return;
-                }
-                else
-                {
-                    _state = state;
-                }
+        if (StateType.RetuneNext != _saveType)
+        {
+            foreach (State state in _stateList)
+                if (state.StateID == _type)
+                    if (state.StateID == StateType.None)
+                    {
+                        _type = StateType.Idle;
+                        return;
+                    }
+                    else
+                    {
+                        _state = state;
+                    }
+        }
 
         if (_type != _saveType)
         {
@@ -70,5 +74,13 @@ public class StateMachine : MonoBehaviour
         if (_state == null) return;
         _state.Exit();
         _type = type;
+    }
+
+    public StateType RetuneState(StateType type)
+    {
+        if (_state == null) return StateType.None;
+        _saveType = StateType.RetuneNext;
+        _type = type;
+        return type;
     }
 }
