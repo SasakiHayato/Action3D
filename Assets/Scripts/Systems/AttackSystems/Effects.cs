@@ -12,7 +12,6 @@ namespace AttackSetting
         HitParticle,
         KnonkBack,
 
-
         None,
     }
 
@@ -29,7 +28,6 @@ namespace AttackSetting
                 {
                     GameObject obj = new GameObject("Effects");
                     _instance = obj.AddComponent<Effects>();
-                    //obj.hideFlags = HideFlags.HideInHierarchy;
                 }
 
                 return _instance;
@@ -51,7 +49,6 @@ namespace AttackSetting
         public static void ShakeCm()
         {
             GameObject obj = GameObject.Find("3drParsonCm");
-            //GameObject obj = GameObject.Find("CM FreeLook1");
             CinemachineImpulseSource source = obj.GetComponent<CinemachineImpulseSource>();
             source.GenerateImpulse();
         }
@@ -65,17 +62,32 @@ namespace AttackSetting
             particle.Use(target.transform, Quaternion.Euler(rotate));
         }
 
-        public static void KnockBack(GameObject target, AttackCollision.Parent parent, Transform parentT, float power = 1)
+        public static void KnockBack(GameObject target, AttackCollision.Parent parent, Transform parentT, AttackSettings.KnockBackData knock)
         {
+            Vector3 setVec = Vector3.zero;
+            switch (knock.Type)
+            {
+                case AttackSettings.KnockType.Forward:
+                    setVec = parentT.forward;
+                    break;
+                case AttackSettings.KnockType.Up:
+                    setVec = parentT.up;
+                    break;
+                case AttackSettings.KnockType.Down:
+                    setVec = parentT.up * -1;
+                    break;
+                default:
+                    break;
+            }
             if (parent == AttackCollision.Parent.Player)
             {
                 EnemyBase enemyBase = target.GetComponent<EnemyBase>();
-                if (enemyBase != null) enemyBase.KnockBack(parentT.forward * power);
+                if (enemyBase != null) enemyBase.KnockBack(setVec * knock.Power);
             }
             else
             {
                 Player player = target.GetComponent<Player>();
-                if (player != null) player.KnockBack(parentT.forward * power);
+                if (player != null) player.KnockBack(setVec * knock.Power);
             }
         }
 

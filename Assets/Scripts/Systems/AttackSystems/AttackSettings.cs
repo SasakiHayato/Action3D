@@ -9,7 +9,6 @@ namespace AttackSetting
         WeakGround,
         StrengthGround,
         Counter,
-
         Float,
 
         None,
@@ -24,6 +23,15 @@ namespace AttackSetting
 
     public class AttackSettings : MonoBehaviour
     {
+        public enum KnockType
+        {
+            Forward,
+            Up,
+            Down,
+
+            None,
+        }
+
         #region メンバー変数
         [SerializeField] GameObject _parent;
         [SerializeField] float _requestCoolTime;
@@ -47,12 +55,19 @@ namespace AttackSetting
             public string AnimName;
             public int GroupID;
             public int Power;
-            public float KnockBackPower;
+            public KnockBackData KnockBackData;
             public float NextAcceptTime;
             public AudioClip SE;
             public float SEVol;
             public ActionType Action;
             public EffectType[] Effects;
+        }
+
+        [System.Serializable]
+        public class KnockBackData
+        {
+            public float Power = 1;
+            public KnockType Type = KnockType.Forward;
         }
 
         #region メンバー変数
@@ -75,7 +90,7 @@ namespace AttackSetting
             static GameObject _hitObj;
             static GameObject _parent;
             static Animator _anim;
-            static float _knockBackPower;
+            static KnockBackData _backData;
 
             public static EffectData Set(EffectData effect, EffectType[] types, object[] target)
             {
@@ -83,7 +98,7 @@ namespace AttackSetting
                 _anim = (Animator)target[1];
                 _hitObj = (GameObject)target[2];
                 _parent = (GameObject)target[3];
-                _knockBackPower = (float)target[4];
+                _backData = (KnockBackData)target[4];
 
                 foreach (EffectType type in types)
                 {
@@ -112,7 +127,7 @@ namespace AttackSetting
 
             static void HitParticle() => Effects.HitParticle(_weapon.gameObject);
             static void HitStop() => Effects.HitStop(_anim);
-            static void KnockBack() => Effects.KnockBack(_hitObj, _weapon.ParentID, _parent.transform, _knockBackPower);
+            static void KnockBack() => Effects.KnockBack(_hitObj, _weapon.ParentID, _parent.transform, _backData);
 
             public static void Init()
             {
@@ -290,7 +305,7 @@ namespace AttackSetting
 
         void IsAttack(IDamage iDamage, GameObject obj)
         {
-            object[] datas = { _targetWeapon, _anim, obj, _parent, _data.KnockBackPower };
+            object[] datas = { _targetWeapon, _anim, obj, _parent, _data.KnockBackData };
             EffectData effect = null;
             EffectSetter.Set(effect, _data.Effects, datas).Invoke();
             iDamage.GetDamage(_data.Power);

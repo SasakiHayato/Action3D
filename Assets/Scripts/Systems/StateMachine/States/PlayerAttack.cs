@@ -1,5 +1,7 @@
 using UnityEngine;
 using AttackSetting;
+using ObjectPhysics;
+using DG.Tweening;
 
 public class PlayerAttack : StateMachine.State
 {
@@ -10,7 +12,7 @@ public class PlayerAttack : StateMachine.State
 
     Player _player;
     AttackSettings _attack = null;
-    CharacterController _character;
+    PhysicsBase _physics;
     
     public override void Entry(StateMachine.StateType beforeType)
     {
@@ -18,18 +20,23 @@ public class PlayerAttack : StateMachine.State
         {
             _attack = Target.GetComponent<AttackSettings>();
             _player = Target.GetComponent<Player>();
-            _character = Target.GetComponent<CharacterController>();
+            _physics = Target.GetComponent<PhysicsBase>();
         }
-
+        
         _timer = 0;
         if (beforeType == StateMachine.StateType.Avoid)
         {
             if(GameManager.Instance.IsLockOn && _player.IsAvoid)
+            {
+                Vector3 tPos = GameManager.Instance.LockonTarget.transform.position;
+                tPos.y -= 0.5f;
+                Target.transform.DOMove(tPos, 0.1f).SetEase(Ease.Linear);
                 _attack.Request(ActionType.Counter);
+            }
         }
         else
         {
-            if (beforeType == StateMachine.StateType.Floating || !_character.isGrounded)
+            if (beforeType == StateMachine.StateType.Floating || !_physics.IsGround)
                 _attack.Request(ActionType.Float);
             else
                 _attack.Request(_attack.ReadAction);
@@ -73,7 +80,7 @@ public class PlayerAttack : StateMachine.State
             }
             else
             {
-                return StateMachine.StateType.None;
+                return StateMachine.StateType.Idle;
             }
         }
     }

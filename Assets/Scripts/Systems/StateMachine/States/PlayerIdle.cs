@@ -1,14 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using ObjectPhysics;
 
 public class PlayerIdle : StateMachine.State
 {
     Vector2 _input;
+    PhysicsBase _physics = null;
 
     public override void Entry(StateMachine.StateType beforeType)
     {
-        //Debug.Log("EntryIdle");
+        if (beforeType == StateMachine.StateType.Attack)
+        {
+            if (_physics == null) _physics = Target.GetComponent<PhysicsBase>();
+            _physics.Gravity.ResetTimer();
+        }
+
         _input = Vector2.zero;
         Target.GetComponent<Animator>().Play("Idle");
     }

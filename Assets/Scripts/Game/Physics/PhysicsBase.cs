@@ -21,9 +21,10 @@ namespace ObjectPhysics
         [SerializeField] Vector3 _goundRayDir = Vector3.zero;
         [SerializeField] Vector3 _offSet = Vector3.zero;
         [SerializeField] LayerMask _mask;
-        
+
         CharacterController _character;
         Gravity _gravity = new Gravity();
+        public Gravity Gravity => _gravity;
         JumpSetting _jump;
         
         Vector3 _velocity = Vector3.one;
@@ -44,10 +45,12 @@ namespace ObjectPhysics
         void Update()
         {
             Vector3 tPos = transform.position;
-            Vector3 offSetPos = new Vector3(tPos.x + _offSet.x + tPos.y + _offSet.y, tPos.z + _offSet.z);
+            Vector3 offSetPos = new Vector3(tPos.x + _offSet.x, tPos.y + _offSet.y, tPos.z + _offSet.z);
 
-            if (Physics.Raycast(offSetPos, _goundRayDir, _goundRayDir.magnitude, _mask)) IsGround = true;
-            else IsGround = false;
+            if (Physics.Raycast(offSetPos, _goundRayDir, _goundRayDir.magnitude, _mask))
+                IsGround = true;
+            else 
+                IsGround = false;
         }
 
         void FixedUpdate()
