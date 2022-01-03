@@ -270,232 +270,6 @@ MonoBehaviour:
   m_ChannelMask: 2147483647
   m_Gain: 2
   m_Use2DDistance: 1
---- !u!1 &54432889 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8211558496742330454, guid: 59ef05e806e32994c91492a4deb01892,
-    type: 3}
-  m_PrefabInstance: {fileID: 8211558496495948237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &54432891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54432889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e9528926505fe24cadbacc32c6349ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 1
-      fitType: 0
-      meshType: 2
-      maxTriangles: 130
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  defaultName: ring_03_l
-  defaultBoneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 2
-      fitType: 0
-      meshType: 3
-      maxTriangles: 255
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  modified: 0
-  modifiedChildren: 0
---- !u!1 &69883436 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8211558496050741510, guid: 59ef05e806e32994c91492a4deb01892,
-    type: 3}
-  m_PrefabInstance: {fileID: 8211558496495948237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &69883438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69883436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e9528926505fe24cadbacc32c6349ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 1
-      fitType: 0
-      meshType: 2
-      maxTriangles: 130
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  defaultName: ring_02_l
-  defaultBoneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 2
-      fitType: 0
-      meshType: 3
-      maxTriangles: 255
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  modified: 0
-  modifiedChildren: 0
 --- !u!1 &86230658
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,119 +3334,6 @@ MonoBehaviour:
     modifyNameEnabled: 0
   modified: 0
   modifiedChildren: 0
---- !u!1 &1117532231 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8211558496748413961, guid: 59ef05e806e32994c91492a4deb01892,
-    type: 3}
-  m_PrefabInstance: {fileID: 8211558496495948237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1117532233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117532231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e9528926505fe24cadbacc32c6349ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 1
-      fitType: 0
-      meshType: 2
-      maxTriangles: 130
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  defaultName: middle_02_r
-  defaultBoneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 2
-      fitType: 0
-      meshType: 3
-      maxTriangles: 255
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  modified: 0
-  modifiedChildren: 0
 --- !u!1 &1121897053 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8211558496604880713, guid: 59ef05e806e32994c91492a4deb01892,
@@ -3738,119 +3399,6 @@ MonoBehaviour:
       viewAdvanced: 0
     modifyNameEnabled: 0
   defaultName: index_02_r
-  defaultBoneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 2
-      fitType: 0
-      meshType: 3
-      maxTriangles: 255
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  modified: 0
-  modifiedChildren: 0
---- !u!1 &1137711326 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8211558496062275429, guid: 59ef05e806e32994c91492a4deb01892,
-    type: 3}
-  m_PrefabInstance: {fileID: 8211558496495948237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1137711328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137711326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e9528926505fe24cadbacc32c6349ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 1
-      fitType: 0
-      meshType: 2
-      maxTriangles: 130
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  defaultName: ring_01_l
   defaultBoneColliderProperty:
     boneProperty:
       recursivery: 0
@@ -4464,119 +4012,6 @@ MonoBehaviour:
     modifyNameEnabled: 0
   modified: 0
   modifiedChildren: 0
---- !u!1 &1308963448 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8211558495946354183, guid: 59ef05e806e32994c91492a4deb01892,
-    type: 3}
-  m_PrefabInstance: {fileID: 8211558496495948237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1308963450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1308963448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e9528926505fe24cadbacc32c6349ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 1
-      fitType: 0
-      meshType: 2
-      maxTriangles: 130
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  defaultName: pinky_01_l
-  defaultBoneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 2
-      fitType: 0
-      meshType: 3
-      maxTriangles: 255
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  modified: 0
-  modifiedChildren: 0
 --- !u!1 &1318636610 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8211558496276546503, guid: 59ef05e806e32994c91492a4deb01892,
@@ -4981,119 +4416,6 @@ MonoBehaviour:
       viewAdvanced: 0
     modifyNameEnabled: 0
   defaultName: pinky_01_r
-  defaultBoneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 2
-      fitType: 0
-      meshType: 3
-      maxTriangles: 255
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  modified: 0
-  modifiedChildren: 0
---- !u!1 &1424971495 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8211558496000935836, guid: 59ef05e806e32994c91492a4deb01892,
-    type: 3}
-  m_PrefabInstance: {fileID: 8211558496495948237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1424971497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1424971495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e9528926505fe24cadbacc32c6349ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 1
-      fitType: 0
-      meshType: 2
-      maxTriangles: 130
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  defaultName: pinky_03_l
   defaultBoneColliderProperty:
     boneProperty:
       recursivery: 0
@@ -5886,232 +5208,6 @@ MonoBehaviour:
     modifyNameEnabled: 0
   modified: 0
   modifiedChildren: 0
---- !u!1 &1647735349 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8211558497245350302, guid: 59ef05e806e32994c91492a4deb01892,
-    type: 3}
-  m_PrefabInstance: {fileID: 8211558496495948237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1647735351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647735349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e9528926505fe24cadbacc32c6349ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 1
-      fitType: 0
-      meshType: 2
-      maxTriangles: 130
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  defaultName: middle_01_r
-  defaultBoneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 2
-      fitType: 0
-      meshType: 3
-      maxTriangles: 255
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  modified: 0
-  modifiedChildren: 0
---- !u!1 &1707597843 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8211558496070543876, guid: 59ef05e806e32994c91492a4deb01892,
-    type: 3}
-  m_PrefabInstance: {fileID: 8211558496495948237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1707597845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707597843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e9528926505fe24cadbacc32c6349ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 1
-      fitType: 0
-      meshType: 2
-      maxTriangles: 130
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  defaultName: middle_03_r
-  defaultBoneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 2
-      fitType: 0
-      meshType: 3
-      maxTriangles: 255
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  modified: 0
-  modifiedChildren: 0
 --- !u!1 &1754096497 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8211558497638501539, guid: 59ef05e806e32994c91492a4deb01892,
@@ -6326,6 +5422,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gravityScale: 1
   _isReal: 0
+  _goundRayDir: {x: 0, y: 0, z: 0}
+  _offSet: {x: 0, y: 0, z: 0}
+  _mask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!23 &1764692147
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6583,119 +5684,6 @@ MonoBehaviour:
       viewAdvanced: 0
     modifyNameEnabled: 0
   defaultName: clavicle_l
-  defaultBoneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 2
-      fitType: 0
-      meshType: 3
-      maxTriangles: 255
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  modified: 0
-  modifiedChildren: 0
---- !u!1 &1964591702 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8211558496348783460, guid: 59ef05e806e32994c91492a4deb01892,
-    type: 3}
-  m_PrefabInstance: {fileID: 8211558496495948237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1964591704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1964591702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e9528926505fe24cadbacc32c6349ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boneColliderProperty:
-    boneProperty:
-      recursivery: 0
-    splitProperty:
-      boneWeightType: 0
-      boneWeight2: 50
-      boneWeight3: 33
-      boneWeight4: 25
-      greaterBoneWeight: 1
-      boneTriangleExtent: 1
-    reducerProperty:
-      shapeType: 1
-      fitType: 0
-      meshType: 2
-      maxTriangles: 130
-      sliceMode: 0
-      scale: {x: 1, y: 1, z: 1}
-      scaleElementType: 0
-      minThickness: {x: 0.01, y: 0.01, z: 0.01}
-      minThicknessElementType: 0
-      optimizeRotation:
-        x: 1
-        y: 1
-        z: 1
-      optimizeRotationElementType: 0
-      colliderToChild: 0
-      offset: {x: 0, y: 0, z: 0}
-      thicknessA: {x: 0, y: 0, z: 0}
-      thicknessB: {x: 0, y: 0, z: 0}
-      viewAdvanced: 0
-    colliderProperty:
-      convex: 1
-      isTrigger: 0
-      material: {fileID: 0}
-      isCreateAsset: 0
-    rigidbodyProperty:
-      mass: 1
-      drag: 0
-      angularDrag: 0.05
-      isKinematic: 1
-      useGravity: 0
-      interpolation: 0
-      collisionDetectionMode: 0
-      isCreate: 1
-      viewAdvanced: 0
-    modifyNameEnabled: 0
-  defaultName: pinky_02_l
   defaultBoneColliderProperty:
     boneProperty:
       recursivery: 0
@@ -7599,7 +6587,7 @@ PrefabInstance:
     - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: _attacks.Array.size
-      value: 8
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
@@ -7638,6 +6626,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
+      propertyPath: _attacks.Array.data[8].Power
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[9].Power
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[10].Power
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[11].Power
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[12].Power
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[13].Power
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
       propertyPath: _attacks.Array.data[5].Action
       value: 1
       objectReference: {fileID: 0}
@@ -7650,6 +6668,36 @@ PrefabInstance:
         type: 3}
       propertyPath: _attacks.Array.data[7].Action
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[8].Action
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[9].Action
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[10].Action
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[11].Action
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[12].Action
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[13].Action
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
@@ -7690,6 +6738,36 @@ PrefabInstance:
         type: 3}
       propertyPath: _attacks.Array.data[7].AnimName
       value: Attack_3Combo_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[8].AnimName
+      value: Jump_Attack_Combo_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[9].AnimName
+      value: Jump_Attack_Combo_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[10].AnimName
+      value: Jump_Attack_Combo_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[11].AnimName
+      value: Jump_Attack_Combo_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[12].AnimName
+      value: Jump_Attack_Combo_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[13].AnimName
+      value: Jump_Attack_Combo_6
       objectReference: {fileID: 0}
     - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
@@ -7764,7 +6842,7 @@ PrefabInstance:
     - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: _attacks.Array.data[7].KnockBackPower
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
@@ -7773,8 +6851,68 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
+      propertyPath: _attacks.Array.data[8].KnockBackPower
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[8].NextAcceptTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[9].KnockBackPower
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[9].NextAcceptTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
       propertyPath: _attacks.Array.data[0].NextAcceptFream
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[10].KnockBackPower
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[10].NextAcceptTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[11].KnockBackPower
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[11].NextAcceptTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[12].KnockBackPower
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[12].NextAcceptTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[13].KnockBackPower
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[13].NextAcceptTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
@@ -7819,6 +6957,36 @@ PrefabInstance:
     - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: _attacks.Array.data[7].Effects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[8].Effects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[9].Effects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[10].Effects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[11].Effects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[12].Effects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[13].Effects.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
@@ -7901,6 +7069,86 @@ PrefabInstance:
       propertyPath: _attacks.Array.data[7].Effects.Array.data[2]
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[8].Effects.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[8].Effects.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[9].Effects.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[9].Effects.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[10].Effects.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[10].Effects.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[11].Effects.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[11].Effects.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[12].Effects.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[12].Effects.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[13].Effects.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544113, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _attacks.Array.data[13].Effects.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544114, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _initialVelocity
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544115, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _offSet.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544115, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _mask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544115, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _goundRayDir.y
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 8211558496297544118, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: _stateList.Array.size
@@ -7909,7 +7157,7 @@ PrefabInstance:
     - target: {fileID: 8211558496297544118, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: _stateList.Array.data[5]
-      value: Assembly-CSharp PlayerMove
+      value: Assembly-CSharp PlayerFloating
       objectReference: {fileID: 0}
     - target: {fileID: 8211558496297544118, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
@@ -7948,6 +7196,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8211558496297544118, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
+      propertyPath: _stateList.Array.data[5]._rayDir.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544118, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _stateList.Array.data[5]._rayDir.y
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544118, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _stateList.Array.data[5]._rayDir.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558496297544118, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
       propertyPath: _stateList.Array.data[5]._dashSpeedRate
       value: 2
       objectReference: {fileID: 0}
@@ -7960,6 +7223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211558497057731454, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8211558497594604104, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}

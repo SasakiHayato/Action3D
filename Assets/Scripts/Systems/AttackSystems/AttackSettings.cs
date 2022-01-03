@@ -257,7 +257,11 @@ namespace AttackSetting
             _saveGroupID = set.GroupID;
         }
 
-        public void Cansel() => _attacking = false;
+        public void Cansel()
+        {
+            _attacking = false;
+            _targetWeapon.GetComponent<Collider>().enabled = false;
+        }
 
         void SetData(AttackData data)
         {

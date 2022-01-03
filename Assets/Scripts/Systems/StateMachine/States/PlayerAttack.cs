@@ -7,16 +7,18 @@ public class PlayerAttack : StateMachine.State
     [SerializeField] float _moveSpeed = 1;
 
     float _timer;
+
     Player _player;
     AttackSettings _attack = null;
+    CharacterController _character;
     
     public override void Entry(StateMachine.StateType beforeType)
     {
-        Debug.Log("EntryAttack");
         if (_attack == null)
         {
             _attack = Target.GetComponent<AttackSettings>();
             _player = Target.GetComponent<Player>();
+            _character = Target.GetComponent<CharacterController>();
         }
 
         _timer = 0;
@@ -27,7 +29,10 @@ public class PlayerAttack : StateMachine.State
         }
         else
         {
-            _attack.Request(_attack.ReadAction);
+            if (beforeType == StateMachine.StateType.Floating || !_character.isGrounded)
+                _attack.Request(ActionType.Float);
+            else
+                _attack.Request(_attack.ReadAction);
         }
     }
 

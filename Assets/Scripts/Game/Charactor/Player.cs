@@ -21,8 +21,8 @@ public class Player : CharaBase, IDamage
 
     public int GetHP => _hp;
     public Vector3 GetKnockDir { get; private set; }
-    
-    public bool EndAnim { get; private set; }
+
+    public bool EndAnim { get; private set; } = true;
 
     void Start()
     {
@@ -141,6 +141,8 @@ public class Player : CharaBase, IDamage
 
     public void SetAnim(string name)
     {
+        if (!EndAnim) return;
+
         EndAnim = false;
         _anim.Play(name);
         StartCoroutine(WaitAnim());
@@ -148,6 +150,7 @@ public class Player : CharaBase, IDamage
 
     IEnumerator WaitAnim()
     {
+        yield return null;
         yield return new WaitAnim(_anim);
         EndAnim = true;
     }
