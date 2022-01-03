@@ -9,7 +9,9 @@ public class Player : CharaBase, IDamage
     [SerializeField] int _hp;
     [SerializeField] float _masterSpeed;
     [SerializeField] float _lockOnDist;
+
     StateMachine _state;
+    Animator _anim;
 
     bool _isAvoid = false;
     public bool IsAvoid => _isAvoid;
@@ -20,9 +22,12 @@ public class Player : CharaBase, IDamage
     public int GetHP => _hp;
     public Vector3 GetKnockDir { get; private set; }
     
+    public bool EndAnim { get; private set; }
+
     void Start()
     {
         _state = GetComponent<StateMachine>();
+        _anim = GetComponent<Animator>();
 
         Inputter.Instance.Inputs.Player.Fire.started += context
         => _state.ChangeState(StateMachine.StateType.Avoid);
@@ -65,6 +70,7 @@ public class Player : CharaBase, IDamage
     void StrengthAttack()
     {
         GetComponent<AttackSettings>().SetAction = ActionType.StrengthGround;
+        GetComponent<AttackSettings>().NextRequest();
         _state.ChangeState(StateMachine.StateType.Attack);
     }
 
@@ -131,5 +137,18 @@ public class Player : CharaBase, IDamage
         if (_state.GetCurrentState == StateMachine.StateType.Avoid) return;
         GetKnockDir = dir;
         _state.ChangeState(StateMachine.StateType.KnockBack);
+    }
+
+    public void SetAnim(string name)
+    {
+        EndAnim = false;
+        _anim.Play(name);
+        StartCoroutine(WaitAnim());
+    }
+
+    IEnumerator WaitAnim()
+    {
+        yield return new WaitAnim(_anim);
+        EndAnim = true;
     }
 }

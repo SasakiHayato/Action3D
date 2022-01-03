@@ -27,7 +27,10 @@ public class PlayerMove : StateMachine.State
             _anim.Play("RunNoamal");
             _setSpeedRate = 1;
         }
-            
+        if (beforeType == StateMachine.StateType.Floating)
+        {
+            Debug.Log("aaa");
+        }
     }
 
     public override void Run(out Vector3 move)

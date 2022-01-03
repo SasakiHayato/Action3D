@@ -261,14 +261,13 @@ namespace AttackSetting
 
         void SetData(AttackData data)
         {
-            Debug.Log(data.AnimName);
             _nextRequest = false;
             EndCurrentAnim = false;
             _resetCombTime = 0;
             _anim.Play(data.AnimName);
             _audio.volume = data.SEVol;
             if (data.SE != null) _audio.PlayOneShot(data.SE);
-            //else Debug.Log("Nothing SEData.");
+            
             _attacking = true;
             _data = data;
 
