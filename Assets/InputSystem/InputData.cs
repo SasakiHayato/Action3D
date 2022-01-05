@@ -81,6 +81,14 @@ public class @InputData : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Shot"",
+                    ""type"": ""Value"",
+                    ""id"": ""ea16766f-ef57-4612-b329-6d0adfbd7cde"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -369,6 +377,17 @@ public class @InputData : IInputActionCollection, IDisposable
                     ""action"": ""RockOn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ba410f2-0388-44d7-9dff-3463cf95fa4e"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Shot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -453,6 +472,22 @@ public class @InputData : IInputActionCollection, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""5ef58f0c-43a9-450a-a058-6a97aba072c1"",
                     ""expectedControlType"": ""Quaternion"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Options"",
+                    ""type"": ""Button"",
+                    ""id"": ""8cd20bb7-ba52-4e07-a64c-96bab9929ed4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Value"",
+                    ""id"": ""ecceca9d-71cf-4eb7-8d2c-6d4f0c16263b"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -875,6 +910,28 @@ public class @InputData : IInputActionCollection, IDisposable
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c60252ef-da6c-4801-8e8f-690eea0b5550"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Options"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9207c8f0-5ed9-4569-818b-3b05b58e34ef"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -952,6 +1009,7 @@ public class @InputData : IInputActionCollection, IDisposable
         m_Player_WeakAttack = m_Player.FindAction("WeakAttack", throwIfNotFound: true);
         m_Player_StrengthAttack = m_Player.FindAction("StrengthAttack", throwIfNotFound: true);
         m_Player_RockOn = m_Player.FindAction("RockOn", throwIfNotFound: true);
+        m_Player_Shot = m_Player.FindAction("Shot", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -964,6 +1022,8 @@ public class @InputData : IInputActionCollection, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        m_UI_Options = m_UI.FindAction("Options", throwIfNotFound: true);
+        m_UI_Select = m_UI.FindAction("Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1021,6 +1081,7 @@ public class @InputData : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_WeakAttack;
     private readonly InputAction m_Player_StrengthAttack;
     private readonly InputAction m_Player_RockOn;
+    private readonly InputAction m_Player_Shot;
     public struct PlayerActions
     {
         private @InputData m_Wrapper;
@@ -1033,6 +1094,7 @@ public class @InputData : IInputActionCollection, IDisposable
         public InputAction @WeakAttack => m_Wrapper.m_Player_WeakAttack;
         public InputAction @StrengthAttack => m_Wrapper.m_Player_StrengthAttack;
         public InputAction @RockOn => m_Wrapper.m_Player_RockOn;
+        public InputAction @Shot => m_Wrapper.m_Player_Shot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1066,6 +1128,9 @@ public class @InputData : IInputActionCollection, IDisposable
                 @RockOn.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRockOn;
                 @RockOn.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRockOn;
                 @RockOn.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRockOn;
+                @Shot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
+                @Shot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
+                @Shot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1094,6 +1159,9 @@ public class @InputData : IInputActionCollection, IDisposable
                 @RockOn.started += instance.OnRockOn;
                 @RockOn.performed += instance.OnRockOn;
                 @RockOn.canceled += instance.OnRockOn;
+                @Shot.started += instance.OnShot;
+                @Shot.performed += instance.OnShot;
+                @Shot.canceled += instance.OnShot;
             }
         }
     }
@@ -1112,6 +1180,8 @@ public class @InputData : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
+    private readonly InputAction m_UI_Options;
+    private readonly InputAction m_UI_Select;
     public struct UIActions
     {
         private @InputData m_Wrapper;
@@ -1126,6 +1196,8 @@ public class @InputData : IInputActionCollection, IDisposable
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        public InputAction @Options => m_Wrapper.m_UI_Options;
+        public InputAction @Select => m_Wrapper.m_UI_Select;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1165,6 +1237,12 @@ public class @InputData : IInputActionCollection, IDisposable
                 @TrackedDeviceOrientation.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
+                @Options.started -= m_Wrapper.m_UIActionsCallbackInterface.OnOptions;
+                @Options.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnOptions;
+                @Options.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnOptions;
+                @Select.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSelect;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1199,6 +1277,12 @@ public class @InputData : IInputActionCollection, IDisposable
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @Options.started += instance.OnOptions;
+                @Options.performed += instance.OnOptions;
+                @Options.canceled += instance.OnOptions;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
             }
         }
     }
@@ -1258,6 +1342,7 @@ public class @InputData : IInputActionCollection, IDisposable
         void OnWeakAttack(InputAction.CallbackContext context);
         void OnStrengthAttack(InputAction.CallbackContext context);
         void OnRockOn(InputAction.CallbackContext context);
+        void OnShot(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1271,5 +1356,7 @@ public class @InputData : IInputActionCollection, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        void OnOptions(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
 }

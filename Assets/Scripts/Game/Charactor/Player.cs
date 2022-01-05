@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 using AttackSetting;
 
 public class Player : CharaBase, IDamage
@@ -9,10 +10,14 @@ public class Player : CharaBase, IDamage
     [SerializeField] int _hp;
     [SerializeField] float _masterSpeed;
     [SerializeField] float _lockOnDist;
+    [SerializeField] Transform _muzzle;
+    [SerializeField] float _shotCoolTime;
 
     StateMachine _state;
     Animator _anim;
     AttackSettings _attack;
+
+    float _timer = 0;
 
     bool _isAvoid = false;
     public bool IsAvoid => _isAvoid;
@@ -31,8 +36,9 @@ public class Player : CharaBase, IDamage
         _anim = GetComponent<Animator>();
         _attack = GetComponent<AttackSettings>();
 
-        Inputter.Instance.Inputs.Player.Fire.started += context
-        => _state.ChangeState(StateMachine.StateType.Avoid);
+        Inputter.Instance.Inputs.Player
+            .Fire.started += context
+            => _state.ChangeState(StateMachine.StateType.Avoid);
 
         Inputter.Instance.Inputs.Player
             .Jump.started += context => Jump();
@@ -52,8 +58,41 @@ public class Player : CharaBase, IDamage
         _state.Base();
         if (_state.GetCurrentState != StateMachine.StateType.Avoid) _isAvoid = false;
 
+        float value = (float)Inputter.GetValue(InputType.ShotVal);
+        if ((int)value == 1)
+        {
+            _timer += Time.deltaTime;
+            if (_timer > _shotCoolTime)
+            {
+                _timer = 0;
+                BulletShot();
+            }
+        }
+        else
+        {
+            _timer = 0;
+        }
+
         Vector3 set = Vector3.Scale(_state.Move * _masterSpeed, PhsicsBase.GetVelocity);
         Character.Move(set * Time.deltaTime);
+    }
+
+    void BulletShot()
+    {
+        var getObj = BulletSettings.UseRequest(2);
+        getObj.transform.position = _muzzle.position;
+
+        if (GameManager.Instance.IsLockOn)
+        {
+            GameObject t = GameManager.Instance.LockonTarget;
+            getObj.GetComponent<Bullet>().ShotHoming(t, 3 * 10, Bullet.Parent.Player);
+        }
+        else
+        {
+            Vector3 dir = Camera.main.transform.forward;
+            if (dir.y < 0) dir.y = 0;
+            getObj.GetComponent<Bullet>().Shot(dir, 3 * 10, Bullet.Parent.Player);
+        }
     }
 
     void Jump()
@@ -147,19 +186,20 @@ public class Player : CharaBase, IDamage
         _state.ChangeState(StateMachine.StateType.KnockBack);
     }
 
-    public void SetAnim(string name)
+    public void SetAnim(string name, Action action = null)
     {
         if (!EndAnim) return;
 
         EndAnim = false;
         _anim.Play(name);
-        StartCoroutine(WaitAnim());
+        StartCoroutine(WaitAnim(action));
     }
 
-    IEnumerator WaitAnim()
+    IEnumerator WaitAnim(Action action)
     {
         yield return null;
         yield return new WaitAnim(_anim);
         EndAnim = true;
+        if (action != null) action.Invoke();
     }
 }

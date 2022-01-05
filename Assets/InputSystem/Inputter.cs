@@ -8,6 +8,8 @@ public enum InputType
 {
     PlayerMove,
     CmMove,
+    Select,
+    ShotVal,
 
     None,
 }
@@ -57,7 +59,11 @@ public class Inputter : MonoBehaviour
             case InputType.CmMove:
                 obj = Instance._inputs.Player.MoveCm.ReadValue<Vector2>();
                 break;
-            case InputType.None:
+            case InputType.Select:
+                obj = Instance._inputs.UI.Select.ReadValue<Vector2>();
+                break;
+            case InputType.ShotVal:
+                obj = Instance._inputs.Player.Shot.ReadValue<float>();
                 break;
         }
 

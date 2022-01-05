@@ -68,6 +68,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Shot",
+                    "type": "Value",
+                    "id": "ea16766f-ef57-4612-b329-6d0adfbd7cde",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -356,6 +364,17 @@
                     "action": "RockOn",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ba410f2-0388-44d7-9dff-3463cf95fa4e",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Shot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -440,6 +459,22 @@
                     "type": "PassThrough",
                     "id": "5ef58f0c-43a9-450a-a058-6a97aba072c1",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Options",
+                    "type": "Button",
+                    "id": "8cd20bb7-ba52-4e07-a64c-96bab9929ed4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Select",
+                    "type": "Value",
+                    "id": "ecceca9d-71cf-4eb7-8d2c-6d4f0c16263b",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -860,6 +895,28 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c60252ef-da6c-4801-8e8f-690eea0b5550",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Options",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9207c8f0-5ed9-4569-818b-3b05b58e34ef",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

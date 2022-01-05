@@ -30,7 +30,6 @@ public class Skeleton : EnemyBase, IDamage
 
     public void GetDamage(int damage)
     {
-        _anim.Play("SkeletonDamage");
         Sounds.SoundMaster.Request(transform, "Damage", 2);
         _isDamage = true;
         _attack.Cansel();
@@ -46,6 +45,7 @@ public class Skeleton : EnemyBase, IDamage
 
     public override void KnockBack(Vector3 dir)
     {
+        _anim.Play("SkeletonDamage");
         _isBackKnock = true;
         MoveDir = dir;
     }

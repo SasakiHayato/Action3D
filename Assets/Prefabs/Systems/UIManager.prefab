@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _windows:
   - id: 0
+  - id: 1
   references:
     version: 1
     00000000:
@@ -103,21 +104,28 @@ MonoBehaviour:
           type: 3}
         _type: 0
         _windows:
-        - id: 1
         - id: 2
         - id: 3
+        - id: 4
     00000001:
+      type: {class: GameUI, ns: , asm: Assembly-CSharp}
+      data:
+        _targetPanel: {fileID: 8124622086719376750, guid: 4748164b0f741cc49a54f403bad52334,
+          type: 3}
+        _type: 1
+        _windows: []
+    00000002:
       type: {class: PostProcessData, ns: , asm: Assembly-CSharp}
       data:
         _profile: {fileID: 11400000, guid: 3e14f8bf63d929f479475d178826acba, type: 2}
         _fadeSpeed: 10
         _intencity: 0.2
-    00000002:
+    00000003:
       type: {class: Lockon, ns: , asm: Assembly-CSharp}
       data:
         _sprite: {fileID: 21300000, guid: 6ef0b43a886080b4f9669affe82e41db, type: 3}
         _color: {r: 0.6226415, g: 0, b: 0.012183531, a: 0.5019608}
-    00000003:
+    00000004:
       type: {class: HPSlider, ns: , asm: Assembly-CSharp}
       data:
         _sliderName: HPSlider

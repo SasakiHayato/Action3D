@@ -28,15 +28,25 @@ public class Bullet : MonoBehaviour, IDamage
     float _time = 0;
     bool _isSet = false;
 
+    float _speed;
+    bool _isHoming = false;
+
     void Update()
     {
         if (!_isSet) return;
         _time += Time.deltaTime;
        
+        if (_isHoming)
+        {
+            Vector3 dir = Vector3.Lerp(transform.position, _target.transform.position, _time / _speed);
+            transform.position = dir;
+        }
+
         if (_time > 5)
         {
             _callBack.Invoke(gameObject);
         }
+
         Rotate();
     }
 
@@ -66,6 +76,7 @@ public class Bullet : MonoBehaviour, IDamage
     {
         _time = 0;
         _isSet = false;
+        _isHoming = false;
     }
 
     /// <summary>
@@ -95,6 +106,18 @@ public class Bullet : MonoBehaviour, IDamage
         _isSet = true;
     }
 
+    public void ShotHoming(GameObject t, float speed, Parent parent, int powerRate = 1)
+    {
+        _target = t;
+        _speed = speed;
+        _rb.velocity = Vector3.zero;
+        _power *= powerRate;
+        _parent = parent;
+
+        _isHoming = true;
+        _isSet = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         switch (_parent)
@@ -103,7 +126,6 @@ public class Bullet : MonoBehaviour, IDamage
                 if (other.CompareTag("Enemy"))
                 {
                     other.GetComponent<IDamage>().GetDamage(_power);
-                    other.GetComponent<EnemyBase>().KnockBack(transform.forward);
                     _callBack.Invoke(gameObject);
                 }
                 break;
