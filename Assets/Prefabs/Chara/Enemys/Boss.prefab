@@ -599,6 +599,7 @@ GameObject:
   - component: {fileID: 2085413351539145759}
   - component: {fileID: 8058412245341690288}
   - component: {fileID: 3508742201701946879}
+  - component: {fileID: -1307395940050874917}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -779,11 +780,30 @@ MonoBehaviour:
     - Conditional:
         id: 0
       Action:
-        id: 0
+        id: 1
+    - Conditional:
+        id: 2
+      Action:
+        id: 3
   references:
     version: 1
     00000000:
-      type: {class: , ns: , asm: }
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 20
+    00000001:
+      type: {class: RequestStateMachine, ns: , asm: Assembly-CSharp}
+      data:
+        _state: {fileID: -1307395940050874917}
+        _request: 1
+    00000002:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 50
+    00000003:
+      type: {class: MoveTowardsPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: Idle
 --- !u!114 &3508742201701946879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,6 +820,33 @@ MonoBehaviour:
   _requestCoolTime: 0
   _targetWeapon: {fileID: 4693462204042713357}
   _attacks: []
+--- !u!114 &-1307395940050874917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4693462203747661893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d201f099bcadf7947a3fba3131a2e429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateList:
+  - id: 0
+  - id: 1
+  _isRunning: 1
+  references:
+    version: 1
+    00000000:
+      type: {class: StateNone, ns: , asm: Assembly-CSharp}
+      data:
+        StateID: -1
+        _nextState: 1
+    00000001:
+      type: {class: EnemyMove, ns: , asm: Assembly-CSharp}
+      data:
+        StateID: 1
 --- !u!1 &4693462204042713346
 GameObject:
   m_ObjectHideFlags: 0

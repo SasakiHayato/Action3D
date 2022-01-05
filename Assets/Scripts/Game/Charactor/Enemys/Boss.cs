@@ -8,10 +8,12 @@ public class Boss : EnemyBase, IDamage
     bool _isBackKnock = false;
 
     AttackSettings _attack;
+    StateMachine _state;
 
     void Start()
     {
         _attack = GetComponent<AttackSettings>();
+        _state = GetComponent<StateMachine>();
     }
 
     void Update()
@@ -19,7 +21,13 @@ public class Boss : EnemyBase, IDamage
         SetKnockBack(ref _isBackKnock);
 
         Tree.Repeater(this);
-        Vector3 set = Vector3.Scale(MoveDir * Speed, PhsicsBase.GetVelocity);
+
+        Vector3 move = Vector3.zero;
+
+        if (_state.IsRunning) move = _state.Move;
+        else move = MoveDir;
+        
+        Vector3 set = Vector3.Scale(move * Speed, PhsicsBase.GetVelocity);
         Character.Move(set * Time.deltaTime);
     }
 

@@ -30,7 +30,10 @@ public class StateMachine : MonoBehaviour
 
     [SerializeReference, SubclassSelector]
     List<State> _stateList = new List<State>();
-    
+
+    [SerializeField] bool _isRunning = true;
+    public bool IsRunning => _isRunning;
+
     StateType _type = StateType.None;
     public StateType GetCurrentState { get => _type; }
 
@@ -43,13 +46,16 @@ public class StateMachine : MonoBehaviour
 
     public void Base()
     {
+        if (!_isRunning) return;
+ 
         if (StateType.RetuneNext != _saveType)
         {
             foreach (State state in _stateList)
                 if (state.StateID == _type)
                     if (state.StateID == StateType.None)
                     {
-                        _type = StateType.Idle;
+                        _state = state;
+                        _type = _state.Exit();
                         return;
                     }
                     else
@@ -57,7 +63,7 @@ public class StateMachine : MonoBehaviour
                         _state = state;
                     }
         }
-
+        
         if (_type != _saveType)
         {
             _state.Target = gameObject;
@@ -68,6 +74,8 @@ public class StateMachine : MonoBehaviour
         _state.Run(out _move);
         _type = _state.Exit();
     }
+
+    public void RunRequest(bool set) => _isRunning = set;
 
     public void ChangeState(StateType type)
     {
