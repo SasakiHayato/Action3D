@@ -5,8 +5,6 @@ using AttackSetting;
 
 public class Skeleton : EnemyBase, IDamage
 {
-    [SerializeField] float _speed = 1;
-
     Animator _anim;
     AttackSettings _attack;
     bool _isDamage = false;
@@ -24,7 +22,7 @@ public class Skeleton : EnemyBase, IDamage
         if (_isDamage) return;
 
         Tree.Repeater(this);
-        Vector3 set = Vector3.Scale(MoveDir * _speed, PhsicsBase.GetVelocity);
+        Vector3 set = Vector3.Scale(MoveDir * Speed, PhsicsBase.GetVelocity);
         Character.Move(set * Time.deltaTime);
     }
 
@@ -34,6 +32,8 @@ public class Skeleton : EnemyBase, IDamage
         _isDamage = true;
         _attack.Cansel();
         StartCoroutine(EndAnim());
+        HP -= damage;
+        if (HP < 0) base.Dead(gameObject);
     }
 
     IEnumerator EndAnim()

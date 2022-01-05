@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3db91d854345e9e46bc69965a91f6dca, type: 3}
+  m_Name: EnemyMasterData
+  m_EditorClassIdentifier: 
+  _datas:
+  - Name: CubeEnemy
+    ID: 0
+    Prefab: {fileID: 7980940582174284826, guid: b8f0bef73a5b7454eb6a9afa5800e191,
+      type: 3}
+    HP: 100
+    Power: 0
+    Speed: 0
+  - Name: WalkSkeleton
+    ID: 1
+    Prefab: {fileID: 2448143286815395276, guid: 4cf471c90863d494c926489d5610abc5,
+      type: 3}
+    HP: 150
+    Power: 0
+    Speed: 1
+  - Name: RunSkeleton
+    ID: 2
+    Prefab: {fileID: 1541433764607956050, guid: cfa74ed22e0913b41b6628705e0172a3,
+      type: 3}
+    HP: 150
+    Power: 0
+    Speed: 3

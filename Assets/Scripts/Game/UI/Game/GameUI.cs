@@ -53,6 +53,8 @@ public class GameUI : UIWindowParent
 
     void SetCanvas()
     {
+        Sounds.SoundMaster.Request(null, "Click", 4);
+
         if (!_canvasActive)
         {
             _rect.DOAnchorPosX(0, 0.2f)

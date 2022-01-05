@@ -7,12 +7,14 @@ using BehaviorAI;
 [RequireComponent(typeof(BehaviorTree))]
 public abstract class EnemyBase : CharaBase, IBehavior
 {
+    [SerializeField] float _speed;
     [SerializeField] float _knockBackPower;
     [SerializeField] float _knockBackTime;
     [SerializeField] BehaviorTree _tree;
 
     protected BehaviorTree Tree { get => _tree; }
     protected float GetKnockBackPower => _knockBackPower;
+    public float Speed { get => _speed; set { _speed = value; } }
 
     public Vector3 MoveDir { protected get; set; } = Vector3.zero;
     float _timer = 0;
@@ -24,6 +26,7 @@ public abstract class EnemyBase : CharaBase, IBehavior
     {
         ParticleUser particle = FieldManager.Instance.GetDeadParticle.Respons();
         particle.Use(target.transform);
+        Sounds.SoundMaster.Request(null, "EnemyDead", 2);
         Destroy(target);
     }
 

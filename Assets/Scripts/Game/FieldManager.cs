@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using EnemysData;
+using Sounds;
 
 public class FieldManager : MonoBehaviour
 {
+    [SerializeField] EnemyMasterData _enemyMasterData;
     [SerializeField] float _rate;
     [SerializeField] float _time;
 
+    // ‚Ç‚±‚©‚ç‚Å‚àŒÄ‚×‚é‚æ‚¤‚É
     private static FieldManager _instance = null;
     public static FieldManager Instance => _instance;
 
@@ -28,16 +32,39 @@ public class FieldManager : MonoBehaviour
 
         GameObject deadParticle = (GameObject)Resources.Load("DeadParticle");
         _deadParticlePool.SetUp(deadParticle.GetComponent<ParticleUser>(), transform, 10);
+
+        SetEnemy();
     }
 
     void Start()
     {
-        Sounds.SoundMaster.Request(null, "FieldBGM", 3);
+        SoundMaster.Request(null, "FieldBGM", 3);
+    }
+
+    void SetEnemy()
+    {
+        foreach (SpownData data in _spowns)
+        {
+            GameObject spownPoint = new GameObject("Point");
+            spownPoint.transform.position = data.Point.position;
+            foreach (EnemyData enemyData in _enemyMasterData.GetData)
+            {
+                foreach (EnemyType enemyType in data.Enemys)
+                {
+                    if (enemyData.Name == enemyType.ToString())
+                    {
+                        GameObject get = Instantiate(enemyData.Prefab);
+                        get.transform.position = data.Point.position;
+                        get.transform.SetParent(spownPoint.transform);
+                    }
+                }
+            }
+        }
     }
 
     public static void FieldTimeRate(Action<UIType, int, object[]> action, UIType type, int id)
     {
-        Sounds.SoundMaster.Request(null, "StartSlowMotion", 1);
+        SoundMaster.Request(null, "StartSlowMotion", 1);
         Instance.StartCoroutine(Instance.SetRate(action, type, id));
     }
 
@@ -53,8 +80,9 @@ public class FieldManager : MonoBehaviour
 [Serializable]
 class SpownData
 {
+    public int ID;
     public int Level;
-    public Vector3 Point;
+    public Transform Point;
     public float Range;
-    public EnemyDataBase EnemyDatas;
+    public EnemyType[] Enemys;
 }

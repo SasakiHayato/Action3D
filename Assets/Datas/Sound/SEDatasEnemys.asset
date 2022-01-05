@@ -19,3 +19,9 @@ MonoBehaviour:
     Volume: 6.25
     SpatialBrend: 0
     Loop: 0
+  - Name: EnemyDead
+    ID: 1
+    Clip: {fileID: 8300000, guid: ace8abddc60f2ef40b5f77b761b82e5c, type: 3}
+    Volume: 5.71
+    SpatialBrend: 0
+    Loop: 0
