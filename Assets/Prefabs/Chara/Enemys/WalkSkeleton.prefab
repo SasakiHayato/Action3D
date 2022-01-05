@@ -643,10 +643,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecfed23d5db2ad4b805d6f2bedcb3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hp: 100
+  _speed: 1
   _knockBackPower: 2
   _knockBackTime: 0.4
   _tree: {fileID: 8404223892927114743}
-  _speed: 1
 --- !u!114 &8404223892927114743
 MonoBehaviour:
   m_ObjectHideFlags: 0

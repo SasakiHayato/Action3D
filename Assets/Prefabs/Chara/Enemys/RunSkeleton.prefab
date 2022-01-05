@@ -309,11 +309,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecfed23d5db2ad4b805d6f2bedcb3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 50
+  _hp: 150
+  _speed: 3
   _knockBackPower: 1
   _knockBackTime: 0.4
   _tree: {fileID: 1541433764607956048}
-  _speed: 3
 --- !u!114 &1541433764607956048
 MonoBehaviour:
   m_ObjectHideFlags: 0
