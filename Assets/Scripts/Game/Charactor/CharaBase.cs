@@ -8,6 +8,9 @@ using ObjectPhysics;
 [RequireComponent(typeof(PhysicsBase))]
 public class CharaBase : MonoBehaviour
 {
+    [SerializeField] int _hp;
+    public int HP { get => _hp; protected set { _hp = value; } }
+
     PhysicsBase _phsicsBase;
     public PhysicsBase PhsicsBase { get => _phsicsBase; }
 

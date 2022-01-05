@@ -20,8 +20,14 @@ MonoBehaviour:
     SpatialBrend: 0
     Loop: 0
   - Name: Damage
-    ID: 0
+    ID: 1
     Clip: {fileID: 8300000, guid: bf909781e65ca2546a127904b4cb731f, type: 3}
     Volume: 6.71
+    SpatialBrend: 0
+    Loop: 0
+  - Name: ShotBullet
+    ID: 2
+    Clip: {fileID: 8300000, guid: 4bba218c8a39bc44089631424fb9ad03, type: 3}
+    Volume: 2
     SpatialBrend: 0
     Loop: 0

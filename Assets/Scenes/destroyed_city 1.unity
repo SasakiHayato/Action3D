@@ -369,6 +369,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 7792968783714742447, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _hp
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8621698311956876471, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: m_RootOrder
@@ -7314,6 +7319,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980940582174284804, guid: b8f0bef73a5b7454eb6a9afa5800e191,
+        type: 3}
+      propertyPath: _hp
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7980940582174284826, guid: b8f0bef73a5b7454eb6a9afa5800e191,
         type: 3}

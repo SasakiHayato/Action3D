@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour, IDamage
     Action<GameObject> _callBack;
 
     GameObject _target;
+    Vector3 _tPostion = Vector3.zero;
     Vector3 _beforePos = Vector3.zero;
 
     float _time = 0;
@@ -38,8 +39,7 @@ public class Bullet : MonoBehaviour, IDamage
        
         if (_isHoming)
         {
-            Vector3 dir = Vector3.Lerp(transform.position, _target.transform.position, _time / _speed);
-            transform.position = dir;
+            Homing();
         }
 
         if (_time > 5)
@@ -48,6 +48,22 @@ public class Bullet : MonoBehaviour, IDamage
         }
 
         Rotate();
+    }
+
+    void Homing()
+    {
+        if (_target != null)
+        {
+            _tPostion = _target.transform.position;
+            Vector3 dir = Vector3.Lerp(transform.position, _tPostion, _time / _speed);
+            transform.position = dir;
+        }
+        else
+        {
+            _isHoming = false;
+            Vector3 dir = _tPostion - transform.position;
+            _rb.AddForce(dir.normalized * _speed, ForceMode.Impulse);
+        }
     }
 
     void Rotate()
@@ -77,6 +93,7 @@ public class Bullet : MonoBehaviour, IDamage
         _time = 0;
         _isSet = false;
         _isHoming = false;
+        _target = null;
     }
 
     /// <summary>
@@ -109,6 +126,7 @@ public class Bullet : MonoBehaviour, IDamage
     public void ShotHoming(GameObject t, float speed, Parent parent, int powerRate = 1)
     {
         _target = t;
+        _tPostion = t.transform.position;
         _speed = speed;
         _rb.velocity = Vector3.zero;
         _power *= powerRate;

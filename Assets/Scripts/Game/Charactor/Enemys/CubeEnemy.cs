@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CubeEnemy : EnemyBase, IDamage
 {
-    [SerializeField] int _hp;
     bool _isKnockBack = false;
 
     void Update()
@@ -15,8 +14,8 @@ public class CubeEnemy : EnemyBase, IDamage
 
     public void GetDamage(int damage)
     {
-        _hp -= damage;
-        if (_hp <= 0) base.Dead(gameObject);
+        HP -= damage;
+        if (HP <= 0) base.Dead(gameObject);
     }
 
     public override void KnockBack(Vector3 dir)

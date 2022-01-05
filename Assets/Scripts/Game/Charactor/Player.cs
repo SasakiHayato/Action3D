@@ -7,7 +7,6 @@ using AttackSetting;
 
 public class Player : CharaBase, IDamage
 {
-    [SerializeField] int _hp;
     [SerializeField] float _masterSpeed;
     [SerializeField] float _lockOnDist;
     [SerializeField] Transform _muzzle;
@@ -25,7 +24,6 @@ public class Player : CharaBase, IDamage
     bool _isLockon = false;
     public bool IsLockon => _isLockon;
 
-    public int GetHP => _hp;
     public Vector3 GetKnockDir { get; private set; }
 
     public bool EndAnim { get; private set; } = true;
@@ -81,11 +79,13 @@ public class Player : CharaBase, IDamage
     {
         var getObj = BulletSettings.UseRequest(2);
         getObj.transform.position = _muzzle.position;
+        Sounds.SoundMaster.Request(_muzzle, "ShotBullet", 0);
 
         if (GameManager.Instance.IsLockOn)
         {
             GameObject t = GameManager.Instance.LockonTarget;
-            getObj.GetComponent<Bullet>().ShotHoming(t, 3 * 10, Bullet.Parent.Player);
+            if (t == null) return;
+            else getObj.GetComponent<Bullet>().ShotHoming(t, 3 * 10, Bullet.Parent.Player);
         }
         else
         {
@@ -168,8 +168,8 @@ public class Player : CharaBase, IDamage
 
         if (_attack.IsCounter) return;
         Sounds.SoundMaster.Request(transform, "Damage", 0);
-        _hp -= damage;
-        if (_hp <= 0)
+        HP -= damage;
+        if (HP <= 0)
         {
             Destroy(gameObject);
             GameManager.End();
