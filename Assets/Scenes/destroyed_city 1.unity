@@ -9466,7 +9466,7 @@ PrefabInstance:
     - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
         type: 3}
       propertyPath: _spowns.Array.data[5].Enemys.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
         type: 3}
@@ -9607,6 +9607,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _spowns.Array.data[5].Enemys.Array.data[3]
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
+        type: 3}
+      propertyPath: _spowns.Array.data[5].Enemys.Array.data[4]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
         type: 3}

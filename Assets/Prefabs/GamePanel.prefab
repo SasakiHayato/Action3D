@@ -154,7 +154,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Wepon
+  m_Text: Weapon
 --- !u!1 &1715863426798444058
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 5804993701173102675}
   - component: {fileID: 2878791783666241503}
   m_Layer: 5
-  m_Name: Wepon
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

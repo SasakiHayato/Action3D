@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 using BehaviorAI;
 
 [RequireComponent(typeof(BehaviorTree))]
@@ -16,7 +13,7 @@ public abstract class EnemyBase : CharaBase, IBehavior
     protected float GetKnockBackPower => _knockBackPower;
     public float Speed { get => _speed; set { _speed = value; } }
 
-    public Vector3 MoveDir { protected get; set; } = Vector3.zero;
+    public Vector3 MoveDir { protected get; set; } = new Vector3(0 ,1, 0);
     float _timer = 0;
 
     public GameObject SetTarget() => gameObject;

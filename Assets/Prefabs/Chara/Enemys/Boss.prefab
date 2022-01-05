@@ -593,15 +593,15 @@ GameObject:
   - component: {fileID: 4693462203747661900}
   - component: {fileID: 4693462203747661901}
   - component: {fileID: 4693462203747661890}
-  - component: {fileID: 4693462203747661891}
-  - component: {fileID: 4693462203747661892}
-  - component: {fileID: 4693462203747661888}
-  - component: {fileID: 4693462203747661889}
-  - component: {fileID: 4693462203747661894}
-  - component: {fileID: 4693462203747661895}
+  - component: {fileID: 2007961670475725820}
+  - component: {fileID: 7855651570499798834}
+  - component: {fileID: 900323383335832816}
+  - component: {fileID: 2085413351539145759}
+  - component: {fileID: 8058412245341690288}
+  - component: {fileID: 3508742201701946879}
   m_Layer: 0
-  m_Name: TestPlayer
-  m_TagString: Player
+  m_Name: Boss
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -693,7 +693,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!143 &4693462203747661891
+--- !u!143 &2007961670475725820
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -711,7 +711,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4693462203747661892
+--- !u!114 &7855651570499798834
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -720,15 +720,71 @@ MonoBehaviour:
   m_GameObject: {fileID: 4693462203747661893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3adaa36985b297349b60c577b6b1ed76, type: 3}
+  m_Script: {fileID: 11500000, guid: 97a52bfd51cc74f418ee4eb329e3728f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 60
-  _masterSpeed: 9
-  _lockOnDist: 50
-  _muzzle: {fileID: 0}
-  _shotCoolTime: 0
---- !u!114 &4693462203747661888
+  _count: 1
+  _initialVelocity: 0
+  _speed: 1
+--- !u!114 &900323383335832816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4693462203747661893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 932d504d328aeb1438e016c933b7b792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gravityScale: 1
+  _isReal: 0
+  _goundRayDir: {x: 0, y: 0, z: 0}
+  _offSet: {x: 0, y: 0, z: 0}
+  _mask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &2085413351539145759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4693462203747661893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1f299fdb4058349bccaba39488677c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 900
+  _speed: 8
+  _knockBackPower: 0.5
+  _knockBackTime: 0.4
+  _tree: {fileID: 8058412245341690288}
+--- !u!114 &8058412245341690288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4693462203747661893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2c81351e2be894c8977d9036cbe44b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selector:
+  - Datas:
+    - Conditional:
+        id: 0
+      Action:
+        id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
+--- !u!114 &3508742201701946879
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -741,162 +797,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 4693462203747661893}
-  _requestCoolTime: 0.3
+  _requestCoolTime: 0
   _targetWeapon: {fileID: 4693462204042713357}
-  _attacks:
-  - AnimName: WeakAttack
-    GroupID: 0
-    Power: 10
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 1
-    SE: {fileID: 0}
-    SEVol: 0
-    Action: 0
-    Effects: 000000000100000003000000
-  - AnimName: WeakAttack2
-    GroupID: 0
-    Power: 20
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 1
-    SE: {fileID: 0}
-    SEVol: 0
-    Action: 0
-    Effects: 020000000100000003000000
-  - AnimName: WeakAttack3
-    GroupID: 0
-    Power: 30
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 1
-    SE: {fileID: 0}
-    SEVol: 0
-    Action: 0
-    Effects: 020000000100000003000000
-  - AnimName: StrengthAttack
-    GroupID: 0
-    Power: 50
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 2
-    SE: {fileID: 0}
-    SEVol: 0
-    Action: 1
-    Effects: 0200000003000000
-  - AnimName: StrengthAttack2
-    GroupID: 0
-    Power: 70
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 1
-    SE: {fileID: 0}
-    SEVol: 0
-    Action: 1
-    Effects: 0200000003000000
-  - AnimName: CounterAttack
-    GroupID: 0
-    Power: 100
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 0.3
-    SE: {fileID: 0}
-    SEVol: 0
-    Action: 2
-    Effects: 02000000010000000000000003000000
---- !u!114 &4693462203747661889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4693462203747661893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d201f099bcadf7947a3fba3131a2e429, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stateList:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  - id: 4
-  - id: 5
-  references:
-    version: 1
-    00000000:
-      type: {class: PlayerIdle, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 0
-    00000001:
-      type: {class: PlayerMove, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 1
-        _dashSpeedRate: 2
-    00000002:
-      type: {class: PlayerAvoid, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 2
-        _avoidTime: 0.2
-        _speed: 5
-    00000003:
-      type: {class: PlayerAttack, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 3
-        _moveTime: 0.1
-        _moveSpeed: 0.5
-    00000004:
-      type: {class: PlayerKnockBack, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 5
-        _player: {fileID: 4693462203747661892}
-        _knockTime: 0.7
-        _power: 0.5
-    00000005:
-      type: {class: StateNone, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: -1
---- !u!114 &4693462203747661894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4693462203747661893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97a52bfd51cc74f418ee4eb329e3728f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _count: 2
-  _initialVelocity: 7
-  _speed: 5
---- !u!114 &4693462203747661895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4693462203747661893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 932d504d328aeb1438e016c933b7b792, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gravityScale: 5
-  _isReal: 0
-  _goundRayDir: {x: 0, y: 0, z: 0}
-  _offSet: {x: 0, y: 0, z: 0}
-  _mask:
-    serializedVersion: 2
-    m_Bits: 0
+  _attacks: []
 --- !u!1 &4693462204042713346
 GameObject:
   m_ObjectHideFlags: 0
