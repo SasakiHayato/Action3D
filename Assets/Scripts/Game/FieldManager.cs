@@ -41,6 +41,11 @@ public class FieldManager : MonoBehaviour
         SoundMaster.Request(null, "FieldBGM", 3);
     }
 
+    void Update()
+    {
+        GameManager.GameTime();
+    }
+
     void SetEnemy()
     {
         foreach (SpownData data in _spowns)

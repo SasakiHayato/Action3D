@@ -25,7 +25,6 @@ public class ShotBulletLockon : IAction
             obj.transform.position = Target.transform.position;
             Vector3 forward = (_player.transform.position - Target.transform.position).normalized;
             int power = Target.GetComponent<CharaBase>().Power;
-            Debug.Log(power);
             obj.GetComponent<Bullet>()
                 .Shot(forward, _speed * 10, Bullet.Parent.Enemy, power);
         }

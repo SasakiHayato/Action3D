@@ -16,7 +16,7 @@ public class HPSlider : UIWindowParent.UIWindowChild
     public override void SetUp()
     {
         _player = Object.FindObjectOfType<Player>();
-        _slider = GameObject.Find(_sliderName).GetComponent<Slider>();
+        _slider = ParentPanel.gameObject.transform.Find(_sliderName).GetComponent<Slider>();
         _slider.maxValue = _player.HP;
         _slider.value = _player.HP;
         _saveHp = _player.HP;

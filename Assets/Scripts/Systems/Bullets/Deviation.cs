@@ -10,8 +10,8 @@ public struct Deviation
 
         Vector3 tDir = (tPos - tBeforePos).normalized;
 
-        float tSpeed = Vector3.Distance(tPos, tBeforePos) * 60;
-        Vector3 predictPos = (tDir * tSpeed) * t * 4;
+        float tSpeed = Vector3.Distance(tPos, tBeforePos) * 1 / Time.deltaTime;
+        Vector3 predictPos = (tDir * tSpeed) * t;
         Vector3 afterPos = predictPos - myPos;
 
         return (afterPos + tPos).normalized;

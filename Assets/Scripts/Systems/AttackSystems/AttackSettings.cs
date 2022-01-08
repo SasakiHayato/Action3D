@@ -283,6 +283,7 @@ namespace AttackSetting
             EndCurrentAnim = false;
             _resetCombTime = 0;
             _anim.Play(data.AnimName);
+            //_anim.CrossFade(data.AnimName, 0.2f);
             _audio.volume = data.SEVol;
             if (data.SE != null) _audio.PlayOneShot(data.SE);
             

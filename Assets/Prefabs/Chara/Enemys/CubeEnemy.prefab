@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 150
+  _power: 0
   _speed: 0
   _knockBackPower: 3
   _knockBackTime: 0.2
@@ -184,5 +185,5 @@ MonoBehaviour:
       type: {class: ShotBulletLockon, ns: , asm: Assembly-CSharp}
       data:
         _speed: 3
-        _coolTime: 0.5
+        _coolTime: 0.2
         _bulletID: 1

@@ -31,11 +31,18 @@ public class GameManager
         }
     }
 
+    public float GetCurrentTime { get; private set; }
+
     public GameObject LockonTarget { get; set; }
     public static void End()
     {
         Instance.IsLockOn = false;
         Inputter.Init();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public static void GameTime()
+    {
+        Instance.GetCurrentTime += Time.deltaTime; 
     }
 }

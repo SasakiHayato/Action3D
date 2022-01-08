@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class GameUI : UIWindowParent
@@ -11,18 +12,18 @@ public class GameUI : UIWindowParent
     RectTransform _rect;
 
     int _saveValue = 0;
-    int _id = 0;
+    int _canvasID = 0;
 
     public override void SetUp()
     {
         _rect = GetPanel.GetComponent<RectTransform>();
         _rect.anchoredPosition = _setCanvasPos;
-        SetCanvas();
 
         Inputter.Instance.Inputs.UI.Options.started += context
             => SetCanvas();
 
         base.SetUp();
+        SetCanvas();
     }
 
     public override void UpDate()
@@ -31,6 +32,10 @@ public class GameUI : UIWindowParent
         {
             Select();
             base.UpDate();
+        }
+        else
+        {
+            CallBack(0, null);
         }
     }
 
@@ -45,9 +50,9 @@ public class GameUI : UIWindowParent
         if ((int)get.y != _saveValue)
         {
             _saveValue = (int)get.y;
-            _id += _saveValue;
-            if (_id > _maxID) _id = _maxID;
-            else if (_id < 0) _id = 0;
+            _canvasID += _saveValue;
+            if (_canvasID > _maxID) _canvasID = _maxID;
+            else if (_canvasID < 0) _canvasID = 0;
         }
     }
 
