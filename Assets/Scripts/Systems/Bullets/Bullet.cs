@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour, IDamage
     int _id;
     public float GetID { get => _id; }
     int _power;
+    int _powerRate;
     Action<GameObject> _callBack;
 
     GameObject _target;
@@ -56,6 +57,7 @@ public class Bullet : MonoBehaviour, IDamage
         {
             _tPostion = _target.transform.position;
             Vector3 dir = Vector3.Lerp(transform.position, _tPostion, _time / _speed);
+            
             transform.position = dir;
         }
         else
@@ -91,6 +93,7 @@ public class Bullet : MonoBehaviour, IDamage
     public void Init()
     {
         _time = 0;
+        _powerRate = 0;
         _isSet = false;
         _isHoming = false;
         _target = null;
@@ -116,7 +119,7 @@ public class Bullet : MonoBehaviour, IDamage
     {
         _beforePos = Vector3.zero;
         _rb.velocity = Vector3.zero;
-        _power *= powerRate;
+        _powerRate = powerRate;
         _parent = parent;
         
         _rb.AddForce(dir * speed, ForceMode.Impulse);
@@ -129,7 +132,7 @@ public class Bullet : MonoBehaviour, IDamage
         _tPostion = t.transform.position;
         _speed = speed;
         _rb.velocity = Vector3.zero;
-        _power *= powerRate;
+        _powerRate = powerRate;
         _parent = parent;
 
         _isHoming = true;
@@ -143,14 +146,14 @@ public class Bullet : MonoBehaviour, IDamage
             case Parent.Player:
                 if (other.CompareTag("Enemy"))
                 {
-                    other.GetComponent<IDamage>().GetDamage(_power);
+                    other.GetComponent<IDamage>().GetDamage(_power * _powerRate);
                     _callBack.Invoke(gameObject);
                 }
                 break;
             case Parent.Enemy:
                 if (other.CompareTag("Player"))
                 {
-                    other.GetComponent<IDamage>().GetDamage(_power);
+                    other.GetComponent<IDamage>().GetDamage(_power * _powerRate);
                     other.GetComponent<Player>().KnockBack(transform.forward);
                     _callBack.Invoke(gameObject);
                 }

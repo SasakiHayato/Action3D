@@ -792,10 +792,9 @@ MonoBehaviour:
       data:
         _range: 20
     00000001:
-      type: {class: RequestStateMachine, ns: , asm: Assembly-CSharp}
+      type: {class: RunStateMachine, ns: , asm: Assembly-CSharp}
       data:
         _state: {fileID: -1307395940050874917}
-        _request: 1
     00000002:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
@@ -835,7 +834,7 @@ MonoBehaviour:
   _stateList:
   - id: 0
   - id: 1
-  _isRunning: 1
+  _isRunning: 0
   references:
     version: 1
     00000000:

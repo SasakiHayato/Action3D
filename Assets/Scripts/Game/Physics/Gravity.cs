@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ObjectPhysics
 {
-    public struct Gravity
+    public class Gravity
     {
         public float Scale { get; set; }
         public bool IsReal { get; set; }

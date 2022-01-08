@@ -56,6 +56,9 @@ public class FieldManager : MonoBehaviour
                         GameObject get = Instantiate(enemyData.Prefab);
                         get.transform.position = data.Point.position;
                         get.transform.SetParent(spownPoint.transform);
+
+                        get.GetComponent<CharaBase>()
+                            .SetParam(enemyData.HP, enemyData.Power, enemyData.Speed);
                     }
                 }
             }

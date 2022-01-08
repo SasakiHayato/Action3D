@@ -43,6 +43,7 @@ namespace AttackSetting
 
         Animator _anim;
         AudioSource _audio;
+        CharaBase _charaBase;
 
         AttackCollision _saveDefWeapon;
         ActionType _saveActionType = ActionType.None;
@@ -151,6 +152,7 @@ namespace AttackSetting
         {
             _anim = _parent.GetComponent<Animator>();
             _audio = gameObject.AddComponent<AudioSource>();
+            _charaBase = _parent.GetComponent<CharaBase>();
             _audio.loop = false;
 
             _iTarget = _targetWeapon.GetComponent<IAttack>();
@@ -306,7 +308,7 @@ namespace AttackSetting
             object[] datas = { _targetWeapon, _anim, obj, _parent, _data.KnockBackData };
             EffectData effect = null;
             EffectSetter.Set(effect, _data.Effects, datas).Invoke();
-            iDamage.GetDamage(_data.Power);
+            iDamage.GetDamage(_data.Power * _charaBase.Power);
         }
 
         /// <summary> AnimEventÇ≈ÇÃåƒÇ—èoÇµ </summary>

@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecfed23d5db2ad4b805d6f2bedcb3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 150
+  _hp: 200
   _speed: 3
   _knockBackPower: 1
   _knockBackTime: 0.4
@@ -351,7 +351,7 @@ MonoBehaviour:
     00000002:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 30
+        _range: 50
     00000003:
       type: {class: MoveTowardsPlayer, ns: , asm: Assembly-CSharp}
       data:
@@ -382,7 +382,7 @@ MonoBehaviour:
   _attacks:
   - AnimName: SkeletonAttack
     GroupID: 0
-    Power: 0
+    Power: 1
     KnockBackData:
       Power: 1
       Type: 0

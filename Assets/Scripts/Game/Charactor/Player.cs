@@ -7,7 +7,6 @@ using AttackSetting;
 
 public class Player : CharaBase, IDamage
 {
-    [SerializeField] float _masterSpeed;
     [SerializeField] float _lockOnDist;
     [SerializeField] Transform _muzzle;
     [SerializeField] float _shotCoolTime;
@@ -71,7 +70,7 @@ public class Player : CharaBase, IDamage
             _timer = 0;
         }
 
-        Vector3 set = Vector3.Scale(_state.Move * _masterSpeed, PhsicsBase.GetVelocity);
+        Vector3 set = Vector3.Scale(_state.Move * Speed, PhsicsBase.GetVelocity);
         Character.Move(set * Time.deltaTime);
     }
 

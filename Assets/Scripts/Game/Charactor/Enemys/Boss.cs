@@ -19,7 +19,6 @@ public class Boss : EnemyBase, IDamage
     void Update()
     {
         SetKnockBack(ref _isBackKnock);
-
         Tree.Repeater(this);
 
         Vector3 move = Vector3.zero;
