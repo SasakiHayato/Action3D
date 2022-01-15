@@ -11,7 +11,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField] float _rate;
     [SerializeField] float _time;
 
-    FieldEnemyData _fieldData;
+    FieldData _fieldData;
 
     // ‚Ç‚±‚©‚ç‚Å‚àŒÄ‚×‚é‚æ‚¤‚É
     private static FieldManager _instance = null;
@@ -45,8 +45,8 @@ public class FieldManager : MonoBehaviour
         GameObject deadParticle = (GameObject)Resources.Load("DeadParticle");
         _deadParticlePool.SetUp(deadParticle.GetComponent<ParticleUser>(), transform, 10);
 
-        _fieldData = new FieldEnemyData(_spowns, _enemyMasterData);
-        _fieldData.SetEnemy();
+        _fieldData = new FieldData(_spowns, _enemyMasterData);
+        _fieldData.UpdateEnemy();
     }
 
     void Start()

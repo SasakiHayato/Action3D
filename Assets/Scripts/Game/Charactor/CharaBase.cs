@@ -38,7 +38,6 @@ public class CharaBase : MonoBehaviour
         else
         {
             float add = ((float)level / 10) - 0.1f;
-            Debug.Log(add);
             HP = hp + (int)(hp * add);
             Power = power * (int)(power * add);
         }
