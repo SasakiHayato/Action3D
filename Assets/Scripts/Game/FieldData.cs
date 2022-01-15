@@ -49,11 +49,12 @@ public class FieldData
 
     public void UpdateEnemy()
     {
+        GameObject player = GameObject.FindWithTag("Player");
         foreach (EnemyGroupData groupData in _enemyGroupDatas)
         {
             if (!groupData.IsSet)
             {
-                SetEnemy(groupData);
+                SetEnemy(groupData, player.transform.position);
             }
             else
             {
@@ -63,11 +64,16 @@ public class FieldData
         }
     }
 
-    void SetEnemy(EnemyGroupData groupData)
+    void SetEnemy(EnemyGroupData groupData, Vector3 playerPos)
     {
         FieldManager.SpawnData spawnData = _spawnData[groupData.SpawnID - 1];
         
         if (groupData.Point == null) groupData.Point = new GameObject("Point");
+        else
+        {
+            float dist = Vector3.Distance(groupData.Point.transform.position, playerPos);
+            if (dist < 100) return;
+        }
         groupData.Point.transform.position = spawnData.Point.position;
         List<IFieldEnemy> enemies = new List<IFieldEnemy>();
 

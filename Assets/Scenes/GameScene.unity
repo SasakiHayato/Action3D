@@ -9438,6 +9438,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
         type: 3}
+      propertyPath: _spowns.Array.data[0].GroupTip
+      value: 
+      objectReference: {fileID: 11400000, guid: 09f560600fd72444da8515fe6723f715,
+        type: 2}
+    - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
+        type: 3}
+      propertyPath: _spowns.Array.data[1].GroupTip
+      value: 
+      objectReference: {fileID: 11400000, guid: 90a4ff661243931469efbc4c981de62d,
+        type: 2}
+    - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
+        type: 3}
+      propertyPath: _spowns.Array.data[2].GroupTip
+      value: 
+      objectReference: {fileID: 11400000, guid: a69b4fcfd7aa9ca42aae9798d89d54e9,
+        type: 2}
+    - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
+        type: 3}
+      propertyPath: _spowns.Array.data[3].GroupTip
+      value: 
+      objectReference: {fileID: 11400000, guid: 09f560600fd72444da8515fe6723f715,
+        type: 2}
+    - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
+        type: 3}
+      propertyPath: _spowns.Array.data[4].GroupTip
+      value: 
+      objectReference: {fileID: 11400000, guid: 90a4ff661243931469efbc4c981de62d,
+        type: 2}
+    - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
+        type: 3}
+      propertyPath: _spowns.Array.data[5].GroupTip
+      value: 
+      objectReference: {fileID: 11400000, guid: a69b4fcfd7aa9ca42aae9798d89d54e9,
+        type: 2}
+    - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
+        type: 3}
       propertyPath: _spowns.Array.data[0].EnemyDatas
       value: 
       objectReference: {fileID: 11400000, guid: 547ba44af1640194e99d24bc241b2a72,
