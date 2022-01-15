@@ -20,13 +20,15 @@ public abstract class EnemyBase : CharaBase, IBehavior, IFieldEnemy
 
     // IFieldEnemy
     public int GroupID { get; set; }
-    public bool IEnemyDead { get; set; }
+    public GameObject Target { get; set; }
+    public EnemysData.EnemyData EnemyData { get; set; }
 
     protected virtual void Dead(GameObject target)
     {
         ParticleUser particle = FieldManager.Instance.GetDeadParticle.Respons();
         particle.Use(target.transform);
         Sounds.SoundMaster.Request(null, "EnemyDead", 2);
+        FieldManager.Instance.FieldData.Delete(GroupID, target.GetComponent<IFieldEnemy>());
         Destroy(target);
     }
 

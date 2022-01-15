@@ -8,7 +8,7 @@ public class FieldData
 {
     List<FieldManager.SpawnData> _spawnData;
     EnemyMasterData _enemyMasterData;
-    List<EnemyGroupData> _datas;
+    List<EnemyGroupData> _enemyGroupDatas;
 
     class EnemyGroupData
     {
@@ -31,11 +31,11 @@ public class FieldData
     {
         _spawnData = spawn;
         _enemyMasterData = masterDatas;
-        _datas = new List<EnemyGroupData>();
+        _enemyGroupDatas = new List<EnemyGroupData>();
 
         for (int i = 0; i < spawn.Count(); i++)
         {
-            _datas.Add(new EnemyGroupData(spawn[i].ID, false, new List<IFieldEnemy>()));
+            _enemyGroupDatas.Add(new EnemyGroupData(spawn[i].ID, false, new List<IFieldEnemy>()));
         }
         
         Level = 1;
@@ -44,13 +44,12 @@ public class FieldData
     public void Update()
     {
         Level++;
-        Check();
         UpdateEnemy();
     }
 
     public void UpdateEnemy()
     {
-        foreach (EnemyGroupData groupData in _datas)
+        foreach (EnemyGroupData groupData in _enemyGroupDatas)
         {
             if (!groupData.IsSet)
             {
@@ -58,7 +57,8 @@ public class FieldData
             }
             else
             {
-
+                int id = groupData.SpawnID;
+                UpStatus(id, groupData.FieldEnemies);
             }
         }
     }
@@ -96,7 +96,8 @@ public class FieldData
 
                     IFieldEnemy iEnemy = get.GetComponent<IFieldEnemy>();
                     iEnemy.GroupID = spawnData.ID;
-                    iEnemy.IEnemyDead = false;
+                    iEnemy.Target = get;
+                    iEnemy.EnemyData = enemyData;
 
                     enemies.Add(iEnemy);
                 }
@@ -106,8 +107,26 @@ public class FieldData
         groupData.IsSet = true;
     }
 
-    void Check()
+    void UpStatus(int id, List<IFieldEnemy> enemies)
     {
+        int level = _spawnData[id - 1].Level + Level;
         
+        foreach (IFieldEnemy enemy in enemies)
+        {
+            enemy.Target.GetComponent<EnemyBase>()
+                .SetParam(enemy.EnemyData.HP, enemy.EnemyData.Power, enemy.EnemyData.Speed, level);
+        }
+    }
+
+    public void Delete(int id, IFieldEnemy enemy)
+    {
+        foreach (var data in _enemyGroupDatas)
+        {
+            if (data.SpawnID == id)
+            {
+                data.FieldEnemies.Remove(enemy);
+                if (data.FieldEnemies.Count() == 0) data.IsSet = false;
+            }
+        }
     }
 }

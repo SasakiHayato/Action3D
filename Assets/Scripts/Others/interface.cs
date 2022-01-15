@@ -10,6 +10,7 @@ public interface IDamage
 public interface IFieldEnemy
 {
     int GroupID { get; set; }
-    bool IEnemyDead { get; set; }
+    EnemysData.EnemyData EnemyData { get; set; }
+    GameObject Target { get; set; }
 }
 

@@ -8,10 +8,13 @@ using Sounds;
 public class FieldManager : MonoBehaviour
 {
     [SerializeField] EnemyMasterData _enemyMasterData;
+    [SerializeField] int[] _updateTime;
     [SerializeField] float _rate;
     [SerializeField] float _time;
 
     FieldData _fieldData;
+    public FieldData FieldData => _fieldData;
+    int _phase = 0;
 
     // ‚Ç‚±‚©‚ç‚Å‚àŒÄ‚×‚é‚æ‚¤‚É
     private static FieldManager _instance = null;
@@ -57,8 +60,10 @@ public class FieldManager : MonoBehaviour
     void Update()
     {
         GameManager.GameTime();
-        if (GameManager.Instance.GetCurrentTime > 4)
+        if (GameManager.Instance.GetCurrentTime > _updateTime[_phase])
         {
+            _phase++;
+            Debug.Log("Update");
             _fieldData.Update();
         }
     }
