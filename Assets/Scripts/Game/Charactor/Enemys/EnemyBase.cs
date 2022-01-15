@@ -2,7 +2,7 @@ using UnityEngine;
 using BehaviorAI;
 
 [RequireComponent(typeof(BehaviorTree))]
-public abstract class EnemyBase : CharaBase, IBehavior
+public abstract class EnemyBase : CharaBase, IBehavior, IFieldEnemy
 {
     [SerializeField] float _knockBackPower;
     [SerializeField] float _knockBackTime;
@@ -14,10 +14,15 @@ public abstract class EnemyBase : CharaBase, IBehavior
     public Vector3 MoveDir { protected get; set; } = new Vector3(0 ,1, 0);
     float _timer = 0;
 
+    // IBehavior
     public GameObject SetTarget() => gameObject;
     public void Call(IAction action) => action.Execute();
 
-    public virtual void Dead(GameObject target)
+    // IFieldEnemy
+    public int GroupID { get; set; }
+    public bool IEnemyDead { get; set; }
+
+    protected virtual void Dead(GameObject target)
     {
         ParticleUser particle = FieldManager.Instance.GetDeadParticle.Respons();
         particle.Use(target.transform);
@@ -25,7 +30,7 @@ public abstract class EnemyBase : CharaBase, IBehavior
         Destroy(target);
     }
 
-    public void SetKnockBack(ref bool check)
+    protected void SetKnockBack(ref bool check)
     {
         if (check)
         {

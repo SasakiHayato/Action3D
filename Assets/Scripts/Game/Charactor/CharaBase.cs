@@ -28,10 +28,21 @@ public class CharaBase : MonoBehaviour
         _character = GetComponent<CharacterController>();
     }
 
-    public void SetParam(int hp, int power, float speed)
+    public void SetParam(int hp, int power, float speed, int level)
     {
-        HP = hp;
-        Power = power;
+        if (level == 1)
+        {
+            HP = hp;
+            Power = power;
+        }
+        else
+        {
+            float add = ((float)level / 10) - 0.1f;
+            Debug.Log(add);
+            HP = hp + (int)(hp * add);
+            Power = power * (int)(power * add);
+        }
+
         Speed = speed;
     }
 }

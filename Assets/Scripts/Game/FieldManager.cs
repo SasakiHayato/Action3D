@@ -11,11 +11,23 @@ public class FieldManager : MonoBehaviour
     [SerializeField] float _rate;
     [SerializeField] float _time;
 
+    FieldEnemyData _fieldData;
+
     // ‚Ç‚±‚©‚ç‚Å‚àŒÄ‚×‚é‚æ‚¤‚É
     private static FieldManager _instance = null;
     public static FieldManager Instance => _instance;
 
-    [SerializeField] List<SpownData> _spowns;
+    [SerializeField] List<SpawnData> _spowns;
+
+    [Serializable]
+    public class SpawnData
+    {
+        public int ID;
+        public int Level;
+        public Transform Point;
+        public float Range;
+        public EnemyType[] Enemys;
+    }
 
     ObjectPool<ParticleUser> _hitParticlePool = new ObjectPool<ParticleUser>();
     public ObjectPool<ParticleUser> GetHitParticle => _hitParticlePool;
@@ -33,7 +45,8 @@ public class FieldManager : MonoBehaviour
         GameObject deadParticle = (GameObject)Resources.Load("DeadParticle");
         _deadParticlePool.SetUp(deadParticle.GetComponent<ParticleUser>(), transform, 10);
 
-        SetEnemy();
+        _fieldData = new FieldEnemyData(_spowns, _enemyMasterData);
+        _fieldData.SetEnemy();
     }
 
     void Start()
@@ -44,29 +57,9 @@ public class FieldManager : MonoBehaviour
     void Update()
     {
         GameManager.GameTime();
-    }
-
-    void SetEnemy()
-    {
-        foreach (SpownData data in _spowns)
+        if (GameManager.Instance.GetCurrentTime > 4)
         {
-            GameObject spownPoint = new GameObject("Point");
-            spownPoint.transform.position = data.Point.position;
-            foreach (EnemyData enemyData in _enemyMasterData.GetData)
-            {
-                foreach (EnemyType enemyType in data.Enemys)
-                {
-                    if (enemyData.Name == enemyType.ToString())
-                    {
-                        GameObject get = Instantiate(enemyData.Prefab);
-                        get.transform.position = data.Point.position;
-                        get.transform.SetParent(spownPoint.transform);
-
-                        get.GetComponent<CharaBase>()
-                            .SetParam(enemyData.HP, enemyData.Power, enemyData.Speed);
-                    }
-                }
-            }
+            _fieldData.Update();
         }
     }
 
@@ -83,14 +76,4 @@ public class FieldManager : MonoBehaviour
         Time.timeScale = 1;
         action.Invoke(type, id, null);
     }
-}
-
-[Serializable]
-class SpownData
-{
-    public int ID;
-    public int Level;
-    public Transform Point;
-    public float Range;
-    public EnemyType[] Enemys;
 }

@@ -31,8 +31,8 @@ public class GameManager
         }
     }
 
-    public float GetCurrentTime { get; private set; }
-
+    public float GetCurrentTime { get; private set; } = 0;
+    
     public GameObject LockonTarget { get; set; }
     public static void End()
     {
@@ -43,6 +43,12 @@ public class GameManager
 
     public static void GameTime()
     {
-        Instance.GetCurrentTime += Time.deltaTime; 
+        Instance.GetCurrentTime += Time.deltaTime;
+    }
+
+    public static void Init()
+    {
+        Instance._islockOn = false;
+        Instance.GetCurrentTime = 0;
     }
 }
