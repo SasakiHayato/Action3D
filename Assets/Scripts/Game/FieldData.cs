@@ -71,9 +71,10 @@ public class FieldData
         groupData.Point.transform.position = spawnData.Point.position;
         List<IFieldEnemy> enemies = new List<IFieldEnemy>();
 
+        int random = Random.Range(0, spawnData.GroupTip.GetDatas.Count());
         foreach (EnemyData enemyData in _enemyMasterData.GetData)
         {
-            foreach (EnemyType enemyType in spawnData.Enemys)
+            foreach (EnemyType enemyType in spawnData.GroupTip.GetDatas[random].Types)
             {
                 if (enemyData.Name == enemyType.ToString())
                 {
@@ -103,6 +104,7 @@ public class FieldData
                 }
             }
         }
+
         groupData.FieldEnemies = enemies;
         groupData.IsSet = true;
     }

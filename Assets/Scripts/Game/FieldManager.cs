@@ -29,7 +29,7 @@ public class FieldManager : MonoBehaviour
         public int Level;
         public Transform Point;
         public float Range;
-        public EnemyType[] Enemys;
+        public EnemyGroupTip GroupTip;
     }
 
     ObjectPool<ParticleUser> _hitParticlePool = new ObjectPool<ParticleUser>();
