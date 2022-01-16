@@ -22,7 +22,6 @@ public class FieldData
         public int SpawnID;
         public bool IsSet;
         public List<IFieldEnemy> FieldEnemies;
-        public GameObject Point = null;
     }
 
     public int Level { get; private set; } = 1;
@@ -63,19 +62,13 @@ public class FieldData
             }
         }
     }
-
+    
     void SetEnemy(EnemyGroupData groupData, Vector3 playerPos)
     {
         FieldManager.SpawnData spawnData = _spawnData[groupData.SpawnID - 1];
-        
-        if (groupData.Point == null) groupData.Point = new GameObject("Point");
-        else
-        {
-            float dist = Vector3.Distance(groupData.Point.transform.position, playerPos);
-            if (dist < 100) return;
-        }
-        groupData.Point.transform.position = spawnData.Point.position;
-        List<IFieldEnemy> enemies = new List<IFieldEnemy>();
+
+        float dist = Vector3.Distance(spawnData.Point.position, playerPos);
+        if (dist < 10) return;
 
         int random = Random.Range(0, spawnData.GroupTip.GetDatas.Count());
         foreach (EnemyData enemyData in _enemyMasterData.GetData)
@@ -84,34 +77,29 @@ public class FieldData
             {
                 if (enemyData.Name == enemyType.ToString())
                 {
-                    #region SetEnemyData
                     float rate = spawnData.Range / 2;
                     float x = Random.Range(-rate, rate);
                     float y = Random.Range(-rate, rate);
                     float z = Random.Range(-rate, rate);
-
-                    GameObject get = Object.Instantiate(enemyData.Prefab);
-                    Vector3 dataPos = spawnData.Point.position;
-                    Vector3 setVec = new Vector3(dataPos.x + x, dataPos.y + y, dataPos.z + z);
-                    get.transform.position = setVec;
-                    get.transform.SetParent(groupData.Point.transform);
-
+                    
+                    GameObject obj = Object.Instantiate(enemyData.Prefab);
+                    obj.transform.SetParent(spawnData.Point);
+                    obj.transform.localPosition = new Vector3(x, y, z);
+                    
                     int level = spawnData.Level + Level;
-                    get.GetComponent<CharaBase>()
-                        .SetParam(enemyData.HP, enemyData.Power, enemyData.Speed, level);
-                    #endregion
+                    CharaBase charaBase = obj.GetComponent<CharaBase>();
+                    charaBase.SetParam(enemyData.HP, enemyData.Power, enemyData.Speed, level);
 
-                    IFieldEnemy iEnemy = get.GetComponent<IFieldEnemy>();
+                    IFieldEnemy iEnemy = obj.GetComponent<IFieldEnemy>();
                     iEnemy.GroupID = spawnData.ID;
-                    iEnemy.Target = get;
+                    iEnemy.Target = obj;
                     iEnemy.EnemyData = enemyData;
 
-                    enemies.Add(iEnemy);
+                    groupData.FieldEnemies.Add(iEnemy);
                 }
             }
         }
-
-        groupData.FieldEnemies = enemies;
+        
         groupData.IsSet = true;
     }
 

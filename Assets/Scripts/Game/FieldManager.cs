@@ -8,14 +8,13 @@ using Sounds;
 public class FieldManager : MonoBehaviour
 {
     [SerializeField] EnemyMasterData _enemyMasterData;
-    [SerializeField] int[] _updateTime;
+    [SerializeField] int _updateTime;
     [SerializeField] float _rate;
     [SerializeField] float _time;
 
     FieldData _fieldData;
     public FieldData FieldData => _fieldData;
-    int _phase = 0;
-
+    
     // ‚Ç‚±‚©‚ç‚Å‚àŒÄ‚×‚é‚æ‚¤‚É
     private static FieldManager _instance = null;
     public static FieldManager Instance => _instance;
@@ -38,6 +37,8 @@ public class FieldManager : MonoBehaviour
     ObjectPool<ParticleUser> _deadParticlePool = new ObjectPool<ParticleUser>();
     public ObjectPool<ParticleUser> GetDeadParticle => _deadParticlePool;
 
+    int _setUpdateTime;
+
     private void Awake()
     {
         _instance = this;
@@ -47,23 +48,24 @@ public class FieldManager : MonoBehaviour
 
         GameObject deadParticle = (GameObject)Resources.Load("DeadParticle");
         _deadParticlePool.SetUp(deadParticle.GetComponent<ParticleUser>(), transform, 10);
-
-        _fieldData = new FieldData(_spowns, _enemyMasterData);
-        _fieldData.UpdateEnemy();
     }
 
     void Start()
     {
+        _fieldData = new FieldData(_spowns, _enemyMasterData);
+        _fieldData.UpdateEnemy();
+
         SoundMaster.Request(null, "FieldBGM", 3);
+
+        _setUpdateTime = _updateTime;
     }
 
     void Update()
     {
         GameManager.GameTime();
-        if (GameManager.Instance.GetCurrentTime > _updateTime[_phase])
+        if (GameManager.Instance.GetCurrentTime > _updateTime)
         {
-            _phase++;
-            Debug.Log("Update");
+            _updateTime += _setUpdateTime;
             _fieldData.Update();
         }
     }
