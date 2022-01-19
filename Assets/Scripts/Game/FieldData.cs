@@ -84,13 +84,12 @@ public class FieldData
                     
                     GameObject obj = Object.Instantiate(enemyData.Prefab);
                     obj.transform.SetParent(spawnData.Point);
-                    obj.transform.localPosition = new Vector3(x, y, z);
+                    //obj.transform.localPosition = new Vector3(x, y, z);
 
                     int level = spawnData.Level + Level;
                     CharaBase charaBase = obj.GetComponent<CharaBase>();
-                    charaBase.Character.enabled = false;
+                    charaBase.Character.ChangeLocalPos(new Vector3(x, y, z), obj);
                     charaBase.SetParam(enemyData.HP, enemyData.Power, enemyData.Speed, level);
-                    charaBase.Character.enabled = true;
                     IFieldEnemy iEnemy = obj.GetComponent<IFieldEnemy>();
                     iEnemy.GroupID = spawnData.ID;
                     iEnemy.Target = obj;
