@@ -11,10 +11,15 @@ public class ShotBulletLockon : IAction
     float _currentTime = 0;
 
     GameObject _player = null;
+    EnemyBase _enemyBase = null;
 
     public void Execute()
     {
-        if (_player == null) _player = GameObject.FindGameObjectWithTag("Player");
+        if (_player == null)
+        {
+            _player = GameObject.FindGameObjectWithTag("Player");
+            _enemyBase = Target.GetComponent<EnemyBase>();
+        }
 
         _currentTime += Time.deltaTime;
         if (_currentTime > _coolTime)
@@ -28,6 +33,9 @@ public class ShotBulletLockon : IAction
             obj.GetComponent<Bullet>()
                 .Shot(forward, _speed * 10, Bullet.Parent.Enemy, power);
         }
+
+        _enemyBase.MoveDir = Vector3.zero;
+        _check = true;
     }
 
     public bool End() => _check;

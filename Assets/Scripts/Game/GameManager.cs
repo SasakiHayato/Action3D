@@ -34,14 +34,14 @@ public class GameManager
     public float GetCurrentTime { get; private set; } = 0;
     
     public GameObject LockonTarget { get; set; }
-    public static void End()
+    public void End()
     {
         Instance.IsLockOn = false;
         Inputter.Init();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public static void GameTime()
+    public void GameTime()
     {
         Instance.GetCurrentTime += Time.deltaTime;
     }
@@ -50,5 +50,12 @@ public class GameManager
     {
         Instance._islockOn = false;
         Instance.GetCurrentTime = 0;
+    }
+
+    public GameObject Player { get; set; }
+    public void AddExp(int exp, int level)
+    {
+        float add = ((float)level / 10) - 0.1f;
+        int set = exp + (int)(exp * add);
     }
 }

@@ -11,10 +11,12 @@ public class CharaBase : MonoBehaviour
     [SerializeField] int _hp;
     [SerializeField] int _power;
     [SerializeField] float _speed;
+    [SerializeField] int _level;
 
     public int HP { get => _hp; protected set { _hp = value; } }
     public int Power { get => _power; protected set { _power = value; } }
     public float Speed { get => _speed; protected set { _speed = value; } }
+    public int Level { get => _level; protected set { _level = value; } }
 
     PhysicsBase _phsicsBase;
     public PhysicsBase PhsicsBase { get => _phsicsBase; }
@@ -37,11 +39,12 @@ public class CharaBase : MonoBehaviour
         }
         else
         {
-            float add = ((float)level / 10) - 0.1f;
+            float add = ((float)level / 10) * 3 - 0.1f;
             HP = hp + (int)(hp * add);
-            Power = power * (int)(power * add);
+            Power = power + (int)(power * add);
         }
 
         Speed = speed;
+        Level = level;
     }
 }

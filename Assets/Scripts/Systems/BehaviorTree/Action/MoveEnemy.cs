@@ -2,9 +2,11 @@ using UnityEngine;
 using BehaviorAI;
 using AttackSetting;
 
-public class MoveTowardsPlayer : IAction
+public class MoveEnemy : IAction
 {
     [SerializeField] string _animName;
+    [SerializeField] bool _applyYPos;
+    [SerializeField] bool _toWardsPlayer;
 
     bool _check = false;
     Animator _anim = null;
@@ -28,9 +30,19 @@ public class MoveTowardsPlayer : IAction
             if (!_attack.EndCurrentAnim) return;
         }
 
-        Vector3 dir = (_player.transform.position - Target.transform.position).normalized;
-        dir.y = 1;
-        _anim.Play(_animName);
+        Vector3 dir = Vector3.zero;
+        if (_toWardsPlayer) 
+            dir = (_player.transform.position - Target.transform.position).normalized;
+        else
+        {
+            dir = (Target.transform.position - _player.transform.position).normalized;
+            dir.y /= 3;
+        }
+            
+
+        if (!_applyYPos) dir.y = 1;
+        if (_animName != "") _anim.Play(_animName);
+        
         _enemyBase.MoveDir = dir;
 
         LookPlayer(dir);

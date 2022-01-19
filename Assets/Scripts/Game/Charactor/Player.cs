@@ -171,7 +171,7 @@ public class Player : CharaBase, IDamage
         if (HP <= 0)
         {
             Destroy(gameObject);
-            GameManager.End();
+            GameManager.Instance.End();
         }
     }
 

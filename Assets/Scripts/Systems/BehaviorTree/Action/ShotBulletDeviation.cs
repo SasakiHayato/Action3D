@@ -10,14 +10,19 @@ public class ShotBulletDeviation : IAction
     bool _check = false;
     float _currentTime = 0;
 
+    EnemyBase _enemyBase;
     GameObject _player = null;
     Vector3 _beforePos;
     Deviation _deviation = new Deviation();
 
     public void Execute()
     {
-        if (_player == null) _player = GameObject.FindGameObjectWithTag("Player");
-
+        if (_player == null)
+        {
+            _player = GameObject.FindGameObjectWithTag("Player");
+            _enemyBase = Target.GetComponent<EnemyBase>();
+        }
+        
         _currentTime += Time.deltaTime;
         if (_currentTime > _coolTime)
         {
@@ -33,7 +38,9 @@ public class ShotBulletDeviation : IAction
                 .Shot(set, speed, Bullet.Parent.Enemy, Target.GetComponent<CharaBase>().Power);
         }
 
+        _enemyBase.MoveDir = Vector3.zero;
         _beforePos = _player.transform.position;
+        _check = true;
     }
 
     public bool End() => _check;

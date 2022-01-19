@@ -28,7 +28,11 @@ public abstract class EnemyBase : CharaBase, IBehavior, IFieldEnemy
         ParticleUser particle = FieldManager.Instance.GetDeadParticle.Respons();
         particle.Use(target.transform);
         Sounds.SoundMaster.Request(null, "EnemyDead", 2);
-        FieldManager.Instance.FieldData.Delete(GroupID, target.GetComponent<IFieldEnemy>());
+
+        IFieldEnemy iEnemy = target.GetComponent<IFieldEnemy>();
+        GameManager.Instance.AddExp(iEnemy.EnemyData.Exp, Level);
+        FieldManager.Instance.FieldData.Delete(GroupID, iEnemy);
+
         Destroy(target);
     }
 

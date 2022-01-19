@@ -309,9 +309,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecfed23d5db2ad4b805d6f2bedcb3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 200
+  _hp: 0
   _power: 0
-  _speed: 3
+  _speed: 0
+  _level: 0
   _knockBackPower: 1
   _knockBackTime: 0.4
   _tree: {fileID: 1541433764607956048}
@@ -354,17 +355,20 @@ MonoBehaviour:
       data:
         _range: 50
     00000003:
-      type: {class: MoveTowardsPlayer, ns: , asm: Assembly-CSharp}
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         _animName: SkeletonRun
+        _applyYPos: 0
+        _toWardsPlayer: 1
     00000004:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 100
     00000005:
-      type: {class: FindPlayer, ns: , asm: Assembly-CSharp}
+      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
       data:
         _idleAnimName: Skeleton
+        _useGravity: 1
 --- !u!114 &1541433764607956049
 MonoBehaviour:
   m_ObjectHideFlags: 0

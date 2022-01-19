@@ -9617,7 +9617,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _spownDatas.Array.data[0].GroupTip
       value: 
-      objectReference: {fileID: 11400000, guid: 09f560600fd72444da8515fe6723f715,
+      objectReference: {fileID: 11400000, guid: 33dd9399d2ab60d468afb58d2f364317,
         type: 2}
     - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
         type: 3}
@@ -14164,6 +14164,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 101153710}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2108501441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108501432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3363f23a75cda44d93ae9d71b9db601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2120586066 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1145352846037368642, guid: 4748164b0f741cc49a54f403bad52334,

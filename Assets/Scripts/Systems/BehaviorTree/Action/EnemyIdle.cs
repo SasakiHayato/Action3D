@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorAI;
 
-public class FindPlayer : IAction
+public class EnemyIdle : IAction
 {
     [SerializeField] string _idleAnimName;
+    [SerializeField] bool _useGravity;
     bool _check = false;
     Animator _anim = null;
     EnemyBase _enemyBase;
@@ -18,8 +19,12 @@ public class FindPlayer : IAction
             _anim = Target.GetComponent<Animator>();
             _enemyBase = Target.GetComponent<EnemyBase>();
         }
-        _anim.Play(_idleAnimName);
-        _enemyBase.MoveDir = new Vector3(0, 1, 0);
+
+        if (_idleAnimName != "") _anim.Play(_idleAnimName);
+
+        if (_useGravity) _enemyBase.MoveDir = new Vector3(0, 1, 0);
+        else _enemyBase.MoveDir = Vector3.zero;
+
         _check = true;
     }
 

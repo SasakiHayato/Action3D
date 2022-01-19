@@ -64,7 +64,7 @@ public class FieldManager : MonoBehaviour
 
     void Update()
     {
-        GameManager.GameTime();
+        GameManager.Instance.GameTime();
         if (GameManager.Instance.GetCurrentTime > _updateTime)
         {
             _updateTime += _setUpdateTime;

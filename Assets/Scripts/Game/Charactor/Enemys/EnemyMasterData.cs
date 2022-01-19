@@ -28,5 +28,6 @@ namespace EnemysData
         public int HP;
         public int Power;
         public float Speed;
+        public int Exp;
     }
 }

@@ -19,7 +19,8 @@ MonoBehaviour:
       type: 3}
     HP: 200
     Power: 10
-    Speed: 0
+    Speed: 6
+    Exp: 0
   - Name: WalkSkeleton
     ID: 1
     Prefab: {fileID: 2448143286815395276, guid: 4cf471c90863d494c926489d5610abc5,
@@ -27,6 +28,7 @@ MonoBehaviour:
     HP: 250
     Power: 10
     Speed: 1
+    Exp: 0
   - Name: RunSkeleton
     ID: 2
     Prefab: {fileID: 1541433764607956050, guid: cfa74ed22e0913b41b6628705e0172a3,
@@ -34,6 +36,7 @@ MonoBehaviour:
     HP: 250
     Power: 10
     Speed: 3
+    Exp: 0
   - Name: Boss
     ID: 2
     Prefab: {fileID: 4693462203747661893, guid: 4c756e23f7a5ac241bfbc12713c3b56e,
@@ -41,3 +44,4 @@ MonoBehaviour:
     HP: 999
     Power: 0
     Speed: 9
+    Exp: 0
