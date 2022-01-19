@@ -11,6 +11,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField] int _updateTime;
     [SerializeField] float _rate;
     [SerializeField] float _time;
+    [SerializeField] float _setDist;
 
     FieldData _fieldData;
     public FieldData FieldData => _fieldData;
@@ -19,7 +20,7 @@ public class FieldManager : MonoBehaviour
     private static FieldManager _instance = null;
     public static FieldManager Instance => _instance;
 
-    [SerializeField] List<SpawnData> _spowns;
+    [SerializeField] List<SpawnData> _spownDatas;
 
     [Serializable]
     public class SpawnData
@@ -52,7 +53,8 @@ public class FieldManager : MonoBehaviour
 
     void Start()
     {
-        _fieldData = new FieldData(_spowns, _enemyMasterData);
+        _fieldData = new FieldData(_spownDatas, _enemyMasterData);
+        _fieldData.SetDist = _setDist;
         _fieldData.UpdateEnemy();
 
         SoundMaster.Request(null, "FieldBGM", 3);

@@ -10,6 +10,8 @@ public class FieldData
     EnemyMasterData _enemyMasterData;
     List<EnemyGroupData> _enemyGroupDatas;
 
+    public float SetDist { get; set; }
+
     class EnemyGroupData
     {
         public EnemyGroupData(int id, bool set, List<IFieldEnemy> enemies)
@@ -68,7 +70,7 @@ public class FieldData
         FieldManager.SpawnData spawnData = _spawnData[groupData.SpawnID - 1];
 
         float dist = Vector3.Distance(spawnData.Point.position, playerPos);
-        if (dist < 10) return;
+        if (dist < SetDist) return;
 
         int random = Random.Range(0, spawnData.GroupTip.GetDatas.Count());
         foreach (EnemyData enemyData in _enemyMasterData.GetData)
@@ -84,8 +86,7 @@ public class FieldData
                     
                     GameObject obj = Object.Instantiate(enemyData.Prefab);
                     obj.transform.SetParent(spawnData.Point);
-                    //obj.transform.localPosition = new Vector3(x, y, z);
-
+                    
                     int level = spawnData.Level + Level;
                     CharaBase charaBase = obj.GetComponent<CharaBase>();
                     charaBase.Character.ChangeLocalPos(new Vector3(x, y, z), obj);
