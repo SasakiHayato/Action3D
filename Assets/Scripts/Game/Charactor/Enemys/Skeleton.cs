@@ -33,6 +33,7 @@ public class Skeleton : EnemyBase, IDamage
         _attack.Cansel();
         StartCoroutine(EndAnim());
         HP -= damage;
+        Debug.Log(HP);
         if (HP < 0) base.Dead(gameObject);
     }
 

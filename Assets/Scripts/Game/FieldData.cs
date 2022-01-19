@@ -39,7 +39,7 @@ public class FieldData
             _enemyGroupDatas.Add(new EnemyGroupData(spawn[i].ID, false, new List<IFieldEnemy>()));
         }
         
-        Level = 1;
+        Level = 0;
     }
 
     public void Update()

@@ -10,6 +10,7 @@ namespace EnemysData
         WalkSkeleton = 1,
         RunSkeleton = 2,
         Boss = 3,
+        BrackCubeEnemy = 4,
     }
 
     [CreateAssetMenu(fileName = "EnemyMasterData")]

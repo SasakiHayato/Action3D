@@ -19,7 +19,7 @@ MonoBehaviour:
       type: 3}
     HP: 200
     Power: 10
-    Speed: 6
+    Speed: 4
     Exp: 0
   - Name: WalkSkeleton
     ID: 1
@@ -38,10 +38,18 @@ MonoBehaviour:
     Speed: 3
     Exp: 0
   - Name: Boss
-    ID: 2
+    ID: 3
     Prefab: {fileID: 4693462203747661893, guid: 4c756e23f7a5ac241bfbc12713c3b56e,
       type: 3}
     HP: 999
     Power: 0
     Speed: 9
+    Exp: 0
+  - Name: BrackCubeEnemy
+    ID: 4
+    Prefab: {fileID: 7032200162906323380, guid: b84fb1030b858ec419e3767b298da731,
+      type: 3}
+    HP: 200
+    Power: 10
+    Speed: 3
     Exp: 0

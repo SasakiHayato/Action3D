@@ -36,7 +36,7 @@ public class GameManager
     public GameObject LockonTarget { get; set; }
     public void End()
     {
-        Instance.IsLockOn = false;
+        Init();
         Inputter.Init();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

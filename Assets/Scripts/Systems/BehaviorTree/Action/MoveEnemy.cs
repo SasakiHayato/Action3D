@@ -38,15 +38,12 @@ public class MoveEnemy : IAction
             dir = (Target.transform.position - _player.transform.position).normalized;
             dir.y /= 3;
         }
-            
 
         if (!_applyYPos) dir.y = 1;
         if (_animName != "") _anim.Play(_animName);
         
         _enemyBase.MoveDir = dir;
-
         LookPlayer(dir);
-
         _check = true;
     }
 

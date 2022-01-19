@@ -34,6 +34,7 @@ public class ShotBulletDeviation : IAction
             float speed = _speed * 10;
             Vector3 tPos = _player.transform.position;
             Vector3 set = _deviation.DeviationDir(tPos, Target.transform.position, _beforePos, speed);
+
             obj.GetComponent<Bullet>()
                 .Shot(set, speed, Bullet.Parent.Enemy, Target.GetComponent<CharaBase>().Power);
         }

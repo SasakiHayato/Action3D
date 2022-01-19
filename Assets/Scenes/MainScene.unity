@@ -396,12 +396,12 @@ PrefabInstance:
     - target: {fileID: 7980940582174284801, guid: b8f0bef73a5b7454eb6a9afa5800e191,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.531284
+      value: -21.02
       objectReference: {fileID: 0}
     - target: {fileID: 7980940582174284801, guid: b8f0bef73a5b7454eb6a9afa5800e191,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.32
+      value: 13.2
       objectReference: {fileID: 0}
     - target: {fileID: 7980940582174284801, guid: b8f0bef73a5b7454eb6a9afa5800e191,
         type: 3}
@@ -455,8 +455,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7980940582174284827, guid: b8f0bef73a5b7454eb6a9afa5800e191,
         type: 3}
+      propertyPath: _selector.Array.data[0].Datas.Array.data[1].Action
+      value: Assembly-CSharp ShotBulletDeviation
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980940582174284827, guid: b8f0bef73a5b7454eb6a9afa5800e191,
+        type: 3}
       propertyPath: _selector.Array.data[0].Datas.Array.data[0].Action._speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980940582174284827, guid: b8f0bef73a5b7454eb6a9afa5800e191,
+        type: 3}
+      propertyPath: _selector.Array.data[0].Datas.Array.data[1].Action._speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7980940582174284827, guid: b8f0bef73a5b7454eb6a9afa5800e191,
         type: 3}
@@ -466,6 +476,16 @@ PrefabInstance:
     - target: {fileID: 7980940582174284827, guid: b8f0bef73a5b7454eb6a9afa5800e191,
         type: 3}
       propertyPath: _selector.Array.data[0].Datas.Array.data[0].Action._coolTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980940582174284827, guid: b8f0bef73a5b7454eb6a9afa5800e191,
+        type: 3}
+      propertyPath: _selector.Array.data[0].Datas.Array.data[1].Action._bulletID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980940582174284827, guid: b8f0bef73a5b7454eb6a9afa5800e191,
+        type: 3}
+      propertyPath: _selector.Array.data[0].Datas.Array.data[1].Action._coolTime
       value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -915,6 +935,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550255380086235, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8089619352603584974, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}

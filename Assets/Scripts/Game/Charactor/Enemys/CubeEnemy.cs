@@ -17,6 +17,7 @@ public class CubeEnemy : EnemyBase, IDamage
     public void GetDamage(int damage)
     {
         HP -= damage;
+        Debug.Log(HP);
         if (HP <= 0) base.Dead(gameObject);
     }
 
