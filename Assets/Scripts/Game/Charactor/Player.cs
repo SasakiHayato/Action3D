@@ -29,6 +29,8 @@ public class Player : CharaBase, IDamage
 
     void Start()
     {
+        GameManager.Instance.PlayerData.Player = this;
+
         _state = GetComponent<StateMachine>();
         _anim = GetComponent<Animator>();
         _attack = GetComponent<AttackSettings>();

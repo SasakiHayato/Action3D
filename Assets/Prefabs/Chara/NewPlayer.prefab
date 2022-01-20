@@ -156,7 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 10000
-  _masterSpeed: 9
+  _power: 0
+  _speed: 0
+  _level: 0
   _lockOnDist: 50
   _muzzle: {fileID: 3354610143908288867}
   _shotCoolTime: 0.1
@@ -361,6 +363,7 @@ MonoBehaviour:
   - id: 4
   - id: 5
   - id: 6
+  _isRunning: 1
   references:
     version: 1
     00000000:
@@ -400,6 +403,7 @@ MonoBehaviour:
       type: {class: StateNone, ns: , asm: Assembly-CSharp}
       data:
         StateID: -1
+        _nextState: 0
 --- !u!1 &622662896967804122
 GameObject:
   m_ObjectHideFlags: 0

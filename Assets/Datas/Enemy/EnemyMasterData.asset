@@ -20,7 +20,7 @@ MonoBehaviour:
     HP: 200
     Power: 10
     Speed: 4
-    Exp: 0
+    Exp: 1000
   - Name: WalkSkeleton
     ID: 1
     Prefab: {fileID: 2448143286815395276, guid: 4cf471c90863d494c926489d5610abc5,

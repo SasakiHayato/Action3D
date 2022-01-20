@@ -740,6 +740,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7792968783714742447, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
+      propertyPath: _level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792968783714742447, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
       propertyPath: _power
       value: 20
       objectReference: {fileID: 0}
@@ -9308,7 +9313,7 @@ PrefabInstance:
     - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
         type: 3}
       propertyPath: _updateTime
-      value: 5
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
         type: 3}

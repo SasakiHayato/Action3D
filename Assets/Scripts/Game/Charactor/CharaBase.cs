@@ -39,7 +39,7 @@ public class CharaBase : MonoBehaviour
         }
         else
         {
-            float add = ((float)level / 10) * 3 - 0.1f;
+            float add = ((float)level / 10) * 2 - 0.1f;
             HP = hp + (int)(hp * add);
             Power = power + (int)(power * add);
         }

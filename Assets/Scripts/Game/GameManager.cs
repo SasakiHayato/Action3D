@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager
 {
+    bool _islockOn = false;
+    public GameObject LockonTarget { get; set; }
+    public float GetCurrentTime { get; private set; } = 0;
+
+    public PlayerData PlayerData { get; private set; } = new PlayerData();
+
     // Singleton
     private static GameManager _instance = null;
     public static GameManager Instance
@@ -15,8 +21,7 @@ public class GameManager
             return _instance;
         }
     }
-
-    bool _islockOn = false;
+    
     public bool IsLockOn
     {
         get
@@ -31,9 +36,6 @@ public class GameManager
         }
     }
 
-    public float GetCurrentTime { get; private set; } = 0;
-    
-    public GameObject LockonTarget { get; set; }
     public void End()
     {
         Init();
@@ -48,14 +50,43 @@ public class GameManager
 
     public static void Init()
     {
-        Instance._islockOn = false;
+        Instance.IsLockOn = false;
         Instance.GetCurrentTime = 0;
+        Instance.PlayerData = new PlayerData();
     }
 
-    public GameObject Player { get; set; }
-    public void AddExp(int exp, int level)
+    public void GetExp(int exp, int level)
     {
-        float add = ((float)level / 10) - 0.1f;
-        int set = exp + (int)(exp * add);
+        int set = exp;
+        if (level > 1)
+        {
+            float add = ((float)level / 10) - 0.1f;
+            set = exp + (int)(exp * add);
+        }
+
+        AddExp(PlayerData.CurrentExp += set);
+    }
+
+    void AddExp(int currentExp)
+    {
+        if (currentExp >= PlayerData.NextLevelExp)
+        {
+            Debug.Log("LevelUp");
+            int set = currentExp - PlayerData.NextLevelExp;
+            PlayerData.NextLevelExp += 100;
+
+            int hp = PlayerData.Player.HP;
+            int power = PlayerData.Player.Power;
+            float speed = PlayerData.Player.Speed;
+            int level = PlayerData.Player.Level + 1;
+            Debug.Log(level);
+            PlayerData.Player.SetParam(hp, power, speed, level);
+
+            AddExp(PlayerData.CurrentExp = set);
+        }
+        else
+        {
+            Debug.Log("EndSetExp");
+        }
     }
 }

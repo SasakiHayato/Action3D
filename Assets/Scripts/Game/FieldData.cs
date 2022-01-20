@@ -10,7 +10,7 @@ public class FieldData
     EnemyMasterData _enemyMasterData;
     List<EnemyGroupData> _enemyGroupDatas;
 
-    public float SetDist { get; set; }
+    const float SetDist = 50;
 
     class EnemyGroupData
     {
@@ -50,12 +50,17 @@ public class FieldData
 
     public void UpdateEnemy()
     {
-        GameObject player = GameObject.FindWithTag("Player");
+        Transform player = GameObject.FindWithTag("Player").transform;
         foreach (EnemyGroupData groupData in _enemyGroupDatas)
         {
+            FieldManager.SpawnData spawnData = _spawnData[groupData.SpawnID - 1];
+
+            float dist = Vector3.Distance(spawnData.Point.position, player.position);
+            if (dist < SetDist) continue;
+
             if (!groupData.IsSet)
             {
-                SetEnemy(groupData, player.transform.position);
+                SetEnemy(groupData);
             }
             else
             {
@@ -65,12 +70,9 @@ public class FieldData
         }
     }
     
-    void SetEnemy(EnemyGroupData groupData, Vector3 playerPos)
+    void SetEnemy(EnemyGroupData groupData)
     {
         FieldManager.SpawnData spawnData = _spawnData[groupData.SpawnID - 1];
-
-        float dist = Vector3.Distance(spawnData.Point.position, playerPos);
-        if (dist < SetDist) return;
 
         int random = Random.Range(0, spawnData.GroupTip.GetDatas.Count());
         foreach (EnemyData enemyData in _enemyMasterData.GetData)

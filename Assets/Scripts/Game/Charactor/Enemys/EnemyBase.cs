@@ -30,7 +30,7 @@ public abstract class EnemyBase : CharaBase, IBehavior, IFieldEnemy
         Sounds.SoundMaster.Request(null, "EnemyDead", 2);
 
         IFieldEnemy iEnemy = target.GetComponent<IFieldEnemy>();
-        GameManager.Instance.AddExp(iEnemy.EnemyData.Exp, Level);
+        GameManager.Instance.GetExp(iEnemy.EnemyData.Exp, Level);
         FieldManager.Instance.FieldData.Delete(GroupID, iEnemy);
 
         Destroy(target);
