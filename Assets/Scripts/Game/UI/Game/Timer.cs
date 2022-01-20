@@ -19,6 +19,6 @@ public class Timer : UIWindowParent.UIWindowChild
 
     public override void CallBack(object[] data)
     {
-        UpDate();
+        
     }
 }
