@@ -31,3 +31,9 @@ MonoBehaviour:
     Volume: 2
     SpatialBrend: 0
     Loop: 0
+  - Name: LevelUp
+    ID: 3
+    Clip: {fileID: 8300000, guid: ea4cb8d6f673efd4aa2108b3e4c874f0, type: 3}
+    Volume: 10
+    SpatialBrend: 0
+    Loop: 0

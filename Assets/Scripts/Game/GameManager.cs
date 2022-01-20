@@ -87,6 +87,7 @@ public class GameManager
         {
             UIManager.CallBack(UIType.Player, 4, new object[] { PlayerData.Player.Level });
             UIManager.CallBack(UIType.Player, 3, new object[] { PlayerData.Player.HP });
+            Sounds.SoundMaster.Request(null, "LevelUp", 0);
         }
     }
 }

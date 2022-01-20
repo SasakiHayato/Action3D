@@ -19,3 +19,9 @@ MonoBehaviour:
     Volume: 4.35
     SpatialBrend: 0
     Loop: 0
+  - Name: TextDisplay
+    ID: 1
+    Clip: {fileID: 8300000, guid: 5c4c0b0180f16134d87b22b4aa8c0dde, type: 3}
+    Volume: 4.35
+    SpatialBrend: 0
+    Loop: 0

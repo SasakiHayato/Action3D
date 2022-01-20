@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using DG.Tweening;
+using Sounds;
 
 public class LogCountrol : UIWindowParent.UIWindowChild
 {
@@ -44,6 +45,7 @@ public class LogCountrol : UIWindowParent.UIWindowChild
             else
             {
                 _txt.text = _textList.First();
+                SoundMaster.Request(null, "TextDisplay", 4);
                 _timer = 0;
             }
         }
@@ -67,6 +69,7 @@ public class LogCountrol : UIWindowParent.UIWindowChild
                 .SetEase(Ease.Linear)
                 .OnComplete(() => _isActive = true);
             _txt.text = _textList.First();
+            SoundMaster.Request(null, "TextDisplay", 4);
         }
     }
 }
