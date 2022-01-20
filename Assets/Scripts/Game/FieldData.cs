@@ -4,8 +4,18 @@ using EnemysData;
 using UnityEngine;
 using System.Linq;
 
-public class FieldData 
+[System.Serializable]
+public class FieldData
 {
+    public FieldData() 
+    {
+        Debug.Log("aa");
+    }
+
+    public bool DebugBool { get; set; }
+    public int DebugLevel { get; set; }
+    public int SetDebugLevel { get; set; }
+
     List<FieldManager.SpawnData> _spawnData;
     EnemyMasterData _enemyMasterData;
     List<EnemyGroupData> _enemyGroupDatas;
@@ -38,8 +48,9 @@ public class FieldData
         {
             _enemyGroupDatas.Add(new EnemyGroupData(spawn[i].ID, false, new List<IFieldEnemy>()));
         }
-        
-        Level = 0;
+        Debug.Log(SetDebugLevel);
+        if (DebugLevel > 0) Level = DebugLevel;
+        else Level = 0;
     }
 
     public void Update()

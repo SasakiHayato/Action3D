@@ -12,7 +12,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField] float _rate;
     [SerializeField] float _time;
     
-    FieldData _fieldData;
+    FieldData _fieldData = new FieldData();
     public FieldData FieldData => _fieldData;
     
     // ‚Ç‚±‚©‚ç‚Å‚àŒÄ‚×‚é‚æ‚¤‚É
