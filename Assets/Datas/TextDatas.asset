@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21bffb821dd110b4aa4252dfccf8fc1f, type: 3}
   m_Name: TextDatas
   m_EditorClassIdentifier: 
-  _datas: []
+  _datas:
+  - ID: 0
+    Text: "Field\u306ELevel\u304C\u4E0A\u304C\u308A\u307E\u3057\u305F\u3002"

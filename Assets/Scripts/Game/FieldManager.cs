@@ -69,6 +69,7 @@ public class FieldManager : MonoBehaviour
         {
             _updateTime += _setUpdateTime;
             _fieldData.Update();
+            UIManager.CallBack(UIType.Game, 3, new object[] { 0 });
         }
     }
 
