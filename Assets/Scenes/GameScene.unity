@@ -1765,6 +1765,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3794711337205420663, guid: 4748164b0f741cc49a54f403bad52334,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 570eaef59231f1944af26764c59118c5, type: 2}
     - target: {fileID: 5390948989157351960, guid: 4748164b0f741cc49a54f403bad52334,
         type: 3}
       propertyPath: m_IsActive
@@ -13955,7 +13960,7 @@ PrefabInstance:
     - target: {fileID: 572088131811373266, guid: 44a955f13438e024c9392d235a8e725f,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.6013438
+      value: 1.5986159
       objectReference: {fileID: 0}
     - target: {fileID: 572088131811373267, guid: 44a955f13438e024c9392d235a8e725f,
         type: 3}

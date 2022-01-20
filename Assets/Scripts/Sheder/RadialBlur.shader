@@ -1,3 +1,5 @@
+// https://light11.hatenadiary.com/entry/2019/01/04/232733 QÆ
+
 Shader "Hidden/RadialBlur"
 {
     Properties
