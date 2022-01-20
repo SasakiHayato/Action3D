@@ -30,7 +30,7 @@ public class CharaBase : MonoBehaviour
         _character = GetComponent<CharacterController>();
     }
 
-    public void SetParam(int hp, int power, float speed, int level)
+    virtual public void SetParam(int hp, int power, float speed, int level)
     {
         if (level == 1)
         {

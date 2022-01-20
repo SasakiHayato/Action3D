@@ -761,7 +761,7 @@ PrefabInstance:
     - target: {fileID: 8621698311956876471, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 70.3
+      value: 48.3
       objectReference: {fileID: 0}
     - target: {fileID: 8621698311956876471, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
@@ -771,7 +771,7 @@ PrefabInstance:
     - target: {fileID: 8621698311956876471, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 297
+      value: 383.4
       objectReference: {fileID: 0}
     - target: {fileID: 8621698311956876471, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
@@ -1804,6 +1804,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8124622086719376750, guid: 4748164b0f741cc49a54f403bad52334,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4748164b0f741cc49a54f403bad52334, type: 3}
@@ -14564,13 +14569,28 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
+      propertyPath: _windows.Array.data[0]._windows.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
       propertyPath: _windows.Array.data[1]._windows.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
+      propertyPath: _windows.Array.data[0]._windows.Array.data[3]
+      value: Assembly-CSharp LevelTextSetter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
       propertyPath: _windows.Array.data[1]._windows.Array.data[2]
       value: Assembly-CSharp LogCountrol
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[0]._windows.Array.data[3].data
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
@@ -14581,6 +14601,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _windows.Array.data[1]._windows.Array.data[1]._name
       value: MenuPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[0]._windows.Array.data[3]._imageName
+      value: LevelImage
       objectReference: {fileID: 0}
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}

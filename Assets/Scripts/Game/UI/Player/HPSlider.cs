@@ -40,6 +40,8 @@ public class HPSlider : UIWindowParent.UIWindowChild
 
     public override void CallBack(object[] data)
     {
-        
+        _slider.maxValue = _player.HP;
+        _slider.value = _player.HP;
+        _saveHp = _player.HP;
     }
 }

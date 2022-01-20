@@ -75,8 +75,8 @@ public class GameManager
             int set = currentExp - PlayerData.NextLevelExp;
             PlayerData.NextLevelExp += 100;
 
-            int hp = PlayerData.Player.HP;
-            int power = PlayerData.Player.Power;
+            int hp = PlayerData.HP;
+            int power = PlayerData.Power;
             float speed = PlayerData.Player.Speed;
             int level = PlayerData.Player.Level + 1;
             PlayerData.Player.SetParam(hp, power, speed, level);
@@ -85,7 +85,8 @@ public class GameManager
         }
         else
         {
-            Debug.Log("EndSetExp");
+            UIManager.CallBack(UIType.Player, 4, new object[] { PlayerData.Player.Level });
+            UIManager.CallBack(UIType.Player, 3, new object[] { PlayerData.Player.HP });
         }
     }
 }

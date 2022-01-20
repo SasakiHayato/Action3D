@@ -30,6 +30,8 @@ public class Player : CharaBase, IDamage
     void Start()
     {
         GameManager.Instance.PlayerData.Player = this;
+        GameManager.Instance.PlayerData.HP = HP;
+        GameManager.Instance.PlayerData.Power = Power;
 
         _state = GetComponent<StateMachine>();
         _anim = GetComponent<Animator>();
@@ -202,5 +204,12 @@ public class Player : CharaBase, IDamage
         yield return new WaitAnim(_anim);
         EndAnim = true;
         if (action != null) action.Invoke();
+    }
+
+    public override void SetParam(int hp, int power, float speed, int level)
+    {
+        base.SetParam(hp, power, speed, level);
+        GameManager.Instance.PlayerData.HP = HP;
+        GameManager.Instance.PlayerData.Power = Power;
     }
 }
