@@ -15,3 +15,5 @@ MonoBehaviour:
   _datas:
   - ID: 0
     Text: "Field\u306ELevel\u304C\u4E0A\u304C\u308A\u307E\u3057\u305F\u3002"
+  - ID: 1
+    Text: "Player\u306ELevel\u304C\u4E0A\u304C\u308A\u307E\u3057\u305F\u3002"

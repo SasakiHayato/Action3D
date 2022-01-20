@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 using DG.Tweening;
 
 public class LogCountrol : UIWindowParent.UIWindowChild
@@ -16,6 +17,7 @@ public class LogCountrol : UIWindowParent.UIWindowChild
     bool _isActive = false;
     Vector2 _savePos;
     float _timer;
+    List<string> _textList = new List<string>();
 
     public override void SetUp()
     {
@@ -33,8 +35,17 @@ public class LogCountrol : UIWindowParent.UIWindowChild
         _timer += Time.deltaTime;
         if (_timer > _displayTime)
         {
-            Init();
-            _panelRect.DOAnchorPosY(_offSetPos.y, 0.2f).SetEase(Ease.Linear);
+            _textList.Remove(_textList.First());
+            if (_textList.Count <= 0)
+            {
+                Init();
+                _panelRect.DOAnchorPosY(_offSetPos.y, 0.2f).SetEase(Ease.Linear);
+            }
+            else
+            {
+                _txt.text = _textList.First();
+                _timer = 0;
+            }
         }
     }
 
@@ -43,17 +54,19 @@ public class LogCountrol : UIWindowParent.UIWindowChild
         _timer = 0;
         _isActive = false;
         _txt.text = "";
+        _textList = new List<string>();
     }
 
     public override void CallBack(object[] data)
     {
         int id = (int)data[0];
-        _txt.text = _textDataBase.GetDatas[id].Text;
+        _textList.Add(_textDataBase.GetDatas[id].Text);
         if (!_isActive)
         {
             _panelRect.DOAnchorPosY(_savePos.y, 0.2f)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => _isActive = true);
+            _txt.text = _textList.First();
         }
     }
 }

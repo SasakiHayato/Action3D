@@ -71,7 +71,7 @@ public class GameManager
     {
         if (currentExp >= PlayerData.NextLevelExp)
         {
-            Debug.Log("LevelUp");
+            UIManager.CallBack(UIType.Game, 3, new object[] { 1 });
             int set = currentExp - PlayerData.NextLevelExp;
             PlayerData.NextLevelExp += 100;
 
@@ -79,7 +79,6 @@ public class GameManager
             int power = PlayerData.Player.Power;
             float speed = PlayerData.Player.Speed;
             int level = PlayerData.Player.Level + 1;
-            Debug.Log(level);
             PlayerData.Player.SetParam(hp, power, speed, level);
 
             AddExp(PlayerData.CurrentExp = set);
