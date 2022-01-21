@@ -24,7 +24,7 @@ public class EnemyIdle : IAction
 
         if (_useGravity) _enemyBase.MoveDir = new Vector3(0, 1, 0);
         else _enemyBase.MoveDir = Vector3.zero;
-
+        
         _check = true;
     }
 

@@ -54,12 +54,6 @@ public class FieldManagerEditor : Editor
         fieldManager.FieldData.DebugBool = EditorGUILayout.Toggle($"DebugBool", fieldManager.FieldData.DebugBool);
         fieldManager.FieldData.DebugLevel = EditorGUILayout.IntField("DebugLevel", fieldManager.FieldData.DebugLevel);
         EditorGUILayout.EndVertical();
-
-        if (GUILayout.Button("Apply"))
-        {
-            fieldManager.FieldData.SetDebugLevel = fieldManager.FieldData.DebugLevel;
-            Debug.Log("Apply");
-        }
     }
 }
 #endif

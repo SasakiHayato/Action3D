@@ -6,17 +6,21 @@ using BehaviorAI;
 public class CheckMyHP : IConditional
 {
     [SerializeField] int _effectHP;
-    bool _check = false;
+    
     CharaBase _charaBase = null;
+    bool _isCalled = false;
 
     public bool Check()
     {
         if (_charaBase == null) _charaBase = Target.GetComponent<CharaBase>();
 
-        if (_charaBase.HP < _effectHP) _check = true;
-        else _check = false;
-
-        return _check;
+        if (_charaBase.HP < _effectHP && !_isCalled)
+        {
+            
+            _isCalled = true;
+            return true;
+        }
+        else return false;
     }
 
     public GameObject Target { private get; set; }

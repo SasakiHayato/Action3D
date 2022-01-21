@@ -597,9 +597,9 @@ GameObject:
   - component: {fileID: 7855651570499798834}
   - component: {fileID: 900323383335832816}
   - component: {fileID: 2085413351539145759}
-  - component: {fileID: 8058412245341690288}
   - component: {fileID: 3508742201701946879}
   - component: {fileID: -1307395940050874917}
+  - component: {fileID: 5372611488587476834}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -758,51 +758,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1f299fdb4058349bccaba39488677c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 900
-  _speed: 8
+  _hp: 0
+  _power: 0
+  _speed: 0
+  _level: 0
   _knockBackPower: 0.5
   _knockBackTime: 0.4
-  _tree: {fileID: 8058412245341690288}
---- !u!114 &8058412245341690288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4693462203747661893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d2c81351e2be894c8977d9036cbe44b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selector:
-  - Datas:
-    - Conditional:
-        id: 0
-      Action:
-        id: 1
-    - Conditional:
-        id: 2
-      Action:
-        id: 3
-  references:
-    version: 1
-    00000000:
-      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _range: 20
-    00000001:
-      type: {class: RunStateMachine, ns: , asm: Assembly-CSharp}
-      data:
-        _state: {fileID: -1307395940050874917}
-    00000002:
-      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _range: 50
-    00000003:
-      type: {class: MoveTowardsPlayer, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: Idle
+  _tree: {fileID: 5372611488587476834}
 --- !u!114 &3508742201701946879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,7 +795,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stateList:
   - id: 0
-  - id: 1
   _isRunning: 0
   references:
     version: 1
@@ -841,11 +802,72 @@ MonoBehaviour:
       type: {class: StateNone, ns: , asm: Assembly-CSharp}
       data:
         StateID: -1
-        _nextState: 1
-    00000001:
-      type: {class: EnemyMove, ns: , asm: Assembly-CSharp}
+        _nextState: -1
+--- !u!114 &5372611488587476834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4693462203747661893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2c81351e2be894c8977d9036cbe44b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selector:
+  - Datas:
+    - Conditionals:
+      - id: 0
+      - id: 1
+      Action:
+        id: 2
+    - Conditionals:
+      - id: 3
+      - id: 4
+      Action:
+        id: 5
+    - Conditionals:
+      - id: 6
+      Action:
+        id: 7
+  references:
+    version: 1
+    00000000:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        StateID: 1
+        _range: 30
+    00000001:
+      type: {class: CheckStateRun, ns: , asm: Assembly-CSharp}
+      data:
+        _setBool: 1
+    00000002:
+      type: {class: RunStateMachine, ns: , asm: Assembly-CSharp}
+      data:
+        _state: {fileID: -1307395940050874917}
+    00000003:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 100
+    00000004:
+      type: {class: CheckStateRun, ns: , asm: Assembly-CSharp}
+      data:
+        _setBool: 0
+    00000005:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyYPos: 0
+        _toWardsPlayer: 1
+    00000006:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 10000
+    00000007:
+      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _idleAnimName: 
+        _useGravity: 1
 --- !u!1 &4693462204042713346
 GameObject:
   m_ObjectHideFlags: 0

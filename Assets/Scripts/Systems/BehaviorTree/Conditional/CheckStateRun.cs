@@ -5,7 +5,8 @@ using BehaviorAI;
 
 public class CheckStateRun : IConditional
 {
-    bool _check = false;
+    [SerializeField] bool _checkBool;
+    
     StateMachine _state = null;
     public GameObject Target { private get; set; }
 
@@ -13,9 +14,16 @@ public class CheckStateRun : IConditional
     {
         if (_state == null) _state = Target.GetComponent<StateMachine>();
 
-        if (_state.IsRunning) _check = false;
-        else _check = true;
-
-        return _check;
+        if (_checkBool)
+        {
+            if (_state.IsRunning) return true;
+            else return false;
+        }
+        else
+        {
+            if (_state.IsRunning) return false;
+            else return true;
+        }
+        
     }
 }
