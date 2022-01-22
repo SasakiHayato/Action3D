@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IDamage
 {
-    void GetDamage(int damage);
+    void GetDamage(int damage, AttackType type);
 }
 
 public interface IFieldEnemy

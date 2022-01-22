@@ -309,7 +309,7 @@ namespace AttackSetting
             object[] datas = { _targetWeapon, _anim, obj, _parent, _data.KnockBackData };
             EffectData effect = null;
             EffectSetter.Set(effect, _data.Effects, datas).Invoke();
-            iDamage.GetDamage(_data.Power * _charaBase.Power);
+            iDamage.GetDamage(_data.Power * _charaBase.Power, AttackType.Sword);
         }
 
         /// <summary> AnimEvent‚Å‚ÌŒÄ‚Ño‚µ </summary>

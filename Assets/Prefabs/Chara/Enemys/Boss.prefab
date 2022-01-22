@@ -795,6 +795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stateList:
   - id: 0
+  - id: 1
   _isRunning: 0
   references:
     version: 1
@@ -802,7 +803,13 @@ MonoBehaviour:
       type: {class: StateNone, ns: , asm: Assembly-CSharp}
       data:
         StateID: -1
-        _nextState: -1
+        _nextState: 1
+    00000001:
+      type: {class: BossMove, ns: , asm: Assembly-CSharp}
+      data:
+        StateID: 1
+        _towardDist: 6
+        _moveRate: 2
 --- !u!114 &5372611488587476834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,7 +842,7 @@ MonoBehaviour:
     00000000:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 7
+        _range: 10
     00000001:
       type: {class: RunStateMachine, ns: , asm: Assembly-CSharp}
       data:

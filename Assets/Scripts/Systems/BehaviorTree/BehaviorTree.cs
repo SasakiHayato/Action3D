@@ -198,9 +198,7 @@ namespace BehaviorAI
                         _currentActionID++;
                     }
                     else
-                    {
                         iB.Call(a[_currentActionID]);
-                    }
                 }
                 else
                 {

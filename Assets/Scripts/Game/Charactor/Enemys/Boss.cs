@@ -30,8 +30,9 @@ public class Boss : EnemyBase, IDamage
         Character.Move(set * Time.deltaTime);
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(int damage, AttackType type)
     {
+        if (!_state.IsRunning) return;
         HP -= damage;
         if (HP < 0) base.Dead(gameObject);
     }

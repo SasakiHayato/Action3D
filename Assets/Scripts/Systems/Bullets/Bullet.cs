@@ -84,7 +84,7 @@ public class Bullet : MonoBehaviour, IDamage
         }
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(int damage, AttackType type)
     {
         _callBack.Invoke(gameObject);
     }
@@ -146,14 +146,14 @@ public class Bullet : MonoBehaviour, IDamage
             case Parent.Player:
                 if (other.CompareTag("Enemy"))
                 {
-                    other.GetComponent<IDamage>().GetDamage(_power * _powerRate);
+                    other.GetComponent<IDamage>().GetDamage(_power * _powerRate, AttackType.Bullets);
                     _callBack.Invoke(gameObject);
                 }
                 break;
             case Parent.Enemy:
                 if (other.CompareTag("Player"))
                 {
-                    other.GetComponent<IDamage>().GetDamage(_power * _powerRate);
+                    other.GetComponent<IDamage>().GetDamage(_power * _powerRate, AttackType.Bullets);
                     other.GetComponent<Player>().KnockBack(transform.forward);
                     _callBack.Invoke(gameObject);
                 }

@@ -14,7 +14,7 @@ public class CubeEnemy : EnemyBase, IDamage
         Character.Move(set * Time.deltaTime);
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(int damage, AttackType type)
     {
         HP -= damage;
         if (HP <= 0) base.Dead(gameObject);

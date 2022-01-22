@@ -156,7 +156,7 @@ public class Player : CharaBase, IDamage
             GameManager.Instance.IsLockOn = false;
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(int damage, AttackType type)
     {
         if (_state.GetCurrentState == StateMachine.StateType.Avoid)
         {

@@ -26,7 +26,7 @@ public class Skeleton : EnemyBase, IDamage
         Character.Move(set * Time.deltaTime);
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(int damage, AttackType type)
     {
         Sounds.SoundMaster.Request(transform, "Damage", 2);
         _isDamage = true;
