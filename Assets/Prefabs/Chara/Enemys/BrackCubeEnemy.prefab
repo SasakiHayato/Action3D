@@ -176,22 +176,56 @@ MonoBehaviour:
       - id: 0
       Actions:
       - id: 1
+    - Conditionals:
       - id: 2
+      Actions:
+      - id: 3
+    - Conditionals:
+      - id: 4
+      Actions:
+      - id: 5
+    - Conditionals:
+      - id: 6
+      Actions:
+      - id: 7
   references:
     version: 1
     00000000:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 10000
+        _range: 15
     00000001:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyYPos: 1
+        _toWardsPlayer: 0
+    00000002:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 30
+    00000003:
       type: {class: ShotBulletDeviation, ns: , asm: Assembly-CSharp}
       data:
         _speed: 3
         _coolTime: 0.2
         _bulletID: 1
-    00000002:
-      type: {class: ShotBulletLockon, ns: , asm: Assembly-CSharp}
+    00000004:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _speed: 1
-        _coolTime: 0.4
-        _bulletID: 0
+        _range: 60
+    00000005:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyYPos: 1
+        _toWardsPlayer: 1
+    00000006:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 100000
+    00000007:
+      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _idleAnimName: 
+        _useGravity: 0
