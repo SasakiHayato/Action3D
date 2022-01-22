@@ -56,6 +56,7 @@ namespace AttackSetting
             public string AnimName;
             public int GroupID;
             public int Power;
+            public bool IsEndCombo;
             public KnockBackData KnockBackData;
             public float NextAcceptTime;
             public AudioClip SE;
@@ -77,7 +78,7 @@ namespace AttackSetting
         bool _isRequest = true;
         bool _attacking = false;
         bool _nextRequest = false;
-
+        
         int _findIndex = 0;
 
         int _saveGroupID = 0;
@@ -232,7 +233,7 @@ namespace AttackSetting
                     return;
                 }
             }
-
+            
             InitParam();
             for (int i = _findIndex; i < _attacks.Count; i++)
             {
@@ -250,6 +251,11 @@ namespace AttackSetting
             if (_nextRequest) IsNextRequest = true;
         }
 
+        public bool GetEndCombo()
+        {
+            if (_data == null) return false;
+            else return _data.IsEndCombo;
+        }
 
         /// <summary> ïêäÌÇÃïœçX </summary>
         /// <param name="set">NextWeapon</param>

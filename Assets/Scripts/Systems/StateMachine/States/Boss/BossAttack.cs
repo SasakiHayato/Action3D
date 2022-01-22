@@ -40,16 +40,15 @@ public class BossAttack : StateMachine.State
     {
         Vector3 mPos = Target.transform.position;
         float dist = Vector3.Distance(_player.transform.position, mPos);
-
+        
         if (!_attack.EndCurrentAnim)
         {
             return StateMachine.StateType.Attack;
         }
         else
         {
-            if (_attack.IsNextRequest)
+            if (_attack.IsNextRequest && !_attack.GetEndCombo())
             {
-                Debug.Log("IsNextRequest");
                 return Target.GetComponent<StateMachine>().RetuneState(StateMachine.StateType.Attack);
             }
             else
