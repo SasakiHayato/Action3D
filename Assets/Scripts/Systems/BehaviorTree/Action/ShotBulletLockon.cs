@@ -32,10 +32,11 @@ public class ShotBulletLockon : IAction
             int power = Target.GetComponent<CharaBase>().Power;
             obj.GetComponent<Bullet>()
                 .Shot(forward, _speed * 10, Bullet.Parent.Enemy, power);
+
+            _check = true;
         }
 
         _enemyBase.MoveDir = Vector3.zero;
-        _check = true;
     }
 
     public bool End() => _check;

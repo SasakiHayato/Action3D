@@ -9339,7 +9339,7 @@ PrefabInstance:
     - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
         type: 3}
       propertyPath: _spownDatas.Array.size
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
         type: 3}

@@ -18,3 +18,11 @@ public static class CharacterHelper
         character.enabled = true;
     }
 }
+
+public static class TranceformHelper
+{
+    public static RectTransform GetRect(this GameObject obj)
+    {
+        return obj.GetComponent<RectTransform>();
+    }
+}

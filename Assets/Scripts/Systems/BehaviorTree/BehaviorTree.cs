@@ -19,6 +19,8 @@ namespace BehaviorAI
     }
 
     // 別クラスで継承させて行動を決める
+    // Note : タスクが終了したタイミングでBoolをTrueにしてEnd()を返す
+    // Note : 別途でbool型の変数が必要
     public interface IAction
     {
         GameObject Target { set; }
@@ -26,7 +28,6 @@ namespace BehaviorAI
         bool End();
         bool Reset { set; }
     }
-
 
     public class BehaviorTree : MonoBehaviour
     {
@@ -39,20 +40,20 @@ namespace BehaviorAI
         }
 
         State _state = State.None;
-        [SerializeField] List<Selector> _selector = new List<Selector>();
+        [SerializeField] List<SelectorData> _selector = new List<SelectorData>();
 
         [System.Serializable]
-        public class Selector
+        public class SelectorData
         {
-            public List<Seqence> Datas = new List<Seqence>();
+            public List<SeqenceData> Datas = new List<SeqenceData>();
 
             [System.Serializable]
-            public class Seqence
+            public class SeqenceData
             {
                 [SerializeReference, SubclassSelector]
                 public List<IConditional> Conditionals;
                 [SerializeReference, SubclassSelector]
-                public IAction Action;
+                public List<IAction> Actions;
             }
         }
 
@@ -97,7 +98,7 @@ namespace BehaviorAI
             /// <param name="sq">自身の持つSequence</param>
             /// <param name="state">現在のState</param>
             /// <param name="t">対象のObject</param>
-            public void Set(List<Selector> st, SequenceNode sq, ref State state, GameObject t)
+            public void Set(List<SelectorData> st, SequenceNode sq, ref State state, GameObject t)
             {
                 ConditionalNode cN = new ConditionalNode();
                 cN.SetTarget = t;
@@ -131,7 +132,7 @@ namespace BehaviorAI
             /// <param name="st">対象のSelector</param>
             /// <param name="sq">Selectorに対するSequence</param>
             /// <param name="state">現在のState</param>
-            public void Set(Selector st, SequenceNode sq, ref State state)
+            public void Set(SelectorData st, SequenceNode sq, ref State state)
             {
                 for (int id = 0; id < st.Datas.Count; id++)
                 {
@@ -153,6 +154,7 @@ namespace BehaviorAI
         class SequenceNode
         {
             public int SequenceID { get; set; } = 0;
+            ActionNode _aN = new ActionNode();
 
             /// <summary>
             /// 保存したSequenceDataを走らせる
@@ -161,14 +163,13 @@ namespace BehaviorAI
             /// <param name="b">対象のIBehavior</param>
             /// <param name="s">現在のState</param>
             /// <param name="t">対象のObject</param>
-            public void Set(Selector.Seqence sq, IBehavior b, ref State s, GameObject t)
+            public void Set(SelectorData.SeqenceData sq, IBehavior b, ref State s, GameObject t)
             {
-                ActionNode aN = new ActionNode();
-                aN.SetTarget = t;
-                if (sq.Conditionals.All(e => e.Check())) aN.Set(sq.Action, b, ref s);
+                _aN.SetTarget = t;
+                if (sq.Conditionals.All(c => c.Check())) _aN.Set(sq.Actions, b, ref s);
                 else
                 {
-                    sq.Action.Reset = false;
+                    sq.Actions.All(a => a.Reset = false);
                     s = State.None;
                 }
             }
@@ -177,6 +178,7 @@ namespace BehaviorAI
         class ActionNode
         {
             public GameObject SetTarget { get; set; }
+            int _currentActionID = 0;
 
             /// <summary>
             /// TrueだったConditionalに対するActionを対象に返す
@@ -184,16 +186,27 @@ namespace BehaviorAI
             /// <param name="a">Conditionalに対するAction</param>
             /// <param name="iB">対象のIBehavior</param>
             /// <param name="state">現在のState</param>
-            public void Set(IAction a, IBehavior iB, ref State state)
+            public void Set(List<IAction> a, IBehavior iB, ref State state)
             {
-                a.Target = SetTarget;
-                if (a.End())
+                if (_currentActionID < a.Count())
                 {
-                    state = State.None;
-                    a.Reset = false;
+                    a[_currentActionID].Target = SetTarget;
+                    if (a[_currentActionID].End())
+                    {
+                        //　次のActionを設定
+                        a[_currentActionID].Reset = false;
+                        _currentActionID++;
+                    }
+                    else
+                    {
+                        iB.Call(a[_currentActionID]);
+                    }
                 }
                 else
-                    iB.Call(a);
+                {
+                    state = State.None;
+                    _currentActionID = 0;
+                }
             }
         }
     }

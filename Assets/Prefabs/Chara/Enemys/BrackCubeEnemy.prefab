@@ -172,60 +172,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selector:
   - Datas:
-    - Conditional:
-        id: 0
-      Action:
-        id: 1
-    - Conditional:
-        id: 2
-      Action:
-        id: 3
-    - Conditional:
-        id: 4
-      Action:
-        id: 5
-    - Conditional:
-        id: 6
-      Action:
-        id: 7
+    - Conditionals:
+      - id: 0
+      Actions:
+      - id: 1
+      - id: 2
   references:
     version: 1
     00000000:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 15
+        _range: 10000
     00000001:
-      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: 
-        _applyYPos: 1
-        _toWardsPlayer: 0
-    00000002:
-      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _range: 30
-    00000003:
       type: {class: ShotBulletDeviation, ns: , asm: Assembly-CSharp}
       data:
         _speed: 3
         _coolTime: 0.2
         _bulletID: 1
-    00000004:
-      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+    00000002:
+      type: {class: ShotBulletLockon, ns: , asm: Assembly-CSharp}
       data:
-        _range: 60
-    00000005:
-      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: 
-        _applyYPos: 1
-        _toWardsPlayer: 1
-    00000006:
-      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _range: 1000000
-    00000007:
-      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
-      data:
-        _idleAnimName: 
-        _useGravity: 0
+        _speed: 1
+        _coolTime: 0.4
+        _bulletID: 0

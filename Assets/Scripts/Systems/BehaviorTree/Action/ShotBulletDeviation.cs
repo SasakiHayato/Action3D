@@ -37,11 +37,12 @@ public class ShotBulletDeviation : IAction
 
             obj.GetComponent<Bullet>()
                 .Shot(set, speed, Bullet.Parent.Enemy, Target.GetComponent<CharaBase>().Power);
+
+            _check = true;
         }
 
         _enemyBase.MoveDir = Vector3.zero;
         _beforePos = _player.transform.position;
-        _check = true;
     }
 
     public bool End() => _check;
