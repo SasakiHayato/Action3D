@@ -6,13 +6,26 @@ using System;
 public class BossMove : StateMachine.State
 {
     [SerializeField] float _towardDist;
+    [SerializeField] float _changeStateDist;
     [SerializeField] float _moveRate;
 
+    enum DirType
+    {
+        Right = 0,
+        Left = 1,
+
+        None = -1,
+    }
+
+    DirType _dirType = DirType.None;
     GameObject _player = null;
     
     public override void Entry(StateMachine.StateType beforeType)
     {
         if (_player == null) _player = GameObject.FindWithTag("Player");
+        int setval = UnityEngine.Random.Range(0, 2);
+        _dirType = (DirType)Enum.ToObject(typeof(DirType), setval);
+        Debug.Log(_dirType);
     }
 
     public override void Run(out Vector3 move)
@@ -23,16 +36,27 @@ public class BossMove : StateMachine.State
         if (_towardDist < dist)
         {
             move = (_player.transform.position - mPos).normalized / _moveRate;
-            move.y = 1;
         }
         else
         {
-            move = Vector3.zero;
+            float moveRate = _moveRate * 4;
+            if (_dirType == DirType.Right) move = Target.transform.right / moveRate;
+            else move = (Target.transform.right * -1) / moveRate;
         }
+
+        move.y = 1;
     }
 
     public override StateMachine.StateType Exit()
     {
-        return StateMachine.StateType.Move;
+        Vector3 mPos = Target.transform.position;
+        float dist = Vector3.Distance(_player.transform.position, mPos);
+
+        if (_changeStateDist > dist)
+        {
+            Debug.Log("ChangeState");
+            return StateMachine.StateType.None;
+        }
+        else return StateMachine.StateType.Move;
     }
 }

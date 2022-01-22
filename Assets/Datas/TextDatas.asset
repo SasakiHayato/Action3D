@@ -17,3 +17,5 @@ MonoBehaviour:
     Text: "Field\u306ELevel\u304C\u4E0A\u304C\u308A\u307E\u3057\u305F\u3002"
   - ID: 1
     Text: "Player\u306ELevel\u304C\u4E0A\u304C\u308A\u307E\u3057\u305F\u3002"
+  - ID: 2
+    Text: "Error : Target\u304C\u89E3\u9664\u3055\u308C\u307E\u3057\u305F\u3002"

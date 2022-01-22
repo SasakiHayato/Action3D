@@ -808,7 +808,8 @@ MonoBehaviour:
       type: {class: BossMove, ns: , asm: Assembly-CSharp}
       data:
         StateID: 1
-        _towardDist: 6
+        _towardDist: 8
+        _changeStateDist: 6
         _moveRate: 2
 --- !u!114 &5372611488587476834
 MonoBehaviour:
