@@ -25,7 +25,6 @@ public class BossMove : StateMachine.State
         if (_player == null) _player = GameObject.FindWithTag("Player");
         int setval = UnityEngine.Random.Range(0, 2);
         _dirType = (DirType)Enum.ToObject(typeof(DirType), setval);
-        Debug.Log(_dirType);
     }
 
     public override void Run(out Vector3 move)
@@ -54,8 +53,7 @@ public class BossMove : StateMachine.State
 
         if (_changeStateDist > dist)
         {
-            Debug.Log("ChangeState");
-            return StateMachine.StateType.None;
+            return StateMachine.StateType.Attack;
         }
         else return StateMachine.StateType.Move;
     }

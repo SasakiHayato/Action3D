@@ -1,19 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AttackSetting;
 
 public class Boss : EnemyBase, IDamage
 {
     bool _isBackKnock = false;
 
-    AttackSettings _attack;
     StateMachine _state;
     GameObject _player;
 
     void Start()
     {
-        _attack = GetComponent<AttackSettings>();
         _state = GetComponent<StateMachine>();
 
         _player = GameObject.FindWithTag("Player");

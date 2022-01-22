@@ -780,7 +780,40 @@ MonoBehaviour:
   _parent: {fileID: 4693462203747661893}
   _requestCoolTime: 0
   _targetWeapon: {fileID: 4693462204042713357}
-  _attacks: []
+  _attacks:
+  - AnimName: WeakAttack
+    GroupID: 0
+    Power: 0
+    KnockBackData:
+      Power: 1
+      Type: 0
+    NextAcceptTime: 1
+    SE: {fileID: 0}
+    SEVol: 0
+    Action: 0
+    Effects: 0000000002000000
+  - AnimName: WeakAttack2
+    GroupID: 0
+    Power: 0
+    KnockBackData:
+      Power: 1
+      Type: 0
+    NextAcceptTime: 1
+    SE: {fileID: 0}
+    SEVol: 0
+    Action: 0
+    Effects: 0000000002000000
+  - AnimName: WeakAttack3
+    GroupID: 0
+    Power: 0
+    KnockBackData:
+      Power: 5
+      Type: 0
+    NextAcceptTime: 1
+    SE: {fileID: 0}
+    SEVol: 0
+    Action: 0
+    Effects: 000000000000000003000000
 --- !u!114 &-1307395940050874917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,6 +829,7 @@ MonoBehaviour:
   _stateList:
   - id: 0
   - id: 1
+  - id: 2
   _isRunning: 0
   references:
     version: 1
@@ -811,6 +845,13 @@ MonoBehaviour:
         _towardDist: 8
         _changeStateDist: 6
         _moveRate: 2
+    00000002:
+      type: {class: BossAttack, ns: , asm: Assembly-CSharp}
+      data:
+        StateID: 3
+        _moveTime: 0.1
+        _moveSpeed: 0.5
+        _farDist: 5
 --- !u!114 &5372611488587476834
 MonoBehaviour:
   m_ObjectHideFlags: 0
