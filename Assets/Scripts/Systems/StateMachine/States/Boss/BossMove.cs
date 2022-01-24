@@ -30,6 +30,7 @@ public class BossMove : StateMachine.State
         _dirType = (DirType)Enum.ToObject(typeof(DirType), setval);
 
         _stateType = beforeType;
+        Debug.Log($"Before {beforeType}");
     }
 
     public override void Run(out Vector3 move)

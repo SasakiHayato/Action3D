@@ -108,7 +108,7 @@ public class Bullet : MonoBehaviour, IDamage
     {
         _id = data.ID;
         _power = data.Power;
-
+        
         _rb = GetComponent<Rigidbody>();
         _rb.useGravity = false;
         _callBack += callBack;

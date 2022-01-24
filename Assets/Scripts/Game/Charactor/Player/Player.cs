@@ -170,7 +170,10 @@ public class Player : CharaBase, IDamage
         }
 
         if (_attack.IsCounter) return;
+        if (type == AttackType.None) return;
+
         Sounds.SoundMaster.Request(transform, "Damage", 0);
+
         HP -= damage;
         if (HP <= 0)
         {

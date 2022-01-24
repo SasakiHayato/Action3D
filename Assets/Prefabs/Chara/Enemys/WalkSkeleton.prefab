@@ -722,6 +722,7 @@ MonoBehaviour:
   - AnimName: SkeletonAttack
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 1
       Type: 0
@@ -895,6 +896,7 @@ GameObject:
   - component: {fileID: 617993250238657558}
   - component: {fileID: 4841142406442941461}
   - component: {fileID: 1691012452239464673}
+  - component: {fileID: 1493395736839747242}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -996,6 +998,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.03, y: 0.13, z: -0.03}
   m_Center: {x: -0.000000051131792, y: -0.038812906, z: 0.0025102273}
+--- !u!114 &1493395736839747242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3305584495784071643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9482eb878c359f47b8cfab997e7071d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _avoidDist: 5.5
 --- !u!1 &3440413924755436782
 GameObject:
   m_ObjectHideFlags: 0

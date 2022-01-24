@@ -783,7 +783,7 @@ MonoBehaviour:
   _attacks:
   - AnimName: WeakAttack
     GroupID: 0
-    Power: 0
+    Power: 10
     IsEndCombo: 0
     KnockBackData:
       Power: 1
@@ -795,7 +795,7 @@ MonoBehaviour:
     Effects: 0000000002000000
   - AnimName: WeakAttack2
     GroupID: 0
-    Power: 0
+    Power: 10
     IsEndCombo: 0
     KnockBackData:
       Power: 1
@@ -807,7 +807,7 @@ MonoBehaviour:
     Effects: 0000000002000000
   - AnimName: WeakAttack3
     GroupID: 0
-    Power: 0
+    Power: 30
     IsEndCombo: 1
     KnockBackData:
       Power: 5
@@ -816,7 +816,7 @@ MonoBehaviour:
     SE: {fileID: 0}
     SEVol: 0
     Action: 0
-    Effects: 000000000000000003000000
+    Effects: 000000000200000003000000
 --- !u!114 &-1307395940050874917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,6 +861,8 @@ MonoBehaviour:
       type: {class: BossAvoid, ns: , asm: Assembly-CSharp}
       data:
         StateID: 2
+        _avoidTime: 0.02
+        _speed: 6
 --- !u!114 &5372611488587476834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,13 +883,20 @@ MonoBehaviour:
       - id: 1
     - Conditionals:
       - id: 2
-      Actions:
       - id: 3
-      - id: 4
-    - Conditionals:
-      - id: 5
       Actions:
+      - id: 4
+      - id: 5
+    - Conditionals:
       - id: 6
+      - id: 7
+      Actions:
+      - id: 8
+      - id: 9
+    - Conditionals:
+      - id: 10
+      Actions:
+      - id: 11
   references:
     version: 1
     00000000:
@@ -904,21 +913,43 @@ MonoBehaviour:
       data:
         _range: 60
     00000003:
+      type: {class: CheckStateRun, ns: , asm: Assembly-CSharp}
+      data:
+        _checkBool: 0
+    00000004:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         _animName: 
         _applyYPos: 0
         _toWardsPlayer: 1
-    00000004:
+    00000005:
       type: {class: RunStateMachine, ns: , asm: Assembly-CSharp}
       data:
         _state: {fileID: -1307395940050874917}
         _isRun: 0
-    00000005:
+    00000006:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 10000
-    00000006:
+        _range: 61
+    00000007:
+      type: {class: CheckStateRun, ns: , asm: Assembly-CSharp}
+      data:
+        _checkBool: 0
+    00000008:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyYPos: 0
+        _toWardsPlayer: 1
+    00000009:
+      type: {class: RequestChangeState, ns: , asm: Assembly-CSharp}
+      data:
+        _stateType: -1
+    0000000A:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 100000
+    0000000B:
       type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
       data:
         _idleAnimName: 

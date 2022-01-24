@@ -28,6 +28,5 @@ public class PlayerIdle : StateMachine.State
     {
         if (_input != Vector2.zero) return StateMachine.StateType.Move;
         else return StateMachine.StateType.Idle;
-
     }
 }
