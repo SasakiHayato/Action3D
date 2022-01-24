@@ -598,6 +598,31 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2023762451983909151, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _stateList.Array.data[2]._speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023762451983909151, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _stateList.Array.data[2]._defSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023762451983909151, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _stateList.Array.data[2]._avoidTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023762451983909151, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _stateList.Array.data[2]._targetDist
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023762451983909151, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _stateList.Array.data[2]._isLockOnSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4808767650535583358, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: _attacks.Array.data[0].Power
