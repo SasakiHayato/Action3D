@@ -18,7 +18,6 @@ public class Boss : EnemyBase, IDamage
 
     void Update()
     {
-        Debug.Log(_state.GetCurrentState);
         SetKnockBack(ref _isBackKnock);
         Tree.Repeater(this);
         Rotate();

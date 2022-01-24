@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &404744536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CubeEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980940582174284826, guid: b8f0bef73a5b7454eb6a9afa5800e191,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7980940582174284827, guid: b8f0bef73a5b7454eb6a9afa5800e191,
         type: 3}

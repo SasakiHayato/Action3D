@@ -8,7 +8,7 @@ public class CmCotrol : MonoBehaviour
 {
     [SerializeField] float _rotateSpeed;
     [SerializeField] Vector3 _offSet = Vector3.zero;
-    [SerializeField] float _lockonCollection;
+    [SerializeField] float _lockonCollectionY;
     [SerializeField] float _maxAngle = 50;
     
     CinemachineVirtualCamera _vCam;
@@ -69,6 +69,6 @@ public class CmCotrol : MonoBehaviour
         float angleY = Mathf.Atan2(forward.z, forward.x) * Mathf.Rad2Deg;
         
         rotate = Quaternion.Euler
-            (0, ((angleY - 90) * -1) - _lockonCollection, 0).eulerAngles;
+            (0, ((angleY - 90) * -1) - _lockonCollectionY, 0).eulerAngles;
     }
 }

@@ -39,7 +39,7 @@ MonoBehaviour:
     Exp: 100
   - Name: Boss
     ID: 3
-    Prefab: {fileID: 4693462203747661893, guid: 4c756e23f7a5ac241bfbc12713c3b56e,
+    Prefab: {fileID: 8735183208793564310, guid: b6fc1984b06966048bcbea61a6d6cc72,
       type: 3}
     HP: 900
     Power: 0
