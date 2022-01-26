@@ -3,20 +3,27 @@ using UnityEngine;
 public struct Deviation
 {
     const float FleamRate = 60;
-
+    // tPos => Player
+    // tBeforePos => Playerの1F.later
+    // myPos => Enemy
+    // speed => Bulletの速度
     public Vector3 DeviationDir(Vector3 tPos, Vector3 myPos, Vector3 tBeforePos, float speed)
     {
-        float distance = Vector3.Distance(myPos, tPos);
-        // Bulletの到達時間
-        float t = distance / speed;
-
-        Vector3 targetDir = (tPos - tBeforePos).normalized;
+        float fps = 1 / Time.deltaTime;
+        // Bulletの到達時間　秒
+        float t = Vector3.Distance(myPos, tPos) / speed;
         
-        float tSpeed = Vector3.Distance(tPos, tBeforePos) * FleamRate;
+        // Playerの方向
+        Vector3 targetDir = (tPos - tBeforePos).normalized;
+
+        // Playerの1秒の速度
+        
+        float tSpeed = Vector3.Distance(tPos, tBeforePos) * fps;
+        
         // 予測位置
         Vector3 predictPos = tPos + (targetDir * tSpeed) * t;
-        Vector3 afterPos = predictPos - myPos;
+        if (predictPos == tPos) return (predictPos - myPos).normalized;
 
-        return afterPos.normalized;
+        return (predictPos - myPos).normalized;
     }
 }

@@ -347,6 +347,17 @@ public class @InputData : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""17959cbb-c63d-48ac-a34a-1000850f80c8"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""713d46bc-16f0-4c85-9640-8f3bf212cd1e"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
@@ -358,8 +369,30 @@ public class @InputData : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b3ccff14-864d-43c8-b595-c34f3d9c205c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeakAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9a149198-917f-4d17-a413-28c13f8763a3"",
                     ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StrengthAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e702da5-cce4-4920-8a7a-a90f0b8901f1"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -380,12 +413,56 @@ public class @InputData : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""9fa32d71-07d1-4d11-b079-70d8464763fa"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RockOn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""0ba410f2-0388-44d7-9dff-3463cf95fa4e"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Shot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90dd8649-ff2c-4914-a835-1414911ec6fe"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de69d23c-f25b-4105-8fe8-d72997e6793d"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05e67397-be44-418f-9dbd-020a290d7b84"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse;Touch"",
+                    ""action"": ""MoveCm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }

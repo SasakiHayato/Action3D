@@ -2,13 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-namespace BehaviorAI
+namespace NewBehaviorAI
 {
     // BehaviorAIを使うUserに継承させる
-    public interface IBehavior
+    public interface NewIBehavior
     {
         GameObject SetTarget();
-        void Call(IAction set);
     }
 
     // 別クラスで継承させて条件を決める 
@@ -29,9 +28,9 @@ namespace BehaviorAI
         bool Reset { set; }
     }
 
-    public class BehaviorTree : MonoBehaviour
+    public class NewBehaviourTree : MonoBehaviour
     {
-        enum State
+        public enum State
         {
             Run,
             Set,
@@ -39,17 +38,19 @@ namespace BehaviorAI
             None,
         }
 
-        State _state = State.None;
+        public static State TreeState { get; set; } = State.None;
+        
         [SerializeField] List<SelectorData> _selector = new List<SelectorData>();
 
         [System.Serializable]
         public class SelectorData
         {
-            public List<SeqenceData> Datas = new List<SeqenceData>();
-            
+            public List<SeqenceData> SequenceDatas = new List<SeqenceData>();
+
             [System.Serializable]
             public class SeqenceData
             {
+                public List<SelectorData> SelectData = new List<SelectorData>();
                 [SerializeReference, SubclassSelector]
                 public List<IConditional> Conditionals;
                 [SerializeReference, SubclassSelector]
@@ -65,28 +66,36 @@ namespace BehaviorAI
         /// </summary>
         /// <typeparam name="T">自身のIBehavior</typeparam>
         /// <param name="get">実行させる対象. this</param>
-        public void Repeater<T>(T get) where T : IBehavior
+        public void Repeater<T>(T get) where T : NewIBehavior
         {
-            GameObject t = get.SetTarget();
-            switch (_state)
+            switch (TreeState)
             {
                 case State.Run:
-                    _sqN.Set(_selector[_stN.GetID].Datas[_sqN.SequenceID], get, ref _state, t);
+                    _sqN.Set(_selector[_stN.GetID].SequenceDatas[_sqN.SequenceID]);
                     break;
                 case State.Set:
-                    _state = State.None;
+                    TreeState = State.None;
                     break;
                 case State.None:
-                    _stN = new SelectorNode();
-                    _sqN = new SequenceNode();
-                    _state = State.Set;
-                    _stN.Set(_selector, _sqN, ref _state, t);
+                    _stN = new SelectorNode(_selector, get.SetTarget());
+                    _sqN = new SequenceNode(get.SetTarget());
+                    TreeState = State.Set;
+                    _stN.Set(_sqN);
                     break;
             }
         }
 
         class SelectorNode
         {
+            // 初期化
+            public SelectorNode(List<SelectorData> st, GameObject t)
+            {
+                _selectorDatas = st;
+                _target = t;
+            }
+            List<SelectorData> _selectorDatas;
+            GameObject _target;
+
             // Note : 改善の余地あり. 現在は全て 0 を指定
             public int GetID { get => _selectorID; }
             int _selectorID = 0;
@@ -94,32 +103,31 @@ namespace BehaviorAI
             /// <summary>
             /// どこのConditionalを調べるかを決める
             /// </summary>
-            /// <param name="st">自身の持つSelecter</param>
             /// <param name="sq">自身の持つSequence</param>
-            /// <param name="state">現在のState</param>
-            /// <param name="t">対象のObject</param>
-            public void Set(List<SelectorData> st, SequenceNode sq, ref State state, GameObject t)
+            public void Set(SequenceNode sq)
             {
                 ConditionalNode cN = new ConditionalNode();
-                cN.SetTarget = t;
-                if (st.Count <= 0)
+                cN.SetTarget = _target;
+                if (_selectorDatas.Count <= 0)
                 {
                     Debug.LogError("データがありません");
                     return;
                 }
-                if (st.Count <= 1)
+                if (_selectorDatas.Count <= 1)
                 {
                     _selectorID = 0;
-                    cN.Set(st[0], sq, ref state);
+                    cN.Set(_selectorDatas[_selectorID], sq);
                 }
                 else
                 {
                     // 乱数設定 : Note 改善の余地あり
-                    int randomID = UnityEngine.Random.Range(0, st.Count);
+                    int randomID = Random.Range(0, _selectorDatas.Count);
                     _selectorID = randomID;
-                    cN.Set(st[randomID], sq, ref state);
+                    
                 }
             }
+
+
         }
 
         class ConditionalNode
@@ -131,28 +139,34 @@ namespace BehaviorAI
             /// </summary>
             /// <param name="st">対象のSelector</param>
             /// <param name="sq">Selectorに対するSequence</param>
-            /// <param name="state">現在のState</param>
-            public void Set(SelectorData st, SequenceNode sq, ref State state)
+            public void Set(SelectorData st, SequenceNode sq)
             {
-                for (int id = 0; id < st.Datas.Count; id++)
+                for (int id = 0; id < st.SequenceDatas.Count; id++)
                 {
-                    List<IConditional> c = st.Datas[id].Conditionals;
+                    List<IConditional> c = st.SequenceDatas[id].Conditionals;
                     c.ForEach(t => t.Target = SetTarget);
-                    
+
                     if (c.All(c => c.Check()))
                     {
-                        state = State.Run;
+                        TreeState = State.Run;
                         sq.SequenceID = id;
                         return;
                     }
                 }
 
-                state = State.None;
+                TreeState = State.None;
             }
         }
 
         class SequenceNode
         {
+            // 初期化
+            public SequenceNode(GameObject t)
+            {
+                _target = t;
+            }
+            GameObject _target;
+
             public int SequenceID { get; set; } = 0;
             ActionNode _aN = new ActionNode();
 
@@ -160,17 +174,14 @@ namespace BehaviorAI
             /// 保存したSequenceDataを走らせる
             /// </summary>
             /// <param name="sq">対象のSequenceData</param>
-            /// <param name="b">対象のIBehavior</param>
-            /// <param name="s">現在のState</param>
-            /// <param name="t">対象のObject</param>
-            public void Set(SelectorData.SeqenceData sq, IBehavior b, ref State s, GameObject t)
+            public void Set(SelectorData.SeqenceData sq)
             {
-                _aN.SetTarget = t;
-                if (sq.Conditionals.All(c => c.Check())) _aN.Set(sq.Actions, b, ref s);
+                _aN.SetTarget = _target;
+                if (sq.Conditionals.All(c => c.Check())) _aN.Set(sq.Actions);
                 else
                 {
                     sq.Actions.All(a => a.Reset = false);
-                    s = State.None;
+                    TreeState = State.None;
                 }
             }
         }
@@ -184,9 +195,7 @@ namespace BehaviorAI
             /// TrueだったConditionalに対するActionを対象に返す
             /// </summary>
             /// <param name="a">Conditionalに対するAction</param>
-            /// <param name="iB">対象のIBehavior</param>
-            /// <param name="state">現在のState</param>
-            public void Set(List<IAction> a, IBehavior iB, ref State state)
+            public void Set(List<IAction> a)
             {
                 if (_currentActionID < a.Count())
                 {
@@ -198,11 +207,11 @@ namespace BehaviorAI
                         _currentActionID++;
                     }
                     else
-                        iB.Call(a[_currentActionID]);
+                        a[_currentActionID].Execute();
                 }
                 else
                 {
-                    state = State.None;
+                    TreeState = State.None;
                     _currentActionID = 0;
                 }
             }

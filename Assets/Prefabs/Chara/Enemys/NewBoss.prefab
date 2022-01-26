@@ -398,7 +398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8735183208793564310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2136993, y: 1.397, z: 17.91}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 8735183208793995496}
@@ -556,23 +556,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selector:
   - Datas:
-    - Conditionals:
+    - Datas: []
+      Conditionals:
       - id: 0
       Actions:
       - id: 1
-    - Conditionals:
+    - Datas:
+      - Datas:
+        - Datas: []
+          Conditionals: []
+          Actions: []
+      Conditionals:
       - id: 2
       - id: 3
       Actions:
       - id: 4
       - id: 5
-    - Conditionals:
+    - Datas: []
+      Conditionals:
       - id: 6
       - id: 7
       Actions:
       - id: 8
       - id: 9
-    - Conditionals:
+    - Datas: []
+      Conditionals:
       - id: 10
       Actions:
       - id: 11
@@ -594,7 +602,7 @@ MonoBehaviour:
     00000003:
       type: {class: CheckStateRun, ns: , asm: Assembly-CSharp}
       data:
-        _checkBool: 0
+        _checkBool: 1
     00000004:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:

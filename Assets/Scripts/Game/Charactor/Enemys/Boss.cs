@@ -8,11 +8,10 @@ public class Boss : EnemyBase, IDamage
 
     StateMachine _state;
     GameObject _player;
-
+    
     void Start()
     {
         _state = GetComponent<StateMachine>();
-
         _player = GameObject.FindWithTag("Player");
     }
 

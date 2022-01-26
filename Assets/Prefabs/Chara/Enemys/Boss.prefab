@@ -934,7 +934,7 @@ MonoBehaviour:
     00000007:
       type: {class: CheckStateRun, ns: , asm: Assembly-CSharp}
       data:
-        _checkBool: 0
+        _checkBool: 1
     00000008:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
