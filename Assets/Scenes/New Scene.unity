@@ -309,51 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _treeDatas:
-  - Type: 1
-    CompsiteConditional:
-      id: 0
-    BrockDatas:
-    - QueueDatas:
-      - Conditionals:
-        - id: 1
-        Actions:
-        - id: 2
-      - Conditionals:
-        - id: 3
-        Actions:
-        - id: 4
-    - QueueDatas:
-      - Conditionals:
-        - id: 5
-        Actions:
-        - id: 6
-      - Conditionals:
-        - id: 7
-        Actions:
-        - id: 8
-  - Type: 0
-    CompsiteConditional:
-      id: 0
-    BrockDatas:
-    - QueueDatas:
-      - Conditionals:
-        - id: 1
-        Actions:
-        - id: 2
-      - Conditionals:
-        - id: 3
-        Actions:
-        - id: 4
-    - QueueDatas:
-      - Conditionals:
-        - id: 5
-        Actions:
-        - id: 6
-      - Conditionals:
-        - id: 7
-        Actions:
-        - id: 8
-  - Type: 0
+  - Type: 2
     CompsiteConditional:
       id: 0
     BrockDatas:
@@ -378,11 +334,13 @@ MonoBehaviour:
   references:
     version: 1
     00000000:
-      type: {class: , ns: , asm: }
+      type: {class: TestCondition, ns: , asm: Assembly-CSharp}
+      data:
+        _name: p
     00000001:
       type: {class: TestCondition, ns: , asm: Assembly-CSharp}
       data:
-        _name: h
+        _name: l
     00000002:
       type: {class: TestAction, ns: , asm: Assembly-CSharp}
       data:
@@ -775,7 +733,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992671743}
-  m_LocalRotation: {x: 0.28543288, y: 0.51241374, z: -0.18551938, w: 0.78837985}
+  m_LocalRotation: {x: 0.28543288, y: 0.51241374, z: -0.18551934, w: 0.7883799}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

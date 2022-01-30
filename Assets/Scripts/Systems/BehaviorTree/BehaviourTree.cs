@@ -102,7 +102,6 @@ namespace NewBehaviourTree
                         {
                             if (!_isSequence) _treeID++;
                             else _sequence.SetNextID();
-                            Debug.Log(_isSequence);
                             _conditional.Init();
                             TreeState = State.Set;
                         }
@@ -146,6 +145,23 @@ namespace NewBehaviourTree
                     _brockData = _sequence.GetBrockData(_treeDatas[_treeID].BrockDatas);
                     TreeState = State.Check;
                     return;
+                }
+            }
+
+            foreach (var tree in _treeDatas)
+            {
+                if (tree.Type == QueueType.CompsiteSelect
+                    && tree.CompsiteConditional.Check())
+                {
+                    Debug.Log("ss");
+                    _brockData = _selector.GetRandomBrock(tree.BrockDatas);
+                    TreeState = State.Check;
+                    return;
+                }
+                else if (tree.Type == QueueType.CompsiteSequence
+                         && tree.CompsiteConditional.Check())
+                {
+                    _brockData = _sequence.GetBrockData(tree.BrockDatas);
                 }
             }
         }
