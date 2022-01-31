@@ -1,14 +1,14 @@
 using UnityEngine;
-using BehaviorAI;
+using NewBehaviourTree;
 
-[RequireComponent(typeof(BehaviorTree))]
-public abstract class EnemyBase : CharaBase, IBehavior, IFieldEnemy
+[RequireComponent(typeof(BehaviourTree))]
+public abstract class EnemyBase : CharaBase, IFieldEnemy
 {
     [SerializeField] float _knockBackPower;
     [SerializeField] float _knockBackTime;
-    [SerializeField] BehaviorTree _tree;
+    [SerializeField] BehaviourTree _tree;
 
-    protected BehaviorTree Tree { get => _tree; }
+    protected BehaviourTree Tree { get => _tree; set { _tree = value; } }
     protected float GetKnockBackPower => _knockBackPower;
 
     public Vector3 MoveDir { protected get; set; } = new Vector3(0 ,1, 0);

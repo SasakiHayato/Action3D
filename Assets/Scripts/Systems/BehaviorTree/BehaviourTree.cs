@@ -75,11 +75,6 @@ namespace NewBehaviourTree
 
         bool _isSequence = false;
 
-        void Update()
-        {
-            Repeat();  
-        }
-
         public void Repeat()
         {
             switch (TreeState)
@@ -153,7 +148,6 @@ namespace NewBehaviourTree
                 if (tree.Type == QueueType.CompsiteSelect
                     && tree.CompsiteConditional.Check())
                 {
-                    Debug.Log("ss");
                     _brockData = _selector.GetRandomBrock(tree.BrockDatas);
                     TreeState = State.Check;
                     return;
@@ -162,6 +156,8 @@ namespace NewBehaviourTree
                          && tree.CompsiteConditional.Check())
                 {
                     _brockData = _sequence.GetBrockData(tree.BrockDatas);
+                    TreeState = State.Check;
+                    return;
                 }
             }
         }
@@ -237,8 +233,8 @@ namespace NewBehaviourTree
             {
                 _actionID = 0;
                 _actionCount = queue.Actions.Count;
-                queue.Actions.ForEach(a => a.SetUp());
                 queue.Actions.ForEach(a => a.Target = t);
+                queue.Actions.ForEach(a => a.SetUp());
             }
 
             public void Set(QueueData queue)

@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _treeDatas:
-  - Type: 2
+  - Type: 3
     CompsiteConditional:
       id: 0
     BrockDatas:
@@ -338,18 +338,18 @@ MonoBehaviour:
       data:
         _name: p
     00000001:
-      type: {class: TestCondition, ns: , asm: Assembly-CSharp}
+      type: {class: TestConditionB, ns: , asm: Assembly-CSharp}
       data:
-        _name: l
+        _check: 1
     00000002:
       type: {class: TestAction, ns: , asm: Assembly-CSharp}
       data:
-        _timer: 2
+        _timer: 0
         _debug: H
     00000003:
-      type: {class: TestCondition, ns: , asm: Assembly-CSharp}
+      type: {class: TestConditionB, ns: , asm: Assembly-CSharp}
       data:
-        _name: s
+        _check: 1
     00000004:
       type: {class: TestAction, ns: , asm: Assembly-CSharp}
       data:
@@ -733,8 +733,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992671743}
-  m_LocalRotation: {x: 0.28543288, y: 0.51241374, z: -0.18551934, w: 0.7883799}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.17171346, y: 0.5334128, z: -0.11160654, w: 0.8206883}
+  m_LocalPosition: {x: 1.0942159, y: -1.7111268, z: 0.48616195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 194195441}
@@ -1062,7 +1062,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195870639}
-  m_LocalRotation: {x: 0.27104604, y: 0.5157033, z: -0.17616855, w: 0.7934411}
+  m_LocalRotation: {x: 0.27104607, y: 0.5157034, z: -0.17616855, w: 0.79344106}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1413,7 +1413,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647763395}
-  m_LocalRotation: {x: 0.27104607, y: 0.5157034, z: -0.17616859, w: 0.7934411}
+  m_LocalRotation: {x: 0.27104607, y: 0.51570344, z: -0.17616859, w: 0.7934411}
   m_LocalPosition: {x: 0.5767374, y: 8.345396, z: -2.5644486}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

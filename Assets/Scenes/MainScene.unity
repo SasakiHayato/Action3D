@@ -571,6 +571,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7980940582174284804, guid: b8f0bef73a5b7454eb6a9afa5800e191,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7980940582174284826, guid: b8f0bef73a5b7454eb6a9afa5800e191,
         type: 3}
       propertyPath: m_Name
@@ -579,7 +584,7 @@ PrefabInstance:
     - target: {fileID: 7980940582174284826, guid: b8f0bef73a5b7454eb6a9afa5800e191,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7980940582174284827, guid: b8f0bef73a5b7454eb6a9afa5800e191,
         type: 3}
@@ -1212,6 +1217,76 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.data[0].Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.data[0].BrockDatas.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.data[0].BrockDatas.Array.data[0].QueueDatas.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.data[0].BrockDatas.Array.data[0].QueueDatas.Array.data[0].Actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.data[0].BrockDatas.Array.data[0].QueueDatas.Array.data[0].Actions.Array.data[0]
+      value: Assembly-CSharp MOve
+      objectReference: {fileID: 0}
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.data[0].BrockDatas.Array.data[0].QueueDatas.Array.data[0].Conditionals.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.data[0].BrockDatas.Array.data[0].QueueDatas.Array.data[0].Actions.Array.data[0].data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.data[0].BrockDatas.Array.data[0].QueueDatas.Array.data[0].Conditionals.Array.data[0]
+      value: Assembly-CSharp NewFind
+      objectReference: {fileID: 0}
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.data[0].BrockDatas.Array.data[0].QueueDatas.Array.data[0].Actions.Array.data[0]._animName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.data[0].BrockDatas.Array.data[0].QueueDatas.Array.data[0].Conditionals.Array.data[0].data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.data[0].BrockDatas.Array.data[0].QueueDatas.Array.data[0].Actions.Array.data[0]._applyYPos
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.data[0].BrockDatas.Array.data[0].QueueDatas.Array.data[0].Actions.Array.data[0]._toWardsPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1141633107709348880, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _treeDatas.Array.data[0].BrockDatas.Array.data[0].QueueDatas.Array.data[0].Conditionals.Array.data[0]._distance
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 254360335214392461, guid: cfa74ed22e0913b41b6628705e0172a3,
         type: 3}
       propertyPath: m_Name
@@ -1220,7 +1295,12 @@ PrefabInstance:
     - target: {fileID: 1541433764607956050, guid: cfa74ed22e0913b41b6628705e0172a3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1541433764607956063, guid: cfa74ed22e0913b41b6628705e0172a3,
+        type: 3}
+      propertyPath: _tree
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6444636797130875251, guid: cfa74ed22e0913b41b6628705e0172a3,
         type: 3}

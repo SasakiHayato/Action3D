@@ -9,7 +9,7 @@ public class CubeEnemy : EnemyBase, IDamage
     void Update()
     {
         SetKnockBack(ref _isKnockBack);
-        Tree.Repeater(this);
+        Tree.Repeat();
         Vector3 set = Speed * MoveDir;
         Character.Move(set * Time.deltaTime);
     }

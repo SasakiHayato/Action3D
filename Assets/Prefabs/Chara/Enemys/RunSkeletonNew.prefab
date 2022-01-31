@@ -198,12 +198,9 @@ GameObject:
   - component: {fileID: 1541433765836349652}
   - component: {fileID: 1541433764607956059}
   - component: {fileID: 1541433764607956060}
-  - component: {fileID: 1541433764607956061}
-  - component: {fileID: 1541433764607956062}
-  - component: {fileID: 1541433764607956063}
-  - component: {fileID: 1541433764607956049}
+  - component: {fileID: 3823471431669339477}
   m_Layer: 0
-  m_Name: RunSkeleton
+  m_Name: RunSkeletonNew
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +259,7 @@ CharacterController:
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.07, z: 0}
---- !u!114 &1541433764607956061
+--- !u!114 &3823471431669339477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -271,78 +268,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1541433764607956050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 932d504d328aeb1438e016c933b7b792, type: 3}
+  m_Script: {fileID: 11500000, guid: a332508eeaed51e4ab48a901769c545c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gravityScale: 1
-  _isReal: 0
-  _goundRayDir: {x: 0, y: 0, z: 0}
-  _offSet: {x: 0, y: 0, z: 0}
-  _mask:
-    serializedVersion: 2
-    m_Bits: 0
---- !u!114 &1541433764607956062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541433764607956050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97a52bfd51cc74f418ee4eb329e3728f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _count: 1
-  _initialVelocity: 0
-  _speed: 1
---- !u!114 &1541433764607956063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541433764607956050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ecfed23d5db2ad4b805d6f2bedcb3b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hp: 0
-  _power: 0
-  _speed: 0
-  _level: 0
-  _knockBackPower: 1
-  _knockBackTime: 0.4
-  _tree: {fileID: 0}
---- !u!114 &1541433764607956049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541433764607956050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11c336e4123f1b64d9ab2802787669c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parent: {fileID: 1541433764607956050}
-  _requestCoolTime: 1
-  _targetWeapon: {fileID: 1541433765520133809}
-  _attacks:
-  - AnimName: SkeletonAttack
-    GroupID: 0
-    Power: 1
-    IsEndCombo: 0
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 1
-    SE: {fileID: 0}
-    SEVol: 0
-    Action: 0
-    Effects: 0200000003000000
+  _treeDatas:
+  - Type: 1
+    CompsiteConditional:
+      id: 0
+    BrockDatas:
+    - QueueDatas:
+      - Conditionals: []
+        Actions: []
+      - Conditionals: []
+        Actions: []
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
 --- !u!1 &1541433764611268897
 GameObject:
   m_ObjectHideFlags: 0
