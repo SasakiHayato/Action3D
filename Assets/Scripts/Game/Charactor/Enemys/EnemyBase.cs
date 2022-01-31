@@ -1,5 +1,5 @@
 using UnityEngine;
-using NewBehaviourTree;
+using BehaviourAI;
 
 [RequireComponent(typeof(BehaviourTree))]
 public abstract class EnemyBase : CharaBase, IFieldEnemy

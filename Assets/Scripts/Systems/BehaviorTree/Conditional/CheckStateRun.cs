@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BehaviorAI;
+using BehaviourAI;
 
 public class CheckStateRun : IConditional
 {
     [SerializeField] bool _checkBool;
     
     StateMachine _state = null;
-    public GameObject Target { private get; set; }
+    public GameObject Target { get; set; }
 
     public bool Check()
     {

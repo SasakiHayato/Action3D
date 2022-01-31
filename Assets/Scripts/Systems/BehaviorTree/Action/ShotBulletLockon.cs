@@ -1,5 +1,5 @@
 using UnityEngine;
-using BehaviorAI;
+using BehaviourAI;
 
 public class ShotBulletLockon : IAction
 {
@@ -13,7 +13,7 @@ public class ShotBulletLockon : IAction
     GameObject _player = null;
     EnemyBase _enemyBase = null;
 
-    public void Execute()
+    public void SetUp()
     {
         if (_player == null)
         {
@@ -21,6 +21,11 @@ public class ShotBulletLockon : IAction
             _enemyBase = Target.GetComponent<EnemyBase>();
         }
 
+        _currentTime = 0;
+    }
+
+    public bool Execute()
+    {
         _currentTime += Time.deltaTime;
         if (_currentTime > _coolTime)
         {
@@ -33,13 +38,12 @@ public class ShotBulletLockon : IAction
             obj.GetComponent<Bullet>()
                 .Shot(forward, _speed * 10, Bullet.Parent.Enemy, power);
 
-            _check = true;
+            return true;
         }
 
         _enemyBase.MoveDir = Vector3.zero;
+        return false;
     }
 
-    public bool End() => _check;
-    public bool Reset { set { _check = value; } }
-    public GameObject Target { private get; set; }
+    public GameObject Target { get; set; }
 }

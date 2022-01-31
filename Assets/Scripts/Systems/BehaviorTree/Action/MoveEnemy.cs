@@ -1,5 +1,5 @@
 using UnityEngine;
-using BehaviorAI;
+using BehaviourAI;
 using AttackSetting;
 
 public class MoveEnemy : IAction
@@ -8,14 +8,13 @@ public class MoveEnemy : IAction
     [SerializeField] bool _applyYPos;
     [SerializeField] bool _toWardsPlayer;
 
-    bool _check = false;
     Animator _anim = null;
     EnemyBase _enemyBase = null;
     AttackSettings _attack;
 
     GameObject _player = null;
 
-    public void Execute()
+    public void SetUp()
     {
         if (_enemyBase == null)
         {
@@ -24,10 +23,13 @@ public class MoveEnemy : IAction
             _anim = Target.gameObject.GetComponent<Animator>();
             _player = GameObject.FindWithTag("Player");
         }
+    }
 
+    public bool Execute()
+    {
         if (_attack != null)
         {
-            if (!_attack.EndCurrentAnim) return;
+            if (!_attack.EndCurrentAnim) return true;
         }
 
         Vector3 dir = Vector3.zero;
@@ -44,7 +46,8 @@ public class MoveEnemy : IAction
         
         _enemyBase.MoveDir = dir;
         LookPlayer(dir);
-        _check = true;
+        Debug.Log($"Toward {_toWardsPlayer}");
+        return true;
     }
 
     void LookPlayer(Vector3 dir)
@@ -53,8 +56,5 @@ public class MoveEnemy : IAction
         Target.transform.rotation = Quaternion.LookRotation(forward);
     }
 
-    public bool End() => _check;
-    public bool Reset { set { _check = false; } }
-
-    public GameObject Target { private get; set; }
+    public GameObject Target { get; set; }
 }

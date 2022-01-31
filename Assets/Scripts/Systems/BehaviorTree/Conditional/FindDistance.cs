@@ -1,6 +1,6 @@
 using UnityEngine;
 
-using BehaviorAI;
+using BehaviourAI;
 
 public class FindDistance : IConditional
 {
@@ -17,5 +17,5 @@ public class FindDistance : IConditional
         else return false;
     }
 
-    public GameObject Target { private get; set; }
+    public GameObject Target { get; set; }
 }

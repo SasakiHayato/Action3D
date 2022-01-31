@@ -535,8 +535,8 @@ GameObject:
   - component: {fileID: 941701008408256702}
   - component: {fileID: 6440286998496788529}
   - component: {fileID: 3253592056411195766}
-  - component: {fileID: 8404223892927114743}
   - component: {fileID: 8309729996784240578}
+  - component: {fileID: 1990154733304016636}
   m_Layer: 0
   m_Name: WalkSkeleton
   m_TagString: Enemy
@@ -649,60 +649,7 @@ MonoBehaviour:
   _level: 0
   _knockBackPower: 2
   _knockBackTime: 0.4
-  _tree: {fileID: 8404223892927114743}
---- !u!114 &8404223892927114743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2448143286815395276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d2c81351e2be894c8977d9036cbe44b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selector:
-  - Datas:
-    - Conditionals:
-      - id: 0
-      Actions:
-      - id: 1
-    - Conditionals:
-      - id: 2
-      Actions:
-      - id: 3
-    - Conditionals:
-      - id: 4
-      Actions:
-      - id: 5
-  references:
-    version: 1
-    00000000:
-      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _range: 3.5
-    00000001:
-      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
-    00000002:
-      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _range: 50
-    00000003:
-      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: SkeletonWalk
-        _applyYPos: 0
-        _toWardsPlayer: 1
-    00000004:
-      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _range: 100000
-    00000005:
-      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
-      data:
-        _idleAnimName: Skeleton
-        _useGravity: 1
+  _tree: {fileID: 1990154733304016636}
 --- !u!114 &8309729996784240578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,6 +678,65 @@ MonoBehaviour:
     SEVol: 0
     Action: 0
     Effects: 0200000003000000
+--- !u!114 &1990154733304016636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448143286815395276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a332508eeaed51e4ab48a901769c545c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _treeDatas:
+  - Type: 1
+    CompsiteConditional:
+      id: 0
+    BrockDatas:
+    - QueueDatas:
+      - Conditionals:
+        - id: 1
+        Actions:
+        - id: 2
+      - Conditionals:
+        - id: 3
+        Actions:
+        - id: 4
+      - Conditionals:
+        - id: 5
+        Actions:
+        - id: 6
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
+    00000001:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 3.5
+    00000002:
+      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+    00000003:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 50
+    00000004:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: SkeletonWalk
+        _applyYPos: 0
+        _toWardsPlayer: 1
+    00000005:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 100000
+    00000006:
+      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _idleAnimName: Skeleton
+        _useGravity: 1
 --- !u!1 &2565751911822226107
 GameObject:
   m_ObjectHideFlags: 0

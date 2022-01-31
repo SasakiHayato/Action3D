@@ -1,5 +1,5 @@
 using UnityEngine;
-using BehaviorAI;
+using BehaviourAI;
 
 public class ShotBulletDeviation : IAction
 {
@@ -15,14 +15,19 @@ public class ShotBulletDeviation : IAction
     Vector3 _beforePos;
     Deviation _deviation = new Deviation();
 
-    public void Execute()
+    public void SetUp()
     {
         if (_player == null)
         {
             _player = GameObject.FindGameObjectWithTag("Player");
             _enemyBase = Target.GetComponent<EnemyBase>();
         }
-        
+
+        _currentTime = 0;
+    }
+
+    public bool Execute()
+    {
         _currentTime += Time.deltaTime;
         if (_currentTime > _coolTime)
         {
@@ -33,20 +38,20 @@ public class ShotBulletDeviation : IAction
 
             float speed = _speed * 10;
             Vector3 tPos = _player.transform.position;
-            //Vector3 set = _deviation.LinePrediction2(Target.transform.position, tPos, _beforePos, speed).normalized;
+            
             Vector3 set = _deviation.DeviationDir(tPos, Target.transform.position, _beforePos, speed);
 
             obj.GetComponent<Bullet>()
                 .Shot(set, speed, Bullet.Parent.Enemy, Target.GetComponent<CharaBase>().Power);
 
-            _check = true;
+            return true;
         }
 
         _enemyBase.MoveDir = Vector3.zero;
         _beforePos = _player.transform.position;
+        Debug.Log("aaaa");
+        return false;
     }
 
-    public bool End() => _check;
-    public bool Reset { set { _check = value; } }
-    public GameObject Target { private get; set; }
+    public GameObject Target { get; set; }
 }

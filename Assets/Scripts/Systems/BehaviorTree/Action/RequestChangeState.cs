@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BehaviorAI;
+using BehaviourAI;
 
 public class RequestChangeState : IAction
 {
@@ -11,14 +11,15 @@ public class RequestChangeState : IAction
     bool _check = false;
 
     public GameObject Target { get; set; }
-    public bool Reset { set { _check = value; } }
-
-    public void Execute()
+   
+    public void SetUp()
     {
         if (_state == null) _state = Target.GetComponent<StateMachine>();
-        _state.ChangeState(_stateType);
-        _check = true;
     }
 
-    public bool End() => _check;
+    public bool Execute()
+    {
+        _state.ChangeState(_stateType);
+        return true;
+    }
 }

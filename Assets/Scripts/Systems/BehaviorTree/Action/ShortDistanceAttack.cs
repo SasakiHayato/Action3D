@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BehaviorAI;
+using BehaviourAI;
 using AttackSetting;
 
 public class ShortDistanceAttack : IAction
@@ -10,24 +10,28 @@ public class ShortDistanceAttack : IAction
     AttackSettings _attack = null;
 
     bool _check = false;
-    public GameObject Target { private get; set; } 
+    public GameObject Target { get; set; } 
 
-    public void Execute()
+    public void SetUp()
     {
         if (_enemyBase == null)
         {
             _enemyBase = Target.GetComponent<EnemyBase>();
             _attack = Target.GetComponent<AttackSettings>();
         }
+    }
+
+    public bool Execute()
+    {
+        
         if (_attack.EndCurrentAnim)
         {
             _attack.Request(ActionType.WeakGround);
-            _check = true;
+            return  true;
         }
         
         _enemyBase.MoveDir = Vector3.zero;
-    }
 
-    public bool End() => _check;
-    public bool Reset { set { _check = value; } }
+        return false;
+    }
 }

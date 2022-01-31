@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-namespace NewBehaviourTree
+namespace BehaviourAI
 {
     public interface IConditional
     {
@@ -89,12 +89,15 @@ namespace NewBehaviourTree
                     if (_queueData != null)
                     {
                         _action = new ActionNade(_queueData, gameObject);
+                        _conditional.Init();
+                        
                         TreeState = State.Run;
                     }
                     else
                     {
-                        if(_brockData.QueueDatas.Count == _conditional.QueueID)
+                        if (_brockData.QueueDatas.Count == _conditional.QueueID)
                         {
+                            
                             if (!_isSequence) _treeID++;
                             else _sequence.SetNextID();
                             _conditional.Init();
@@ -242,7 +245,7 @@ namespace NewBehaviourTree
                 if(queue.Actions[_actionID].Execute())
                 {
                     _actionID++;
-                    if (_actionCount == _actionID) TreeState = State.Set;
+                    if (_actionCount == _actionID) TreeState = State.Check;
                 }
             }
 

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BehaviorAI;
+using BehaviourAI;
 
 public class CheckMyHP : IConditional
 {
@@ -23,5 +23,5 @@ public class CheckMyHP : IConditional
         else return false;
     }
 
-    public GameObject Target { private get; set; }
+    public GameObject Target { get; set; }
 }
