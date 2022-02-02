@@ -9,7 +9,6 @@ public class ShortDistanceAttack : IAction
     EnemyBase _enemyBase = null;
     AttackSettings _attack = null;
 
-    bool _check = false;
     public GameObject Target { get; set; } 
 
     public void SetUp()

@@ -606,9 +606,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a332508eeaed51e4ab48a901769c545c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _treeDatas: []
+  _treeDatas:
+  - Type: 3
+    BrockConditional:
+      id: 0
+    BrockDatas:
+    - BrockID: 0
+      QueueDatas:
+      - Conditionals:
+        - id: 1
+        Actions:
+        - id: 2
+        - id: 3
+      - Conditionals:
+        - id: 4
+        Actions:
+        - id: 5
+      - Conditionals:
+        - id: 6
+        Actions:
+        - id: 7
+  - Type: 3
+    BrockConditional:
+      id: 8
+    BrockDatas:
+    - BrockID: 0
+      QueueDatas:
+      - Conditionals:
+        - id: 9
+        Actions: []
   references:
     version: 1
+    00000000:
+      type: {class: CheckStateRun, ns: , asm: Assembly-CSharp}
+      data:
+        _checkBool: 0
+        _state: {fileID: 677512765028819556}
+    00000001:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 20
+    00000002:
+      type: {class: RunStateMachine, ns: , asm: Assembly-CSharp}
+      data:
+        _state: {fileID: 677512765028819556}
+        _isRun: 1
+    00000003:
+      type: {class: RequestChangeState, ns: , asm: Assembly-CSharp}
+      data:
+        _stateType: 1
+    00000004:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 60
+    00000005:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: Run_ver_B
+        _applyYPos: 0
+        _toWardsPlayer: 1
+    00000006:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 100000
+    00000007:
+      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _idleAnimName: BossIdle
+        _useGravity: 1
+    00000008:
+      type: {class: CheckStateRun, ns: , asm: Assembly-CSharp}
+      data:
+        _checkBool: 1
+        _state: {fileID: 677512765028819556}
+    00000009:
+      type: {class: , ns: , asm: }
 --- !u!1 &8735183208793564312
 GameObject:
   m_ObjectHideFlags: 0

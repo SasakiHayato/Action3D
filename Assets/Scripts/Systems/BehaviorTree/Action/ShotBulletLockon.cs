@@ -7,7 +7,6 @@ public class ShotBulletLockon : IAction
     [SerializeField] float _coolTime;
     [SerializeField] int _bulletID;
     
-    bool _check = false;
     float _currentTime = 0;
 
     GameObject _player = null;

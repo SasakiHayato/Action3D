@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -22,11 +21,11 @@ namespace BehaviourAI
     {
         enum QueueType
         {
-            Selector = 0,
-            Seqence = 1,
+            Selector,
+            Seqence,
 
-            CompsiteSelect = 2,
-            CompsiteSequence = 3,
+            ConditionSelect,
+            ConditionSequence,
         }
 
         [System.Serializable]
@@ -35,13 +34,17 @@ namespace BehaviourAI
             public QueueType Type;
 
             [SerializeReference, SubclassSelector]
-            public IConditional CompsiteConditional;
+            public IConditional BrockConditional;
 
             public List<BrockData> BrockDatas;
         }
 
         [System.Serializable]
-        class BrockData { public List<QueueData> QueueDatas; }
+        class BrockData 
+        {
+            public int BrockID;
+            public List<QueueData> QueueDatas;
+        }
 
         [System.Serializable]
         class QueueData
@@ -66,17 +69,26 @@ namespace BehaviourAI
         int _treeID = 0;
 
         SelectorNode _selector = new SelectorNode();
-        SequenceNede _sequence = new SequenceNede();
+        SequenceNode _sequence = new SequenceNode();
         ConditionalNode _conditional = new ConditionalNode();
-        ActionNade _action;
+        ActionNode _action;
 
         BrockData _brockData;
         QueueData _queueData;
 
+        TreeData _treeData;
         bool _isSequence = false;
 
         public void Repeat()
         {
+            if (_treeData != null && !_treeData.BrockConditional.Check())
+            {
+                _treeID++;
+                _treeData = null;
+                TreeState = State.Set;
+                return;
+            }
+
             switch (TreeState)
             {
                 case State.Run:
@@ -88,7 +100,7 @@ namespace BehaviourAI
                     _queueData = _conditional.Check(_brockData.QueueDatas, gameObject);
                     if (_queueData != null)
                     {
-                        _action = new ActionNade(_queueData, gameObject);
+                        _action = new ActionNode(_queueData, gameObject);
                         _conditional.Init();
                         
                         TreeState = State.Run;
@@ -106,6 +118,7 @@ namespace BehaviourAI
                     }
                     break;
                 case State.Set:
+                    _treeData = null;
                     CheckBrock();
                     break;
             }
@@ -120,48 +133,72 @@ namespace BehaviourAI
                 return;
             }
 
-            if (_treeDatas[_treeID].Type == QueueType.Selector)
-            {
-                _brockData = _selector.GetRandomBrock(_treeDatas[_treeID].BrockDatas);
-                TreeState = State.Check;
-                return;
-            }
-
-            if (_treeDatas[_treeID].Type == QueueType.Seqence)
-            {
-                if (_treeDatas[_treeID].BrockDatas.Count == _sequence.SequenceID)
-                {
-                    _isSequence = false;
-                    _treeID++;
-                    _sequence.Init();
-                    TreeState = State.Set;
-                    return;
-                }
-                else
-                {
-                    _isSequence = true;
-                    _brockData = _sequence.GetBrockData(_treeDatas[_treeID].BrockDatas);
-                    TreeState = State.Check;
-                    return;
-                }
-            }
-
             foreach (var tree in _treeDatas)
             {
-                if (tree.Type == QueueType.CompsiteSelect
-                    && tree.CompsiteConditional.Check())
+                if (tree.Type == QueueType.ConditionSelect
+                    && tree.BrockConditional.Check())
                 {
-                    _brockData = _selector.GetRandomBrock(tree.BrockDatas);
-                    TreeState = State.Check;
+                    _treeData = tree;
+                    SetSelector(tree.BrockDatas);
                     return;
                 }
-                else if (tree.Type == QueueType.CompsiteSequence
-                         && tree.CompsiteConditional.Check())
+                else if (tree.Type == QueueType.ConditionSequence
+                    && tree.BrockConditional.Check())
                 {
-                    _brockData = _sequence.GetBrockData(tree.BrockDatas);
-                    TreeState = State.Check;
+                    _treeData = tree;
+                    SetSequence(tree.BrockDatas);
                     return;
                 }
+            }
+
+            switch (_treeDatas[_treeID].Type)
+            {
+                case QueueType.Selector:
+                    SetSelector(_treeDatas[_treeID].BrockDatas);
+                    break;
+
+                case QueueType.Seqence:
+                    SetSequence(_treeDatas[_treeID].BrockDatas);
+                    break;
+
+                //case QueueType.ConditionSelect:
+                //    if (_treeDatas[_treeID].BrockConditional.Check())
+                //    {
+                //        SetSelector(_treeDatas[_treeID].BrockDatas);
+                //    }
+                //    break;
+
+                //case QueueType.ConditionSequence:
+                //    if (_treeDatas[_treeID].BrockConditional.Check())
+                //    {
+                //        SetSequence(_treeDatas[_treeID].BrockDatas);
+                //    }
+                //    break;
+            }
+        }
+
+        void SetSelector(List<BrockData> brocks)
+        {
+            _brockData = _selector.GetRandomBrock(brocks);
+            _treeID = _brockData.BrockID;
+            TreeState = State.Check;
+        }
+
+        void SetSequence(List<BrockData> brocks)
+        {
+            if (brocks.Count == _sequence.SequenceID)
+            {
+                _isSequence = false;
+                _treeID++;
+                _sequence.Init();
+                TreeState = State.Set;
+            }
+            else
+            {
+                _isSequence = true;
+                _brockData = _sequence.GetBrockData(brocks);
+                _treeID = _brockData.BrockID;
+                TreeState = State.Check;
             }
         }
 
@@ -172,9 +209,14 @@ namespace BehaviourAI
                 int random = Random.Range(0, brockDatas.Count);
                 return brockDatas[random];
             }
+
+            int GetRandomSeed(int seed)
+            {
+                return 0;
+            }
         }
 
-        class SequenceNede
+        class SequenceNode
         {
             public int SequenceID { get; private set; } = 0;
 
@@ -203,6 +245,7 @@ namespace BehaviourAI
             public QueueData Check(List<QueueData> queueDatas, GameObject t)
             {
                 queueDatas[QueueID].Conditionals.ForEach(q => q.Target = t);
+
                 if (queueDatas[QueueID].Conditionals.All(c => c.Check()))
                 {
                     return queueDatas[QueueID];
@@ -215,24 +258,18 @@ namespace BehaviourAI
             }
 
             public bool CheckQueue(QueueData queueData)
-            {
-                if (queueData.Conditionals.All(c => c.Check()))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+            { 
+                if (queueData.Conditionals.All(c => c.Check())) return true;
+                else return false;
             }
         }
 
-        class ActionNade
+        class ActionNode
         {
             int _actionCount;
             int _actionID = 0;
 
-            public ActionNade(QueueData queue, GameObject t)
+            public ActionNode(QueueData queue, GameObject t)
             {
                 _actionID = 0;
                 _actionCount = queue.Actions.Count;

@@ -8,8 +8,6 @@ public class RequestChangeState : IAction
     [SerializeField] StateMachine.StateType _stateType;
     StateMachine _state = null;
 
-    bool _check = false;
-
     public GameObject Target { get; set; }
    
     public void SetUp()

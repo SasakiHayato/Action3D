@@ -6,14 +6,12 @@ using BehaviourAI;
 public class CheckStateRun : IConditional
 {
     [SerializeField] bool _checkBool;
+    [SerializeField] StateMachine _state;
     
-    StateMachine _state = null;
     public GameObject Target { get; set; }
 
     public bool Check()
     {
-        if (_state == null) _state = Target.GetComponent<StateMachine>();
-
         if (_checkBool)
         {
             if (_state.IsRunning) return true;

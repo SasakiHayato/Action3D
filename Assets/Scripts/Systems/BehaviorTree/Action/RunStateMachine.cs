@@ -7,8 +7,7 @@ public class RunStateMachine : IAction
 {
     [SerializeField] StateMachine _state;
     [SerializeField] bool _isRun;
-    bool _check = false;
-    
+
     public GameObject Target { get; set; }
 
     public void SetUp()

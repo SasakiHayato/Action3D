@@ -46,7 +46,6 @@ public class MoveEnemy : IAction
         
         _enemyBase.MoveDir = dir;
         LookPlayer(dir);
-        Debug.Log($"Toward {_toWardsPlayer}");
         return true;
     }
 

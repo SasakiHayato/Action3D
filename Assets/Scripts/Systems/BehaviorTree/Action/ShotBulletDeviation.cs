@@ -7,7 +7,6 @@ public class ShotBulletDeviation : IAction
     [SerializeField] float _coolTime;
     [SerializeField] int _bulletID;
 
-    bool _check = false;
     float _currentTime = 0;
 
     EnemyBase _enemyBase;
