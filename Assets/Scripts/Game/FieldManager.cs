@@ -81,6 +81,7 @@ public class FieldManager : MonoBehaviour
         Time.timeScale = 1 / _rate;
         yield return new WaitForSecondsRealtime(_time);
         Time.timeScale = 1;
-        action.Invoke(type, id, null);
+
+        if (action != null) action.Invoke(type, id, null);
     }
 }

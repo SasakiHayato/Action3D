@@ -15,7 +15,6 @@ public class Skeleton : EnemyBase, IDamage
         _anim = GetComponent<Animator>();
         _attack = GetComponent<AttackSettings>();
         Tree = GetComponent<BehaviourAI.BehaviourTree>();
-        Debug.Log(Tree);
     }
 
     void Update()

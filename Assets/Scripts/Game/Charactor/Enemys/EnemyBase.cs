@@ -14,10 +14,6 @@ public abstract class EnemyBase : CharaBase, IFieldEnemy
     public Vector3 MoveDir { protected get; set; } = new Vector3(0 ,1, 0);
     float _timer = 0;
 
-    // IBehavior
-    public GameObject SetTarget() => gameObject;
-    public void Call(IAction action) => action.Execute();
-
     // IFieldEnemy
     public int GroupID { get; set; }
     public GameObject Target { get; set; }
@@ -32,6 +28,7 @@ public abstract class EnemyBase : CharaBase, IFieldEnemy
         IFieldEnemy iEnemy = target.GetComponent<IFieldEnemy>();
         GameManager.Instance.GetExp(iEnemy.EnemyData.Exp, Level);
         FieldManager.Instance.FieldData.Delete(GroupID, iEnemy);
+        FieldManager.FieldTimeRate(null, UIType.Player, 1);
 
         Destroy(target);
     }
