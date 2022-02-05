@@ -4,8 +4,16 @@ using UnityEngine;
 using BehaviourAI;
 using AttackSetting;
 
-public class RequestAttack : IConditional
+public class CheckRequestAttack : IConditional
 {
+    enum RequestType
+    {
+        Master,
+        Individual,
+    }
+
+    [SerializeField] RequestType _type;
+
     public GameObject Target { get; set; }
 
     AttackSettings _attack = null;
@@ -19,9 +27,14 @@ public class RequestAttack : IConditional
             _enemySystem = Target.GetComponent<EnemyAttackSystem>();
         }
 
-
-
-
-        return false;
+        switch (_type)
+        {
+            case RequestType.Master:
+                return _enemySystem.MasterRequest;
+            case RequestType.Individual:
+                return _enemySystem.Request;
+            default:
+                return false;
+        }
     }
 }
