@@ -591,12 +591,6 @@ MonoBehaviour:
         - id: 10
         Actions:
         - id: 11
-    - BrockID: 1
-      QueueDatas:
-      - Conditionals:
-        - id: 10
-        Actions:
-        - id: 12
   references:
     version: 1
     00000000:
@@ -620,6 +614,7 @@ MonoBehaviour:
       type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
+        _checkBool: 1
     00000004:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
@@ -643,21 +638,21 @@ MonoBehaviour:
     00000008:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 10
+        _range: 15
     00000009:
       type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
+        _checkBool: 1
     0000000A:
-      type: {class: , ns: , asm: }
+      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _checkBool: 0
     0000000B:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
-    0000000C:
-      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 1
 --- !u!1 &8735183208793564312
 GameObject:
   m_ObjectHideFlags: 0

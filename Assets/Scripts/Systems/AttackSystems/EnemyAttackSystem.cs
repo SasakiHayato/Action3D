@@ -6,7 +6,7 @@ namespace AttackSetting
 {
     public class EnemyAttackSystem : MonoBehaviour
     {
-        public bool MasterRequest { get; private set; }
+        public bool MasterRequest { get; private set; } = false;
         public bool Request { get; private set; } = false;
 
         public bool SetMasterRequest(bool set) => MasterRequest = set;

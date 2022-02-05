@@ -13,6 +13,7 @@ public class CheckRequestAttack : IConditional
     }
 
     [SerializeField] RequestType _type;
+    [SerializeField] bool _checkBool;
 
     public GameObject Target { get; set; }
 
@@ -30,11 +31,18 @@ public class CheckRequestAttack : IConditional
         switch (_type)
         {
             case RequestType.Master:
-                return _enemySystem.MasterRequest;
+                return Set(_enemySystem.MasterRequest);
             case RequestType.Individual:
-                return _enemySystem.Request;
+                return Set(_enemySystem.Request);
             default:
+                Debug.Log("None");
                 return false;
         }
+    }
+
+    bool Set(bool check)
+    {
+        if (_checkBool) return check ? true : false;
+        else return !check ? true : false;
     }
 }

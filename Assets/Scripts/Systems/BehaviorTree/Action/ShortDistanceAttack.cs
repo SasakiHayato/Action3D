@@ -25,7 +25,7 @@ public class ShortDistanceAttack : IAction
     public bool Execute()
     {
         _enemyBase.MoveDir = Vector3.zero;
-
+        
         if (_attack.EndCurrentAnim)
         {
             _attack.Request(_type);

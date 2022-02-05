@@ -14,8 +14,6 @@ public class WaitTime : IAction
 
     public void SetUp() 
     {
-        _timer = 0;
-
         if (_setRandom) _waitTime = Random.Range(_minWaitTime, _maxWaitTime);
         else _waitTime = _maxWaitTime;
     }

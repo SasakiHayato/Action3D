@@ -94,39 +94,44 @@ namespace BehaviourAI
             {
                 case State.Run:
                     bool check = _conditional.CheckQueue(_queueData);
+
                     if (check) _action.Set(_queueData, this);
                     else _action.Cansel(_queueData, this);
+
                     break;
                 case State.Check:
                     _queueData = _conditional.Check(_brockData.QueueDatas, gameObject);
+
                     if (_queueData != null)
                     {
                         _action = new ActionNode(_queueData, gameObject);
-                        _conditional.Init();
-                        
+                        _conditional.SetNextQueue();
                         _treeState = State.Run;
                     }
                     else
                     {
-                        if (_brockData.QueueDatas.Count == _conditional.QueueID)
+                        if (0 > _conditional.QueueID)
                         {
-                            
                             if (!_isSequence) _treeID++;
                             else _sequence.SetNextID();
                             _conditional.Init();
                             _treeState = State.Set;
                         }
                     }
+
                     break;
                 case State.Set:
+                    _sequence.Init();
                     _treeData = null;
                     CheckBrock();
                     break;
                 case State.Init:
+
                     foreach (var tree in _treeDatas)
                     {
                         _conditional.SetUp(tree.BrockConditionals, gameObject);
                     }
+
                     _treeState = State.Set;
                     break;
             }
@@ -140,7 +145,7 @@ namespace BehaviourAI
                 _treeState = State.Set;
                 return;
             }
-
+            
             foreach (var tree in _treeDatas)
             {
                 if (tree.Type == QueueType.ConditionSelect
@@ -163,11 +168,11 @@ namespace BehaviourAI
             {
                 case QueueType.Selector:
                     SetSelector(_treeDatas[_treeID].BrockDatas);
-                    break;
+                    return;
 
                 case QueueType.Seqence:
                     SetSequence(_treeDatas[_treeID].BrockDatas);
-                    break;
+                    return;
             }
         }
 
@@ -231,6 +236,8 @@ namespace BehaviourAI
         {
             public int QueueID { get; private set; } = 0;
             
+            public void SetNextQueue() => QueueID--;
+
             public void Init()
             {
                 QueueID = 0;
@@ -243,6 +250,8 @@ namespace BehaviourAI
 
             public QueueData Check(List<QueueData> queueDatas, GameObject t)
             {
+                if (QueueID < 0) return null;
+
                 queueDatas[QueueID].Conditionals.ForEach(q => q.Target = t);
 
                 if (queueDatas[QueueID].Conditionals.All(c => c.Check()))

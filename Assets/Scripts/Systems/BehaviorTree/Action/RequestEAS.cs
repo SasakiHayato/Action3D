@@ -13,6 +13,7 @@ public class RequestEAS : IAction
     }
 
     [SerializeField] RequestType _type;
+    [SerializeField] bool _checkBool;
     EnemyAttackSystem _attackSystem = null;
 
     public GameObject Target { get; set; }
@@ -30,10 +31,10 @@ public class RequestEAS : IAction
         switch (_type)
         {
             case RequestType.Master:
-                _attackSystem.SetMasterRequest(true);
+                _attackSystem.SetMasterRequest(_checkBool);
                 break;
             case RequestType.Individual:
-                _attackSystem.SetRequest(true);
+                _attackSystem.SetRequest(_checkBool);
                 break;
         }
 
