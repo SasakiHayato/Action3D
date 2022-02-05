@@ -58,7 +58,7 @@ namespace BehaviourAI
 
         [SerializeField] List<TreeData> _treeDatas;
 
-        public static State TreeState = State.Set;
+        public State _treeState = State.Set;
         public enum State
         {
             Run,
@@ -85,16 +85,16 @@ namespace BehaviourAI
             {
                 _treeID++;
                 _treeData = null;
-                TreeState = State.Set;
+                _treeState = State.Set;
                 return;
             }
 
-            switch (TreeState)
+            switch (_treeState)
             {
                 case State.Run:
                     bool check = _conditional.CheckQueue(_queueData);
-                    if (check) _action.Set(_queueData);
-                    else _action.Cansel(_queueData);
+                    if (check) _action.Set(_queueData, this);
+                    else _action.Cansel(_queueData, this);
                     break;
                 case State.Check:
                     _queueData = _conditional.Check(_brockData.QueueDatas, gameObject);
@@ -103,7 +103,7 @@ namespace BehaviourAI
                         _action = new ActionNode(_queueData, gameObject);
                         _conditional.Init();
                         
-                        TreeState = State.Run;
+                        _treeState = State.Run;
                     }
                     else
                     {
@@ -113,7 +113,7 @@ namespace BehaviourAI
                             if (!_isSequence) _treeID++;
                             else _sequence.SetNextID();
                             _conditional.Init();
-                            TreeState = State.Set;
+                            _treeState = State.Set;
                         }
                     }
                     break;
@@ -129,7 +129,7 @@ namespace BehaviourAI
             if (_treeDatas.Count == _treeID)
             {
                 _treeID = 0;
-                TreeState = State.Set;
+                _treeState = State.Set;
                 return;
             }
 
@@ -181,7 +181,7 @@ namespace BehaviourAI
         {
             _brockData = _selector.GetRandomBrock(brocks);
             _treeID = _brockData.BrockID;
-            TreeState = State.Check;
+            _treeState = State.Check;
         }
 
         void SetSequence(List<BrockData> brocks)
@@ -191,14 +191,14 @@ namespace BehaviourAI
                 _isSequence = false;
                 _treeID++;
                 _sequence.Init();
-                TreeState = State.Set;
+                _treeState = State.Set;
             }
             else
             {
                 _isSequence = true;
                 _brockData = _sequence.GetBrockData(brocks);
                 _treeID = _brockData.BrockID;
-                TreeState = State.Check;
+                _treeState = State.Check;
             }
         }
 
@@ -277,19 +277,19 @@ namespace BehaviourAI
                 queue.Actions.ForEach(a => a.SetUp());
             }
 
-            public void Set(QueueData queue)
+            public void Set(QueueData queue, BehaviourTree tree)
             {
                 if(queue.Actions[_actionID].Execute())
                 {
                     _actionID++;
-                    if (_actionCount == _actionID) TreeState = State.Check;
+                    if (_actionCount == _actionID) tree._treeState = State.Check;
                 }
             }
 
-            public void Cansel(QueueData queue)
+            public void Cansel(QueueData queue, BehaviourTree tree)
             {
                 queue.Actions.ForEach(a => a.SetUp());
-                TreeState = State.Check;
+                tree._treeState = State.Check;
             }
         }
     }

@@ -325,6 +325,17 @@ public class @InputData : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""115bdafd-9a4b-4c11-81a8-3d874503f6bb"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c7b08283-19e0-4c6d-92cc-5a47e7d32066"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
