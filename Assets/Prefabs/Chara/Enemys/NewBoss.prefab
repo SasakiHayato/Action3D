@@ -591,6 +591,7 @@ MonoBehaviour:
         - id: 10
         Actions:
         - id: 11
+        - id: 12
   references:
     version: 1
     00000000:
@@ -653,6 +654,11 @@ MonoBehaviour:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
+    0000000C:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 0
 --- !u!1 &8735183208793564312
 GameObject:
   m_ObjectHideFlags: 0

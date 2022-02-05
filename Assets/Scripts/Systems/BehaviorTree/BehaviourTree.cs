@@ -139,7 +139,7 @@ namespace BehaviourAI
 
         void CheckBrock()
         {
-            if (_treeDatas.Count == _treeID)
+            if (_treeDatas.Count - 1 == _treeID)
             {
                 _treeID = 0;
                 _treeState = State.Set;
