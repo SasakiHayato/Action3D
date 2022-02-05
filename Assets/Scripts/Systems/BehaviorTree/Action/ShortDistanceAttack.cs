@@ -6,6 +6,8 @@ using AttackSetting;
 
 public class ShortDistanceAttack : IAction
 {
+    [SerializeField] ActionType _type = ActionType.WeakGround;
+
     EnemyBase _enemyBase = null;
     AttackSettings _attack = null;
 
@@ -22,14 +24,13 @@ public class ShortDistanceAttack : IAction
 
     public bool Execute()
     {
-        
+        _enemyBase.MoveDir = Vector3.zero;
+
         if (_attack.EndCurrentAnim)
         {
-            _attack.Request(ActionType.WeakGround);
+            _attack.Request(_type);
             return  true;
         }
-        
-        _enemyBase.MoveDir = Vector3.zero;
 
         return false;
     }

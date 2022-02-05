@@ -49,6 +49,7 @@ public class BossAttack : StateMachine.State
         {
             if (_attack.IsNextRequest && !_attack.GetEndCombo())
             {
+                Debug.Log("aaaa");
                 return Target.GetComponent<StateMachine>().RetuneState(StateMachine.StateType.Attack);
             }
             else

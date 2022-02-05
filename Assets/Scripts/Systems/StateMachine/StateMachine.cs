@@ -30,7 +30,7 @@ public class StateMachine : MonoBehaviour
     [SerializeReference, SubclassSelector]
     List<State> _stateList = new List<State>();
 
-    [SerializeField] bool _isRunning = true;
+    bool _isRunning = true;
     public bool IsRunning => _isRunning;
 
     StateType _type = StateType.None;

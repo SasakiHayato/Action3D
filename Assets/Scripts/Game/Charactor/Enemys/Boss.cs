@@ -5,13 +5,10 @@ using UnityEngine;
 public class Boss : EnemyBase, IDamage
 {
     bool _isBackKnock = false;
-
-    StateMachine _state;
     GameObject _player;
     
     void Start()
     {
-        _state = GetComponent<StateMachine>();
         _player = GameObject.FindWithTag("Player");
     }
 
@@ -20,10 +17,7 @@ public class Boss : EnemyBase, IDamage
         SetKnockBack(ref _isBackKnock);
         Tree.Repeat();
         Rotate();
-        Vector3 move = Vector3.zero;
-
-        if (_state.IsRunning) move = _state.Move;
-        else move = MoveDir;
+        Vector3 move = MoveDir;
         
         Vector3 set = Vector3.Scale(move * Speed, PhsicsBase.GetVelocity);
         Character.Move(set * Time.deltaTime);

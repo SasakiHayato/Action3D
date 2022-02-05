@@ -46,6 +46,7 @@ public class MoveEnemy : IAction
         
         _enemyBase.MoveDir = dir;
         LookPlayer(dir);
+
         return true;
     }
 

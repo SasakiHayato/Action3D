@@ -380,7 +380,6 @@ GameObject:
   - component: {fileID: 6446958624377032662}
   - component: {fileID: 4140609566805778294}
   - component: {fileID: 4666240207695605514}
-  - component: {fileID: 677512765028819556}
   - component: {fileID: 9170105215925174720}
   - component: {fileID: 3885928465433305240}
   m_Layer: 0
@@ -496,52 +495,6 @@ MonoBehaviour:
   _knockBackPower: 1
   _knockBackTime: 1
   _tree: {fileID: 3885928465433305240}
---- !u!114 &677512765028819556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8735183208793564310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d201f099bcadf7947a3fba3131a2e429, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stateList:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  _isRunning: 0
-  references:
-    version: 1
-    00000000:
-      type: {class: StateNone, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: -1
-        _nextState: 1
-    00000001:
-      type: {class: BossMove, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 1
-        _towardDist: 8
-        _changeStateDist: 6
-        _moveRate: 2
-        _sideMoveRate: 5
-    00000002:
-      type: {class: BossAttack, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 3
-        _moveTime: 0.1
-        _moveSpeed: 0.5
-        _farDist: 5
-    00000003:
-      type: {class: BossAvoid, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 2
-        _avoidTime: 0.02
-        _speed: 6
 --- !u!114 &9170105215925174720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,7 +538,7 @@ MonoBehaviour:
   - AnimName: Attack_3Combo_3_Inplace
     GroupID: 0
     Power: 0
-    IsEndCombo: 0
+    IsEndCombo: 1
     KnockBackData:
       Power: 5
       Type: 0
@@ -607,80 +560,84 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _treeDatas:
-  - Type: 3
-    BrockConditional:
-      id: 0
+  - Type: 1
+    BrockConditionals: []
     BrockDatas:
     - BrockID: 0
       QueueDatas:
       - Conditionals:
-        - id: 1
+        - id: 0
         Actions:
+        - id: 1
+      - Conditionals:
         - id: 2
+        Actions:
         - id: 3
       - Conditionals:
         - id: 4
         Actions:
         - id: 5
-      - Conditionals:
-        - id: 6
-        Actions:
-        - id: 7
-  - Type: 3
-    BrockConditional:
-      id: 8
+  - Type: 2
+    BrockConditionals:
+    - id: 6
+    - id: 7
     BrockDatas:
     - BrockID: 0
       QueueDatas:
-      - Conditionals:
+      - Conditionals: []
+        Actions:
+        - id: 8
+    - BrockID: 1
+      QueueDatas:
+      - Conditionals: []
+        Actions:
         - id: 9
-        Actions: []
   references:
     version: 1
     00000000:
-      type: {class: CheckStateRun, ns: , asm: Assembly-CSharp}
-      data:
-        _checkBool: 0
-        _state: {fileID: 677512765028819556}
-    00000001:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 20
+        _range: 15
+    00000001:
+      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _idleAnimName: BossIdle
+        _useGravity: 1
     00000002:
-      type: {class: RunStateMachine, ns: , asm: Assembly-CSharp}
-      data:
-        _state: {fileID: 677512765028819556}
-        _isRun: 1
-    00000003:
-      type: {class: RequestChangeState, ns: , asm: Assembly-CSharp}
-      data:
-        _stateType: 1
-    00000004:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 60
-    00000005:
+    00000003:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         _animName: Run_ver_B
         _applyYPos: 0
         _toWardsPlayer: 1
-    00000006:
+    00000004:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 100000
-    00000007:
+    00000005:
       type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
       data:
         _idleAnimName: BossIdle
         _useGravity: 1
-    00000008:
-      type: {class: CheckStateRun, ns: , asm: Assembly-CSharp}
+    00000006:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _checkBool: 1
-        _state: {fileID: 677512765028819556}
+        _range: 15
+    00000007:
+      type: {class: CheckMyHP, ns: , asm: Assembly-CSharp}
+      data:
+        _effectHP: 10
+    00000008:
+      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
     00000009:
-      type: {class: , ns: , asm: }
+      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
 --- !u!1 &8735183208793564312
 GameObject:
   m_ObjectHideFlags: 0

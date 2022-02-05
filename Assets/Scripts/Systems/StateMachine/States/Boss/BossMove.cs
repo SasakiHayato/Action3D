@@ -31,10 +31,13 @@ public class BossMove : StateMachine.State
             _player = GameObject.FindWithTag("Player");
             _anim = Target.GetComponent<Animator>();
         }
+
         int setval = UnityEngine.Random.Range(0, 2);
         _dirType = (DirType)Enum.ToObject(typeof(DirType), setval);
+
         if (_dirType == DirType.Right) _anim.CrossFade("Walk_ver_B_Front_R45", 0.5f);
         else _anim.CrossFade("Walk_ver_B_Front_L45", 0.5f);
+
         _stateType = beforeType;
         Debug.Log($"Before {beforeType}");
     }
@@ -63,6 +66,7 @@ public class BossMove : StateMachine.State
     {
         Vector3 mPos = Target.transform.position;
         float dist = Vector3.Distance(_player.transform.position, mPos);
+
         if (_stateType == StateMachine.StateType.Attack)
         {
             return StateMachine.StateType.Avoid;
