@@ -28,10 +28,11 @@ public class ShortDistanceAttack : IAction
         
         if (_attack.EndCurrentAnim)
         {
+            _attack.Cansel();
             _attack.Request(_type);
             return  true;
         }
-
+        Debug.Log("aaa");
         return false;
     }
 }
