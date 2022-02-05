@@ -508,6 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 8735183208793564310}
+  _requestEnemySystem: 0
   _requestCoolTime: 0
   _targetWeapon: {fileID: 1520026632161214190}
   _attacks:
@@ -569,72 +570,82 @@ MonoBehaviour:
         - id: 0
         Actions:
         - id: 1
-      - Conditionals:
         - id: 2
-        Actions:
-        - id: 3
       - Conditionals:
-        - id: 4
+        - id: 3
         Actions:
+        - id: 4
+      - Conditionals:
         - id: 5
+        Actions:
+        - id: 6
   - Type: 2
     BrockConditionals:
-    - id: 6
     - id: 7
+    - id: 8
     BrockDatas:
     - BrockID: 0
       QueueDatas:
       - Conditionals: []
         Actions:
-        - id: 8
+        - id: 9
     - BrockID: 1
       QueueDatas:
       - Conditionals: []
         Actions:
-        - id: 9
+        - id: 10
   references:
     version: 1
     00000000:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 15
+        _range: 10
     00000001:
-      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
-        _idleAnimName: BossIdle
-        _useGravity: 1
+        _animName: Walk_ver_B_Front_L45
+        _applyYPos: 0
+        _moveType: 2
+        _speedRate: 9
     00000002:
+      type: {class: WaitTime, ns: , asm: Assembly-CSharp}
+      data:
+        _minWaitTime: 2
+        _maxWaitTime: 5
+        _setRandom: 1
+    00000003:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 60
-    00000003:
+    00000004:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         _animName: Run_ver_B
         _applyYPos: 0
-        _toWardsPlayer: 1
-    00000004:
+        _moveType: 0
+        _speedRate: 1
+    00000005:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 100000
-    00000005:
+    00000006:
       type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
       data:
         _idleAnimName: BossIdle
         _useGravity: 1
-    00000006:
+    00000007:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 15
-    00000007:
+    00000008:
       type: {class: CheckMyHP, ns: , asm: Assembly-CSharp}
       data:
-        _effectHP: 10
-    00000008:
+        _effectHP: 1
+    00000009:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
-    00000009:
+    0000000A:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 1

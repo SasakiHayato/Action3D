@@ -43,7 +43,7 @@ MonoBehaviour:
       type: 3}
     HP: 900
     Power: 0
-    Speed: 9
+    Speed: 7
     Exp: 99999
   - Name: BrackCubeEnemy
     ID: 4

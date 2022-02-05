@@ -4,9 +4,17 @@ using AttackSetting;
 
 public class MoveEnemy : IAction
 {
+    enum MoveType
+    {
+        ToWard,
+        Back,
+        Side,
+    }
+
     [SerializeField] string _animName;
     [SerializeField] bool _applyYPos;
-    [SerializeField] bool _toWardsPlayer;
+    [SerializeField] MoveType _moveType;
+    [SerializeField] float _speedRate = 1;
 
     Animator _anim = null;
     EnemyBase _enemyBase = null;
@@ -33,12 +41,19 @@ public class MoveEnemy : IAction
         }
 
         Vector3 dir = Vector3.zero;
-        if (_toWardsPlayer) 
-            dir = (_player.transform.position - Target.transform.position).normalized;
-        else
+
+        switch (_moveType)
         {
-            dir = (Target.transform.position - _player.transform.position).normalized;
-            dir.y /= 3;
+            case MoveType.ToWard:
+                dir = (_player.transform.position - Target.transform.position).normalized / _speedRate;
+                break;
+            case MoveType.Back:
+                dir = (Target.transform.position - _player.transform.position).normalized / _speedRate;
+                dir.y /= 3;
+                break;
+            case MoveType.Side:
+                dir = Target.transform.right / _speedRate;
+                break;
         }
 
         if (!_applyYPos) dir.y = 1;

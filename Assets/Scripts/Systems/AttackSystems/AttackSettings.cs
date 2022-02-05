@@ -34,7 +34,9 @@ namespace AttackSetting
 
         #region メンバー変数
         [SerializeField] GameObject _parent;
+        [SerializeField] bool _requestEnemySystem;  
         [SerializeField] float _requestCoolTime;
+
         /// <summary>
         /// DefoultとなるWepon
         /// </summary>
@@ -44,6 +46,7 @@ namespace AttackSetting
         Animator _anim;
         AudioSource _audio;
         CharaBase _charaBase;
+        EnemyAttackSystem _enemySystem;
 
         AttackCollision _saveDefWeapon;
         ActionType _saveActionType = ActionType.None;
@@ -148,7 +151,15 @@ namespace AttackSetting
         
         public bool IsNextRequest { get; private set; } = false;
         public bool IsCounter { get; private set; } = false;
-        
+
+        void Awake()
+        {
+            if (_requestEnemySystem)
+            {
+                _enemySystem = _parent.AddComponent<EnemyAttackSystem>();
+            }
+        }
+
         void Start()
         {
             _anim = _parent.GetComponent<Animator>();
@@ -208,6 +219,7 @@ namespace AttackSetting
         /// <param name="type">どのアクションなのか</param>
         public void Request(ActionType type)
         {
+
             if (!_isRequest || _attacking)
             {
                 Debug.Log("ReturnRequest");
