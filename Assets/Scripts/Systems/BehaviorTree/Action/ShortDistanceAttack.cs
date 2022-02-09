@@ -32,7 +32,7 @@ public class ShortDistanceAttack : IAction
             _attack.Request(_type);
             return  true;
         }
-        Debug.Log("aaa");
+        
         return false;
     }
 }

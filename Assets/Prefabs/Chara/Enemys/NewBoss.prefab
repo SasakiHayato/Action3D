@@ -568,62 +568,64 @@ MonoBehaviour:
       QueueDatas:
       - Conditionals:
         - id: 0
-        Actions:
         - id: 1
+        Actions:
         - id: 2
-        - id: 3
       - Conditionals:
+        - id: 3
         - id: 4
         Actions:
         - id: 5
       - Conditionals:
         - id: 6
-        Actions:
         - id: 7
+        Actions:
+        - id: 8
+        - id: 9
+        - id: 10
   - Type: 2
     BrockConditionals:
-    - id: 8
-    - id: 9
+    - id: 11
+    - id: 12
     BrockDatas:
     - BrockID: 0
       QueueDatas:
       - Conditionals:
-        - id: 10
-        Actions:
-        - id: 11
-        - id: 12
-      - Conditionals:
         - id: 13
         Actions:
         - id: 14
+        - id: 15
+      - Conditionals:
+        - id: 16
+        Actions:
+        - id: 17
   references:
     version: 1
     00000000:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 10
-    00000001:
-      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: Walk_ver_B_Front_L45
-        _applyYPos: 0
-        _moveType: 2
-        _speedRate: 9
-    00000002:
-      type: {class: WaitTime, ns: , asm: Assembly-CSharp}
-      data:
-        _minWaitTime: 2
-        _maxWaitTime: 5
-        _setRandom: 1
-    00000003:
-      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
-      data:
+        _range: 1000000
         _type: 0
-        _checkBool: 1
-    00000004:
+    00000001:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 61
+        _type: 1
+    00000002:
+      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _idleAnimName: BossIdle
+        _useGravity: 1
+    00000003:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 60
+        _type: 0
+    00000004:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 11
+        _type: 1
     00000005:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
@@ -634,41 +636,61 @@ MonoBehaviour:
     00000006:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 100000
+        _range: 10
+        _type: 0
     00000007:
-      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
-      data:
-        _idleAnimName: BossIdle
-        _useGravity: 1
-    00000008:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 15
+        _range: 0
+        _type: 1
+    00000008:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: Walk_ver_B_Front_L45
+        _applyYPos: 0
+        _moveType: 2
+        _speedRate: 9
     00000009:
-      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
+      type: {class: WaitTime, ns: , asm: Assembly-CSharp}
+      data:
+        _minWaitTime: 2
+        _maxWaitTime: 5
+        _setRandom: 1
+    0000000A:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
         _checkBool: 1
-    0000000A:
-      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 1
-        _checkBool: 0
     0000000B:
-      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
+        _range: 15
         _type: 0
     0000000C:
-      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
       data:
-        _type: 1
+        _type: 0
         _checkBool: 1
     0000000D:
       type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 1
-        _checkBool: 1
+        _checkBool: 0
     0000000E:
+      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+    0000000F:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _checkBool: 1
+    00000010:
+      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _checkBool: 1
+    00000011:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 0

@@ -19,18 +19,15 @@ namespace BehaviourAI
 
     public partial class BehaviourTree : MonoBehaviour
     {
-        int _treeID = 0;
-
         BrockData _brockData;
         QueueData _queueData;
-
         TreeData _treeData;
+
+        int _treeID = 0;
         bool _isSequence = false;
 
         public void Repeat()
         {
-            Debug.Log($"TreeType {_treeDatas[_treeID].Type}");
-            Debug.Log($"QueueID {_conditional.QueueID}");
             if (_treeData != null && !_treeData.BrockConditionals.All(c => c.Check()))
             {
                 _treeID++;
@@ -46,12 +43,11 @@ namespace BehaviourAI
 
                     if (check) _action.Set(_queueData, this);
                     else _action.Cansel(_queueData, this);
-
+                    
                     break;
                 case State.Check:
-                    _conditional.Init();
                     _queueData = _conditional.Check(_brockData.QueueDatas, gameObject);
-
+                    
                     if (_queueData != null)
                     {
                         _action = new ActionNode(_queueData, gameObject);

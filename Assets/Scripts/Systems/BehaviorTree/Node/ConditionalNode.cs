@@ -34,7 +34,6 @@ namespace BehaviourAI
                 }
 
                 queueDatas[QueueID].Conditionals.ForEach(q => q.Target = t);
-
                 if (queueDatas[QueueID].Conditionals.All(c => c.Check()))
                 {
                     return queueDatas[QueueID];
