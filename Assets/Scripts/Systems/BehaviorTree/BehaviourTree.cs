@@ -67,12 +67,12 @@ namespace BehaviourAI
 
                     break;
                 case State.Set:
+                    _conditional.Init();
                     _sequence.Init();
-                    _treeData = null;
                     CheckBrock();
                     break;
                 case State.Init:
-
+                    _treeData = null;
                     foreach (var tree in _treeDatas)
                     {
                         _conditional.SetUp(tree.BrockConditionals, gameObject);
@@ -85,10 +85,11 @@ namespace BehaviourAI
 
         void CheckBrock()
         {
-            if (_treeDatas.Count == _treeID)
+            if (_treeDatas.Count <= _treeID)
             {
                 _treeID = 0;
                 _treeState = State.Set;
+
                 return;
             }
             
@@ -125,7 +126,7 @@ namespace BehaviourAI
         void SetSelector(List<BrockData> brocks)
         {
             _brockData = _selector.GetRandomBrock(brocks);
-            _treeID = _brockData.BrockID;
+            _treeID++;
             _treeState = State.Check;
         }
 
@@ -142,7 +143,6 @@ namespace BehaviourAI
             {
                 _isSequence = true;
                 _brockData = _sequence.GetBrockData(brocks);
-                _treeID = _brockData.BrockID;
                 _treeState = State.Check;
             }
         }

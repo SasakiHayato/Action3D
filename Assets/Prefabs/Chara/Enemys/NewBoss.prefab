@@ -595,10 +595,7 @@ MonoBehaviour:
         Actions:
         - id: 14
         - id: 15
-      - Conditionals:
         - id: 16
-        Actions:
-        - id: 17
   references:
     version: 1
     00000000:
@@ -681,19 +678,16 @@ MonoBehaviour:
       data:
         _type: 0
     0000000F:
+      type: {class: WaitTime, ns: , asm: Assembly-CSharp}
+      data:
+        _minWaitTime: 1
+        _maxWaitTime: 2
+        _setRandom: 1
+    00000010:
       type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
       data:
-        _type: 1
-        _checkBool: 1
-    00000010:
-      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 1
-        _checkBool: 1
-    00000011:
-      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
-      data:
         _type: 0
+        _checkBool: 0
 --- !u!1 &8735183208793564312
 GameObject:
   m_ObjectHideFlags: 0

@@ -290,6 +290,8 @@ namespace AttackSetting
             _attacking = false;
             _targetWeapon.GetComponent<Collider>().enabled = false;
             IsCounter = false;
+
+            EndCurrentAnim = true;
         }
 
         void SetData(AttackData data)

@@ -26,6 +26,7 @@ namespace BehaviourAI
                 if (queue.Actions[_actionID].Execute())
                 {
                     _actionID++;
+                    //Debug.Log($"ActionID {_actionID} ActionCount {_actionCount}");
                     if (_actionCount == _actionID) tree._treeState = State.Set;
                 }
             }
