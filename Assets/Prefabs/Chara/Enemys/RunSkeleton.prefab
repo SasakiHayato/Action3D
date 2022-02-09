@@ -329,6 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 1541433764607956050}
+  _requestEnemySystem: 0
   _requestCoolTime: 1
   _targetWeapon: {fileID: 1541433765520133809}
   _attacks:
@@ -358,47 +359,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _treeDatas:
   - Type: 1
-    CompsiteConditional:
-      id: 0
+    BrockConditionals: []
     BrockDatas:
-    - QueueDatas:
+    - BrockID: 0
+      QueueDatas:
       - Conditionals:
-        - id: 1
+        - id: 0
         Actions:
-        - id: 2
+        - id: 1
       - Conditionals:
+        - id: 2
         - id: 3
         Actions:
         - id: 4
       - Conditionals:
         - id: 5
-        Actions:
         - id: 6
+        Actions:
+        - id: 7
   references:
     version: 1
     00000000:
-      type: {class: , ns: , asm: }
-    00000001:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 3.5
-    00000002:
+        _type: 0
+    00000001:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
-    00000003:
+      data:
+        _type: 0
+    00000002:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 50
+        _type: 0
+    00000003:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 4
+        _type: 1
     00000004:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         _animName: SkeletonRun
         _applyYPos: 0
-        _toWardsPlayer: 1
+        _moveType: 0
+        _speedRate: 1
     00000005:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 100000
+        _type: 1
     00000006:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 51
+        _type: 0
+    00000007:
       type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
       data:
         _idleAnimName: Skeleton

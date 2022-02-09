@@ -172,44 +172,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _treeDatas:
   - Type: 1
-    CompsiteConditional:
-      id: 0
+    BrockConditionals: []
     BrockDatas:
-    - QueueDatas:
+    - BrockID: 0
+      QueueDatas:
       - Conditionals:
-        - id: 1
+        - id: 0
         Actions:
-        - id: 2
+        - id: 1
       - Conditionals:
+        - id: 2
         - id: 3
         Actions:
         - id: 4
       - Conditionals:
         - id: 5
-        Actions:
         - id: 6
-      - Conditionals:
-        - id: 7
         Actions:
+        - id: 7
+      - Conditionals:
         - id: 8
+        - id: 9
+        Actions:
+        - id: 10
   references:
     version: 1
     00000000:
-      type: {class: , ns: , asm: }
-    00000001:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 15
-    00000002:
+        _type: 0
+    00000001:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         _animName: 
         _applyYPos: 1
-        _toWardsPlayer: 0
-    00000003:
+        _moveType: 1
+        _speedRate: 1
+    00000002:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 30
+        _type: 0
+    00000003:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 16
+        _type: 1
     00000004:
       type: {class: ShotBulletDeviation, ns: , asm: Assembly-CSharp}
       data:
@@ -220,17 +229,30 @@ MonoBehaviour:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 60
+        _type: 0
     00000006:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 31
+        _type: 1
+    00000007:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         _animName: 
         _applyYPos: 1
-        _toWardsPlayer: 1
-    00000007:
+        _moveType: 0
+        _speedRate: 1
+    00000008:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 10000
-    00000008:
+        _type: 0
+    00000009:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 61
+        _type: 1
+    0000000A:
       type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
       data:
         _idleAnimName: 
