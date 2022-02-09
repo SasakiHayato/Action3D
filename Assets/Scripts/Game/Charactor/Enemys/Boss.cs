@@ -15,7 +15,7 @@ public class Boss : EnemyBase, IDamage
     void Update()
     {
         SetKnockBack(ref _isBackKnock);
-        Tree.Repeat();
+        Tree.Repeater();
         Rotate();
         Vector3 move = MoveDir;
         

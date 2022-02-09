@@ -14,13 +14,19 @@ namespace BehaviourAI
 
             public void Init()
             {
+                Debug.Log("SequenceNode. InitMethod");
                 SequenceID = 0;
             }
 
-            public void SetNextID() => SequenceID++;
+            public void SetNextBrockID()
+            {
+                Debug.Log("SequenceNode. SeNextBrockIDMethod");
+                SequenceID++;
+            }
 
             public BrockData GetBrockData(List<BrockData> brockDatas)
             {
+                Debug.Log("SequenceNode. GetBrockData");
                 return brockDatas[SequenceID];
             }
         }

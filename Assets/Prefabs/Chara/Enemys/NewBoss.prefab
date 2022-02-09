@@ -26,6 +26,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _groupID: 0
+--- !u!114 &7772319148189311009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8117627567819245669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9482eb878c359f47b8cfab997e7071d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _avoidDist: 5.5
 --- !u!1 &8735183208793564288
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,12 +501,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1f299fdb4058349bccaba39488677c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 999
-  _power: 10
-  _speed: 5
-  _level: 1
-  _knockBackPower: 1
-  _knockBackTime: 1
+  _hp: 0
+  _power: 0
+  _speed: 0
+  _level: 0
+  _knockBackPower: 0
+  _knockBackTime: 0
   _tree: {fileID: 3885928465433305240}
 --- !u!114 &9170105215925174720
 MonoBehaviour:
@@ -596,6 +609,12 @@ MonoBehaviour:
         - id: 14
         - id: 15
         - id: 16
+      - Conditionals:
+        - id: 17
+        Actions:
+        - id: 14
+        - id: 15
+        - id: 18
   references:
     version: 1
     00000000:
@@ -643,7 +662,7 @@ MonoBehaviour:
     00000008:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
-        _animName: Walk_ver_B_Front_L45
+        _animName: Walk_ver_B_Front_R45
         _applyYPos: 0
         _moveType: 2
         _speedRate: 9
@@ -669,21 +688,32 @@ MonoBehaviour:
         _type: 0
         _checkBool: 1
     0000000D:
-      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _type: 1
-        _checkBool: 0
+        _range: 10
+        _type: 0
     0000000E:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyYPos: 0
+        _moveType: 0
+        _speedRate: 0.03
+    0000000F:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
-    0000000F:
-      type: {class: WaitTime, ns: , asm: Assembly-CSharp}
-      data:
-        _minWaitTime: 1
-        _maxWaitTime: 2
-        _setRandom: 1
     00000010:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _checkBool: 1
+    00000011:
+      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _checkBool: 1
+    00000012:
       type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
       data:
         _type: 0

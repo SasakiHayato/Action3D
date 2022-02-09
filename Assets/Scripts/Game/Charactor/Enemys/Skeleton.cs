@@ -22,7 +22,7 @@ public class Skeleton : EnemyBase, IDamage
         SetKnockBack(ref _isBackKnock);
         if (_isDamage) return;
 
-        Tree.Repeat();
+        Tree.Repeater();
         Vector3 set = Vector3.Scale(MoveDir * Speed, PhsicsBase.GetVelocity);
         Character.Move(set * Time.deltaTime);
     }

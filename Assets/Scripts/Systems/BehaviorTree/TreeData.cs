@@ -9,7 +9,7 @@ namespace BehaviourAI
         enum QueueType
         {
             Selector,
-            Seqence,
+            Sequence,
 
             ConditionSelect,
             ConditionSequence,

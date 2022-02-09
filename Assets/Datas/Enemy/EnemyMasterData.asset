@@ -42,7 +42,7 @@ MonoBehaviour:
     Prefab: {fileID: 8735183208793564310, guid: b6fc1984b06966048bcbea61a6d6cc72,
       type: 3}
     HP: 900
-    Power: 0
+    Power: 30
     Speed: 7
     Exp: 99999
   - Name: BrackCubeEnemy

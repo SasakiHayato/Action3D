@@ -219,7 +219,6 @@ namespace AttackSetting
         /// <param name="type">‚Ç‚ÌƒAƒNƒVƒ‡ƒ“‚È‚Ì‚©</param>
         public void Request(ActionType type)
         {
-
             if (!_isRequest || _attacking)
             {
                 Debug.Log("ReturnRequest");
@@ -258,10 +257,7 @@ namespace AttackSetting
             }
         }
 
-        public void NextRequest()
-        {
-            if (_nextRequest) IsNextRequest = true;
-        }
+        public void NextRequest() { if (_nextRequest) IsNextRequest = true; }
 
         public bool GetEndCombo()
         {
@@ -298,12 +294,12 @@ namespace AttackSetting
         {
             if (data.Action == ActionType.Counter) IsCounter = true;
             else IsCounter = false;
-
+            
             _nextRequest = false;
             EndCurrentAnim = false;
             _resetCombTime = 0;
             _anim.Play(data.AnimName);
-            //_anim.CrossFade(data.AnimName, 0.2f);
+            
             _audio.volume = data.SEVol;
             if (data.SE != null) _audio.PlayOneShot(data.SE);
             

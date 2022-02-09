@@ -25,12 +25,18 @@ public class ShortDistanceAttack : IAction
     public bool Execute()
     {
         _enemyBase.MoveDir = Vector3.zero;
-        
+        _attack.NextRequest();
+
         if (_attack.EndCurrentAnim)
         {
+            if (_attack.IsNextRequest)
+            {
+                _attack.Request(_type);
+                return true;
+            }
+
             _attack.Cansel();
             _attack.Request(_type);
-
             return  true;
         }
         
