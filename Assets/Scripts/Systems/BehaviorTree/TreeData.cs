@@ -15,6 +15,12 @@ namespace BehaviourAI
             ConditionSequence,
         }
 
+        enum QueueProgress
+        {
+            Update,
+            Task,
+        }
+
         [System.Serializable]
         class TreeData
         {
@@ -36,6 +42,8 @@ namespace BehaviourAI
         [System.Serializable]
         class QueueData
         {
+            public QueueProgress Progress;
+
             [SerializeReference, SubclassSelector]
             public List<IConditional> Conditionals;
 
@@ -45,7 +53,7 @@ namespace BehaviourAI
 
         [SerializeField] List<TreeData> _treeDatas;
 
-        public State _treeState { get; set; } = State.Init;
+        public State TreeState { get; set; } = State.Init;
         public enum State
         {
             Run,

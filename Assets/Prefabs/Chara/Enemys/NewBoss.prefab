@@ -579,42 +579,56 @@ MonoBehaviour:
     BrockDatas:
     - BrockID: 0
       QueueDatas:
-      - Conditionals:
+      - Progress: 0
+        Conditionals:
         - id: 0
         - id: 1
         Actions:
         - id: 2
-      - Conditionals:
+      - Progress: 0
+        Conditionals:
         - id: 3
         - id: 4
         Actions:
         - id: 5
-      - Conditionals:
+      - Progress: 0
+        Conditionals:
         - id: 6
         - id: 7
         Actions:
         - id: 8
         - id: 9
         - id: 10
+    - BrockID: 1
+      QueueDatas:
+      - Progress: 1
+        Conditionals:
+        - id: 11
+        - id: 12
+        Actions:
+        - id: 13
   - Type: 2
     BrockConditionals:
-    - id: 11
-    - id: 12
+    - id: 14
+    - id: 15
     BrockDatas:
     - BrockID: 0
       QueueDatas:
-      - Conditionals:
-        - id: 13
-        Actions:
-        - id: 14
-        - id: 15
+      - Progress: 0
+        Conditionals:
         - id: 16
-      - Conditionals:
-        - id: 17
         Actions:
-        - id: 14
-        - id: 15
+        - id: 17
         - id: 18
+        - id: 19
+      - Progress: 0
+        Conditionals:
+        - id: 20
+        Actions:
+        - id: 21
+        - id: 22
+        - id: 23
+        - id: 24
   references:
     version: 1
     00000000:
@@ -640,7 +654,7 @@ MonoBehaviour:
     00000004:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 11
+        _range: 12
         _type: 1
     00000005:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
@@ -652,12 +666,12 @@ MonoBehaviour:
     00000006:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 10
+        _range: 12
         _type: 0
     00000007:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 0
+        _range: 6
         _type: 1
     00000008:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
@@ -680,43 +694,73 @@ MonoBehaviour:
     0000000B:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 15
+        _range: 5
         _type: 0
     0000000C:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 0
+        _type: 1
+    0000000D:
+      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+    0000000E:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 15
+        _type: 0
+    0000000F:
       type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
         _checkBool: 1
-    0000000D:
+    00000010:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 10
         _type: 0
-    0000000E:
+    00000011:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         _animName: 
         _applyYPos: 0
         _moveType: 0
         _speedRate: 0.03
-    0000000F:
+    00000012:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
-    00000010:
+    00000013:
       type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
       data:
         _type: 1
         _checkBool: 1
-    00000011:
+    00000014:
       type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 1
         _checkBool: 1
-    00000012:
+    00000015:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyYPos: 0
+        _moveType: 0
+        _speedRate: 0.03
+    00000016:
+      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+    00000017:
       type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
+        _checkBool: 0
+    00000018:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
         _checkBool: 0
 --- !u!1 &8735183208793564312
 GameObject:

@@ -10,23 +10,28 @@ namespace BehaviourAI
 
         class SequenceNode
         {
-            public int SequenceID { get; private set; } = 0;
+            public bool IsSequence { get; private set; }
+            public int SequenceID { get; private set; }
 
             public void Init()
             {
                 Debug.Log("SequenceNode. InitMethod");
+                IsSequence = false;
                 SequenceID = 0;
             }
 
-            public void SetNextBrockID()
+            public void SetNextBrockID(ref int treeID)
             {
                 Debug.Log("SequenceNode. SeNextBrockIDMethod");
-                SequenceID++;
+                if (IsSequence) SequenceID++;
+                else treeID++;
             }
 
             public BrockData GetBrockData(List<BrockData> brockDatas)
             {
                 Debug.Log("SequenceNode. GetBrockData");
+                Debug.Log($"**************** CurrentSequenceID {SequenceID} *********************");
+                IsSequence = true;
                 return brockDatas[SequenceID];
             }
         }

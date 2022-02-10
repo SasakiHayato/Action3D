@@ -24,35 +24,39 @@ namespace BehaviourAI
         TreeData _treeData;
 
         int _treeID = 0;
-        bool _isSequence = false;
-
+        
         public void Repeater()
         {
+            Debug.Log($"CurrentTreeID {_treeID} *****************");
+
             if (_treeData != null && !_treeData.BrockConditionals.All(c => c.Check()))
             {
                 Debug.Log("Repeater. NextTreeID");
                 _treeID++;
                 _treeData = null;
-                _treeState = State.Set;
+                TreeState = State.Set;
                 return;
             }
 
-            switch (_treeState)
+            switch (TreeState)
             {
                 case State.Run: // Note. 与えられたQueueDataのConditionalとActionをリピートさせる。
                     Debug.Log("StateRun");
-                    bool check = _conditional.CheckQueue(_queueData);
+                    bool check = false;
+
+                    if (_queueData.Progress == QueueProgress.Task) check = true;
+                    else check = _conditional.CheckQueue(_queueData);
 
                     if (check) _action.Set(_queueData, this);
                     else
                     {
-                        _sequence.SetNextBrockID();
-                        _action.Cansel(_queueData, this);
+                        _sequence.SetNextBrockID(ref _treeID);
+                        _action.Cancel(_queueData, this);
                     }
 
                     break;
                 case State.Check: // Note. 与えられたBrockDataのQueueを順に調べて、TrueならQueueDataを差し込む
-                    Debug.Log("StateCheck **************");
+                    Debug.Log("StateCheck");
                     _queueData = _conditional.Check(_brockData.QueueDatas, gameObject);
                     
                     if (_queueData != null)
@@ -60,7 +64,7 @@ namespace BehaviourAI
                         Debug.Log("StateCheck. IsDataSet.");
                         _conditional.SetNextQueue();
                         _action = new ActionNode(_queueData, gameObject);
-                        _treeState = State.Run;
+                        TreeState = State.Run;
                     }
                     else
                     {
@@ -70,11 +74,9 @@ namespace BehaviourAI
                         if (_brockData.QueueDatas.Count <= _conditional.QueueID)
                         {
                             Debug.Log("StateCheck. NextTreeData.");
-                            if (!_isSequence) _treeID++;
-                            else _sequence.SetNextBrockID();
-                            
+                            _sequence.SetNextBrockID(ref _treeID);
                             _conditional.Init();
-                            _treeState = State.Set;
+                            TreeState = State.Set;
                         }
                     }
 
@@ -82,18 +84,17 @@ namespace BehaviourAI
                 case State.Set: // Note. Run、またはCheckが中断された際に、新たにBrockDataを差し込む
                     Debug.Log("StateSet");
                     _conditional.Init();
-                    _sequence.Init();
+                    //_sequence.Init();
                     CheckBrock();
 
                     break;
                 case State.Init: // Note. ゲーム開始時に一度呼ばれる。Setup
                     Debug.Log("StateInit");
                     _treeData = null;
-
                     foreach (var tree in _treeDatas)
                         _conditional.SetUp(tree.BrockConditionals, gameObject);
 
-                    _treeState = State.Set;
+                    TreeState = State.Set;
 
                     break;
             }
@@ -102,13 +103,12 @@ namespace BehaviourAI
         void CheckBrock()
         {
             Debug.Log("CheckBrockMethod");
-            Debug.Log($"TreeID {_treeID}");
             // 対象のTreeDataが最後まで行った際にリセットする。
             if (_treeDatas.Count <= _treeID)
             {
                 Debug.Log("CheckBrockMethod. ResetTree");
                 _treeID = 0;
-                _treeState = State.Set;
+                TreeState = State.Set;
 
                 return;
             }
@@ -148,6 +148,8 @@ namespace BehaviourAI
                     SetSequence(_treeDatas[_treeID].BrockDatas);
                     return;
             }
+
+            _treeID++;
         }
 
         void SetSelector(List<BrockData> brocks)
@@ -155,7 +157,7 @@ namespace BehaviourAI
             Debug.Log("SetSelectorMethod");
             _brockData = _selector.GetRandomBrock(brocks);
             _treeID++;
-            _treeState = State.Check;
+            TreeState = State.Check;
         }
 
         void SetSequence(List<BrockData> brocks)　// Note. Sequenceの場合、QueueDataを順に調べる必要あり
@@ -164,17 +166,15 @@ namespace BehaviourAI
             if (brocks.Count == _sequence.SequenceID)
             {
                 Debug.Log("SetSequenceMethod. NextTreeID");
-                _isSequence = false;
                 _treeID++;
                 _sequence.Init();
-                _treeState = State.Set;
+                TreeState = State.Set;
             }
             else
             {
                 Debug.Log("SetSequenceMethod. SetSquence");
-                _isSequence = true;
                 _brockData = _sequence.GetBrockData(brocks);
-                _treeState = State.Check;
+                TreeState = State.Check;
             }
         }
     }

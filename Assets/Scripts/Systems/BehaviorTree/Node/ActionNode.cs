@@ -28,17 +28,17 @@ namespace BehaviourAI
                 Debug.Log(queue.Actions[_actionID].GetType());
                 if (queue.Actions[_actionID].Execute())
                 {
-                    Debug.Log("ActionNode. IsTrue *****************************");
+                    Debug.Log("ActionNode. IsTrue");
                     _actionID++;
-                    if (_actionCount == _actionID) tree._treeState = State.Check;
+                    if (_actionCount == _actionID) tree.TreeState = State.Check;
                 }
             }
 
-            public void Cansel(QueueData queue, BehaviourTree tree)
+            public void Cancel(QueueData queue, BehaviourTree tree)
             {
                 Debug.Log("ActionNode. CanselMethod");
                 queue.Actions.ForEach(a => a.SetUp());
-                tree._treeState = State.Check;
+                tree.TreeState = State.Check;
             }
         }
     }
