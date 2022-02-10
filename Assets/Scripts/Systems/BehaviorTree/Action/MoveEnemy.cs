@@ -58,7 +58,7 @@ public class MoveEnemy : IAction
 
         if (!_applyYPos) dir.y = 1;
         if (_animName != "") _anim.Play(_animName);
-        Debug.Log($"AnimName {_animName} ***********************************");
+        
         _enemyBase.MoveDir = dir;
         LookPlayer(dir);
 

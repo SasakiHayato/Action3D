@@ -163,7 +163,7 @@ namespace BehaviourAI
         void SetSequence(List<BrockData> brocks)　// Note. Sequenceの場合、QueueDataを順に調べる必要あり
         {
             Debug.Log("SetSequenceMethod");
-            if (brocks.Count == _sequence.SequenceID)
+            if (brocks.Count <= _sequence.SequenceID)
             {
                 Debug.Log("SetSequenceMethod. NextTreeID");
                 _treeID++;
