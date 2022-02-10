@@ -225,7 +225,7 @@ namespace AttackSetting
                 Debug.Log($"IsRequest{_isRequest} : Attaking {_attacking}");
                 return;
             }
-
+            
             _isRequest = false;
             IsNextRequest = false;
 
@@ -281,7 +281,7 @@ namespace AttackSetting
             _saveGroupID = set.GroupID;
         }
 
-        public void Cansel()
+        public void Cancel()
         {
             _attacking = false;
             _targetWeapon.GetComponent<Collider>().enabled = false;

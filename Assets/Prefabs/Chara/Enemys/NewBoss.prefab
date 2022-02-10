@@ -561,6 +561,90 @@ MonoBehaviour:
     SEVol: 0
     Action: 0
     Effects: 00000000030000000200000001000000
+  - AnimName: Attack_7Combo_1_Inplace
+    GroupID: 0
+    Power: 0
+    IsEndCombo: 0
+    KnockBackData:
+      Power: 1
+      Type: 0
+    NextAcceptTime: 99
+    SE: {fileID: 0}
+    SEVol: 0
+    Action: 1
+    Effects: 000000000300000002000000
+  - AnimName: Attack_7Combo_2_Inplace
+    GroupID: 0
+    Power: 0
+    IsEndCombo: 0
+    KnockBackData:
+      Power: 1
+      Type: 0
+    NextAcceptTime: 99
+    SE: {fileID: 0}
+    SEVol: 0
+    Action: 1
+    Effects: 000000000300000002000000
+  - AnimName: Attack_7Combo_3_Inplace
+    GroupID: 0
+    Power: 0
+    IsEndCombo: 0
+    KnockBackData:
+      Power: 1
+      Type: 0
+    NextAcceptTime: 99
+    SE: {fileID: 0}
+    SEVol: 0
+    Action: 1
+    Effects: 000000000300000002000000
+  - AnimName: Attack_7Combo_4_Inplace
+    GroupID: 0
+    Power: 0
+    IsEndCombo: 0
+    KnockBackData:
+      Power: 1
+      Type: 0
+    NextAcceptTime: 99
+    SE: {fileID: 0}
+    SEVol: 0
+    Action: 1
+    Effects: 000000000300000002000000
+  - AnimName: Attack_7Combo_5_Inplace
+    GroupID: 0
+    Power: 0
+    IsEndCombo: 0
+    KnockBackData:
+      Power: 1
+      Type: 0
+    NextAcceptTime: 99
+    SE: {fileID: 0}
+    SEVol: 0
+    Action: 1
+    Effects: 000000000300000002000000
+  - AnimName: Attack_7Combo_6_Inplace
+    GroupID: 0
+    Power: 0
+    IsEndCombo: 0
+    KnockBackData:
+      Power: 1
+      Type: 0
+    NextAcceptTime: 99
+    SE: {fileID: 0}
+    SEVol: 0
+    Action: 1
+    Effects: 000000000300000002000000
+  - AnimName: Attack_7Combo_7_Inplace
+    GroupID: 0
+    Power: 0
+    IsEndCombo: 1
+    KnockBackData:
+      Power: 8
+      Type: 0
+    NextAcceptTime: 99
+    SE: {fileID: 0}
+    SEVol: 0
+    Action: 1
+    Effects: 000000000300000002000000
   - AnimName: Skill_I
     GroupID: 0
     Power: 0
@@ -571,7 +655,7 @@ MonoBehaviour:
     NextAcceptTime: 1
     SE: {fileID: 0}
     SEVol: 0
-    Action: 1
+    Action: 2
     Effects: 00000000030000000200000001000000
 --- !u!114 &3885928465433305240
 MonoBehaviour:
@@ -640,23 +724,79 @@ MonoBehaviour:
         Actions:
         - id: 22
         - id: 23
+      - Progress: 0
+        Conditionals:
         - id: 24
         - id: 25
-      - Progress: 1
-        Conditionals:
-        - id: 26
         Actions:
+        - id: 26
         - id: 27
         - id: 28
+        - id: 29
+      - Progress: 1
+        Conditionals:
+        - id: 30
+        Actions:
+        - id: 31
+        - id: 32
     - BrockID: 1
       QueueDatas:
       - Progress: 0
         Conditionals:
-        - id: 29
+        - id: 33
         Actions:
-        - id: 30
-        - id: 31
-        - id: 32
+        - id: 34
+        - id: 35
+        - id: 36
+  - Type: 4
+    BrockConditionals:
+    - id: 37
+    - id: 38
+    BrockDatas:
+    - BrockID: 0
+      QueueDatas:
+      - Progress: 0
+        Conditionals:
+        - id: 39
+        Actions:
+        - id: 40
+        - id: 41
+      - Progress: 0
+        Conditionals:
+        - id: 42
+        Actions:
+        - id: 43
+        - id: 44
+      - Progress: 0
+        Conditionals:
+        - id: 42
+        Actions:
+        - id: 45
+        - id: 44
+      - Progress: 0
+        Conditionals:
+        - id: 42
+        Actions:
+        - id: 46
+        - id: 44
+      - Progress: 0
+        Conditionals:
+        - id: 42
+        Actions:
+        - id: 47
+        - id: 44
+      - Progress: 0
+        Conditionals:
+        - id: 42
+        Actions:
+        - id: 48
+        - id: 44
+      - Progress: 0
+        Conditionals:
+        - id: 42
+        Actions:
+        - id: 49
+        - id: 44
   references:
     version: 1
     00000000:
@@ -790,54 +930,108 @@ MonoBehaviour:
       data:
         _type: 0
     00000018:
-      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 0
-        _checkBool: 0
-    00000019:
-      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 1
-        _checkBool: 0
-    0000001A:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 15
         _type: 0
+    00000019:
+      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _checkBool: 1
+    0000001A:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyYPos: 0
+        _moveType: 0
+        _speedRate: 0.02
     0000001B:
+      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+    0000001C:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 0
+    0000001D:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _checkBool: 0
+    0000001E:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 15
+        _type: 0
+    0000001F:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         _animName: Dodge_Back
         _applyYPos: 0
         _moveType: 1
         _speedRate: 0.3
-    0000001C:
+    00000020:
       type: {class: WaitTime, ns: , asm: Assembly-CSharp}
       data:
         _minWaitTime: 0.5
         _maxWaitTime: 0.5
         _setRandom: 0
-    0000001D:
+    00000021:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 10
         _type: 0
-    0000001E:
+    00000022:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         _animName: 
         _applyYPos: 0
         _moveType: 0
         _speedRate: 0.01
-    0000001F:
+    00000023:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
-        _type: 1
-    00000020:
+        _type: 2
+    00000024:
       type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
         _checkBool: 0
+    00000025:
+      type: {class: CheckMyHP, ns: , asm: Assembly-CSharp}
+      data:
+        _checkType: 1
+        _effect: 100
+    00000026:
+      type: {class: LimitConditional, ns: , asm: Assembly-CSharp}
+    00000027:
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    00000028:
+      type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+    00000029:
+      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+    0000002A:
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    0000002B:
+      type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+    0000002C:
+      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+    0000002D:
+      type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+    0000002E:
+      type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+    0000002F:
+      type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+    00000030:
+      type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+    00000031:
+      type: {class: MomentMove, ns: , asm: Assembly-CSharp}
 --- !u!1 &8735183208793564312
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class Skeleton : EnemyBase, IDamage
     {
         Sounds.SoundMaster.Request(transform, "Damage", 2);
         _isDamage = true;
-        _attack.Cansel();
+        _attack.Cancel();
         StartCoroutine(EndAnim());
         HP -= damage;
         if (HP < 0) base.Dead(gameObject);

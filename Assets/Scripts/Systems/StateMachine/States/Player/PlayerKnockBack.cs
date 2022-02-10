@@ -21,7 +21,7 @@ public class PlayerKnockBack : StateMachine.State
             _anim = Target.GetComponent<Animator>();
             _attack = Target.GetComponent<AttackSettings>();
         }
-        _attack.Cansel();
+        _attack.Cancel();
         _anim.Play("Damage_Front_Big_ver_C");
 
         _isKnockBack = true;

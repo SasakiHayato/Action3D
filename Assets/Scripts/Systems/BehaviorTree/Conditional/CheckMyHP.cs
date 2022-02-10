@@ -5,22 +5,32 @@ using BehaviourAI;
 
 public class CheckMyHP : IConditional
 {
-    [SerializeField] int _effectHP;
-    
-    CharaBase _charaBase = null;
-    bool _isCalled = false;
+    enum CheckType
+    {
+        FixedNumber,
+        Percent,
+    }
 
+    [SerializeField] CheckType _checkType;
+    [SerializeField] int _effect;
+
+    CharaBase _charaBase = null;
+    
     public bool Check()
     {
         if (_charaBase == null) _charaBase = Target.GetComponent<CharaBase>();
 
-        if (_charaBase.HP < _effectHP && !_isCalled)
+        if (_checkType == CheckType.FixedNumber)
         {
-            
-            _isCalled = true;
-            return true;
+            if (_charaBase.HP < _effect) return true;
+            else return false;
         }
-        else return false;
+        else
+        {
+            float rateHp = _charaBase.HP / _effect;
+            if (_charaBase.MaxHP > rateHp) return true;
+            else return false;
+        }
     }
 
     public GameObject Target { get; set; }

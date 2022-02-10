@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 using ObjectPhysics;
 
 [RequireComponent(typeof(CharacterController))]
@@ -14,6 +11,7 @@ public class CharaBase : MonoBehaviour
     [SerializeField] int _level;
 
     public int HP { get => _hp; protected set { _hp = value; } }
+    public int MaxHP { get; private set; } = 0;
     public int Power { get => _power; protected set { _power = value; } }
     public float Speed { get => _speed; protected set { _speed = value; } }
     public int Level { get => _level; protected set { _level = value; } }
@@ -43,7 +41,7 @@ public class CharaBase : MonoBehaviour
             HP = hp + (int)(hp * add);
             Power = power + (int)(power * add);
         }
-
+        MaxHP = HP;
         Speed = speed;
         Level = level;
     }

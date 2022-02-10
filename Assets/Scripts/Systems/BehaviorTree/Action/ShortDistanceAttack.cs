@@ -35,7 +35,7 @@ public class ShortDistanceAttack : IAction
                 return true;
             }
 
-            _attack.Cansel();
+            _attack.Cancel();
             _attack.Request(_type);
             return  true;
         }

@@ -27,11 +27,11 @@ namespace BehaviourAI
         
         public void Repeater()
         {
-            Debug.Log($"CurrentTreeID {_treeID} *****************");
-
-            if (_treeData != null && !_treeData.BrockConditionals.All(c => c.Check()))
+            if (_treeData != null
+                && _treeData.Type != QueueType.ConditionTask 
+                && !_treeData.BrockConditionals.All(c => c.Check()))
             {
-                Debug.Log("Repeater. NextTreeID");
+                Debug.Log("ResetTreeData");
                 _treeID++;
                 _treeData = null;
                 TreeState = State.Set;
@@ -41,10 +41,14 @@ namespace BehaviourAI
             switch (TreeState)
             {
                 case State.Run: // Note. 与えられたQueueDataのConditionalとActionをリピートさせる。
-                    Debug.Log("StateRun");
                     bool check = false;
 
                     if (_queueData.Progress == QueueProgress.Task) check = true;
+                    else if (_treeData != null)
+                    {
+                        if (_treeData.Type == QueueType.ConditionTask)
+                            check = true;
+                    }
                     else check = _conditional.CheckQueue(_queueData);
 
                     if (check) _action.Set(_queueData, this);
@@ -56,26 +60,24 @@ namespace BehaviourAI
 
                     break;
                 case State.Check: // Note. 与えられたBrockDataのQueueを順に調べて、TrueならQueueDataを差し込む
-                    Debug.Log("StateCheck");
                     _queueData = _conditional.Check(_brockData.QueueDatas, gameObject);
-                    
+                    Debug.Log($"StateChack TreeData{_treeData}");
                     if (_queueData != null)
                     {
-                        Debug.Log("StateCheck. IsDataSet.");
                         _conditional.SetNextQueue();
                         _action = new ActionNode(_queueData, gameObject);
                         TreeState = State.Run;
+                        Debug.Log("NextStateRun");
                     }
                     else
                     {
-                        Debug.Log("StateCheck. NotDataSet.");
                         // 現在のQueueDataがマックスに達した際にSelectorなら次のTreeを調べる。
                         // Sequenceなら次のBrockDataの準備。
                         if (_brockData.QueueDatas.Count <= _conditional.QueueID)
                         {
-                            Debug.Log("StateCheck. NextTreeData.");
                             _sequence.SetNextBrockID(ref _treeID);
                             _conditional.Init();
+                            Debug.Log("StateCheckSetNext ***************************");
                             TreeState = State.Set;
                         }
                     }
@@ -89,7 +91,6 @@ namespace BehaviourAI
 
                     break;
                 case State.Init: // Note. ゲーム開始時に一度呼ばれる。Setup
-                    Debug.Log("StateInit");
                     _treeData = null;
                     foreach (var tree in _treeDatas)
                         _conditional.SetUp(tree.BrockConditionals, gameObject);
@@ -102,11 +103,9 @@ namespace BehaviourAI
 
         void CheckBrock()
         {
-            Debug.Log("CheckBrockMethod");
             // 対象のTreeDataが最後まで行った際にリセットする。
             if (_treeDatas.Count <= _treeID)
             {
-                Debug.Log("CheckBrockMethod. ResetTree");
                 _treeID = 0;
                 TreeState = State.Set;
 
@@ -119,7 +118,6 @@ namespace BehaviourAI
                 if (tree.Type == QueueType.ConditionSelect
                     && tree.BrockConditionals.All(c => c.Check()))
                 {
-                    Debug.Log("CheckBrockMethod. ConditionalSelect");
                     _treeData = tree;
                     SetSelector(tree.BrockDatas);
                     return;
@@ -127,7 +125,14 @@ namespace BehaviourAI
                 else if (tree.Type == QueueType.ConditionSequence
                     && tree.BrockConditionals.All(c => c.Check()))
                 {
-                    Debug.Log("CheckBrockMethod. ConditionalSequence");
+                    _treeData = tree;
+                    SetSequence(tree.BrockDatas);
+                    return;
+                }
+                else if (tree.Type == QueueType.ConditionTask
+                    && tree.BrockConditionals.All(c => c.Check()))
+                {
+                    Debug.Log("ConditionTask");
                     _treeData = tree;
                     SetSequence(tree.BrockDatas);
                     return;
@@ -138,13 +143,11 @@ namespace BehaviourAI
             switch (_treeDatas[_treeID].Type)
             {
                 case QueueType.Selector:
-                    Debug.Log("CheckBrockMethod. Selector");
                     SetSelector(_treeDatas[_treeID].BrockDatas);
                     _treeID++;
                     return;
 
                 case QueueType.Sequence:
-                    Debug.Log("CheckBrockMethod. Sequence");
                     SetSequence(_treeDatas[_treeID].BrockDatas);
                     return;
             }
@@ -154,7 +157,6 @@ namespace BehaviourAI
 
         void SetSelector(List<BrockData> brocks)
         {
-            Debug.Log("SetSelectorMethod");
             _brockData = _selector.GetRandomBrock(brocks);
             _treeID++;
             TreeState = State.Check;
@@ -162,17 +164,14 @@ namespace BehaviourAI
 
         void SetSequence(List<BrockData> brocks)　// Note. Sequenceの場合、QueueDataを順に調べる必要あり
         {
-            Debug.Log("SetSequenceMethod");
             if (brocks.Count <= _sequence.SequenceID)
             {
-                Debug.Log("SetSequenceMethod. NextTreeID");
                 _treeID++;
                 _sequence.Init();
                 TreeState = State.Set;
             }
             else
             {
-                Debug.Log("SetSequenceMethod. SetSquence");
                 _brockData = _sequence.GetBrockData(brocks);
                 TreeState = State.Check;
             }
