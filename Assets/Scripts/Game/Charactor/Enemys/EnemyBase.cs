@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using BehaviourAI;
 
@@ -7,12 +8,15 @@ public abstract class EnemyBase : CharaBase, IFieldEnemy
     [SerializeField] float _knockBackPower;
     [SerializeField] float _knockBackTime;
     [SerializeField] BehaviourTree _tree;
+    [SerializeField] List<EnemyConditionalData> _enemyConditionals;
 
     protected BehaviourTree Tree { get => _tree; set { _tree = value; } }
     protected float GetKnockBackPower => _knockBackPower;
 
     public Vector3 MoveDir { protected get; set; } = new Vector3(0 ,1, 0);
     float _timer = 0;
+
+    public List<EnemyConditionalData> GetEnemyConditionalDatas => _enemyConditionals;
 
     // IFieldEnemy
     public int GroupID { get; set; }
@@ -55,4 +59,12 @@ public abstract class EnemyBase : CharaBase, IFieldEnemy
     }
     
     public abstract void KnockBack(Vector3 dir);
+}
+
+[System.Serializable]
+public class EnemyConditionalData
+{
+    public int ID;
+    public bool Check { get; private set; } = false;
+    public void SetBool(bool set) => Check = set;
 }

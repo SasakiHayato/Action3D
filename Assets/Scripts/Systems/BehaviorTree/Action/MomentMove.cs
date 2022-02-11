@@ -5,6 +5,7 @@ using BehaviourAI;
 
 public class MomentMove : IAction
 {
+    [SerializeField] bool _apllayPosY;
     public GameObject Target { get; set; }
 
     GameObject _player = null;
@@ -21,7 +22,10 @@ public class MomentMove : IAction
 
     public bool Execute()
     {
-        Vector3 setPos = _player.transform.position;
+        Vector3 setPos = _player.GetComponentInChildren<TargetCorrector>().gameObject.transform.position;
+
+        if (!_apllayPosY) setPos.y = Target.transform.position.y;
+
         _charaBase.Character.ChangePos(setPos, Target);
         return true;
     }

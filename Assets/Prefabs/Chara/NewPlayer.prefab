@@ -69,6 +69,7 @@ Transform:
   - {fileID: 5970843909588999231}
   - {fileID: 831371221710887457}
   - {fileID: 3354610143908288867}
+  - {fileID: 2737173427072996157}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -175,12 +176,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 220897451450321894}
+  _requestEnemySystem: 0
   _requestCoolTime: 0.3
   _targetWeapon: {fileID: 1312114923959178701}
   _attacks:
   - AnimName: Attack_5Combo_1
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 1
       Type: 0
@@ -192,6 +195,7 @@ MonoBehaviour:
   - AnimName: Attack_5Combo_2
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 0
       Type: 0
@@ -203,6 +207,7 @@ MonoBehaviour:
   - AnimName: Attack_5Combo_3
     GroupID: 0
     Power: 0
+    IsEndCombo: 0
     KnockBackData:
       Power: 0
       Type: 0
@@ -214,6 +219,7 @@ MonoBehaviour:
   - AnimName: Attack_5Combo_4
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 0
       Type: 0
@@ -225,6 +231,7 @@ MonoBehaviour:
   - AnimName: Attack_5Combo_5
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 10
       Type: 0
@@ -236,6 +243,7 @@ MonoBehaviour:
   - AnimName: Attack_3Combo_1
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 0
       Type: 0
@@ -247,6 +255,7 @@ MonoBehaviour:
   - AnimName: Attack_3Combo_2
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 1
       Type: 1
@@ -258,6 +267,7 @@ MonoBehaviour:
   - AnimName: Attack_3Combo_3
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 20
       Type: 0
@@ -269,6 +279,7 @@ MonoBehaviour:
   - AnimName: Jump_Attack_Combo_1
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 0
       Type: 0
@@ -280,6 +291,7 @@ MonoBehaviour:
   - AnimName: Jump_Attack_Combo_2
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 0
       Type: 0
@@ -291,6 +303,7 @@ MonoBehaviour:
   - AnimName: Jump_Attack_Combo_3
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 0
       Type: 0
@@ -302,6 +315,7 @@ MonoBehaviour:
   - AnimName: Jump_Attack_Combo_4
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 0
       Type: 0
@@ -313,6 +327,7 @@ MonoBehaviour:
   - AnimName: Jump_Attack_Combo_5
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 0
       Type: 0
@@ -324,6 +339,7 @@ MonoBehaviour:
   - AnimName: Jump_Attack_Combo_6
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 10
       Type: 2
@@ -335,6 +351,7 @@ MonoBehaviour:
   - AnimName: Skill_A
     GroupID: 0
     Power: 1
+    IsEndCombo: 0
     KnockBackData:
       Power: 30
       Type: 0
@@ -363,7 +380,6 @@ MonoBehaviour:
   - id: 4
   - id: 5
   - id: 6
-  _isRunning: 1
   references:
     version: 1
     00000000:
@@ -380,7 +396,9 @@ MonoBehaviour:
       data:
         StateID: 2
         _avoidTime: 0.2
-        _speed: 5
+        _defSpeed: 0
+        _isLockOnSpeed: 0
+        _targetDist: 0
     00000003:
       type: {class: PlayerAttack, ns: , asm: Assembly-CSharp}
       data:
@@ -2183,6 +2201,49 @@ Transform:
   m_Father: {fileID: 4437293500743706794}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7168896622528108054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2737173427072996157}
+  - component: {fileID: 3071237756242976036}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2737173427072996157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7168896622528108054}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.27, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8621698311956876471}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3071237756242976036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7168896622528108054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9925a025f68014498d5eb4610f03615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7362183156799933509
 GameObject:
   m_ObjectHideFlags: 0

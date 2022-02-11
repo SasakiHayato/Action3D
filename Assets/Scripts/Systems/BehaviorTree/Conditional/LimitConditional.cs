@@ -3,20 +3,24 @@ using BehaviourAI;
 
 public class LimitConditional : IConditional
 {
-    bool _setBool = false;
+    [SerializeField] int _checkID;
+    [SerializeField] bool _checkBool;
+    EnemyBase _enemyBase = null;
 
     public GameObject Target { get; set; }
     public bool Check()
     {
-        Debug.Log("LimitCondition ********************");
-        if (!_setBool)
+        if (_enemyBase == null) _enemyBase = Target.GetComponent<EnemyBase>();
+        Debug.Log(_enemyBase.GetEnemyConditionalDatas[_checkID - 1].Check);
+        if (_checkBool)
         {
-            _setBool = true;
-            return true;
+            if (_enemyBase.GetEnemyConditionalDatas[_checkID - 1].Check) return true;
+            else return false;
         }
         else
         {
-            return false;
+            if (!_enemyBase.GetEnemyConditionalDatas[_checkID - 1].Check) return true;
+            else return false;
         }
     }
 }

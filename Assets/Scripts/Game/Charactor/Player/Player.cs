@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
@@ -144,7 +143,7 @@ public class Player : CharaBase, IDamage
                 float angle = Mathf.Abs(Vector3.Dot(cmForwrad, dir.normalized) * Mathf.Rad2Deg);
                 if (saveAngle < angle)
                 {
-                    set = e;
+                    set = e.GetComponentInChildren<TargetCorrector>().gameObject;
                     saveAngle = angle;
                 }
             }

@@ -13,7 +13,6 @@ namespace BehaviourAI
 
             ConditionSelect,
             ConditionSequence,
-            ConditionTask,
         }
 
         enum QueueProgress

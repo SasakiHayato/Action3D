@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5023825690169262282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5866389346992939814}
+  - component: {fileID: 2509230772727784351}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5866389346992939814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5023825690169262282}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8735183208793995446}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2509230772727784351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5023825690169262282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9925a025f68014498d5eb4610f03615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &3581877094062311607
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9482eb878c359f47b8cfab997e7071d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _avoidDist: 5.5
+  _avoidDist: 7
 --- !u!1 &8735183208793564288
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +458,7 @@ Transform:
   m_Children:
   - {fileID: 8735183208793995496}
   - {fileID: 8735183208793995412}
+  - {fileID: 5866389346992939814}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -508,6 +552,8 @@ MonoBehaviour:
   _knockBackPower: 0
   _knockBackTime: 0
   _tree: {fileID: 3885928465433305240}
+  _enemyConditionals:
+  - ID: 0
 --- !u!114 &9170105215925174720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,7 +794,7 @@ MonoBehaviour:
         - id: 34
         - id: 35
         - id: 36
-  - Type: 4
+  - Type: 3
     BrockConditionals:
     - id: 37
     - id: 38
@@ -797,6 +843,7 @@ MonoBehaviour:
         Actions:
         - id: 49
         - id: 44
+        - id: 50
   references:
     version: 1
     00000000:
@@ -839,7 +886,7 @@ MonoBehaviour:
     00000007:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 6
+        _range: 4
         _type: 1
     00000008:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
@@ -862,7 +909,7 @@ MonoBehaviour:
     0000000B:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 5
+        _range: 3
         _type: 0
     0000000C:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
@@ -1003,13 +1050,18 @@ MonoBehaviour:
       type: {class: CheckMyHP, ns: , asm: Assembly-CSharp}
       data:
         _checkType: 1
-        _effect: 100
+        _effect: 50
     00000026:
       type: {class: LimitConditional, ns: , asm: Assembly-CSharp}
+      data:
+        _checkID: 1
+        _checkBool: 0
     00000027:
       type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
     00000028:
       type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+      data:
+        _apllayPosY: 1
     00000029:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
@@ -1018,20 +1070,37 @@ MonoBehaviour:
       type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
     0000002B:
       type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+      data:
+        _apllayPosY: 1
     0000002C:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 1
     0000002D:
       type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+      data:
+        _apllayPosY: 1
     0000002E:
       type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+      data:
+        _apllayPosY: 1
     0000002F:
       type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+      data:
+        _apllayPosY: 1
     00000030:
       type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+      data:
+        _apllayPosY: 1
     00000031:
       type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+      data:
+        _apllayPosY: 1
+    00000032:
+      type: {class: SetLimitConditional, ns: , asm: Assembly-CSharp}
+      data:
+        _setID: 1
+        _setBool: 1
 --- !u!1 &8735183208793564312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,15 +3075,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 958cf4748c84fb948bc3400edc8005e9, type: 3}
---- !u!4 &8120220898634481381 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4574269520425118, guid: 958cf4748c84fb948bc3400edc8005e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 8115646663912099451}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8117627567819245669 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1982315913299486, guid: 958cf4748c84fb948bc3400edc8005e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8115646663912099451}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8120220898634481381 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4574269520425118, guid: 958cf4748c84fb948bc3400edc8005e9,
     type: 3}
   m_PrefabInstance: {fileID: 8115646663912099451}
   m_PrefabAsset: {fileID: 0}
