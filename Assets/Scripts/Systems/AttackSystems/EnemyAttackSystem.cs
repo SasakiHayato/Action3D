@@ -11,5 +11,11 @@ namespace AttackSetting
 
         public bool SetMasterRequest(bool set) => MasterRequest = set;
         public bool SetRequest(bool set) => Request = set;
+
+        public void SetWarningEffect(Transform transform)
+        {
+            GameObject obj = Instantiate((GameObject)Resources.Load(""));
+            obj.transform.position = transform.position;
+        }
     }
 }

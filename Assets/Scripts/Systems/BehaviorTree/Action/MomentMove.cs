@@ -23,10 +23,10 @@ public class MomentMove : IAction
     public bool Execute()
     {
         Vector3 setPos = _player.GetComponentInChildren<TargetCorrector>().gameObject.transform.position;
-
         if (!_apllayPosY) setPos.y = Target.transform.position.y;
-
-        _charaBase.Character.ChangePos(setPos, Target);
+        Vector3 forward = Target.transform.forward;
+        forward.y = 0;
+        _charaBase.Character.ChangePos(setPos - forward * 3, Target);
         return true;
     }
 }

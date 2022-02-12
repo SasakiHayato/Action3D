@@ -23,7 +23,6 @@ namespace BehaviourAI
             {
                 if (queue.Actions[_actionID].Execute())
                 {
-                    Debug.Log($"{queue.Actions[_actionID].GetType()} is End");
                     _actionID++;
                     if (_actionCount == _actionID) tree.TreeState = State.Check;
                 }

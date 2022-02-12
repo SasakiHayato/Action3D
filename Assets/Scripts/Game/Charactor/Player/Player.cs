@@ -37,8 +37,7 @@ public class Player : CharaBase, IDamage
         _attack = GetComponent<AttackSettings>();
 
         Inputter.Instance.Inputs.Player
-            .Fire.started += context
-            => _state.ChangeState(StateMachine.StateType.Avoid);
+            .Fire.started += context => Avoid();
 
         Inputter.Instance.Inputs.Player
             .Jump.started += context => Jump();
@@ -97,8 +96,15 @@ public class Player : CharaBase, IDamage
         }
     }
 
+    void Avoid()
+    {
+        if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
+        _state.ChangeState(StateMachine.StateType.Avoid);
+    }
+
     void Jump()
     {
+        if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
         _state.ChangeState(StateMachine.StateType.Floating);
         PhsicsBase.SetJump();
     }
@@ -106,6 +112,7 @@ public class Player : CharaBase, IDamage
     void WeakAttack()
     {
         if (_attack.IsCounter) return;
+        if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
         _attack.SetAction = ActionType.WeakGround;
         _attack.NextRequest();
         _state.ChangeState(StateMachine.StateType.Attack);
@@ -114,6 +121,7 @@ public class Player : CharaBase, IDamage
     void StrengthAttack()
     {
         if (_attack.IsCounter) return;
+        if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
         _attack.SetAction = ActionType.StrengthGround;
         _attack.NextRequest();
         _state.ChangeState(StateMachine.StateType.Attack);
