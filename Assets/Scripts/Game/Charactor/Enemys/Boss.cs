@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AttackSetting;
 
 public class Boss : EnemyBase, IDamage
 {
     bool _isBackKnock = false;
     GameObject _player;
+
+    Animator _anim;
+    AttackSettings _attack;
     
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
+        _anim = GetComponent<Animator>();
+        _attack = GetComponent<AttackSettings>();
     }
 
     void Update()
@@ -42,7 +48,10 @@ public class Boss : EnemyBase, IDamage
             GameManager.Instance.IsLockOn = false;
             return;
         }
-        
+
+        if (_attack.EndCurrentAnim) _anim.Play("Damage_Back_Small_ver_B");
+        else _isBackKnock = false;
+
         HP -= damage;
         if (HP < 0) base.Dead(gameObject);
     }
