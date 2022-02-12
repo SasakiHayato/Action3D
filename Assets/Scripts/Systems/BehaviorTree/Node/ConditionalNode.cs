@@ -27,7 +27,7 @@ namespace BehaviourAI
                 conditions.ForEach(c => c.Target = t);
             }
 
-            public QueueData Check(List<QueueData> queueDatas, GameObject t)
+            public QueueData CheckSequence(List<QueueData> queueDatas, GameObject t)
             {
                 if (queueDatas.Count == QueueID)
                 {
@@ -43,6 +43,22 @@ namespace BehaviourAI
                 else
                 {
                     QueueID++;
+                    return null;
+                }
+            }
+
+            public QueueData CheckSelector(BrockData brockData, GameObject t)
+            {
+                int random = Random.Range(0, brockData.QueueDatas.Count);
+                QueueData queueData = brockData.QueueDatas[random];
+                queueData.Conditionals.ForEach(q => q.Target = t);
+
+                if (queueData.Conditionals.All(c => c.Check()))
+                {
+                    return queueData;
+                }
+                else
+                {
                     return null;
                 }
             }

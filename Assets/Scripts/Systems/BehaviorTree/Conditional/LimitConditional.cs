@@ -11,7 +11,6 @@ public class LimitConditional : IConditional
     public bool Check()
     {
         if (_enemyBase == null) _enemyBase = Target.GetComponent<EnemyBase>();
-        Debug.Log(_enemyBase.GetEnemyConditionalDatas[_checkID - 1].Check);
         if (_checkBool)
         {
             if (_enemyBase.GetEnemyConditionalDatas[_checkID - 1].Check) return true;

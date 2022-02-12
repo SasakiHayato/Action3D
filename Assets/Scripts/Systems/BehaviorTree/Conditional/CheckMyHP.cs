@@ -27,8 +27,8 @@ public class CheckMyHP : IConditional
         }
         else
         {
-            float rateHp = _charaBase.HP / _effect;
-            if (_charaBase.MaxHP > rateHp) return true;
+            float rateHp = _charaBase.MaxHP / _effect;
+            if (_charaBase.HP < rateHp) return true;
             else return false;
         }
     }

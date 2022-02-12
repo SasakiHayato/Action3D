@@ -157,9 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 10000
-  _power: 0
+  _power: 1
   _speed: 0
-  _level: 0
+  _level: 1
   _lockOnDist: 50
   _muzzle: {fileID: 3354610143908288867}
   _shotCoolTime: 0.1

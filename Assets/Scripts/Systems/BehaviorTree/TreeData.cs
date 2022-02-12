@@ -15,6 +15,12 @@ namespace BehaviourAI
             ConditionSequence,
         }
 
+        enum BrockType
+        {
+            Sequence,
+            Selector,
+        }
+
         enum QueueProgress
         {
             Update,
@@ -35,7 +41,7 @@ namespace BehaviourAI
         [System.Serializable]
         class BrockData
         {
-            public int BrockID;
+            public BrockType BrockType;
             public List<QueueData> QueueDatas;
         }
 

@@ -38,6 +38,7 @@ namespace BehaviourAI
             switch (TreeState)
             {
                 case State.Run: // Note. 与えられたQueueDataのConditionalとActionをリピートさせる。
+                    Debug.Log("StateRun");
                     bool check = false;
                     if (_queueData.Progress == QueueProgress.Task) check = true;
                     else check = _conditional.CheckQueue(_queueData);
@@ -45,13 +46,24 @@ namespace BehaviourAI
                     if (check) _action.Set(_queueData, this);
                     else
                     {
+                        Debug.Log("SetNextBrockID");
                         _sequence.SetNextBrockID(ref _treeID);
                         _action.Cancel(_queueData, this);
                     }
 
                     break;
                 case State.Check: // Note. 与えられたBrockDataのQueueを順に調べて、TrueならQueueDataを差し込む
-                    _queueData = _conditional.Check(_brockData.QueueDatas, gameObject);
+                    Debug.Log("StateCheck");
+                    if (_brockData.BrockType == BrockType.Sequence)
+                    {
+                        Debug.Log("BrockSequence");
+                        _queueData = _conditional.CheckSequence(_brockData.QueueDatas, gameObject);
+                    }
+                    else
+                    {
+                        Debug.Log("BrockSelector");
+                        _queueData = _conditional.CheckSelector(_brockData, gameObject);
+                    }
               
                     if (_queueData != null)
                     {
@@ -63,7 +75,8 @@ namespace BehaviourAI
                     {
                         // 現在のQueueDataがマックスに達した際にSelectorなら次のTreeを調べる。
                         // Sequenceなら次のBrockDataの準備。
-                        if (_brockData.QueueDatas.Count <= _conditional.QueueID)
+                        if (_brockData.QueueDatas.Count <= _conditional.QueueID
+                            || _brockData.BrockType == BrockType.Selector)
                         {
                             _sequence.SetNextBrockID(ref _treeID);
                             _conditional.Init();
@@ -74,8 +87,8 @@ namespace BehaviourAI
 
                     break;
                 case State.Set: // Note. Run、またはCheckが中断された際に、新たにBrockDataを差し込む
+                    Debug.Log("StateSet");
                     _conditional.Init();
-                    //_sequence.Init();
                     CheckBrock();
 
                     break;
