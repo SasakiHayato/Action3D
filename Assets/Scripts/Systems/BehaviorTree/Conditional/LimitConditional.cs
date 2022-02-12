@@ -10,6 +10,7 @@ public class LimitConditional : IConditional
     public GameObject Target { get; set; }
     public bool Check()
     {
+        Debug.Log("aaaaaa");
         if (_enemyBase == null) _enemyBase = Target.GetComponent<EnemyBase>();
         if (_checkBool)
         {

@@ -1746,7 +1746,7 @@ PrefabInstance:
     - target: {fileID: 4808767650535583358, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: _attacks.Array.data[14].Power
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4808767650535583358, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}

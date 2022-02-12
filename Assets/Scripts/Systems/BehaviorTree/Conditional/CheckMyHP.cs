@@ -12,7 +12,7 @@ public class CheckMyHP : IConditional
     }
 
     [SerializeField] CheckType _checkType;
-    [SerializeField] int _effect;
+    [SerializeField] float _effect;
 
     CharaBase _charaBase = null;
     
@@ -22,13 +22,14 @@ public class CheckMyHP : IConditional
 
         if (_checkType == CheckType.FixedNumber)
         {
-            if (_charaBase.HP < _effect) return true;
+            if (_charaBase.HP <= _effect) return true;
             else return false;
         }
         else
         {
-            float rateHp = _charaBase.MaxHP / _effect;
-            if (_charaBase.HP < rateHp) return true;
+            float rateHp = Mathf.Lerp(0, _charaBase.MaxHP, _effect);
+            Debug.Log($"max {_charaBase.MaxHP} Effect {rateHp}");
+            if (_charaBase.HP <= rateHp) return true;
             else return false;
         }
     }

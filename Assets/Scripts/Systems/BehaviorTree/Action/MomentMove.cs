@@ -26,7 +26,7 @@ public class MomentMove : IAction
         if (!_apllayPosY) setPos.y = Target.transform.position.y;
         Vector3 forward = Target.transform.forward;
         forward.y = 0;
-        _charaBase.Character.ChangePos(setPos - forward * 3, Target);
+        _charaBase.Character.ChangePos(setPos - forward * 3f, Target);
         return true;
     }
 }

@@ -113,6 +113,7 @@ namespace BehaviourAI
                 if (tree.Type == QueueType.ConditionSelect
                     && tree.BrockConditionals.All(c => c.Check()))
                 {
+                    Debug.Log("ConditionSelect");
                     _treeData = tree;
                     SetSelector(tree.BrockDatas);
                     return;
@@ -120,6 +121,7 @@ namespace BehaviourAI
                 else if (tree.Type == QueueType.ConditionSequence
                     && tree.BrockConditionals.All(c => c.Check()))
                 {
+                    Debug.Log("ConditionSequence");
                     _treeData = tree;
                     SetSequence(tree.BrockDatas);
                     return;

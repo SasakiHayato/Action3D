@@ -54,7 +54,7 @@ namespace AttackSetting
         #endregion
 
         [System.Serializable]
-        class AttackData
+        public class AttackData
         {
             public string AnimName;
             public int GroupID;
@@ -225,7 +225,7 @@ namespace AttackSetting
                 Debug.Log($"IsRequest{_isRequest} : Attaking {_attacking}");
                 return;
             }
-            
+
             _isRequest = false;
             IsNextRequest = false;
 
@@ -241,6 +241,7 @@ namespace AttackSetting
                 {
                     _findIndex = i + 1;
                     SetData(_attacks[i]);
+                    
                     return;
                 }
             }
@@ -252,6 +253,7 @@ namespace AttackSetting
                 {
                     _findIndex = i + 1;
                     SetData(_attacks[i]);
+                    
                     return;
                 }
             }
