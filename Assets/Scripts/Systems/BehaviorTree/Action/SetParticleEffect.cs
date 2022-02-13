@@ -4,8 +4,9 @@ using UnityEngine;
 using BehaviourAI;
 using DG.Tweening;
 
-public class SetWarningParticle : IAction
+public class SetParticleEffect : IAction
 {
+    [SerializeField] string _particleName;
     [SerializeField] float _setNextActionTime = 0.2f;
     [SerializeField] Vector3 _offSet = new Vector3(4,4,4);
 
@@ -25,8 +26,8 @@ public class SetWarningParticle : IAction
         if (!_isCall)
         {
             _isCall = true;
-            Debug.Log("ParticleCall");
-            GameObject obj = Object.Instantiate((GameObject)Resources.Load("WarningParticle"));
+            Debug.Log("Setparticle");
+            GameObject obj = Object.Instantiate((GameObject)Resources.Load(_particleName));
             obj.transform.position = Target.GetComponentInChildren<TargetCorrector>().transform.position;
             obj.transform.DOScale(_offSet, _setNextActionTime / 2)
                 .OnComplete(() =>

@@ -28,7 +28,6 @@ public class CheckMyHP : IConditional
         else
         {
             float rateHp = Mathf.Lerp(0, _charaBase.MaxHP, _effect);
-            Debug.Log($"max {_charaBase.MaxHP} Effect {rateHp}");
             if (_charaBase.HP <= rateHp) return true;
             else return false;
         }

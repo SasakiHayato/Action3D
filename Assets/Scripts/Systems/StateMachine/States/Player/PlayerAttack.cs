@@ -28,9 +28,11 @@ public class PlayerAttack : StateMachine.State
         {
             if(GameManager.Instance.IsLockOn && _player.IsAvoid)
             {
-                Vector3 tPos = GameManager.Instance.LockonTarget.transform.position;
+                Transform t = GameManager.Instance.LockonTarget.transform;
+                Vector3 tPos = t.position;
+                Vector3 tForward = t.forward;
                 tPos.y -= 0.5f;
-                Target.transform.DOMove(tPos, 0.1f).SetEase(Ease.Linear);
+                Target.transform.DOMove(tPos - tForward * 1.2f, 0.1f).SetEase(Ease.Linear);
                 _attack.Request(ActionType.Counter);
             }
         }
