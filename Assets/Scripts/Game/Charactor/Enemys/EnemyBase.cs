@@ -3,7 +3,7 @@ using UnityEngine;
 using BehaviourAI;
 
 [RequireComponent(typeof(BehaviourTree))]
-public abstract class EnemyBase : CharaBase, IFieldEnemy
+public abstract class EnemyBase : CharaBase
 {
     [SerializeField] float _knockBackPower;
     [SerializeField] float _knockBackTime;
@@ -30,8 +30,13 @@ public abstract class EnemyBase : CharaBase, IFieldEnemy
         Sounds.SoundMaster.Request(null, "EnemyDead", 2);
 
         IFieldEnemy iEnemy = target.GetComponent<IFieldEnemy>();
-        GameManager.Instance.GetExp(iEnemy.EnemyData.Exp, Level);
-        FieldManager.Instance.FieldData.Delete(GroupID, iEnemy);
+
+        if (iEnemy != null)
+        {
+            GameManager.Instance.GetExp(iEnemy.EnemyData.Exp, Level);
+            FieldManager.Instance.FieldData.Delete(GroupID, iEnemy);
+        }
+        
         FieldManager.FieldTimeRate(null, UIType.Player, 1);
 
         Destroy(target);

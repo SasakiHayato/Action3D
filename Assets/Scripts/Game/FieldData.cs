@@ -101,11 +101,15 @@ public class FieldData
                     charaBase.Character.ChangeLocalPos(new Vector3(x, y, z), obj);
                     charaBase.SetParam(enemyData.HP, enemyData.Power, enemyData.Speed, level);
                     IFieldEnemy iEnemy = obj.GetComponent<IFieldEnemy>();
-                    iEnemy.GroupID = spawnData.ID;
-                    iEnemy.Target = obj;
-                    iEnemy.EnemyData = enemyData;
 
-                    groupData.FieldEnemies.Add(iEnemy);
+                    if (iEnemy != null)
+                    {
+                        iEnemy.GroupID = spawnData.ID;
+                        iEnemy.Target = obj;
+                        iEnemy.EnemyData = enemyData;
+
+                        groupData.FieldEnemies.Add(iEnemy);
+                    }
                 }
             }
         }
