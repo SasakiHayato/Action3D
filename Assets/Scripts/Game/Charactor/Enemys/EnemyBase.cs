@@ -38,7 +38,7 @@ public abstract class EnemyBase : CharaBase
         }
         
         FieldManager.FieldTimeRate(null, UIType.Player, 1);
-
+        FieldManager.Instance.ExplosionEffecter.SetDummy(target, 0.5f);
         Destroy(target);
     }
 

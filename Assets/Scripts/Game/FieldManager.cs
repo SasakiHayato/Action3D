@@ -39,15 +39,22 @@ public class FieldManager : MonoBehaviour
 
     int _setUpdateTime;
 
+    ExplosionEffecter _explosion;
+    public ExplosionEffecter ExplosionEffecter => _explosion;
+
     private void Awake()
     {
         _instance = this;
+        _explosion = gameObject.AddComponent<ExplosionEffecter>();
+        _explosion.SetUp(transform);
 
         GameObject hitParticle = (GameObject)Resources.Load("HitParticle");
         _hitParticlePool.SetUp(hitParticle.GetComponent<ParticleUser>(), transform, 10);
 
         GameObject deadParticle = (GameObject)Resources.Load("DeadParticle");
-        _deadParticlePool.SetUp(deadParticle.GetComponent<ParticleUser>(), transform, 10);
+        _deadParticlePool.SetUp(deadParticle.GetComponent<ParticleUser>(), transform, 5);
+
+
     }
 
     void Start()

@@ -24,7 +24,7 @@ namespace BehaviourAI
         TreeData _treeData;
 
         int _treeID = 0;
-        
+
         public void Repeater()
         {
             if (_treeData != null && !_treeData.BrockConditionals.All(c => c.Check()))

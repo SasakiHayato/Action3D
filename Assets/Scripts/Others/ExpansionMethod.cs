@@ -26,3 +26,12 @@ public static class TranceformHelper
         return obj.GetComponent<RectTransform>();
     }
 }
+
+public static class GameObjectHlper
+{
+    public static void RemoveComponentAll(this GameObject obj)
+    {
+        List<Behaviour> gets = new List<Behaviour>(obj.GetComponents<Behaviour>());
+        gets.ForEach(c => c.enabled = false);
+    }
+}
