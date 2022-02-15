@@ -1,27 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyCanvas : MonoBehaviour
 {
+    [SerializeField] GameObject _panel;
+    [SerializeField] Slider _slider;
+
     EnemyBase _enemyBase;
     Canvas _canvas;
-    int _saveHp; 
-
+    
     void Start()
     {
         _enemyBase = transform.parent.GetComponent<EnemyBase>();
-        _saveHp = _enemyBase.HP;
+        _slider.maxValue = _enemyBase.MaxHP;
         _canvas = gameObject.GetComponent<Canvas>();
-        gameObject.SetActive(false);
+        _panel.SetActive(false);
     }
 
     void Update()
     {
-        if (_enemyBase.HP >= _saveHp) return;
+        if (_enemyBase.HP >= _enemyBase.MaxHP) return;
         else
         {
-            if (!gameObject.activeSelf) gameObject.SetActive(true);
+            if (!_panel.activeSelf) _panel.SetActive(true);
+            _slider.value = _enemyBase.HP;
         }
         _canvas.transform.rotation = Camera.main.transform.rotation;
     }

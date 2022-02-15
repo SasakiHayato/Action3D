@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using AttackSetting;
 
-public class Skeleton : EnemyBase, IDamage
+public class Skeleton : EnemyBase, IDamage, IFieldEnemy
 {
     Animator _anim;
     AttackSettings _attack;

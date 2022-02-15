@@ -547,7 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 0
   _power: 0
-  _speed: 0
+  _speed: 9
   _level: 0
   _knockBackPower: 0
   _knockBackTime: 0
@@ -752,6 +752,7 @@ MonoBehaviour:
         Actions:
         - id: 13
         - id: 14
+        - id: 15
   references:
     version: 1
     00000000:
@@ -780,7 +781,7 @@ MonoBehaviour:
         _animName: Walk_ver_B_Front
         _applyYPos: 0
         _moveType: 0
-        _speedRate: 9
+        _speedRate: 5
     00000005:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
@@ -830,6 +831,11 @@ MonoBehaviour:
         _minWaitTime: 0.5
         _maxWaitTime: 2
         _setRandom: 1
+    0000000F:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 0
 --- !u!1 &8735183208793564312
 GameObject:
   m_ObjectHideFlags: 0

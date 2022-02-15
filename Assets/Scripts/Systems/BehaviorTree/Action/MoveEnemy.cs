@@ -37,7 +37,7 @@ public class MoveEnemy : IAction
     {
         if (_attack != null)
         {
-            if (!_attack.EndCurrentAnim) return true;
+            if (!_attack.EndCurrentAnim) return false;
         }
 
         Vector3 dir = Vector3.zero;

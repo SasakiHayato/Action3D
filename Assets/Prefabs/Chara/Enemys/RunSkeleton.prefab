@@ -223,6 +223,7 @@ Transform:
   m_Children:
   - {fileID: 1541433764611268896}
   - {fileID: 1541433764901476252}
+  - {fileID: 6551543791241504475}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -316,6 +317,7 @@ MonoBehaviour:
   _knockBackPower: 1
   _knockBackTime: 0.4
   _tree: {fileID: 1983511590397818647}
+  _enemyConditionals: []
 --- !u!114 &1541433764607956049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 1541433764607956050}
-  _requestEnemySystem: 0
+  _requestEnemySystem: 1
   _requestCoolTime: 1
   _targetWeapon: {fileID: 1541433765520133809}
   _attacks:
@@ -361,37 +363,56 @@ MonoBehaviour:
   - Type: 1
     BrockConditionals: []
     BrockDatas:
-    - BrockID: 0
+    - BrockType: 0
       QueueDatas:
-      - Conditionals:
+      - Progress: 0
+        Conditionals:
         - id: 0
         Actions:
         - id: 1
-      - Conditionals:
+      - Progress: 0
+        Conditionals:
         - id: 2
         - id: 3
         Actions:
         - id: 4
-      - Conditionals:
+      - Progress: 0
+        Conditionals:
         - id: 5
         - id: 6
         Actions:
         - id: 7
+        - id: 8
+        - id: 9
+  - Type: 3
+    BrockConditionals:
+    - id: 10
+    BrockDatas:
+    - BrockType: 0
+      QueueDatas:
+      - Progress: 1
+        Conditionals:
+        - id: 11
+        Actions:
+        - id: 12
+        - id: 13
+        - id: 14
   references:
     version: 1
     00000000:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 3.5
-        _type: 0
+        _range: 61
+        _type: 1
     00000001:
-      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
       data:
-        _type: 0
+        _idleAnimName: Skeleton
+        _useGravity: 1
     00000002:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 50
+        _range: 60
         _type: 0
     00000003:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
@@ -408,18 +429,53 @@ MonoBehaviour:
     00000005:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 100000
-        _type: 1
+        _range: 4
+        _type: 0
     00000006:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 51
-        _type: 0
+        _range: 0
+        _type: 1
     00000007:
-      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
+      type: {class: SetParticleEffect, ns: , asm: Assembly-CSharp}
       data:
-        _idleAnimName: Skeleton
-        _useGravity: 1
+        _particleName: WarningParticle
+        _setNextActionTime: 0.2
+        _offSet: {x: 4, y: 4, z: 4}
+    00000008:
+      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+    00000009:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 1
+    0000000A:
+      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 1
+    0000000B:
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    0000000C:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: Skeleton
+        _applyYPos: 0
+        _moveType: 1
+        _speedRate: 0.3
+    0000000D:
+      type: {class: WaitTime, ns: , asm: Assembly-CSharp}
+      data:
+        _minWaitTime: 1
+        _maxWaitTime: 1.5
+        _setRandom: 1
+    0000000E:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 0
 --- !u!1 &1541433764611268897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,3 +1686,46 @@ Transform:
   m_Father: {fileID: 1541433765495704843}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.0000008012692, y: 0.0000017095576, z: -19.88753}
+--- !u!1 &6363846280728707171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6551543791241504475}
+  - component: {fileID: 2970132694067708761}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6551543791241504475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6363846280728707171}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1541433765836349652}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2970132694067708761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6363846280728707171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9925a025f68014498d5eb4610f03615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

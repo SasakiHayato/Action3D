@@ -23,9 +23,8 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
         SetKnockBack(ref _isBackKnock);
         Tree.Repeater();
         Rotate();
-        Vector3 move = MoveDir;
         
-        Vector3 set = Vector3.Scale(move * Speed, PhsicsBase.GetVelocity);
+        Vector3 set = Vector3.Scale(MoveDir * Speed, PhsicsBase.GetVelocity);
         Character.Move(set * Time.deltaTime);
     }
 
