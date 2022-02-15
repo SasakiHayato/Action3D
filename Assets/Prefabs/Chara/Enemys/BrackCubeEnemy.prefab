@@ -231,7 +231,7 @@ MonoBehaviour:
       data:
         _speed: 3
         _coolTime: 0.2
-        _bulletID: 1
+        _bulletID: 0
     00000005:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:

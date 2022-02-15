@@ -48,7 +48,7 @@ public class ShotBulletDeviation : IAction
 
         _enemyBase.MoveDir = Vector3.zero;
         _beforePos = _player.transform.position;
-        Debug.Log("aaaa");
+        
         return false;
     }
 
