@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeEnemy : EnemyBase, IDamage
+public class CubeEnemy : EnemyBase, IDamage, IFieldEnemy
 {
     bool _isKnockBack = false;
 

@@ -29,11 +29,7 @@ namespace BehaviourAI
 
             public QueueData CheckSequence(List<QueueData> queueDatas, GameObject t)
             {
-                if (queueDatas.Count == QueueID)
-                {
-                    Debug.Log("End");
-                    return null;
-                }
+                if (queueDatas.Count == QueueID) return null;
 
                 queueDatas[QueueID].Conditionals.ForEach(q => q.Target = t);
                 if (queueDatas[QueueID].Conditionals.All(c => c.Check()))

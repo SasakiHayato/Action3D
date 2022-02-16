@@ -37,16 +37,13 @@ public class FieldManager : MonoBehaviour
     ObjectPool<ParticleUser> _deadParticlePool = new ObjectPool<ParticleUser>();
     public ObjectPool<ParticleUser> GetDeadParticle => _deadParticlePool;
 
-    int _setUpdateTime;
+    ObjectPool<ParticleUser> _explosionParticlePool = new ObjectPool<ParticleUser>();
 
-    ExplosionEffecter _explosion;
-    public ExplosionEffecter ExplosionEffecter => _explosion;
+    int _setUpdateTime;
 
     private void Awake()
     {
         _instance = this;
-        _explosion = gameObject.AddComponent<ExplosionEffecter>();
-        _explosion.SetUp(transform);
 
         GameObject hitParticle = (GameObject)Resources.Load("HitParticle");
         _hitParticlePool.SetUp(hitParticle.GetComponent<ParticleUser>(), transform, 10);
@@ -54,7 +51,8 @@ public class FieldManager : MonoBehaviour
         GameObject deadParticle = (GameObject)Resources.Load("DeadParticle");
         _deadParticlePool.SetUp(deadParticle.GetComponent<ParticleUser>(), transform, 5);
 
-
+        GameObject explosionParticle = (GameObject)Resources.Load("PlasmaExplosionEffect");
+        _explosionParticlePool.SetUp(explosionParticle.GetComponent<ParticleUser>(), transform, 5);
     }
 
     void Start()
@@ -90,5 +88,21 @@ public class FieldManager : MonoBehaviour
         Time.timeScale = 1;
 
         if (action != null) action.Invoke(type, id, null);
+    }
+
+    public static void RequestExprosion(EnemyData data, Vector3 position)
+    {
+        GameObject obj = Instantiate(data.DummyPrefab);
+        obj.transform.position = position;
+        Instance.StartCoroutine(Instance.WaitAnim(obj.GetComponent<Animator>(), obj));
+    }
+
+    IEnumerator WaitAnim(Animator anim, GameObject obj)
+    {
+        yield return null;
+        yield return new WaitAnim(anim);
+        ParticleUser particle = Instance._explosionParticlePool.Respons();
+        particle.Use(obj.transform);
+        Destroy(obj);
     }
 }

@@ -8,13 +8,13 @@ public class ExplosionEffecter :MonoBehaviour
 
     public void SetUp(Transform parent)
     {
-        GameObject explosionParticle = (GameObject)Resources.Load("PlasmaExplosionEffect");
+        GameObject explosionParticle = (GameObject)Resources.Load("SmallExplosion");
         _explosionParticlePool.SetUp(explosionParticle.GetComponent<ParticleUser>(), parent, 10);
     }
 
     public void SetDummy(GameObject t, float delayTime)
     {
-        GameObject obj = Object.Instantiate(t);
+        GameObject obj = Instantiate(t);
         obj.transform.position = t.transform.position;
         obj.RemoveComponentAll();
 
@@ -24,7 +24,6 @@ public class ExplosionEffecter :MonoBehaviour
     IEnumerator Explosion(float time, GameObject obj)
     {
         yield return new WaitForSeconds(time);
-
         ParticleUser particle = _explosionParticlePool.Respons();
         particle.Use(obj.transform);
     }

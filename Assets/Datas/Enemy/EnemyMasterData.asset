@@ -17,6 +17,8 @@ MonoBehaviour:
     ID: 0
     Prefab: {fileID: 7980940582174284826, guid: b8f0bef73a5b7454eb6a9afa5800e191,
       type: 3}
+    DummyPrefab: {fileID: 7980940582174284826, guid: d5e3177cb18025c45883ac5086f7998e,
+      type: 3}
     HP: 200
     Power: 10
     Speed: 4
@@ -24,6 +26,8 @@ MonoBehaviour:
   - Name: WalkSkeleton
     ID: 1
     Prefab: {fileID: 2448143286815395276, guid: 4cf471c90863d494c926489d5610abc5,
+      type: 3}
+    DummyPrefab: {fileID: 3301239994622150715, guid: 3fafde769f726f24a91925299beaaa03,
       type: 3}
     HP: 250
     Power: 10
@@ -33,6 +37,8 @@ MonoBehaviour:
     ID: 2
     Prefab: {fileID: 1541433764607956050, guid: cfa74ed22e0913b41b6628705e0172a3,
       type: 3}
+    DummyPrefab: {fileID: 3301239994622150715, guid: 3fafde769f726f24a91925299beaaa03,
+      type: 3}
     HP: 250
     Power: 10
     Speed: 3
@@ -41,6 +47,7 @@ MonoBehaviour:
     ID: 3
     Prefab: {fileID: 8735183208793564310, guid: b6fc1984b06966048bcbea61a6d6cc72,
       type: 3}
+    DummyPrefab: {fileID: 0}
     HP: 900
     Power: 30
     Speed: 7
@@ -49,6 +56,7 @@ MonoBehaviour:
     ID: 5
     Prefab: {fileID: 8735183208793564310, guid: 57b59c585c517d148afcb9090bcaa158,
       type: 3}
+    DummyPrefab: {fileID: 0}
     HP: 10
     Power: 10
     Speed: 3
@@ -57,6 +65,7 @@ MonoBehaviour:
     ID: 4
     Prefab: {fileID: 7032200162906323380, guid: b84fb1030b858ec419e3767b298da731,
       type: 3}
+    DummyPrefab: {fileID: 0}
     HP: 200
     Power: 10
     Speed: 3

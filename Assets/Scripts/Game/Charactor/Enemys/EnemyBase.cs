@@ -35,10 +35,11 @@ public abstract class EnemyBase : CharaBase
         {
             GameManager.Instance.GetExp(iEnemy.EnemyData.Exp, Level);
             FieldManager.Instance.FieldData.Delete(GroupID, iEnemy);
+            FieldManager.RequestExprosion(iEnemy.EnemyData, target.transform.position);
         }
         
         FieldManager.FieldTimeRate(null, UIType.Player, 1);
-        FieldManager.Instance.ExplosionEffecter.SetDummy(target, 0.5f);
+        
         Destroy(target);
     }
 

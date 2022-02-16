@@ -25,6 +25,7 @@ namespace EnemysData
         public string Name;
         public int ID;
         public GameObject Prefab;
+        public GameObject DummyPrefab;
         public int HP;
         public int Power;
         public float Speed;
