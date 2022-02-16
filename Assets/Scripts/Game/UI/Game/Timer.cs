@@ -13,8 +13,11 @@ public class Timer : UIWindowParent.UIWindowChild
 
     public override void UpDate()
     {
-        float time = GameManager.Instance.GetCurrentTime;
-        _txt.text = $"Time ; {time.ToString("00:00.00")}";
+        float totaltime = GameManager.Instance.GetCurrentTime;
+        int minutes = (int)totaltime / 60;
+        float second = totaltime - minutes * 60;
+
+        _txt.text = $"Time ; {minutes.ToString("00")}:{second.ToString($"00.00")}";
     }
 
     public override void CallBack(object[] data)

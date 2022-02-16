@@ -65,7 +65,8 @@ MonoBehaviour:
     ID: 4
     Prefab: {fileID: 7032200162906323380, guid: b84fb1030b858ec419e3767b298da731,
       type: 3}
-    DummyPrefab: {fileID: 0}
+    DummyPrefab: {fileID: 7980940582174284826, guid: bf08f62adccde204397af3ac5c3b932f,
+      type: 3}
     HP: 200
     Power: 10
     Speed: 3
