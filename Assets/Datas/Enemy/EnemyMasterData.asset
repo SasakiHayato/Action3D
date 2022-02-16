@@ -50,7 +50,7 @@ MonoBehaviour:
     DummyPrefab: {fileID: 8735183208793564310, guid: 73cfdf44fae8f61428739109573aa8f5,
       type: 3}
     HP: 1200
-    Power: 30
+    Power: 15
     Speed: 7
     Exp: 500
   - Name: BossShadow

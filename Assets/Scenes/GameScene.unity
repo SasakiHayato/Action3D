@@ -2685,7 +2685,7 @@ Transform:
   - {fileID: 1720778826}
   - {fileID: 1246644549}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &414899892 stripped
 Transform:
@@ -2864,7 +2864,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &520958342 stripped
 Transform:
@@ -5532,7 +5532,7 @@ RectTransform:
   - {fileID: 1117118798}
   - {fileID: 358019051}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9202,7 +9202,7 @@ PrefabInstance:
     - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
         type: 3}
       propertyPath: _updateTime
-      value: 30
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
         type: 3}
@@ -9526,7 +9526,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _spownDatas.Array.data[0].GroupTip
       value: 
-      objectReference: {fileID: 11400000, guid: 33dd9399d2ab60d468afb58d2f364317,
+      objectReference: {fileID: 11400000, guid: 09f560600fd72444da8515fe6723f715,
         type: 2}
     - target: {fileID: 3880132705824124115, guid: 1bb021eb0e2d8784c876f7ca43ab726b,
         type: 3}
@@ -14692,7 +14692,7 @@ PrefabInstance:
     - target: {fileID: 5133409705361938506, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5133409705361938506, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}

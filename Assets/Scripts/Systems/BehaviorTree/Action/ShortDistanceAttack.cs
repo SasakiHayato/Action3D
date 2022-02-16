@@ -10,6 +10,7 @@ public class ShortDistanceAttack : IAction
 
     EnemyBase _enemyBase = null;
     AttackSettings _attack = null;
+    GameObject _player = null;
 
     public GameObject Target { get; set; } 
 
@@ -19,6 +20,7 @@ public class ShortDistanceAttack : IAction
         {
             _enemyBase = Target.GetComponent<EnemyBase>();
             _attack = Target.GetComponent<AttackSettings>();
+            _player = GameObject.FindWithTag("Player");
         }
     }
 
@@ -26,7 +28,7 @@ public class ShortDistanceAttack : IAction
     {
         _enemyBase.MoveDir = Vector3.zero;
         _attack.NextRequest();
-
+        Rotate();
         if (_attack.EndCurrentAnim)
         {
             if (_attack.IsNextRequest)
@@ -41,5 +43,12 @@ public class ShortDistanceAttack : IAction
         }
         
         return false;
+    }
+
+    void Rotate()
+    {
+        Vector3 diff = _player.transform.position - Target.transform.position;
+        diff.y = 0;
+        Target.transform.localRotation = Quaternion.LookRotation(diff);
     }
 }

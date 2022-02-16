@@ -389,13 +389,19 @@ MonoBehaviour:
     BrockConditionals:
     - id: 10
     BrockDatas:
-    - BrockType: 0
+    - BrockType: 1
       QueueDatas:
       - Progress: 1
         Conditionals:
         - id: 11
         Actions:
         - id: 12
+        - id: 13
+        - id: 14
+      - Progress: 1
+        Conditionals:
+        - id: 11
+        Actions:
         - id: 13
         - id: 14
   references:
@@ -465,12 +471,12 @@ MonoBehaviour:
         _animName: Skeleton
         _applyYPos: 0
         _moveType: 1
-        _speedRate: 0.3
+        _speedRate: 0.1
     0000000D:
       type: {class: WaitTime, ns: , asm: Assembly-CSharp}
       data:
-        _minWaitTime: 1
-        _maxWaitTime: 1.5
+        _minWaitTime: 0.1
+        _maxWaitTime: 0.2
         _setRandom: 1
     0000000E:
       type: {class: RequestEAS, ns: , asm: Assembly-CSharp}

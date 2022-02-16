@@ -126,7 +126,7 @@ public class FieldData
             EnemyBase enemyBase = enemy.Target.GetComponent<EnemyBase>();
             enemyBase.SetParam(enemy.EnemyData.HP, enemy.EnemyData.Power, enemy.EnemyData.Speed, level);
 
-            enemy.Target.GetComponentInChildren<EnemyCanvas>().UpdateState(enemyBase.MaxHP);
+            enemy.Target.GetComponentInChildren<EnemyCanvas>().UpdateState(enemyBase.MaxHP, enemyBase.Level);
         }
     }
 

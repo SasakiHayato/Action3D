@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +5,7 @@ public class EnemyCanvas : MonoBehaviour
 {
     [SerializeField] GameObject _panel;
     [SerializeField] Slider _slider;
+    [SerializeField] Text _text;
 
     EnemyBase _enemyBase;
     Canvas _canvas;
@@ -30,8 +29,9 @@ public class EnemyCanvas : MonoBehaviour
         _canvas.transform.rotation = Camera.main.transform.rotation;
     }
 
-    public void UpdateState(int hp)
+    public void UpdateState(int hp, int level)
     {
         _slider.maxValue = hp;
+        _text.text = $"Level:{level.ToString("000")}";
     }
 }

@@ -305,6 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _panel: {fileID: 4334890244698402282}
   _slider: {fileID: 4334890245099179773}
+  _text: {fileID: 4334890243762291194}
 --- !u!1 &4334890244698402282
 GameObject:
   m_ObjectHideFlags: 0
