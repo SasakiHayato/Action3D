@@ -22,6 +22,8 @@ public class CharaBase : MonoBehaviour
     CharacterController _character;
     public CharacterController Character { get => _character; }
 
+    const float MaxAddCount = 0.4f;
+
     private void Awake()
     {
         _phsicsBase = gameObject.AddComponent<PhysicsBase>();
@@ -38,6 +40,7 @@ public class CharaBase : MonoBehaviour
         else
         {
             float add = ((float)level / 10) * 2 - 0.1f;
+            if (add > MaxAddCount) add = MaxAddCount;
             HP = hp + (int)(hp * add);
             Power = power + (int)(power * add);
         }
