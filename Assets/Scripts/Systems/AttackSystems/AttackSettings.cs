@@ -324,6 +324,8 @@ namespace AttackSetting
 
         void IsAttack(IDamage iDamage, GameObject obj)
         {
+            if (iDamage == null) return;
+
             object[] datas = { _targetWeapon, _anim, obj, _parent, _data.KnockBackData };
             EffectData effect = null;
             EffectSetter.Set(effect, _data.Effects, datas).Invoke();

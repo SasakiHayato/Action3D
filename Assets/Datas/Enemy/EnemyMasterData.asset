@@ -49,10 +49,10 @@ MonoBehaviour:
       type: 3}
     DummyPrefab: {fileID: 8735183208793564310, guid: 73cfdf44fae8f61428739109573aa8f5,
       type: 3}
-    HP: 1
+    HP: 1200
     Power: 30
     Speed: 7
-    Exp: 99999
+    Exp: 500
   - Name: BossShadow
     ID: 5
     Prefab: {fileID: 8735183208793564310, guid: 57b59c585c517d148afcb9090bcaa158,
@@ -61,7 +61,7 @@ MonoBehaviour:
     HP: 10
     Power: 10
     Speed: 3
-    Exp: 150
+    Exp: 0
   - Name: BrackCubeEnemy
     ID: 4
     Prefab: {fileID: 7032200162906323380, guid: b84fb1030b858ec419e3767b298da731,

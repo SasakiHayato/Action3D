@@ -90,19 +90,34 @@ public class FieldManager : MonoBehaviour
         if (action != null) action.Invoke(type, id, null);
     }
 
-    public static void RequestExprosion(EnemyData data, Vector3 position)
+    public static void RequestExprosion(EnemyData data, Vector3 position, int level)
     {
+        ItemBase itemBase = ItemManager.Instance.RequestItem("ItemExp");
+
         GameObject obj = Instantiate(data.DummyPrefab);
         obj.transform.position = position;
-        Instance.StartCoroutine(Instance.WaitAnim(obj.GetComponent<Animator>(), obj));
+
+        object[] datas = new object[] { data.Exp, level };
+
+        Instance.StartCoroutine(Instance.WaitExprosionAction(obj, itemBase, datas));
     }
 
-    IEnumerator WaitAnim(Animator anim, GameObject obj)
+    IEnumerator WaitExprosionAction(GameObject obj, ItemBase itemBase, object[] datas)
     {
         yield return null;
-        yield return new WaitAnim(anim);
+        yield return new WaitAnim(obj.GetComponent<Animator>());
+
         ParticleUser particle = Instance._explosionParticlePool.Respons();
         particle.Use(obj.transform);
+
+        for (int i = 0; i < 5; i++)
+        {
+            ItemExp itemExp = Instantiate(itemBase).GetComponent<ItemExp>();
+            itemExp.SetOtherData(datas);
+            itemExp.gameObject.transform.position = obj.transform.position;
+            itemExp.Force(obj.transform.position);
+        }
+
         Destroy(obj);
     }
 }

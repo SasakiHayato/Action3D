@@ -44,6 +44,7 @@ public class CharaBase : MonoBehaviour
             HP = hp + (int)(hp * add);
             Power = power + (int)(power * add);
         }
+
         MaxHP = HP;
         Speed = speed;
         Level = level;

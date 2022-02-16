@@ -47,14 +47,7 @@ public class GameManager
     {
         Instance.GetCurrentTime += Time.deltaTime;
     }
-
-    public static void Init()
-    {
-        Instance.IsLockOn = false;
-        Instance.GetCurrentTime = 0;
-        Instance.PlayerData = new PlayerData();
-    }
-
+   
     public void GetExp(int exp, int level)
     {
         int set = exp;
@@ -89,5 +82,12 @@ public class GameManager
             UIManager.CallBack(UIType.Player, 3, new object[] { PlayerData.Player.HP });
             Sounds.SoundMaster.Request(null, "LevelUp", 0);
         }
+    }
+
+    void Init()
+    {
+        Instance.IsLockOn = false;
+        Instance.GetCurrentTime = 0;
+        Instance.PlayerData = new PlayerData();
     }
 }

@@ -33,9 +33,8 @@ public abstract class EnemyBase : CharaBase
 
         if (iEnemy != null)
         {
-            GameManager.Instance.GetExp(iEnemy.EnemyData.Exp, Level);
             FieldManager.Instance.FieldData.Delete(GroupID, iEnemy);
-            FieldManager.RequestExprosion(iEnemy.EnemyData, target.transform.position);
+            FieldManager.RequestExprosion(iEnemy.EnemyData, target.transform.position, Level);
         }
         
         FieldManager.FieldTimeRate(null, UIType.Player, 1);
