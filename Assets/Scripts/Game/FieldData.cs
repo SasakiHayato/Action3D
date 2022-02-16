@@ -123,8 +123,10 @@ public class FieldData
         
         foreach (IFieldEnemy enemy in enemies)
         {
-            enemy.Target.GetComponent<EnemyBase>()
-                .SetParam(enemy.EnemyData.HP, enemy.EnemyData.Power, enemy.EnemyData.Speed, level);
+            EnemyBase enemyBase = enemy.Target.GetComponent<EnemyBase>();
+            enemyBase.SetParam(enemy.EnemyData.HP, enemy.EnemyData.Power, enemy.EnemyData.Speed, level);
+
+            enemy.Target.GetComponentInChildren<EnemyCanvas>().UpdateState(enemyBase.MaxHP);
         }
     }
 

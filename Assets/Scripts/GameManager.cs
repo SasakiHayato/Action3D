@@ -66,6 +66,7 @@ public class GameManager
         {
             // Log
             UIManager.CallBack(UIType.Game, 3, new object[] { 1 });
+
             int set = currentExp - PlayerData.NextLevelExp;
             PlayerData.NextLevelExp += 100;
 
@@ -74,7 +75,10 @@ public class GameManager
             float speed = PlayerData.Player.Speed;
             int level = PlayerData.Player.Level + 1;
             PlayerData.Player.SetParam(hp, power, speed, level);
+
+            // ExpSlider
             UIManager.CallBack(UIType.Player, 5, null);
+
             AddExp(PlayerData.CurrentExp = set);
         }
         else

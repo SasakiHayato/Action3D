@@ -29,4 +29,9 @@ public class EnemyCanvas : MonoBehaviour
         }
         _canvas.transform.rotation = Camera.main.transform.rotation;
     }
+
+    public void UpdateState(int hp)
+    {
+        _slider.maxValue = hp;
+    }
 }
