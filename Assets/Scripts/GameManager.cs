@@ -64,6 +64,7 @@ public class GameManager
     {
         if (currentExp >= PlayerData.NextLevelExp)
         {
+            // Log
             UIManager.CallBack(UIType.Game, 3, new object[] { 1 });
             int set = currentExp - PlayerData.NextLevelExp;
             PlayerData.NextLevelExp += 100;
@@ -73,12 +74,14 @@ public class GameManager
             float speed = PlayerData.Player.Speed;
             int level = PlayerData.Player.Level + 1;
             PlayerData.Player.SetParam(hp, power, speed, level);
-
+            UIManager.CallBack(UIType.Player, 5, null);
             AddExp(PlayerData.CurrentExp = set);
         }
         else
         {
+            // HpSlider
             UIManager.CallBack(UIType.Player, 4, new object[] { PlayerData.Player.Level });
+            // Leveltext
             UIManager.CallBack(UIType.Player, 3, new object[] { PlayerData.Player.HP });
             Sounds.SoundMaster.Request(null, "LevelUp", 0);
         }
