@@ -5,6 +5,8 @@ public class ParticleUser : MonoBehaviour, IPool
     Transform _parent;
     ParticleSystem.MainModule _particleMain;
 
+    public bool IsUse { get; private set; } = false;
+
     public void SetUp(Transform parent)
     {
         _parent = parent;
@@ -34,6 +36,4 @@ public class ParticleUser : MonoBehaviour, IPool
         transform.SetParent(_parent);
         gameObject.SetActive(false);
     }
-
-    public bool IsUse { get; private set; } = false;
 }
