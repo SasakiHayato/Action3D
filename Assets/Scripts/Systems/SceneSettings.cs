@@ -60,7 +60,8 @@ public class SceneSettings : MonoBehaviour
 
         _operation = SceneManager.LoadSceneAsync(id);
         _operation.allowSceneActivation = false;
-        StartCoroutine(nameof(Async), action);
+        
+        StartCoroutine(Async(waitTime, action));
     }
 
     IEnumerator Async(float waitTime, Action action)

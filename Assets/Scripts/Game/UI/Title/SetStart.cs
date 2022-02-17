@@ -12,6 +12,8 @@ public class SetStart : UIWindowParent.UIWindowChild
     [SerializeField] string _buttonName;
 
     Button _button;
+
+    const float WaitTime = 1f;
     
     public override void SetUp()
     {
@@ -24,12 +26,11 @@ public class SetStart : UIWindowParent.UIWindowChild
     }
 
     public override void UpDate() { }
-
     public override void CallBack(object[] data) { }
 
     void OnClick()
     {
-        Debug.Log("aaa");
-        SceneSettings.Instance.LoadSync(1);
+        Fader.Instance.Request(Fader.FadeType.Out, WaitTime);
+        SceneSettings.Instance.LoadAsync(1, WaitTime);
     }
 }
