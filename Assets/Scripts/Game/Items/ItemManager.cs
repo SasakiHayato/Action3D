@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// Item‚Ìî•ñ‚ğŠÇ—‚·‚éƒNƒ‰ƒX
+/// </summary>
+
 public class ItemManager : MonoBehaviour
 {
     [SerializeField] ItemBase[] _items;

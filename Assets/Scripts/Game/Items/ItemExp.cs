@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// 経験値アイテムのクラス
+/// </summary>
 
 public class ItemExp : ItemBase
 {
@@ -21,6 +23,10 @@ public class ItemExp : ItemBase
         base.Use();
     }
 
+    /// <summary>
+    /// Itemを飛び散らせる
+    /// </summary>
+    /// <param name="position">爆発させる中心点</param>
     public void Force(Vector3 position)
     {
         GetComponent<Rigidbody>().AddExplosionForce(2, position, 10, 2, ForceMode.Impulse);

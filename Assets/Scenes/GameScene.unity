@@ -12820,6 +12820,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19e3bec5d2084834e86823c680ab9eb1, type: 3}
+--- !u!1 &1815948235 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2396708683275240676, guid: 4748164b0f741cc49a54f403bad52334,
+    type: 3}
+  m_PrefabInstance: {fileID: 220922221}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1831849213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 19e3bec5d2084834e86823c680ab9eb1,
@@ -14848,7 +14854,7 @@ PrefabInstance:
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
       propertyPath: _windows.Array.data[1]._windows.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
@@ -14867,6 +14873,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
+      propertyPath: _windows.Array.data[1]._windows.Array.data[3]
+      value: Assembly-CSharp DamageText
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
       propertyPath: _windows.Array.data[0]._windows.Array.data[3].data
       value: 
       objectReference: {fileID: 0}
@@ -14878,6 +14889,11 @@ PrefabInstance:
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
       propertyPath: _windows.Array.data[1]._windows.Array.data[2].data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[1]._windows.Array.data[3].data
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
@@ -14921,6 +14937,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 388babbf583f0d3498a7759c1635d59d,
         type: 2}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[1]._windows.Array.data[3]._damageTextPrefab
+      value: 
+      objectReference: {fileID: 1815948235}
     - target: {fileID: 5556550255380086235, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
       propertyPath: m_RootOrder

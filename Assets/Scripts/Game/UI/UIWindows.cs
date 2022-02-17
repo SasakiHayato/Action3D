@@ -10,6 +10,10 @@ public enum UIType
     None,
 }
 
+/// <summary>
+/// 各UITypeのUI情報の基底クラス
+/// </summary>
+
 [System.Serializable]
 public abstract class UIWindowParent
 {
@@ -33,6 +37,9 @@ public abstract class UIWindowParent
     public Image SetPanel { set { _targetPanel = value; } }
     public UIType GetUIType { get => _type; }
 
+    /// <summary>
+    /// UI情報の初期化
+    /// </summary>
     public virtual void SetUp()
     {
         int setID = 1;
@@ -45,6 +52,9 @@ public abstract class UIWindowParent
         }
     }
 
+    /// <summary>
+    /// 常にUI情報の更新をさせる
+    /// </summary>
     public virtual void UpDate()
     {
         foreach (UIWindowChild ui in _windows)
@@ -53,6 +63,11 @@ public abstract class UIWindowParent
         }
     }
 
+    /// <summary>
+    /// 任意のタイミングでのUI情報の更新
+    /// </summary>
+    /// <param name="id">UITypeに対する更新させるUI情報のID</param>
+    /// <param name="data">更新する際に伝える諸々のData群</param>
     public virtual void CallBack(int id, object[] data)
     {
         foreach (UIWindowChild ui in _windows)

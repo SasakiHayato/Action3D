@@ -1,8 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using EnemysData;
 using UnityEngine;
 using System.Linq;
+
+/// <summary>
+/// フィールドに存在するObjectの管理クラス
+/// </summary>
 
 [System.Serializable]
 public class FieldData
@@ -49,12 +52,18 @@ public class FieldData
         else Level = 0;
     }
 
+    /// <summary>
+    /// Fieldの更新
+    /// </summary>
     public void Update()
     {
         Level++;
         UpdateEnemy();
     }
 
+    /// <summary>
+    /// FieldDataに対するEnemyの設定
+    /// </summary>
     public void UpdateEnemy()
     {
         Transform player = GameObject.FindWithTag("Player").transform;
@@ -130,6 +139,11 @@ public class FieldData
         }
     }
 
+    /// <summary>
+    /// 管理されてるSpawnのデータ群から除外する
+    /// </summary>
+    /// <param name="id">FieldのSpawnID</param>
+    /// <param name="enemy">対象のEnemyData</param>
     public void Delete(int id, IFieldEnemy enemy)
     {
         foreach (var data in _enemyGroupDatas)

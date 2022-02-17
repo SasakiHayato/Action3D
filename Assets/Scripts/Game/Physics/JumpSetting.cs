@@ -16,6 +16,12 @@ namespace ObjectPhysics
             _saveCount = _count;
         }
 
+        /// <summary>
+        /// ジャンプさせる
+        /// </summary>
+        /// <param name="isJump">ジャンプできるかのフラグ</param>
+        /// <param name="type">現在の物理ステート</param>
+        /// <returns></returns>
         public float SetVelocity(ref bool isJump, out PhysicsBase.PhysicsType type)
         {
             if (isJump)
@@ -47,6 +53,9 @@ namespace ObjectPhysics
             return y;
         }
 
+        /// <summary>
+        /// ジャンプ関連の初期化
+        /// </summary>
         public void ResetCount()
         {
             _timer = 0;

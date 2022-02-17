@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// UIに関する情報を管理するクラス
+/// </summary>
+
 public class UIManager : MonoBehaviour
 {
     private static UIManager _instance = null;
@@ -51,6 +55,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 更新されたゲームの値の情報を各役割に知らせる
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="id"></param>
+    /// <param name="data"></param>
     public static void CallBack(UIType type, int id, object[] data = null)
     {
         foreach (UIWindowParent ui in Instance._windows)
@@ -63,6 +73,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 指定された親となるPanelの表示
+    /// </summary>
+    /// <param name="type">UIType</param>
+    /// <param name="active">表示、非表示</param>
     public static void SetActivePanel(UIType type, bool active)
     {
         foreach (UIWindowParent ui in Instance._windows)

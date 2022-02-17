@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Itemの基底クラス
+/// </summary>
+
 public class ItemBase : MonoBehaviour
 {
     public enum Usetiming
@@ -32,6 +36,7 @@ public class ItemBase : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // Note. 他に設定する値がある場合にオーバーライドする。
     public virtual void SetOtherData(object[] datas) { } 
 
     private void OnTriggerEnter(Collider other)

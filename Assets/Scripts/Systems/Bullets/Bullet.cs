@@ -155,7 +155,7 @@ public class Bullet : MonoBehaviour, IDamage
                 if (other.CompareTag("Player"))
                 {
                     other.GetComponent<IDamage>().GetDamage(_power * _powerRate, AttackType.Bullets);
-                    //other.GetComponent<Player>().KnockBack(transform.forward);
+                    other.GetComponent<Player>().KnockBack(transform.forward);
                     _callBack.Invoke(gameObject);
                 }
                 break;

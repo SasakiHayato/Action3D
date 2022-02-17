@@ -330,6 +330,9 @@ namespace AttackSetting
             EffectData effect = null;
             EffectSetter.Set(effect, _data.Effects, datas).Invoke();
             iDamage.GetDamage(_data.Power * _charaBase.Power, AttackType.Sword);
+
+            object[] setUiData = { _data.Power * _charaBase.Power, obj.transform };
+            UIManager.CallBack(UIType.Game, 4, setUiData);
         }
 
         /// <summary> AnimEvent‚Å‚ÌŒÄ‚Ño‚µ </summary>

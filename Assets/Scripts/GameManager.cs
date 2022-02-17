@@ -36,6 +36,9 @@ public class GameManager
         }
     }
 
+    /// <summary>
+    /// ゲーム終了時の諸々の初期化
+    /// </summary>
     public void End()
     {
         Init();
@@ -43,11 +46,19 @@ public class GameManager
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    /// <summary>
+    /// ゲームの現在の経過時間
+    /// </summary>
     public void GameTime()
     {
         Instance.GetCurrentTime += Time.deltaTime;
     }
    
+    /// <summary>
+    /// 受け取った経験値を計算させる
+    /// </summary>
+    /// <param name="exp">受け取った経験値</param>
+    /// <param name="level">受け取った対象のレベル</param>
     public void GetExp(int exp, int level)
     {
         int set = exp;

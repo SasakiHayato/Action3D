@@ -1,3 +1,7 @@
+/// <summary>
+/// Enemyの上部に表示するCanvasの管理クラス
+/// </summary>
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +33,11 @@ public class EnemyCanvas : MonoBehaviour
         _canvas.transform.rotation = Camera.main.transform.rotation;
     }
 
+    /// <summary>
+    /// Fieldのレベルが上がった際のUI情報の書き換え
+    /// </summary>
+    /// <param name="hp">対象の変化</param>
+    /// <param name="level"></param>
     public void UpdateState(int hp, int level)
     {
         _slider.maxValue = hp;

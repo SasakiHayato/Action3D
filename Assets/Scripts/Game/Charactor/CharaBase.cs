@@ -1,6 +1,10 @@
 using UnityEngine;
 using ObjectPhysics;
 
+/// <summary>
+/// Charactorの基底クラス
+/// </summary>
+
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(PhysicsBase))]
 public class CharaBase : MonoBehaviour
@@ -22,6 +26,7 @@ public class CharaBase : MonoBehaviour
     CharacterController _character;
     public CharacterController Character { get => _character; }
 
+    // Note. ステータスの上昇最大倍率
     const float MaxAddCount = 0.4f;
 
     private void Awake()
@@ -30,6 +35,13 @@ public class CharaBase : MonoBehaviour
         _character = GetComponent<CharacterController>();
     }
 
+    /// <summary>
+    /// 生成またはステータスが更新された際のステータス設定
+    /// </summary>
+    /// <param name="hp">体力</param>
+    /// <param name="power">攻撃力</param>
+    /// <param name="speed">速度</param>
+    /// <param name="level">レベル</param>
     virtual public void SetParam(int hp, int power, float speed, int level)
     {
         if (level == 1)

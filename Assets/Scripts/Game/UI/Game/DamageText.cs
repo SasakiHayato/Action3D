@@ -21,6 +21,9 @@ public class DamageText : UIWindowParent.UIWindowChild
 
     public override void CallBack(object[] data)
     {
-        
+        int damage = (int)data[0];
+        Transform target = (Transform)data[1];
+
+        _textPool.Respons().Use(damage, target);
     }
 }

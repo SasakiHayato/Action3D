@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// MiniMap‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
 
 public class MiniMapCmControl : MonoBehaviour
 {

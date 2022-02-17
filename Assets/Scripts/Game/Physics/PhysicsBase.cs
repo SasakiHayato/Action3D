@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace ObjectPhysics
 {
+    /// <summary>
+    /// 物理挙動の管理クラス
+    /// </summary>
+
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(JumpSetting))]
     public class PhysicsBase : MonoBehaviour
@@ -69,6 +73,9 @@ namespace ObjectPhysics
             }
         }
 
+        /// <summary>
+        /// ジャンプすることを知らせる
+        /// </summary>
         public void SetJump()
         {
             if (_type == PhysicsType.Jump) return;

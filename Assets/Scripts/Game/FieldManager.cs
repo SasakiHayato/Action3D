@@ -5,6 +5,10 @@ using System;
 using EnemysData;
 using Sounds;
 
+/// <summary>
+/// Fieldの管理クラス
+/// </summary>
+
 public class FieldManager : MonoBehaviour
 {
     [SerializeField] EnemyMasterData _enemyMasterData;
@@ -75,6 +79,12 @@ public class FieldManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// スローモーションの設定
+    /// </summary>
+    /// <param name="action">スローモーションが終わった際に実行する関数</param>
+    /// <param name="type">アクションに登録するUiType</param>
+    /// <param name="id">アクションに登録するID</param>
     public static void FieldTimeRate(Action<UIType, int, object[]> action, UIType type, int id)
     {
         SoundMaster.Request(null, "StartSlowMotion", 1);
@@ -90,6 +100,12 @@ public class FieldManager : MonoBehaviour
         if (action != null) action.Invoke(type, id, null);
     }
 
+    /// <summary>
+    /// Objectの爆発を申請
+    /// </summary>
+    /// <param name="data">対象のEnemyData</param>
+    /// <param name="position">爆発させるPosition</param>
+    /// <param name="level">対象のLevel</param>
     public static void RequestExprosion(EnemyData data, Vector3 position, int level)
     {
         ItemBase itemBase = ItemManager.Instance.RequestItem("ItemExp");
