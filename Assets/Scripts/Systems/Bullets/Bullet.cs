@@ -1,6 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 using System;
+
+/// <summary>
+/// Bullet‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
 
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour, IDamage

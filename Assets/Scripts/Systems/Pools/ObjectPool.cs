@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IPool
-{
-    bool IsUse { get; }
-    void SetUp(Transform parent);
-    void Delete();
-}
+/// <summary>
+/// ObjectPoolの管理クラス
+/// </summary>
+/// <typeparam name="T"></typeparam>
 
 public class ObjectPool<T> where T : Object, IPool
 {
@@ -15,6 +13,12 @@ public class ObjectPool<T> where T : Object, IPool
     List<T> _pool = new List<T>();
     T _getT;
 
+    /// <summary>
+    /// Poolさせる対象の設定
+    /// </summary>
+    /// <param name="type">IPool</param>
+    /// <param name="parent">Poolの保持者</param>
+    /// <param name="setCount">CreateCount</param>
     public void SetUp(T type, Transform parent = null, int setCount = 30)
     {
         _getT = type;
@@ -34,6 +38,10 @@ public class ObjectPool<T> where T : Object, IPool
         }
     }
 
+    /// <summary>
+    /// 使われてないPoolの申請
+    /// </summary>
+    /// <returns>対象Object</returns>
     public T Respons()
     {
         foreach (T t in _pool)

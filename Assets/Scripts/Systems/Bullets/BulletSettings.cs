@@ -1,6 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// 使用するBulletのデータ管理クラス
+/// </summary>
 
 public class BulletSettings : MonoBehaviour
 {

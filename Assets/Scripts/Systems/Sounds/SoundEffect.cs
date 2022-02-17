@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// SoundMaster‚©‚çó‚¯æ‚Á‚½Data‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 namespace Sounds
 {
     public class SoundEffect : MonoBehaviour, IPool

@@ -1,8 +1,11 @@
 using UnityEngine;
 
+/// <summary>
+/// •Î·ËŒ‚‚ÌŒvZ
+/// </summary>
+
 public struct Deviation
 {
-    const float FleamRate = 60;
     // tPos => Player
     // tBeforePos => Player‚Ì1F.later
     // myPos => Enemy

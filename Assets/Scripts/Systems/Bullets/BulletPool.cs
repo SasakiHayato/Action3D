@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// BulletのPool管理クラス
+/// </summary>
+/// <typeparam name="T">Bulletのデータ</typeparam>
+
 public class BulletPool<T> where T : BulletSettings.BulletData
 {
     GameObject _pool = null;

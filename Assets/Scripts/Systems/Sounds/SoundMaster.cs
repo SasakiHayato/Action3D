@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Sound‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 namespace Sounds
 {
     public class SoundMaster : MonoBehaviour

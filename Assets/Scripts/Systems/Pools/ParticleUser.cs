@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Particle‚ÌPoolƒNƒ‰ƒX
+/// </summary>
+
 public class ParticleUser : MonoBehaviour, IPool
 {
     Transform _parent;

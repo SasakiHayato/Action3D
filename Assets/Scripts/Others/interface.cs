@@ -18,3 +18,9 @@ public interface IFieldEnemy
     GameObject Target { get; set; }
 }
 
+public interface IPool
+{
+    bool IsUse { get; }
+    void SetUp(Transform parent);
+    void Delete();
+}

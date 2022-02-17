@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Charactorのステート管理クラス
+/// </summary>
+
 public class StateMachine : MonoBehaviour
 {
     public enum StateType
@@ -43,6 +47,9 @@ public class StateMachine : MonoBehaviour
     Vector3 _move;
     public Vector3 Move { get => _move; }
 
+    /// <summary>
+    /// 毎フレームのステートの管理
+    /// </summary>
     public void Base()
     {
         if (!_isRunning) return;
