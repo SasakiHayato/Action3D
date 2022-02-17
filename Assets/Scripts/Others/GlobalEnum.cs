@@ -9,3 +9,9 @@ public enum AttackType
 
     None,
 }
+
+public enum ColorType
+{
+    Player,
+    Enemy,
+}

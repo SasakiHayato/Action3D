@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class DamageText : UIWindowParent.UIWindowChild
 {
     [SerializeField] GameObject _damageTextPrefab;
+    [SerializeField] Color _playerTextColor;
+    [SerializeField] Color _enemyTextColor;
+
     ObjectPool<DamageTextSetter> _textPool = new ObjectPool<DamageTextSetter>();
 
     public override void SetUp()
@@ -22,8 +25,13 @@ public class DamageText : UIWindowParent.UIWindowChild
     public override void CallBack(object[] data)
     {
         int damage = (int)data[0];
-        Transform target = (Transform)data[1];
+        GameObject target = (GameObject)data[1];
+        Color color = (ColorType)data[2] == ColorType.Player ? _playerTextColor : _enemyTextColor;
 
-        _textPool.Respons().Use(damage, target);
+        StateMachine state = target.GetComponent<StateMachine>();
+        if (state == null || state.GetCurrentState != StateMachine.StateType.Avoid)
+        {
+            _textPool.Respons().Use(damage, target.transform, color);
+        }
     }
 }

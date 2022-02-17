@@ -14942,6 +14942,46 @@ PrefabInstance:
       propertyPath: _windows.Array.data[1]._windows.Array.data[3]._damageTextPrefab
       value: 
       objectReference: {fileID: 1815948235}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[1]._windows.Array.data[3]._enemyTextColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[1]._windows.Array.data[3]._enemyTextColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[1]._windows.Array.data[3]._enemyTextColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[1]._windows.Array.data[3]._enemyTextColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[1]._windows.Array.data[3]._playerTextColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[1]._windows.Array.data[3]._playerTextColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[1]._windows.Array.data[3]._playerTextColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[1]._windows.Array.data[3]._playerTextColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5556550255380086235, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
       propertyPath: m_RootOrder
