@@ -32,6 +32,10 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
         Sounds.SoundMaster.Request(transform, "Damage", 2);
         _isDamage = true;
         _attack.Cancel();
+
+        object[] setUiData = { damage, gameObject, ColorType.Enemy };
+        UIManager.CallBack(UIType.Game, 4, setUiData);
+
         StartCoroutine(EndAnim());
         HP -= damage;
         if (HP < 0) base.Dead(gameObject);

@@ -181,6 +181,9 @@ public class Player : CharaBase, IDamage
 
         Sounds.SoundMaster.Request(transform, "Damage", 0);
 
+        object[] datas = { damage, gameObject, ColorType.Player };
+        UIManager.CallBack(UIType.Game, 4, datas);
+
         HP -= damage;
         if (HP <= 0)
         {

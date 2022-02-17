@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BehaviourAI;
+using EnemysData;
 
 [RequireComponent(typeof(BehaviourTree))]
 public abstract class EnemyBase : CharaBase
@@ -21,7 +22,7 @@ public abstract class EnemyBase : CharaBase
     // IFieldEnemy
     public int GroupID { get; set; }
     public GameObject Target { get; set; }
-    public EnemysData.EnemyData EnemyData { get; set; }
+    public EnemyData EnemyData { get; set; }
 
     protected virtual void Dead(GameObject target)
     {

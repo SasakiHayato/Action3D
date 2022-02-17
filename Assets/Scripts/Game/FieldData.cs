@@ -93,9 +93,9 @@ public class FieldData
         int random = Random.Range(0, spawnData.GroupTip.GetDatas.Count());
         foreach (EnemyData enemyData in _enemyMasterData.GetData)
         {
-            foreach (EnemyType enemyType in spawnData.GroupTip.GetDatas[random].Types)
+            foreach (EnemyName enemyName in spawnData.GroupTip.GetDatas[random].Types)
             {
-                if (enemyData.Name == enemyType.ToString())
+                if (enemyData.Name == enemyName.ToString())
                 {
                     float rate = spawnData.Range / 2;
                     float x = Random.Range(-rate, rate);
@@ -116,6 +116,9 @@ public class FieldData
                         iEnemy.GroupID = spawnData.ID;
                         iEnemy.Target = obj;
                         iEnemy.EnemyData = enemyData;
+                        
+                        if (enemyData.EnemyType == EnemyType.Boss)
+                            UIManager.CallBack(UIType.EnemyConnect, 1, new object[] { enemyData.DisplayName });
 
                         groupData.FieldEnemies.Add(iEnemy);
                     }

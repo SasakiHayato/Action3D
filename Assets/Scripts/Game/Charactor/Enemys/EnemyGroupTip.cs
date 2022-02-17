@@ -13,7 +13,7 @@ namespace EnemysData
         [System.Serializable]
         public class GroupDatas
         {
-            public EnemyType[] Types;
+            public EnemyName[] Types;
         }
     }
 }

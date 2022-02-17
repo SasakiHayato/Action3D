@@ -744,7 +744,7 @@ MonoBehaviour:
     - id: 10
     - id: 11
     BrockDatas:
-    - BrockType: 1
+    - BrockType: 0
       QueueDatas:
       - Progress: 1
         Conditionals:
@@ -773,7 +773,7 @@ MonoBehaviour:
     00000003:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 10
+        _range: 9
         _type: 1
     00000004:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
@@ -781,7 +781,7 @@ MonoBehaviour:
         _animName: Walk_ver_B_Front
         _applyYPos: 0
         _moveType: 0
-        _speedRate: 5
+        _speedRate: 3
     00000005:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
@@ -807,15 +807,15 @@ MonoBehaviour:
         _type: 0
         _checkBool: 1
     0000000A:
-      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _range: 12
-        _type: 0
-    0000000B:
       type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
         _checkBool: 1
+    0000000B:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 12
+        _type: 0
     0000000C:
       type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
     0000000D:

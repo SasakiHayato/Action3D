@@ -26,7 +26,7 @@ public class DamageText : UIWindowParent.UIWindowChild
     {
         int damage = (int)data[0];
         GameObject target = (GameObject)data[1];
-        Color color = (ColorType)data[2] == ColorType.Player ? _playerTextColor : _enemyTextColor;
+        Color color = (ColorType)data[2] == ColorType.Player ? _enemyTextColor : _playerTextColor;
 
         StateMachine state = target.GetComponent<StateMachine>();
         if (state == null || state.GetCurrentState != StateMachine.StateType.Avoid)

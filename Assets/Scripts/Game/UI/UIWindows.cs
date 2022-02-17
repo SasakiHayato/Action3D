@@ -2,14 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum UIType
-{
-    Player,
-    Game,
-
-    None,
-}
-
 /// <summary>
 /// ŠeUIType‚ÌUIî•ñ‚ÌŠî’êƒNƒ‰ƒX
 /// </summary>
@@ -29,7 +21,7 @@ public abstract class UIWindowParent
     }
 
     [SerializeField] Image _targetPanel;
-    [SerializeField] UIType _type= UIType.None;
+    [SerializeField] UIType _type;
     [SerializeReference, SubclassSelector]
     List<UIWindowChild> _windows = new List<UIWindowChild>();
 

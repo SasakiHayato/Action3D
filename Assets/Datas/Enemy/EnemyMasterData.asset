@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _datas:
   - Name: CubeEnemy
+    DisplayName: Cube
     ID: 0
+    EnemyType: 1
     Prefab: {fileID: 7980940582174284826, guid: b8f0bef73a5b7454eb6a9afa5800e191,
       type: 3}
     DummyPrefab: {fileID: 7980940582174284826, guid: d5e3177cb18025c45883ac5086f7998e,
@@ -24,7 +26,9 @@ MonoBehaviour:
     Speed: 4
     Exp: 150
   - Name: WalkSkeleton
+    DisplayName: Skeleton
     ID: 1
+    EnemyType: 1
     Prefab: {fileID: 2448143286815395276, guid: 4cf471c90863d494c926489d5610abc5,
       type: 3}
     DummyPrefab: {fileID: 3301239994622150715, guid: 3fafde769f726f24a91925299beaaa03,
@@ -34,7 +38,9 @@ MonoBehaviour:
     Speed: 1
     Exp: 100
   - Name: RunSkeleton
+    DisplayName: Skeleton
     ID: 2
+    EnemyType: 1
     Prefab: {fileID: 1541433764607956050, guid: cfa74ed22e0913b41b6628705e0172a3,
       type: 3}
     DummyPrefab: {fileID: 3301239994622150715, guid: 3fafde769f726f24a91925299beaaa03,
@@ -44,7 +50,9 @@ MonoBehaviour:
     Speed: 3
     Exp: 100
   - Name: Boss
+    DisplayName: "\u9811\u5F35\u3063\u305FEnemyAI"
     ID: 3
+    EnemyType: 0
     Prefab: {fileID: 8735183208793564310, guid: b6fc1984b06966048bcbea61a6d6cc72,
       type: 3}
     DummyPrefab: {fileID: 8735183208793564310, guid: 73cfdf44fae8f61428739109573aa8f5,
@@ -53,17 +61,10 @@ MonoBehaviour:
     Power: 15
     Speed: 7
     Exp: 500
-  - Name: BossShadow
-    ID: 5
-    Prefab: {fileID: 8735183208793564310, guid: 57b59c585c517d148afcb9090bcaa158,
-      type: 3}
-    DummyPrefab: {fileID: 0}
-    HP: 10
-    Power: 10
-    Speed: 3
-    Exp: 0
   - Name: BrackCubeEnemy
+    DisplayName: Cube
     ID: 4
+    EnemyType: 1
     Prefab: {fileID: 7032200162906323380, guid: b84fb1030b858ec419e3767b298da731,
       type: 3}
     DummyPrefab: {fileID: 7980940582174284826, guid: bf08f62adccde204397af3ac5c3b932f,
@@ -72,3 +73,14 @@ MonoBehaviour:
     Power: 10
     Speed: 3
     Exp: 150
+  - Name: BossShadow
+    DisplayName: "\u9811\u5F35\u3063EnemyAI\u306E\u5E7B\u5F71"
+    ID: 5
+    EnemyType: 1
+    Prefab: {fileID: 8735183208793564310, guid: 57b59c585c517d148afcb9090bcaa158,
+      type: 3}
+    DummyPrefab: {fileID: 0}
+    HP: 10
+    Power: 10
+    Speed: 3
+    Exp: 0

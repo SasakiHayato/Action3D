@@ -151,8 +151,6 @@ public class Bullet : MonoBehaviour, IDamage
                 if (other.CompareTag("Enemy"))
                 {
                     other.GetComponent<IDamage>().GetDamage(_power * _powerRate, AttackType.Bullets);
-                    object[] datas = { _power * _powerRate, other.gameObject, ColorType.Enemy };
-                    UIManager.CallBack(UIType.Game, 4, datas);
                     _callBack.Invoke(gameObject);
                 }
                 break;
@@ -160,8 +158,6 @@ public class Bullet : MonoBehaviour, IDamage
                 if (other.CompareTag("Player"))
                 {
                     other.GetComponent<IDamage>().GetDamage(_power * _powerRate, AttackType.Bullets);
-                    object[] datas = { _power * _powerRate, other.gameObject, ColorType.Player };
-                    UIManager.CallBack(UIType.Game, 4, datas);
                     other.GetComponent<Player>().KnockBack(transform.forward);
                     _callBack.Invoke(gameObject);
                 }

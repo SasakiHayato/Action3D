@@ -50,6 +50,9 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
 
         if (_attack.EndCurrentAnim) _anim.Play("Damage_Back_Small_ver_B");
         else _isBackKnock = false;
+        Sounds.SoundMaster.Request(transform, "Damage", 2);
+        object[] setUiData = { damage, gameObject, ColorType.Enemy };
+        UIManager.CallBack(UIType.Game, 4, setUiData);
 
         HP -= damage;
         if (HP < 0) base.Dead(gameObject);

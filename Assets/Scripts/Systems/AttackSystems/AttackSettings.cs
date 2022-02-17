@@ -340,11 +340,6 @@ namespace AttackSetting
             EffectData effect = null;
             EffectSetter.Set(effect, _data.Effects, datas).Invoke();
             iDamage.GetDamage(_data.Power * _charaBase.Power, AttackType.Sword);
-
-
-            ColorType colorType = !_requestEnemySystem ? ColorType.Player : ColorType.Enemy;
-            object[] setUiData = { _data.Power * _charaBase.Power, obj, colorType };
-            UIManager.CallBack(UIType.Game, 4, setUiData);
         }
 
         /// <summary> AnimEventÇ≈ÇÃåƒÇ—èoÇµ </summary>

@@ -15,3 +15,10 @@ public enum ColorType
     Player,
     Enemy,
 }
+
+public enum UIType
+{
+    Player,
+    Game,
+    EnemyConnect,
+}

@@ -21,3 +21,5 @@ MonoBehaviour:
     Text: "Error : Target\u304C\u89E3\u9664\u3055\u308C\u307E\u3057\u305F\u3002"
   - ID: 3
     Text: "Boss\u304C\u51FA\u73FE\u3057\u307E\u3057\u305F\u3002"
+  - ID: 4
+    Text: "Boss\u306E\u5E7B\u5F71\u304C\u51FA\u73FE\u3057\u307E\u3057\u305F\u3002"

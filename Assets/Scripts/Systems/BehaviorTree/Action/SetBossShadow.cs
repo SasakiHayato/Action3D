@@ -27,6 +27,7 @@ public class SetBossShadow : IAction
             Vector3 setVec = new Vector3(x, 0, y) * _range;
 
             GameObject obj = Object.Instantiate(_setPrefab);
+            UIManager.CallBack(UIType.Game, 3, new object[] { 4 });
             obj.transform.position = _player.transform.position + setVec;
         }
 

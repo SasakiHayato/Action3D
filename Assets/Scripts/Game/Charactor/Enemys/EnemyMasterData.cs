@@ -3,13 +3,19 @@ using UnityEngine;
 
 namespace EnemysData
 {
-    public enum EnemyType
+    public enum EnemyName
     {
         CubeEnemy = 0,
         WalkSkeleton = 1,
         RunSkeleton = 2,
         Boss = 3,
         BrackCubeEnemy = 4,
+    }
+
+    public enum EnemyType
+    { 
+        Boss,
+        Mob,
     }
 
     [CreateAssetMenu(fileName = "EnemyMasterData")]
@@ -23,7 +29,9 @@ namespace EnemysData
     public class EnemyData
     {
         public string Name;
+        public string DisplayName;
         public int ID;
+        public EnemyType EnemyType;
         public GameObject Prefab;
         public GameObject DummyPrefab;
         public int HP;

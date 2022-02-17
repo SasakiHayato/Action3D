@@ -14848,6 +14848,32 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
+      propertyPath: _windows.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[2]
+      value: Assembly-CSharp EnemyConnectUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[2].data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[2]._type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[2]._targetPanel
+      value: 
+      objectReference: {fileID: 1879223760755526086, guid: 64993083486c12d43af952cf0c9ff267,
+        type: 3}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
       propertyPath: _windows.Array.data[0]._windows.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -14855,6 +14881,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _windows.Array.data[1]._windows.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[2]._windows.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
@@ -14878,6 +14909,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
+      propertyPath: _windows.Array.data[2]._windows.Array.data[0]
+      value: Assembly-CSharp BossInform
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
       propertyPath: _windows.Array.data[0]._windows.Array.data[3].data
       value: 
       objectReference: {fileID: 0}
@@ -14898,6 +14934,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
+      propertyPath: _windows.Array.data[2]._windows.Array.data[0].data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
       propertyPath: _windows.Array.data[1]._windows.Array.data[1]._name
       value: MenuPanel
       objectReference: {fileID: 0}
@@ -14910,6 +14951,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _windows.Array.data[1]._windows.Array.data[2]._panelName
       value: LogPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[2]._windows.Array.data[0]._panelName
+      value: BossAlertPanel
       objectReference: {fileID: 0}
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
@@ -14937,6 +14983,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 388babbf583f0d3498a7759c1635d59d,
         type: 2}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[2]._windows.Array.data[0]._nameTextName
+      value: NameText
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[2]._windows.Array.data[0]._backGroundName
+      value: BackGroundImage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
+        type: 3}
+      propertyPath: _windows.Array.data[2]._windows.Array.data[0]._warningTextName
+      value: WaringText
+      objectReference: {fileID: 0}
     - target: {fileID: 5556550253530521516, guid: e9d82e524d3fba24bbb09c627433f337,
         type: 3}
       propertyPath: _windows.Array.data[1]._windows.Array.data[3]._damageTextPrefab
