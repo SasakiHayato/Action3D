@@ -49,13 +49,13 @@ MonoBehaviour:
     ID: 0
     Prefab: {fileID: 4938570363195100858, guid: d675abc6028724740af73a1bab6ef350,
       type: 3}
-    Power: 10
+    Power: 1
   - Name: Noarmal
     ID: 1
     Prefab: {fileID: 3171087632790468475, guid: 9945c5dd8e2eee84cb55f1d794e62df0,
       type: 3}
-    Power: 10
+    Power: 2
   - Name: PlayerSorwrdBullet
     ID: 2
     Prefab: {fileID: 608851112842656790, guid: 8616f3eafefe6ef4f963e27f0ceae22c, type: 3}
-    Power: 10
+    Power: 3

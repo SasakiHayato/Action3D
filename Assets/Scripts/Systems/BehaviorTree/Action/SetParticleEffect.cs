@@ -26,7 +26,7 @@ public class SetParticleEffect : IAction
         if (!_isCall)
         {
             _isCall = true;
-            GameObject obj = Object.Instantiate((GameObject)Resources.Load(_particleName));
+            GameObject obj = Object.Instantiate((GameObject)Resources.Load("Particle/"+_particleName));
             obj.transform.position = Target.GetComponentInChildren<TargetCorrector>().transform.position;
             obj.transform.DOScale(_offSet, _setNextActionTime / 2)
                 .OnComplete(() =>

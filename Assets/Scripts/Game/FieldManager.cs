@@ -49,13 +49,13 @@ public class FieldManager : MonoBehaviour
     {
         _instance = this;
 
-        GameObject hitParticle = (GameObject)Resources.Load("HitParticle");
+        GameObject hitParticle = (GameObject)Resources.Load("Particle/HitParticle");
         _hitParticlePool.SetUp(hitParticle.GetComponent<ParticleUser>(), transform, 10);
 
-        GameObject deadParticle = (GameObject)Resources.Load("DeadParticle");
+        GameObject deadParticle = (GameObject)Resources.Load("Particle/DeadParticle");
         _deadParticlePool.SetUp(deadParticle.GetComponent<ParticleUser>(), transform, 5);
 
-        GameObject explosionParticle = (GameObject)Resources.Load("PlasmaExplosionEffect");
+        GameObject explosionParticle = (GameObject)Resources.Load("Particle/PlasmaExplosionEffect");
         _explosionParticlePool.SetUp(explosionParticle.GetComponent<ParticleUser>(), transform, 5);
     }
 

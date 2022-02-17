@@ -5,6 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager
 {
+    public enum GameState
+    {
+        InGame,
+        Title,
+        Dead,
+    }
+
+    public GameState CurrentGameState { get; private set; }
+
     bool _islockOn = false;
     public GameObject LockonTarget { get; set; }
     public float GetCurrentTime { get; private set; } = 0;
@@ -33,6 +42,29 @@ public class GameManager
         {
             _islockOn = value;
             if (!_islockOn) Instance.LockonTarget = null;
+        }
+    }
+
+    public void GameStateSetUp(GameState state)
+    {
+        CurrentGameState = state;
+
+        switch (state)
+        {
+            case GameState.InGame:
+                Object.Instantiate((GameObject)Resources.Load("Systems/FieldManager"));
+                Object.Instantiate((GameObject)Resources.Load("Systems/UIManager"));
+                Object.Instantiate((GameObject)Resources.Load("Systems/ItemManager"));
+                Object.Instantiate((GameObject)Resources.Load("Systems/SoundMaster"));
+                Object.Instantiate((GameObject)Resources.Load("Systems/BulletSettings"));
+                break;
+            case GameState.Title:
+                Object.Instantiate((GameObject)Resources.Load("Systems/SoundMaster"));
+                Object.Instantiate((GameObject)Resources.Load("Systems/UIManager"));
+                Object.Instantiate((GameObject)Resources.Load("Systems/TitleManager"));
+                break;
+            case GameState.Dead:
+                break;
         }
     }
 

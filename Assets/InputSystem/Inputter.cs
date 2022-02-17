@@ -1,18 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
-using UnityEngine.InputSystem;
 
-public enum InputType
-{
-    PlayerMove,
-    CmMove,
-    Select,
-    ShotVal,
-
-    None,
-}
+/// <summary>
+/// InputSystemのデータ管理クラス
+/// </summary>
 
 public class Inputter : MonoBehaviour
 {

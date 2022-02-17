@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
         _instance = this;
         GameObject obj = GameObject.Find("Canvas");
         if (obj == null) obj = CreateCanvas();
-
+        
         foreach (UIWindowParent ui in Instance._windows)
         {
             GameObject parent = Instantiate(ui.GetPanel.gameObject);
