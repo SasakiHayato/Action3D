@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+
+/// <summary>
+/// PostProcessŠÖ˜A‚ÌUI•\Ž¦
+/// </summary>
 
 public class PostProcessData : UIWindowParent.UIWindowChild
 {

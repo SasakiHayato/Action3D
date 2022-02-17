@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Animation‚ğ”ñ“¯Šú‚Å‘Ò‚½‚¹‚é‚½‚ß‚ÌƒRƒ‹[ƒ`ƒ“‚ÌŠg’£
+/// </summary>
+
 public class WaitAnim : CustomYieldInstruction
 {
     Animator _anim;

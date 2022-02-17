@@ -1,10 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using DG.Tweening;
 using Sounds;
+
+/// <summary>
+/// ÉQÅ[ÉÄè„Ç…Ç»Ç…Ç©ÇµÇÁÇÃLogÇÃï\é¶
+/// </summary>
 
 public class LogCountrol : UIWindowParent.UIWindowChild
 {

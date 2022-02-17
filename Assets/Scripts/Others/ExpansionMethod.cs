@@ -1,6 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// 拡張メソッド達
+/// </summary>
 
 public static class CharacterHelper
 {

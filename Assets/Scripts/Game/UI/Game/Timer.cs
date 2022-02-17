@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// åªç›ÇÃÉQÅ[ÉÄÇÃåoâﬂéûä‘ÇÃï\é¶
+/// </summary>
+
 public class Timer : UIWindowParent.UIWindowChild
 {
     [SerializeField] string _name;
@@ -20,8 +24,5 @@ public class Timer : UIWindowParent.UIWindowChild
         _txt.text = $"Time ; {minutes.ToString("00")}:{second.ToString($"00.00")}";
     }
 
-    public override void CallBack(object[] data)
-    {
-        
-    }
+    public override void CallBack(object[] data) { }
 }

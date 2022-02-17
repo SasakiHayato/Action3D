@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+/// <summary>
+/// Player‚ÌŒ»İ‚ÌƒŒƒxƒ‹‚Ì•\¦
+/// </summary>
 
 public class LevelTextSetter : UIWindowParent.UIWindowChild
 {
@@ -14,11 +16,8 @@ public class LevelTextSetter : UIWindowParent.UIWindowChild
         _txt.text = "Level : 001";
     }
 
-    public override void UpDate()
-    {
-        
-    }
-
+    public override void UpDate() { }
+   
     public override void CallBack(object[] data)
     {
         int level = (int)data[0];

@@ -21,6 +21,10 @@ namespace AttackSetting
         void Init();
     }
 
+    /// <summary>
+    /// 攻撃を管理するクラス
+    /// </summary>
+
     public class AttackSettings : MonoBehaviour
     {
         public enum KnockType
@@ -88,6 +92,9 @@ namespace AttackSetting
         AttackData _data;
         #endregion
 
+        /// <summary>
+        /// 攻撃が当たった際のEffectの設定クラス
+        /// </summary>
         #region Class EffectSetter
         class EffectSetter
         {
@@ -259,8 +266,10 @@ namespace AttackSetting
             }
         }
 
+        // 先行入力の受付
         public void NextRequest() { if (_nextRequest) IsNextRequest = true; }
-
+        
+        // 連続攻撃の最終段判定
         public bool GetEndCombo()
         {
             if (_data == null) return false;
@@ -282,7 +291,8 @@ namespace AttackSetting
             _targetWeapon = set;
             _saveGroupID = set.GroupID;
         }
-
+         
+        // 攻撃のキャンセル
         public void Cancel()
         {
             _attacking = false;

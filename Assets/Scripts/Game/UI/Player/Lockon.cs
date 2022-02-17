@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+/// <summary>
+/// ロックオンしたEnemyに対するUIの表示
+/// </summary>
+
 public class Lockon : UIWindowParent.UIWindowChild
 {
     [SerializeField] Sprite _sprite;

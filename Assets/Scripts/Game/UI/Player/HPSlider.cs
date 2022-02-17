@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+/// <summary>
+/// åªç›ÇÃPlayerÇÃHPÇÃï\é¶
+/// </summary>
 
 public class HPSlider : UIWindowParent.UIWindowChild
 {

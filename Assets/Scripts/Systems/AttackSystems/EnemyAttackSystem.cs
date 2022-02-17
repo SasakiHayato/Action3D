@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// Enemy‚ÌAI‚ÅBeheviaTree‚Æ•¹—p‚³‚¹‚éƒNƒ‰ƒX
+/// </summary>
 
 namespace AttackSetting
 {

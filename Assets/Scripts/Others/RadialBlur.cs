@@ -1,10 +1,16 @@
 using UnityEngine;
 
+/// <summary>
+/// 放射状ブラーのシェーダーに対して申請を行うクラス
+/// </summary>
+
 public class RadialBlur : MonoBehaviour
 {
     [SerializeField] Shader _shader;
     [SerializeField, Range(4, 16)] int _sampleCount = 8;
     [SerializeField, Range(0, 1)] float _strenght = 0.5f;
+
+    // ブラーの強さ
     public float SetStrength { set { _strenght = value; } }
 
     Material _material = null;

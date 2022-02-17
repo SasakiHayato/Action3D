@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+/// <summary>
+/// UIType.Game‚É‘Î‚·‚éPanel‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
 
 public class GameUI : UIWindowParent
 {

@@ -1,7 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+
+/// <summary>
+/// UŒ‚‚ÌEffectŠÇ—ƒNƒ‰ƒX
+/// </summary>
 
 namespace AttackSetting
 {

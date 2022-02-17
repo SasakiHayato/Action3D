@@ -1,6 +1,10 @@
 using UnityEngine;
 using AttackSetting;
 
+/// <summary>
+/// AttackSettingsとのやり取りをするクラス
+/// </summary>
+
 public class AttackCollision : MonoBehaviour, IAttack
 {
     public enum Parent
@@ -20,6 +24,10 @@ public class AttackCollision : MonoBehaviour, IAttack
     bool _check;
     bool _isHit = false;
 
+    /// <summary>
+    /// Userの設定
+    /// </summary>
+    /// <param name="parent">対象者</param>
     public void SetUp(GameObject parent)
     {
         _parent = parent;
@@ -28,13 +36,20 @@ public class AttackCollision : MonoBehaviour, IAttack
         else ParentID = Parent.Enemy;
         Init();
     }
-
+    
+    /// <summary>
+    /// AttackSettingsからのCallBack関数
+    /// </summary>
+    /// <returns>設定されたデータ</returns>
     public object[] CallBack()
     {
         object[] call = { _check, _iDamage, _hitObj };
         return call;
     }
 
+    /// <summary>
+    /// 初期化
+    /// </summary>
     public void Init()
     {
         _check = false;

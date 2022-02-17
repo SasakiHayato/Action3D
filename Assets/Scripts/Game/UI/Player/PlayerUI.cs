@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// UIType.Player‚É‘Î‚·‚éPanel‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class PlayerUI : UIWindowParent
 {
     GameObject _player = null;

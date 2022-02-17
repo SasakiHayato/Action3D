@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Player‰ñ”ğ‚Ì”­¶‹–—e”ÍˆÍ‚Ì•â³ƒNƒ‰ƒX
+/// </summary>
+
 public class AvoidCorrector : MonoBehaviour
 {
     [SerializeField] float _avoidDist;

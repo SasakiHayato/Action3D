@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+/// <summary>
+/// MunuPanel‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class MenuPanel : UIWindowParent.UIWindowChild
 {
     [SerializeField] string _name;

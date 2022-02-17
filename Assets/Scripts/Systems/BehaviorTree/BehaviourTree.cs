@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// BeheviaTreeの管理クラス
+/// </summary>
+
 namespace BehaviourAI
 {
     public interface IConditional
@@ -25,6 +29,9 @@ namespace BehaviourAI
 
         int _treeID = 0;
 
+        /// <summary>
+        /// 現在のステート管理
+        /// </summary>
         public void Repeater()
         {
             if (_treeData != null && !_treeData.BrockConditionals.All(c => c.Check()))

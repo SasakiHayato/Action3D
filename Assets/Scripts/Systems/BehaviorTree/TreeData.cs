@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// BeheviaTree‚ÅŽg—p‚³‚ê‚éData
+/// </summary>
+
 namespace BehaviourAI
 {
     public partial class BehaviourTree : MonoBehaviour
