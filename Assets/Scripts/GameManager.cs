@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
+/// <summary>
+/// ゲーム全体の管理クラス
+/// </summary>
 
 public class GameManager
 {
@@ -45,6 +48,11 @@ public class GameManager
         }
     }
 
+
+    /// <summary>
+    /// 対象となるステートの各マネージャーの生成
+    /// </summary>
+    /// <param name="state">ロードするステート</param>
     public void GameStateSetUp(GameState state)
     {
         CurrentGameState = state;
@@ -75,7 +83,7 @@ public class GameManager
     {
         Init();
         Inputter.Init();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneSettings.Instance.LoadSync(0);
     }
 
     /// <summary>

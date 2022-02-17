@@ -136,7 +136,8 @@ MonoBehaviour:
         _targetPanel: {fileID: 7025399857351031122, guid: 0e4660a2a9e797a4bb042a2a860ace43,
           type: 3}
         _type: 3
-        _windows: []
+        _windows:
+        - id: 14
     00000004:
       type: {class: PostProcessData, ns: , asm: Assembly-CSharp}
       data:
@@ -191,3 +192,7 @@ MonoBehaviour:
         _backGroundName: BackGroundImage
         _warningTextName: WaringText
         _nameTextName: NameText
+    0000000E:
+      type: {class: SetStart, ns: , asm: Assembly-CSharp}
+      data:
+        _buttonName: StartButton

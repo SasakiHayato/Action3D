@@ -18,6 +18,7 @@ public class PlayerUI : UIWindowParent
             return;
         }
 
+        _isRun = true;
         _player = GameObject.FindGameObjectWithTag("Player");
         base.SetUp();
     }
