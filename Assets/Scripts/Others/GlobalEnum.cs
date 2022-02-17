@@ -21,6 +21,7 @@ public enum UIType
     Player,
     Game,
     EnemyConnect,
+    Title,
 }
 
 public enum InputType
@@ -29,6 +30,4 @@ public enum InputType
     CmMove,
     Select,
     ShotVal,
-
-    None,
 }
