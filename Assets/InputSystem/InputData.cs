@@ -1012,6 +1012,17 @@ public class @InputData : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""34758bc0-d2f0-4348-9e6d-7db871b573c3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Options"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9207c8f0-5ed9-4569-818b-3b05b58e34ef"",
                     ""path"": ""<Gamepad>/dpad"",
                     ""interactions"": """",

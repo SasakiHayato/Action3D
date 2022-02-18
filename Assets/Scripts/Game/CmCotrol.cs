@@ -33,8 +33,8 @@ public class CmCotrol : MonoBehaviour
     void Update()
     {
         if (!GameManager.Instance.PlayerData.CanMove) return;
-
-        Move();
+        if (GameManager.Instance.OptionState != GameManager.Option.Open) Move();
+        
         _core.transform.position = _player.transform.position;
     }
 

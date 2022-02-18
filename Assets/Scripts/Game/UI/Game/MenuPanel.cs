@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -33,12 +31,14 @@ public class MenuPanel : UIWindowParent.UIWindowChild
     {
         if (_isActive)
         {
+            GameManager.Instance.OptionState = GameManager.Option.Close;
             _rect.DOAnchorPosX(_setPos.x, 0.2f)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => _isActive = false);
         }
         else
         {
+            GameManager.Instance.OptionState = GameManager.Option.Open;
             _rect.DOAnchorPosX(_saveVec.x, 0.2f)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => _isActive = true);

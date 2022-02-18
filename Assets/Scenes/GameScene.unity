@@ -1196,6 +1196,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 984375943469860077, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
+      propertyPath: m_ShowCustomSorter
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 984375943469860079, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
       propertyPath: m_RootOrder

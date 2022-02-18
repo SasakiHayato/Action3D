@@ -14,7 +14,14 @@ public class GameManager
         Load,
     }
 
+    public enum Option
+    {
+        Open,
+        Close,
+    }
+
     public GameState CurrentGameState { get; private set; }
+    public Option OptionState { get; set; } = Option.Close;
 
     bool _islockOn = false;
     public GameObject LockonTarget { get; set; }
