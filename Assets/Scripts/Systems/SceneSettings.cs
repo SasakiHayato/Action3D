@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System;
+using DG.Tweening;
 
 /// <summary>
 /// シーン遷移の管理クラス
@@ -32,21 +33,24 @@ public class SceneSettings : MonoBehaviour
     }
 
     AsyncOperation _operation = null;
-
+    
     public void LoadSync(string name, Action action = null)
     {
+        DOTween.KillAll();
         action?.Invoke();
         SceneManager.LoadScene(name);
     }
 
     public void LoadSync(int id, Action action = null)
     {
+        DOTween.KillAll();
         action?.Invoke();
         SceneManager.LoadScene(id);
     }
 
     public void LoadAsync(string name, float waitTime, Action action = null)
     {
+        DOTween.KillAll();
         _operation = null;
 
         _operation = SceneManager.LoadSceneAsync(name);
@@ -56,11 +60,12 @@ public class SceneSettings : MonoBehaviour
 
     public void LoadAsync(int id, float waitTime, Action action = null)
     {
+        DOTween.KillAll();
         _operation = null;
 
         _operation = SceneManager.LoadSceneAsync(id);
         _operation.allowSceneActivation = false;
-        
+
         StartCoroutine(Async(waitTime, action));
     }
 
@@ -68,6 +73,13 @@ public class SceneSettings : MonoBehaviour
     {
         action?.Invoke();
         yield return new WaitForSeconds(waitTime);
+        bool isDone = false;
+        while (!isDone)
+        {
+            if (_operation.progress >= 0.9f) isDone = true;
+            yield return null;
+        }
+
         _operation.allowSceneActivation = true;
     }
 }

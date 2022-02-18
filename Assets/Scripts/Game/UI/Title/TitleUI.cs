@@ -12,9 +12,10 @@ public class TitleUI : UIWindowParent
         {
             GetPanel.gameObject.SetActive(false);
             _isRun = false;
+
             return;
         }
-
+       
         _isRun = true;
         base.SetUp();
     }

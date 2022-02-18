@@ -22,6 +22,8 @@ public class AvoidCorrector : MonoBehaviour
 
     void Update()
     {
+        if (_player == null) return;
+
         float dist = Vector3.Distance(transform.position, _player.transform.position);
         if (dist < _avoidDist && _collider.enabled)
         {

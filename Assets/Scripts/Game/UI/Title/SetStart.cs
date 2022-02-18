@@ -9,6 +9,7 @@ using UniRx;
 
 public class SetStart : UIWindowParent.UIWindowChild
 {
+    [SerializeField] string _buttonPanelName;
     [SerializeField] string _buttonName;
 
     Button _button;
@@ -17,18 +18,18 @@ public class SetStart : UIWindowParent.UIWindowChild
     
     public override void SetUp()
     {
-        _button = ParentPanel.transform.Find(_buttonName).GetComponent<Button>();
+        Transform transform = ParentPanel.transform.Find(_buttonPanelName);
+        _button = transform.Find(_buttonName).GetComponent<Button>();
         _button.OnClickAsObservable()
             .TakeUntilDestroy(_button)
             .ThrottleFirst(TimeSpan.FromSeconds(1f))
-            .Subscribe(_ => OnClick())
+            .Subscribe(_ => CallBack(null))
             .AddTo(_button);
     }
 
     public override void UpDate() { }
-    public override void CallBack(object[] data) { }
 
-    void OnClick()
+    public override void CallBack(object[] data) 
     {
         Fader.Instance.Request(Fader.FadeType.Out, WaitTime);
         SceneSettings.Instance.LoadAsync(1, WaitTime);

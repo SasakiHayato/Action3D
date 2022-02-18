@@ -14,7 +14,7 @@ public class EnemyConnectUI : UIWindowParent
             _isRun = false;
             return;
         }
-
+        
         _isRun = true;
         base.SetUp();
     }
@@ -27,7 +27,7 @@ public class EnemyConnectUI : UIWindowParent
 
     public override void CallBack(int id, object[] data)
     {
-        if (!_isRun) return;
+        if (!_isRun) return;   
         base.CallBack(id, data);
     }
 }

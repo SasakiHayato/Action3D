@@ -11,8 +11,13 @@ public class Fader : MonoBehaviour
     {
         In,
         Out,
+
+        None,
     }
 
+    public FadeType SetFadeType { set { _fadeType = value; } }
+    FadeType _fadeType = FadeType.None;
+    
     private static Fader _instane = null;
     public static Fader Instance
     {
@@ -37,7 +42,7 @@ public class Fader : MonoBehaviour
     public bool IsFade { get; private set; } = false;
 
     bool _isRequest = false;
-    float _fadeSpeed;
+    public float FadeSpeed { get; set; } = 0;
 
     float _timer;
     float _startVal;
@@ -53,7 +58,7 @@ public class Fader : MonoBehaviour
         if (!_isRequest) return;
 
         _timer += Time.deltaTime;
-        float alfa = Mathf.Lerp(_startVal, _endVal, _timer * _fadeSpeed);
+        float alfa = Mathf.Lerp(_startVal, _endVal, _timer * FadeSpeed);
         Color color = _fadeImage.color;
         color.a = alfa;
         _fadeImage.color = color;
@@ -72,20 +77,9 @@ public class Fader : MonoBehaviour
     /// <param name="fadeSpeed">フェードさせる速度</param>
     public void Request(FadeType type, float fadeSpeed = 1)
     {
-        GameObject parent = new GameObject("Canvas");
-        Canvas canvas = parent.AddComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvas.sortingOrder = 999;
+        Color color;
+        CreateFade(out color);
 
-        CanvasScaler canvasScaler = parent.AddComponent<CanvasScaler>();
-        canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        canvasScaler.referenceResolution = Aspect;
-
-        GameObject child = new GameObject("FadeImage");
-        child.transform.SetParent(parent.transform);
-        Image image = child.AddComponent<Image>();
-        image.color = Color.black;
-        Color color = image.color;
         if (type == FadeType.Out)
         {
             _startVal = 0;
@@ -99,22 +93,62 @@ public class Fader : MonoBehaviour
             color.a = 1;
         }
 
-        RectTransform rect = image.GetComponent<RectTransform>();
+        IsFade = false;
+        FadeSpeed = fadeSpeed;
+        _isRequest = true;
+    }
+
+    public void Request()
+    {
+        Color color;
+        CreateFade(out color);
+
+        if (_fadeType == FadeType.Out)
+        {
+            _startVal = 0;
+            _endVal = 1;
+            color.a = 0;
+        }
+        else
+        {
+            _startVal = 1;
+            _endVal = 0;
+            color.a = 1;
+        }
+
+        IsFade = false;
+        _isRequest = true;
+    }
+
+    void CreateFade(out Color color)
+    {
+        GameObject parent = new GameObject("Canvas");
+        Canvas canvas = parent.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingOrder = 999;
+
+        CanvasScaler canvasScaler = parent.AddComponent<CanvasScaler>();
+        canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        canvasScaler.referenceResolution = Aspect;
+
+        GameObject child = new GameObject("FadeImage");
+        child.transform.SetParent(parent.transform);
+        _fadeImage = child.AddComponent<Image>();
+        _fadeImage.color = Color.black;
+        color = _fadeImage.color;
+
+        RectTransform rect = _fadeImage.GetComponent<RectTransform>();
         rect.anchorMin = Vector2.zero;
         rect.anchorMax = Vector2.one;
         rect.offsetMin = Vector2.zero;
         rect.offsetMax = Vector2.zero;
-
-        IsFade = false;
-        _fadeImage = image;
-        _fadeSpeed = fadeSpeed;
-        _isRequest = true;
     }
 
     void Init()
     {
         _fadeImage = null;
-        _fadeSpeed = 0;
+        FadeSpeed = 0;
         _isRequest = false;
+        _fadeType = FadeType.None;
     }
 }

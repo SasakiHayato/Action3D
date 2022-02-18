@@ -138,6 +138,8 @@ MonoBehaviour:
         _type: 3
         _windows:
         - id: 14
+        - id: 15
+        - id: 16
     00000004:
       type: {class: PostProcessData, ns: , asm: Assembly-CSharp}
       data:
@@ -195,4 +197,14 @@ MonoBehaviour:
     0000000E:
       type: {class: SetStart, ns: , asm: Assembly-CSharp}
       data:
+        _buttonPanelName: ButtonPanel
         _buttonName: StartButton
+    0000000F:
+      type: {class: AnyPressedTitle, ns: , asm: Assembly-CSharp}
+      data:
+        _buttonName: TitleButton
+        _requestActivePanelName: ButtonPanel
+    00000010:
+      type: {class: TitleUIAnim, ns: , asm: Assembly-CSharp}
+      data:
+        _titleButtonTextName: TitleButtonText

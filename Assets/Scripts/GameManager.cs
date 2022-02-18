@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -13,6 +11,7 @@ public class GameManager
         InGame,
         Title,
         Dead,
+        Load,
     }
 
     public GameState CurrentGameState { get; private set; }
@@ -22,7 +21,7 @@ public class GameManager
     public float GetCurrentTime { get; private set; } = 0;
 
     public PlayerData PlayerData { get; private set; } = new PlayerData();
-
+    
     // Singleton
     private static GameManager _instance = null;
     public static GameManager Instance
@@ -56,22 +55,28 @@ public class GameManager
     public void GameStateSetUp(GameState state)
     {
         CurrentGameState = state;
-
+        
         switch (state)
         {
             case GameState.InGame:
-                Object.Instantiate((GameObject)Resources.Load("Systems/FieldManager"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/UIManager"));
+                Object.Instantiate((GameObject)Resources.Load("Systems/FieldManager"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/ItemManager"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/SoundMaster"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/BulletSettings"));
                 break;
+
             case GameState.Title:
                 Object.Instantiate((GameObject)Resources.Load("Systems/SoundMaster"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/UIManager"));
-                Object.Instantiate((GameObject)Resources.Load("Systems/TitleManager"));
+                Object.Instantiate((GameObject)Resources.Load("Systems/TitleManager")); ;
                 break;
+
             case GameState.Dead:
+                break;
+
+            case GameState.Load:
+                UnityEngine.Object.Instantiate((GameObject)Resources.Load("Systems/UIManager"));
                 break;
         }
     }

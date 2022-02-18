@@ -47,7 +47,6 @@ public class BossInform : UIWindowParent.UIWindowChild
     {
         if (_isSetting) return;
         _isSetting = true;
-
         _nameText.text = (string)data[0];
         RectTransform warningTextRect = _warningText.gameObject.GetRect();
         RectTransform nameTxetRect = _nameText.gameObject.GetRect();
