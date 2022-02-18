@@ -172,7 +172,7 @@ public class Player : CharaBase, IDamage
             
             return;
         }
-
+        
         if (_attack.IsCounter) return;
         if (type == AttackType.None) return;
 
@@ -180,12 +180,12 @@ public class Player : CharaBase, IDamage
 
         object[] datas = { damage, gameObject, ColorType.Player };
         UIManager.CallBack(UIType.Game, 4, datas);
-
+        
         HP -= damage;
         if (HP <= 0)
         {
-            Destroy(gameObject);
             GameManager.Instance.End();
+            GameManager.Instance.GameStateSetUpEvents(GameManager.GameState.Dead);
         }
     }
 

@@ -32,6 +32,8 @@ public class CmCotrol : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance.PlayerData.CanMove) return;
+
         Move();
         _core.transform.position = _player.transform.position;
     }

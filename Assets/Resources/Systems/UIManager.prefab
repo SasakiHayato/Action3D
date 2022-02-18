@@ -111,6 +111,7 @@ MonoBehaviour:
         - id: 6
         - id: 7
         - id: 8
+        - id: 9
     00000001:
       type: {class: GameUI, ns: , asm: Assembly-CSharp}
       data:
@@ -118,10 +119,10 @@ MonoBehaviour:
           type: 3}
         _type: 1
         _windows:
-        - id: 9
         - id: 10
         - id: 11
         - id: 12
+        - id: 13
     00000002:
       type: {class: EnemyConnectUI, ns: , asm: Assembly-CSharp}
       data:
@@ -129,7 +130,7 @@ MonoBehaviour:
           type: 3}
         _type: 2
         _windows:
-        - id: 13
+        - id: 14
     00000003:
       type: {class: TitleUI, ns: , asm: Assembly-CSharp}
       data:
@@ -137,11 +138,11 @@ MonoBehaviour:
           type: 3}
         _type: 3
         _windows:
-        - id: 14
         - id: 15
         - id: 16
+        - id: 17
     00000004:
-      type: {class: PostProcessData, ns: , asm: Assembly-CSharp}
+      type: {class: PostProcessRadial, ns: , asm: Assembly-CSharp}
       data:
         _profile: {fileID: 11400000, guid: 3e14f8bf63d929f479475d178826acba, type: 2}
         _fadeSpeed: 10
@@ -165,15 +166,21 @@ MonoBehaviour:
       data:
         _sliderName: ExpSlider
     00000009:
+      type: {class: PostProcessGrain, ns: , asm: Assembly-CSharp}
+      data:
+        _processProfile: {fileID: 11400000, guid: 3e14f8bf63d929f479475d178826acba,
+          type: 2}
+        _effectHpParcent: 0.3
+    0000000A:
       type: {class: Timer, ns: , asm: Assembly-CSharp}
       data:
         _name: Timer
-    0000000A:
+    0000000B:
       type: {class: MenuPanel, ns: , asm: Assembly-CSharp}
       data:
         _name: MenuPanel
         _setPos: {x: -1600, y: 0}
-    0000000B:
+    0000000C:
       type: {class: LogCountrol, ns: , asm: Assembly-CSharp}
       data:
         _panelName: LogPanel
@@ -181,30 +188,30 @@ MonoBehaviour:
         _textDataBase: {fileID: 11400000, guid: 388babbf583f0d3498a7759c1635d59d,
           type: 2}
         _offSetPos: {x: 420, y: -600}
-    0000000C:
+    0000000D:
       type: {class: DamageText, ns: , asm: Assembly-CSharp}
       data:
         _damageTextName: DamageText
         _playerTextColor: {r: 0, g: 0, b: 0, a: 1}
         _enemyTextColor: {r: 1, g: 0, b: 0, a: 1}
-    0000000D:
+    0000000E:
       type: {class: BossInform, ns: , asm: Assembly-CSharp}
       data:
         _panelName: BossAlertPanel
         _backGroundName: BackGroundImage
         _warningTextName: WaringText
         _nameTextName: NameText
-    0000000E:
+    0000000F:
       type: {class: SetStart, ns: , asm: Assembly-CSharp}
       data:
         _buttonPanelName: ButtonPanel
         _buttonName: StartButton
-    0000000F:
+    00000010:
       type: {class: AnyPressedTitle, ns: , asm: Assembly-CSharp}
       data:
         _buttonName: TitleButton
         _requestActivePanelName: ButtonPanel
-    00000010:
+    00000011:
       type: {class: TitleUIAnim, ns: , asm: Assembly-CSharp}
       data:
         _titleButtonTextName: TitleButtonText

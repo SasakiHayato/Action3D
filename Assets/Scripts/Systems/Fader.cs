@@ -92,7 +92,7 @@ public class Fader : MonoBehaviour
             _endVal = 0;
             color.a = 1;
         }
-
+        
         IsFade = false;
         FadeSpeed = fadeSpeed;
         _isRequest = true;
@@ -120,8 +120,26 @@ public class Fader : MonoBehaviour
         _isRequest = true;
     }
 
+    public void Cancel()
+    {
+        if (IsFade) return;
+
+        Color color = _fadeImage.color;
+        color.a = _endVal;
+        _fadeImage.color = color;
+
+        Init();
+        IsFade = true;
+    }
+
     void CreateFade(out Color color)
     {
+        if (Instance._fadeImage != null)
+        {
+            color = _fadeImage.color;
+            return;
+        }
+
         GameObject parent = new GameObject("Canvas");
         Canvas canvas = parent.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
@@ -146,8 +164,8 @@ public class Fader : MonoBehaviour
 
     void Init()
     {
-        _fadeImage = null;
         FadeSpeed = 0;
+        _timer = 0;
         _isRequest = false;
         _fadeType = FadeType.None;
     }

@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 /// <summary>
-/// PostProcess関連のUI表示
+/// PostProcess, 放射状ブラーの表示
 /// </summary>
 
-public class PostProcessData : UIWindowParent.UIWindowChild
+public class PostProcessRadial : UIWindowParent.UIWindowChild
 {
     [SerializeField] PostProcessProfile _profile;
     [SerializeField] float _fadeSpeed = 1;
@@ -17,7 +17,7 @@ public class PostProcessData : UIWindowParent.UIWindowChild
 
     public override void SetUp()
     {
-        _radial = GameObject.FindObjectOfType<RadialBlur>();
+        _radial = Object.FindObjectOfType<RadialBlur>();
         _vignette = _profile.GetSetting<Vignette>();
         _vignette.active = false;
     }
@@ -37,7 +37,6 @@ public class PostProcessData : UIWindowParent.UIWindowChild
             set = Mathf.Lerp(_intencity, 0, _time);
             if (set <= 0) _vignette.active = false;
             _radial.SetStrength = 0;
-
         }
 
         _vignette.intensity.value = set;

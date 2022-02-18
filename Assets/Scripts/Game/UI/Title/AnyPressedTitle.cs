@@ -31,6 +31,7 @@ public class AnyPressedTitle : UIWindowParent.UIWindowChild
 
     public override void CallBack(object[] data)
     {
+        Fader.Instance.Cancel();
         ParentPanel.transform.Find(_requestActivePanelName).gameObject.SetActive(true);
     }
 }

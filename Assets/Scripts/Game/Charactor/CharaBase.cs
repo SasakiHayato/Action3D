@@ -33,6 +33,7 @@ public class CharaBase : MonoBehaviour
     {
         _phsicsBase = gameObject.AddComponent<PhysicsBase>();
         _character = GetComponent<CharacterController>();
+        MaxHP = HP;
     }
 
     /// <summary>

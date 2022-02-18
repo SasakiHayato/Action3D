@@ -82,19 +82,27 @@ public class GameManager
     /// <summary>
     /// 対象となるステートの各Eventの発生管理
     /// </summary>
-    /// <param name="state"></param>
+    /// <param name="state">SetUpをするState</param>
     public void GameStateSetUpEvents(GameState state)
     {
         switch (state)
         {
             case GameState.InGame:
                 Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-                player.SetAnim("Intro", PlayerData.SetCanMove);
+                player.SetAnim("Intro", () => { PlayerData.CanMove = true; });
                 break;
+
             case GameState.Title:
+                Fader.Instance.Request(Fader.FadeType.In, 0.25f);
                 break;
+
             case GameState.Dead:
+                PlayerData.CanMove = false;
+                player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+                Fader.Instance.Request(Fader.FadeType.Out, 0.5f);
+                player.SetAnim("Damage_Die", () => SceneSettings.Instance.LoadSync(0));
                 break;
+
             case GameState.Load:
                 break;
         }
@@ -107,7 +115,6 @@ public class GameManager
     {
         Init();
         Inputter.Init();
-        SceneSettings.Instance.LoadSync(0);
     }
 
     /// <summary>
