@@ -10,6 +10,7 @@ public class GameStatePresenter : MonoBehaviour
     
     void Start()
     {
-        GameManager.Instance.GameStateSetUp(_gameState);
+        GameManager.Instance.GameStateSetUpSystems(_gameState);
+        GameManager.Instance.GameStateSetUpEvents(_gameState);
     }
 }

@@ -52,31 +52,50 @@ public class GameManager
     /// 対象となるステートの各マネージャーの生成
     /// </summary>
     /// <param name="state">ロードするステート</param>
-    public void GameStateSetUp(GameState state)
+    public void GameStateSetUpSystems(GameState state)
     {
         CurrentGameState = state;
-        
+
+        Object.Instantiate((GameObject)Resources.Load("Systems/UIManager"));
+        Object.Instantiate((GameObject)Resources.Load("Systems/SoundMaster"));
+
         switch (state)
         {
             case GameState.InGame:
-                Object.Instantiate((GameObject)Resources.Load("Systems/UIManager"));
-                Object.Instantiate((GameObject)Resources.Load("Systems/FieldManager"));
+                
+                Object.Instantiate((GameObject)Resources.Load("Systems/FieldSystems"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/ItemManager"));
-                Object.Instantiate((GameObject)Resources.Load("Systems/SoundMaster"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/BulletSettings"));
                 break;
 
             case GameState.Title:
-                Object.Instantiate((GameObject)Resources.Load("Systems/SoundMaster"));
-                Object.Instantiate((GameObject)Resources.Load("Systems/UIManager"));
-                Object.Instantiate((GameObject)Resources.Load("Systems/TitleManager")); ;
                 break;
 
             case GameState.Dead:
                 break;
 
             case GameState.Load:
-                UnityEngine.Object.Instantiate((GameObject)Resources.Load("Systems/UIManager"));
+                break;
+        }
+    }
+
+    /// <summary>
+    /// 対象となるステートの各Eventの発生管理
+    /// </summary>
+    /// <param name="state"></param>
+    public void GameStateSetUpEvents(GameState state)
+    {
+        switch (state)
+        {
+            case GameState.InGame:
+                Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+                player.SetAnim("Intro", PlayerData.SetCanMove);
+                break;
+            case GameState.Title:
+                break;
+            case GameState.Dead:
+                break;
+            case GameState.Load:
                 break;
         }
     }

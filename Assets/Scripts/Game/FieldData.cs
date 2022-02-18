@@ -43,6 +43,8 @@ public class FieldData
         _enemyMasterData = masterDatas;
         _enemyGroupDatas = new List<EnemyGroupData>();
 
+        TeleportManager.Instnace.SetUp(spawn);
+
         for (int i = 0; i < spawn.Count(); i++)
         {
             _enemyGroupDatas.Add(new EnemyGroupData(spawn[i].ID, false, new List<IFieldEnemy>()));

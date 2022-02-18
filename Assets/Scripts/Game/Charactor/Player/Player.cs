@@ -16,15 +16,10 @@ public class Player : CharaBase, IDamage
 
     float _timer = 0;
 
-    bool _isAvoid = false;
-    public bool IsAvoid => _isAvoid;
-
-    bool _isLockon = false;
-    public bool IsLockon => _isLockon;
-
-    public Vector3 GetKnockDir { get; private set; }
-
     public bool EndAnim { get; private set; } = true;
+    public bool IsAvoid { get; private set; } = false;
+    public bool IsLockon { get; private set; } = false;
+    public Vector3 GetKnockDir { get; private set; } = Vector3.zero;
 
     void Start()
     {
@@ -54,8 +49,10 @@ public class Player : CharaBase, IDamage
 
     void Update()
     {
+        if (!GameManager.Instance.PlayerData.CanMove) return;
+
         _state.Base();
-        if (_state.GetCurrentState != StateMachine.StateType.Avoid) _isAvoid = false;
+        if (_state.GetCurrentState != StateMachine.StateType.Avoid) IsAvoid = false;
 
         float value = (float)Inputter.GetValue(InputType.ShotVal);
         if ((int)value == 1)
@@ -167,8 +164,8 @@ public class Player : CharaBase, IDamage
     {
         if (_state.GetCurrentState == StateMachine.StateType.Avoid)
         {
-            if (_isAvoid) return;
-            _isAvoid = true;
+            if (IsAvoid) return;
+            IsAvoid = true;
 
             UIManager.CallBack(UIType.Player, 1);
             FieldManager.FieldTimeRate(UIManager.CallBack, UIType.Player, 1);

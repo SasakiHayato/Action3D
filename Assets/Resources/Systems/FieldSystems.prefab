@@ -136,8 +136,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4171603072666420872}
   - component: {fileID: 4171603071344238165}
+  - component: {fileID: -5937738819575184878}
   m_Layer: 0
-  m_Name: FieldManager
+  m_Name: FieldSystems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,6 +211,18 @@ MonoBehaviour:
     Point: {fileID: 4171603072066840812}
     Range: 10
     GroupTip: {fileID: 11400000, guid: a69b4fcfd7aa9ca42aae9798d89d54e9, type: 2}
+--- !u!114 &-5937738819575184878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171603071344238164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9eca02b464fb5041bbcd51244b31ebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4171603071595813403
 GameObject:
   m_ObjectHideFlags: 0
