@@ -37,6 +37,8 @@ public class BulletPool<T> where T : BulletSettings.BulletData
             GameObject obj = Object.Instantiate(data.Prefab);
             obj.GetComponent<Collider>().isTrigger = true;
             obj.name = $"ID:{data.ID}. Name.{data.Name}";
+
+
             obj.AddComponent<Bullet>().SetUp(data, Delete);
 
             _bulletsPool.Add(obj);

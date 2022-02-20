@@ -27,7 +27,7 @@ public interface IPool
 
 public interface IAttackCollision
 {
-    string TagName { get; }
+    string ParentTagName { get; }
     GameObject Target { get; }
     Collider Collider { get; }
 }

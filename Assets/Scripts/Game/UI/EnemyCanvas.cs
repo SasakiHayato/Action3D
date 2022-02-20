@@ -19,6 +19,8 @@ public class EnemyCanvas : MonoBehaviour
         _enemyBase = transform.parent.GetComponent<EnemyBase>();
         _slider.maxValue = _enemyBase.MaxHP;
         _canvas = gameObject.GetComponent<Canvas>();
+        _text.text = $"Level:{_enemyBase.Level.ToString("000")}";
+
         _panel.SetActive(false);
     }
 

@@ -4,6 +4,10 @@ using System.Linq;
 using System;
 using AttackSetting;
 
+/// <summary>
+/// Player‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class Player : CharaBase, IDamage
 {
     [SerializeField] float _lockOnDist;

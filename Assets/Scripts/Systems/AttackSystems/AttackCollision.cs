@@ -11,7 +11,7 @@ using DG.Tweening;
 public class AttackCollision : MonoBehaviour, IAttack, IAttackCollision
 {
     // IAttackCollision
-    public string TagName { get; private set; }
+    public string ParentTagName { get; private set; }
     public GameObject Target { get; private set; }
     public Collider Collider { get; private set; }
 
@@ -46,7 +46,7 @@ public class AttackCollision : MonoBehaviour, IAttack, IAttackCollision
         if (_parent.CompareTag("Player")) ParentID = Parent.Player;
         else ParentID = Parent.Enemy;
 
-        TagName = parent.tag;
+        ParentTagName = parent.tag;
         Target = parent;
         Collider = collider;
 
@@ -82,7 +82,7 @@ public class AttackCollision : MonoBehaviour, IAttack, IAttackCollision
         var collisions = GameManager.Instance.AttackCollisions
             .Where(a =>
             {
-                if (TagName != a.TagName) return true;
+                if (ParentTagName != a.ParentTagName) return true;
                 else return false;
             })
             .Where(a =>
