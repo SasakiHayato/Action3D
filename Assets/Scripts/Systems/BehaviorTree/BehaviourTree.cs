@@ -34,6 +34,8 @@ namespace BehaviourAI
         /// </summary>
         public void Repeater()
         {
+            Debug.Log($"{gameObject.name} TreeID{_treeID} TreeState {TreeState}");
+
             if (_treeData != null && !_treeData.BrockConditionals.All(c => c.Check()))
             {
                 _treeID++;
@@ -120,7 +122,7 @@ namespace BehaviourAI
                 if (tree.Type == QueueType.ConditionSelect
                     && tree.BrockConditionals.All(c => c.Check()))
                 {
-                    Debug.Log("ConditionSelect");
+                    Debug.Log("ConditionSelect***************************");
                     _treeData = tree;
                     SetSelector(tree.BrockDatas);
                     return;
@@ -144,6 +146,7 @@ namespace BehaviourAI
                     return;
 
                 case QueueType.Sequence:
+                    Debug.Log("Sequence");
                     SetSequence(_treeDatas[_treeID].BrockDatas);
                     return;
             }

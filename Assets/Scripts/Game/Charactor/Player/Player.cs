@@ -13,12 +13,16 @@ public class Player : CharaBase, IDamage
     [SerializeField] float _lockOnDist;
     [SerializeField] Transform _muzzle;
     [SerializeField] float _shotCoolTime;
+    [SerializeField] float _modeChangeTime;
 
     StateMachine _state;
     Animator _anim;
     AttackSettings _attack;
 
-    float _timer = 0;
+    float _shotTimer = 0;
+    float _modeChangeTimer = 0;
+
+    const float ModeChangeTimeDef = 0.5f;
 
     public bool EndAnim { get; private set; } = true;
     public bool IsAvoid { get; private set; } = false;
@@ -49,6 +53,8 @@ public class Player : CharaBase, IDamage
 
         Inputter.Instance.Inputs.Player
             .RockOn.started += context => SetLockon();
+
+        
     }
 
     void Update()
@@ -58,23 +64,26 @@ public class Player : CharaBase, IDamage
         _state.Base();
         if (_state.GetCurrentState != StateMachine.StateType.Avoid) IsAvoid = false;
 
+        Shot();
+       
+        Vector3 set = Vector3.Scale(_state.Move * Speed, PhsicsBase.GetVelocity);
+        Character.Move(set * Time.deltaTime);
+    }
+
+    void Shot()
+    {
         float value = (float)Inputter.GetValue(InputType.ShotVal);
         if ((int)value == 1)
         {
-            _timer += Time.deltaTime;
-            if (_timer > _shotCoolTime)
+            _shotTimer += Time.deltaTime;
+            if (_shotTimer > _shotCoolTime)
             {
-                _timer = 0;
+                _shotTimer = 0;
                 BulletShot();
             }
         }
         else
-        {
-            _timer = 0;
-        }
-
-        Vector3 set = Vector3.Scale(_state.Move * Speed, PhsicsBase.GetVelocity);
-        Character.Move(set * Time.deltaTime);
+            _shotTimer = 0;
     }
 
     void BulletShot()

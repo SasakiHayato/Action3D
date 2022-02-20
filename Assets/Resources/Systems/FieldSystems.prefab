@@ -180,37 +180,7 @@ MonoBehaviour:
   _updateTime: 60
   _rate: 5
   _time: 0.5
-  _spownDatas:
-  - ID: 1
-    Level: 1
-    Point: {fileID: 4171603071099193470}
-    Range: 10
-    GroupTip: {fileID: 11400000, guid: 09f560600fd72444da8515fe6723f715, type: 2}
-  - ID: 2
-    Level: 1
-    Point: {fileID: 4171603071286927009}
-    Range: 10
-    GroupTip: {fileID: 11400000, guid: 90a4ff661243931469efbc4c981de62d, type: 2}
-  - ID: 3
-    Level: 1
-    Point: {fileID: 4171603072257073424}
-    Range: 10
-    GroupTip: {fileID: 11400000, guid: a69b4fcfd7aa9ca42aae9798d89d54e9, type: 2}
-  - ID: 4
-    Level: 1
-    Point: {fileID: 4171603071760784412}
-    Range: 10
-    GroupTip: {fileID: 11400000, guid: 09f560600fd72444da8515fe6723f715, type: 2}
-  - ID: 5
-    Level: 1
-    Point: {fileID: 4171603071595813404}
-    Range: 10
-    GroupTip: {fileID: 11400000, guid: 90a4ff661243931469efbc4c981de62d, type: 2}
-  - ID: 6
-    Level: 1
-    Point: {fileID: 4171603072066840812}
-    Range: 10
-    GroupTip: {fileID: 11400000, guid: a69b4fcfd7aa9ca42aae9798d89d54e9, type: 2}
+  _spownDatas: []
 --- !u!114 &-5937738819575184878
 MonoBehaviour:
   m_ObjectHideFlags: 0
