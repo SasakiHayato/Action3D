@@ -3259,6 +3259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Modeling_Weapon_Big_Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 1982315913299486, guid: 958cf4748c84fb948bc3400edc8005e9, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
+      objectReference: {fileID: 0}
     - target: {fileID: 4574269520425118, guid: 958cf4748c84fb948bc3400edc8005e9, type: 3}
       propertyPath: m_RootOrder
       value: 0

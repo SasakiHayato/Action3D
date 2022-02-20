@@ -37,6 +37,13 @@ public abstract class EnemyBase : CharaBase
             FieldManager.Instance.FieldData.Delete(GroupID, iEnemy);
             FieldManager.RequestExprosion(iEnemy.EnemyData, target.transform.position, Level);
         }
+
+        IAttackCollision attackCollision = target.GetComponentInChildren<IAttackCollision>();
+        
+        if (attackCollision != null)
+        {
+            GameManager.Instance.RemoveAttackCollsion(attackCollision);
+        }
         
         FieldManager.FieldTimeRate(null, UIType.Player, 1);
         

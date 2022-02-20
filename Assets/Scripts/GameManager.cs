@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 /// <summary>
 /// ゲーム全体の管理クラス
@@ -28,6 +29,8 @@ public class GameManager
     public float GetCurrentTime { get; private set; } = 0;
 
     public PlayerData PlayerData { get; private set; } = new PlayerData();
+
+    public List<IAttackCollision> AttackCollisions { get; set; } = new List<IAttackCollision>();
     
     // Singleton
     private static GameManager _instance = null;
@@ -131,6 +134,16 @@ public class GameManager
     {
         Instance.GetCurrentTime += Time.deltaTime;
     }
+
+    public void AddIAttackCollision(IAttackCollision collision)
+    {
+        AttackCollisions.Add(collision);
+    }
+
+    public void RemoveAttackCollsion(IAttackCollision collision)
+    {
+        AttackCollisions.Remove(collision);
+    }
    
     /// <summary>
     /// 受け取った経験値を計算させる
@@ -185,5 +198,6 @@ public class GameManager
         Instance.IsLockOn = false;
         Instance.GetCurrentTime = 0;
         Instance.PlayerData = new PlayerData();
+        Instance.AttackCollisions = new List<IAttackCollision>();
     }
 }

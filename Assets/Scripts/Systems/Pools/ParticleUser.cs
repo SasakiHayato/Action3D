@@ -29,6 +29,16 @@ public class ParticleUser : MonoBehaviour, IPool
         transform.rotation = rotate;
     }
 
+    public void Use(Vector3 postion, Quaternion rotate = default)
+    {
+        IsUse = true;
+        gameObject.SetActive(true);
+        transform.parent = null;
+
+        transform.position = postion;
+        transform.rotation = rotate;
+    }
+
     void OnParticleSystemStopped()
     {
         Delete();
@@ -37,6 +47,7 @@ public class ParticleUser : MonoBehaviour, IPool
     public void Delete()
     {
         IsUse = false;
+     
         transform.SetParent(_parent);
         gameObject.SetActive(false);
     }

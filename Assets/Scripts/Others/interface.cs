@@ -24,3 +24,10 @@ public interface IPool
     void SetUp(Transform parent);
     void Delete();
 }
+
+public interface IAttackCollision
+{
+    string TagName { get; }
+    GameObject Target { get; }
+    Collider Collider { get; }
+}

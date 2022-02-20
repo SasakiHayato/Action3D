@@ -51,7 +51,7 @@ namespace AttackSetting
         AudioSource _audio;
         CharaBase _charaBase;
         EnemyAttackSystem _enemySystem;
-
+        
         AttackCollision _saveDefWeapon;
         ActionType _saveActionType = ActionType.None;
         IAttack _iTarget;
@@ -172,6 +172,7 @@ namespace AttackSetting
             _anim = _parent.GetComponent<Animator>();
             _audio = gameObject.AddComponent<AudioSource>();
             _charaBase = _parent.GetComponent<CharaBase>();
+            
             _audio.loop = false;
 
             _iTarget = _targetWeapon.GetComponent<IAttack>();
@@ -353,7 +354,10 @@ namespace AttackSetting
                 _nextRequest = true;
             }
             else
+            {
                 collider.enabled = true;
+                _targetWeapon.RipllesRequest();
+            }       
         }
     }
 }

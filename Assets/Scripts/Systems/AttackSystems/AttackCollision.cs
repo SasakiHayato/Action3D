@@ -1,12 +1,20 @@
 using UnityEngine;
 using AttackSetting;
+using System.Linq;
+using System.Collections.Generic;
+using DG.Tweening;
 
 /// <summary>
 /// AttackSettingsÇ∆ÇÃÇ‚ÇËéÊÇËÇÇ∑ÇÈÉNÉâÉX
 /// </summary>
 
-public class AttackCollision : MonoBehaviour, IAttack
+public class AttackCollision : MonoBehaviour, IAttack, IAttackCollision
 {
+    // IAttackCollision
+    public string TagName { get; private set; }
+    public GameObject Target { get; private set; }
+    public Collider Collider { get; private set; }
+
     public enum Parent
     {
         Player,
@@ -20,9 +28,12 @@ public class AttackCollision : MonoBehaviour, IAttack
     GameObject _parent;
     GameObject _hitObj;
     IDamage _iDamage;
-
+    
     bool _check;
     bool _isHit = false;
+
+    const float EffectDist = 2f;
+    const float SetSize = 2;
 
     /// <summary>
     /// UserÇÃê›íË
@@ -31,9 +42,17 @@ public class AttackCollision : MonoBehaviour, IAttack
     public void SetUp(GameObject parent)
     {
         _parent = parent;
-        GetComponent<Collider>().enabled = false;
+        Collider collider = GetComponent<Collider>();
         if (_parent.CompareTag("Player")) ParentID = Parent.Player;
         else ParentID = Parent.Enemy;
+
+        TagName = parent.tag;
+        Target = parent;
+        Collider = collider;
+
+        collider.enabled = false;
+        GameManager.Instance.AddIAttackCollision(gameObject.GetComponent<IAttackCollision>());
+
         Init();
     }
     
@@ -56,6 +75,43 @@ public class AttackCollision : MonoBehaviour, IAttack
         _iDamage = null;
         _hitObj = null;
         _isHit = false;
+    }
+
+    public void RipllesRequest()
+    {
+        var collisions = GameManager.Instance.AttackCollisions
+            .Where(a =>
+            {
+                if (TagName != a.TagName) return true;
+                else return false;
+            })
+            .Where(a =>
+            {
+                float dist = Vector3.Distance(a.Target.transform.position, Target.transform.position);
+                if (dist < EffectDist && a.Collider.enabled) return true;
+                else return false;
+            });
+
+        SetParticle(new List<IAttackCollision>(collisions));
+    }
+
+    void SetParticle(List<IAttackCollision> attacks)
+    {
+        attacks.ForEach(a =>
+        {
+            Vector3 midPos = (a.Target.transform.position + Target.transform.position) / 2;
+            ParticleUser user = FieldManager.Instance.GetRipplesParticle.Respons();
+
+            float rotateX = Random.Range(-180, 180);
+            Vector3 rotate = new Vector3(rotateX, 90, 0);
+
+            user.Use(midPos, Quaternion.Euler(rotate));
+
+            Vector3 scale = user.transform.localScale;
+            user.transform.DOScale(scale * SetSize, 0.4f)
+                .SetEase(Ease.Linear)
+                .OnComplete(() => user.Delete());
+        });
     }
 
     private void OnTriggerEnter(Collider other)

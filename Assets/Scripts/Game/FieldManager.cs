@@ -43,6 +43,9 @@ public class FieldManager : MonoBehaviour
 
     ObjectPool<ParticleUser> _explosionParticlePool = new ObjectPool<ParticleUser>();
 
+    ObjectPool<ParticleUser> _ripplesParticlePool = new ObjectPool<ParticleUser>();
+    public ObjectPool<ParticleUser> GetRipplesParticle => _ripplesParticlePool;
+
     int _setUpdateTime;
 
     private void Awake()
@@ -57,6 +60,9 @@ public class FieldManager : MonoBehaviour
 
         GameObject explosionParticle = (GameObject)Resources.Load("Particle/PlasmaExplosionEffect");
         _explosionParticlePool.SetUp(explosionParticle.GetComponent<ParticleUser>(), transform, 5);
+
+        GameObject ripplesParticle = (GameObject)Resources.Load("Particle/RipplesParticle");
+        _ripplesParticlePool.SetUp(ripplesParticle.GetComponent<ParticleUser>(), transform, 5);
     }
 
     void Start()
