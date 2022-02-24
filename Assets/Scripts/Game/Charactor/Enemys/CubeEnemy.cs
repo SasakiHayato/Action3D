@@ -4,6 +4,11 @@ public class CubeEnemy : EnemyBase, IDamage, IFieldEnemy
 {
     bool _isKnockBack = false;
 
+    void Start()
+    {
+        Tree.SetUp();
+    }
+
     void Update()
     {
         SetKnockBack(ref _isKnockBack);

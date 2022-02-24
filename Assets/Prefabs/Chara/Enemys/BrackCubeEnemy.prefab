@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7032200162906323370}
   - component: {fileID: 7032200162906323372}
   - component: {fileID: 7032200162906323368}
-  - component: {fileID: 8777742599443093679}
+  - component: {fileID: 6440588958396254198}
   m_Layer: 0
   m_Name: BrackCubeEnemy
   m_TagString: Enemy
@@ -125,7 +125,7 @@ MonoBehaviour:
   _level: 0
   _knockBackPower: 3
   _knockBackTime: 0.2
-  _tree: {fileID: 8777742599443093679}
+  _tree: {fileID: 6440588958396254198}
   _enemyConditionals: []
 --- !u!114 &7032200162906323372
 MonoBehaviour:
@@ -161,7 +161,7 @@ MonoBehaviour:
   _mask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &8777742599443093679
+--- !u!114 &6440588958396254198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,100 +170,99 @@ MonoBehaviour:
   m_GameObject: {fileID: 7032200162906323380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a332508eeaed51e4ab48a901769c545c, type: 3}
+  m_Script: {fileID: 11500000, guid: a5f5b0aac85f5104f80db91a9a742c8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _treeDatas:
-  - Type: 1
-    BrockConditionals: []
+  _branchDatas:
+  - BrockType: 0
+    Condition: 0
+    BranchConditionals: []
     BrockDatas:
-    - BrockType: 0
+    - QueueType: 0
       QueueDatas:
-      - Progress: 0
+      - RunType: 0
+        Condition: 0
         Conditionals:
         - id: 0
         Actions:
         - id: 1
-      - Progress: 0
+      - RunType: 0
+        Condition: 0
         Conditionals:
         - id: 2
         - id: 3
         Actions:
         - id: 4
-      - Progress: 0
+      - RunType: 0
+        Condition: 0
         Conditionals:
         - id: 5
         - id: 6
         Actions:
         - id: 7
-      - Progress: 0
+      - RunType: 0
+        Condition: 0
         Conditionals:
         - id: 8
-        - id: 9
         Actions:
-        - id: 10
+        - id: 9
   references:
     version: 1
     00000000:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 15
-        _type: 0
-    00000001:
-      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: 
-        _applyYPos: 1
-        _moveType: 1
-        _speedRate: 1
-    00000002:
-      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _range: 30
-        _type: 0
-    00000003:
-      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _range: 16
+        _range: 61
         _type: 1
-    00000004:
-      type: {class: ShotBulletDeviation, ns: , asm: Assembly-CSharp}
+    00000001:
+      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
       data:
-        _speed: 3
-        _coolTime: 0.2
-        _bulletID: 0
-    00000005:
+        _idleAnimName: 
+        _useGravity: 0
+    00000002:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 60
         _type: 0
-    00000006:
+    00000003:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 31
+        _range: 30
         _type: 1
-    00000007:
+    00000004:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         _animName: 
         _applyYPos: 1
         _moveType: 0
         _speedRate: 1
+    00000005:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 30
+        _type: 0
+    00000006:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 15
+        _type: 1
+    00000007:
+      type: {class: ShotBulletDeviation, ns: , asm: Assembly-CSharp}
+      data:
+        _speed: 3
+        _coolTime: 0.2
+        _bulletID: 0
     00000008:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 10000
+        _range: 14
         _type: 0
     00000009:
-      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
-        _range: 61
-        _type: 1
-    0000000A:
-      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
-      data:
-        _idleAnimName: 
-        _useGravity: 0
+        _animName: 
+        _applyYPos: 1
+        _moveType: 1
+        _speedRate: 3
 --- !u!1 &8977851594231307996
 GameObject:
   m_ObjectHideFlags: 0

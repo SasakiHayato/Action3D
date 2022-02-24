@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 1541433764607956062}
   - component: {fileID: 1541433764607956063}
   - component: {fileID: 1541433764607956049}
-  - component: {fileID: 1983511590397818647}
+  - component: {fileID: 7090726717776632346}
   m_Layer: 0
   m_Name: RunSkeleton
   m_TagString: Enemy
@@ -317,7 +317,7 @@ MonoBehaviour:
   _level: 0
   _knockBackPower: 1
   _knockBackTime: 0.4
-  _tree: {fileID: 1983511590397818647}
+  _tree: {fileID: 7090726717776632346}
   _enemyConditionals: []
 --- !u!114 &1541433764607956049
 MonoBehaviour:
@@ -348,7 +348,7 @@ MonoBehaviour:
     SEVol: 0
     Action: 0
     Effects: 0200000003000000
---- !u!114 &1983511590397818647
+--- !u!114 &7090726717776632346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,53 +357,70 @@ MonoBehaviour:
   m_GameObject: {fileID: 1541433764607956050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a332508eeaed51e4ab48a901769c545c, type: 3}
+  m_Script: {fileID: 11500000, guid: a5f5b0aac85f5104f80db91a9a742c8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _treeDatas:
-  - Type: 1
-    BrockConditionals: []
+  _branchDatas:
+  - BrockType: 0
+    Condition: 0
+    BranchConditionals: []
     BrockDatas:
-    - BrockType: 0
+    - QueueType: 0
       QueueDatas:
-      - Progress: 0
+      - RunType: 0
+        Condition: 0
         Conditionals:
         - id: 0
         Actions:
         - id: 1
-      - Progress: 0
+      - RunType: 0
+        Condition: 0
         Conditionals:
         - id: 2
         - id: 3
         Actions:
         - id: 4
-      - Progress: 0
+      - RunType: 0
+        Condition: 0
         Conditionals:
         - id: 5
         - id: 6
         Actions:
         - id: 7
-        - id: 8
-        - id: 9
-  - Type: 3
-    BrockConditionals:
-    - id: 10
+  - BrockType: 2
+    Condition: 0
+    BranchConditionals:
+    - id: 8
+    - id: 9
     BrockDatas:
-    - BrockType: 1
+    - QueueType: 0
       QueueDatas:
-      - Progress: 1
+      - RunType: 1
+        Condition: 0
         Conditionals:
-        - id: 11
+        - id: 10
         Actions:
+        - id: 11
         - id: 12
         - id: 13
         - id: 14
-      - Progress: 1
+        - id: 15
+        - id: 16
+  - BrockType: 2
+    Condition: 0
+    BranchConditionals:
+    - id: 17
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 1
+        Condition: 0
         Conditionals:
-        - id: 11
+        - id: 18
         Actions:
-        - id: 13
-        - id: 14
+        - id: 19
+        - id: 20
+        - id: 21
   references:
     version: 1
     00000000:
@@ -444,44 +461,76 @@ MonoBehaviour:
         _range: 0
         _type: 1
     00000007:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 1
+    00000008:
+      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 1
+    00000009:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 6
+        _type: 0
+    0000000A:
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    0000000B:
       type: {class: SetParticleEffect, ns: , asm: Assembly-CSharp}
       data:
         _particleName: WarningParticle
         _setNextActionTime: 0.2
         _offSet: {x: 4, y: 4, z: 4}
-    00000008:
+    0000000C:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
-    00000009:
-      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 0
-        _checkBool: 1
-    0000000A:
-      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 0
-        _checkBool: 1
-    0000000B:
-      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
-    0000000C:
-      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: Skeleton
-        _applyYPos: 0
-        _moveType: 1
-        _speedRate: 0.1
     0000000D:
+      type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+      data:
+        _apllayPosY: 0
+    0000000E:
       type: {class: WaitTime, ns: , asm: Assembly-CSharp}
       data:
-        _minWaitTime: 0.1
-        _maxWaitTime: 0.2
+        _minWaitTime: 0.5
+        _maxWaitTime: 1
         _setRandom: 1
-    0000000E:
+    0000000F:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _checkBool: 1
+    00000010:
       type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
+        _checkBool: 0
+    00000011:
+      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _checkBool: 1
+    00000012:
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    00000013:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyYPos: 0
+        _moveType: 1
+        _speedRate: 0.2
+    00000014:
+      type: {class: WaitTime, ns: , asm: Assembly-CSharp}
+      data:
+        _minWaitTime: 0.3
+        _maxWaitTime: 0.5
+        _setRandom: 1
+    00000015:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
         _checkBool: 0
 --- !u!1 &1541433764611268897
 GameObject:

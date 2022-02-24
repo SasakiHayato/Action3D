@@ -45,7 +45,6 @@ namespace BehaviourTree
 
         public void SetUp()
         {
-            Debug.Log("SetUp");
             ConditionallyBranches = new List<BranchData>();
             NormalBranches = new List<BranchData>();
 

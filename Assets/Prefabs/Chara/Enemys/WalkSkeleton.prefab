@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 6440286998496788529}
   - component: {fileID: 3253592056411195766}
   - component: {fileID: 8309729996784240578}
-  - component: {fileID: 1990154733304016636}
+  - component: {fileID: 1533691912657367723}
   m_Layer: 0
   m_Name: WalkSkeleton
   m_TagString: Enemy
@@ -651,7 +651,7 @@ MonoBehaviour:
   _level: 0
   _knockBackPower: 2
   _knockBackTime: 0.4
-  _tree: {fileID: 1990154733304016636}
+  _tree: {fileID: 1533691912657367723}
   _enemyConditionals: []
 --- !u!114 &8309729996784240578
 MonoBehaviour:
@@ -666,7 +666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 2448143286815395276}
-  _requestEnemySystem: 0
+  _requestEnemySystem: 1
   _requestCoolTime: 1
   _targetWeapon: {fileID: 4841142406442941461}
   _attacks:
@@ -682,7 +682,7 @@ MonoBehaviour:
     SEVol: 0
     Action: 0
     Effects: 0200000003000000
---- !u!114 &1990154733304016636
+--- !u!114 &1533691912657367723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -691,47 +691,86 @@ MonoBehaviour:
   m_GameObject: {fileID: 2448143286815395276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a332508eeaed51e4ab48a901769c545c, type: 3}
+  m_Script: {fileID: 11500000, guid: a5f5b0aac85f5104f80db91a9a742c8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _treeDatas:
-  - Type: 1
-    BrockConditionals: []
+  _branchDatas:
+  - BrockType: 0
+    Condition: 0
+    BranchConditionals: []
     BrockDatas:
-    - BrockType: 0
+    - QueueType: 0
       QueueDatas:
-      - Progress: 0
+      - RunType: 0
+        Condition: 0
         Conditionals:
         - id: 0
         Actions:
         - id: 1
-      - Progress: 0
+      - RunType: 0
+        Condition: 0
         Conditionals:
         - id: 2
         - id: 3
         Actions:
         - id: 4
-      - Progress: 0
+      - RunType: 0
+        Condition: 0
         Conditionals:
         - id: 5
         - id: 6
         Actions:
         - id: 7
+  - BrockType: 2
+    Condition: 0
+    BranchConditionals:
+    - id: 8
+    - id: 9
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 1
+        Condition: 0
+        Conditionals:
+        - id: 10
+        Actions:
+        - id: 11
+        - id: 12
+        - id: 13
+        - id: 14
+        - id: 15
+        - id: 16
+  - BrockType: 2
+    Condition: 0
+    BranchConditionals:
+    - id: 17
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 1
+        Condition: 0
+        Conditionals:
+        - id: 18
+        Actions:
+        - id: 19
+        - id: 20
+        - id: 21
   references:
     version: 1
     00000000:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 3.5
-        _type: 0
+        _range: 61
+        _type: 1
     00000001:
-      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
       data:
-        _type: 0
+        _idleAnimName: Skeleton
+        _useGravity: 1
     00000002:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 50
+        _range: 60
         _type: 0
     00000003:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
@@ -748,18 +787,85 @@ MonoBehaviour:
     00000005:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 100000
+        _range: 4
         _type: 0
     00000006:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
-        _range: 51
+        _range: 0
         _type: 1
     00000007:
-      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
       data:
-        _idleAnimName: Skeleton
-        _useGravity: 1
+        _type: 0
+        _checkBool: 1
+    00000008:
+      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 1
+    00000009:
+      type: {class: FindDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _range: 6
+        _type: 0
+    0000000A:
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    0000000B:
+      type: {class: SetParticleEffect, ns: , asm: Assembly-CSharp}
+      data:
+        _particleName: WarningParticle
+        _setNextActionTime: 0.2
+        _offSet: {x: 4, y: 4, z: 4}
+    0000000C:
+      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+    0000000D:
+      type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+      data:
+        _apllayPosY: 0
+    0000000E:
+      type: {class: WaitTime, ns: , asm: Assembly-CSharp}
+      data:
+        _minWaitTime: 0.5
+        _maxWaitTime: 1
+        _setRandom: 1
+    0000000F:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _checkBool: 1
+    00000010:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 0
+    00000011:
+      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _checkBool: 1
+    00000012:
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    00000013:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyYPos: 0
+        _moveType: 1
+        _speedRate: 0.2
+    00000014:
+      type: {class: WaitTime, ns: , asm: Assembly-CSharp}
+      data:
+        _minWaitTime: 0.3
+        _maxWaitTime: 0.5
+        _setRandom: 1
+    00000015:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _checkBool: 0
 --- !u!1 &2565751911822226107
 GameObject:
   m_ObjectHideFlags: 0

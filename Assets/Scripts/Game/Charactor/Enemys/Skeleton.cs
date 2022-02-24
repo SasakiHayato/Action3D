@@ -14,7 +14,7 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
     {
         _anim = GetComponent<Animator>();
         _attack = GetComponent<AttackSettings>();
-        
+        Tree.SetUp();
     }
 
     void Update()

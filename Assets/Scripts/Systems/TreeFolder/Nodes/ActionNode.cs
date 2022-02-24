@@ -35,17 +35,14 @@ namespace BehaviourTree
                 if (actions.Count <= _executeID)
                 {
                     _executeID = 0;
-                    Debug.Log("EndTask");
                     return false;
                 }
-                //Debug.Log($"ExecuteID {_executeID}");
-                //Debug.Log($"Action {actions[_executeID].GetType()}");
+                
                 if (actions[_executeID].Execute())
                 {
                     _executeID++;
                 }
-                //Debug.Log("IsSet");
-               
+              
                 return true;
             }
 
