@@ -7,7 +7,7 @@ public class CubeEnemy : EnemyBase, IDamage, IFieldEnemy
     void Update()
     {
         SetKnockBack(ref _isKnockBack);
-        Tree.Repeater();
+        Tree.Run();
         Vector3 set = Speed * MoveDir;
         Character.Move(set * Time.deltaTime);
     }

@@ -14,7 +14,7 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
     {
         _anim = GetComponent<Animator>();
         _attack = GetComponent<AttackSettings>();
-        Tree = GetComponent<BehaviourAI.BehaviourTree>();
+        
     }
 
     void Update()
@@ -22,7 +22,7 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
         SetKnockBack(ref _isBackKnock);
         if (_isDamage) return;
 
-        Tree.Repeater();
+        Tree.Run();
         Vector3 set = Vector3.Scale(MoveDir * Speed, PhsicsBase.GetVelocity);
         Character.Move(set * Time.deltaTime);
     }

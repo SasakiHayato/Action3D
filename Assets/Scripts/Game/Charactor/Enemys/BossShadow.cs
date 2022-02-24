@@ -11,12 +11,13 @@ public class BossShadow : EnemyBase, IDamage
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
+        Tree.SetUp();
     }
 
     void Update()
     {
         SetKnockBack(ref _isBackKnock);
-        Tree.Repeater();
+        Tree.Run();
         Rotate();
         Vector3 move = MoveDir;
         

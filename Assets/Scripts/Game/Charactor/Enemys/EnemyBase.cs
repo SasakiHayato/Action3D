@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
-using BehaviourAI;
+using BehaviourTree;
 using EnemysData;
 
-[RequireComponent(typeof(BehaviourTree))]
+[RequireComponent(typeof(TreeManager))]
 public abstract class EnemyBase : CharaBase
 {
     [SerializeField] float _knockBackPower;
     [SerializeField] float _knockBackTime;
-    [SerializeField] BehaviourTree _tree;
+    [SerializeField] TreeManager _tree;
     [SerializeField] List<EnemyConditionalData> _enemyConditionals;
 
-    protected BehaviourTree Tree { get => _tree; set { _tree = value; } }
+    protected TreeManager Tree { get => _tree; set { _tree = value; } }
     protected float GetKnockBackPower => _knockBackPower;
 
     public Vector3 MoveDir { protected get; set; } = new Vector3(0 ,1, 0);
