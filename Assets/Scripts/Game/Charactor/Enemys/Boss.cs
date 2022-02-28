@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using AttackSetting;
 
-public class Boss : EnemyBase, IDamage, IFieldEnemy
+public class Boss : EnemyBase, IDamage
 {
     bool _isBackKnock = false;
     GameObject _player;

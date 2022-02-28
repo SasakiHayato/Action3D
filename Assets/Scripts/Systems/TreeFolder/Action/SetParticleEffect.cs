@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
 using DG.Tweening;
@@ -28,7 +26,7 @@ public class SetParticleEffect : IAction
         {
             _isCall = true;
             GameObject obj = Object.Instantiate((GameObject)Resources.Load("Particle/"+_particleName));
-            obj.transform.position = _user.GetComponentInChildren<TargetCorrector>().transform.position;
+            obj.transform.position = _user.GetComponent<CharaBase>().OffSetPosObj.transform.position;
             obj.transform.DOScale(_offSet, _setNextActionTime / 2)
                 .OnComplete(() =>
                 {

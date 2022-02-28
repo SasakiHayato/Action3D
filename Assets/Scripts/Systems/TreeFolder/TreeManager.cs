@@ -124,7 +124,6 @@ namespace BehaviourTree
                     
                     if (!_sequenceNode.SetNextQueueData(_saveBranch))
                     {
-                        
                         if (!_sequenceNode.SetNextBrockData(_saveBranch))
                         {
                             State = TreeState.End;
@@ -141,8 +140,7 @@ namespace BehaviourTree
                     }
                     else
                     {
-                        State = TreeState.Run;
-                        
+                        State = TreeState.Run;   
                     }
 
                     return;

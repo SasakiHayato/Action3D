@@ -9,11 +9,13 @@ using ObjectPhysics;
 [RequireComponent(typeof(PhysicsBase))]
 public class CharaBase : MonoBehaviour
 {
+    [SerializeField] GameObject _offSetPos;
     [SerializeField] int _hp;
     [SerializeField] int _power;
     [SerializeField] float _speed;
     [SerializeField] int _level;
 
+    public GameObject OffSetPosObj => _offSetPos;
     public int HP { get => _hp; protected set { _hp = value; } }
     public int MaxHP { get; private set; } = 0;
     public int Power { get => _power; protected set { _power = value; } }

@@ -142,7 +142,7 @@ MonoBehaviour:
         - id: 16
         - id: 17
     00000004:
-      type: {class: PostProcessRadial, ns: , asm: Assembly-CSharp}
+      type: {class: PostProcessToAvoid, ns: , asm: Assembly-CSharp}
       data:
         _profile: {fileID: 11400000, guid: 3e14f8bf63d929f479475d178826acba, type: 2}
         _fadeSpeed: 10

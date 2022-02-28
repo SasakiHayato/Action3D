@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GroupTipTest
   m_EditorClassIdentifier: 
   _datas:
-  - Types: 01000000
+  - Types: 03000000

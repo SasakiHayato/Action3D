@@ -20,10 +20,7 @@ public class Player : CharaBase, IDamage
     AttackSettings _attack;
 
     float _shotTimer = 0;
-    float _modeChangeTimer = 0;
-
-    const float ModeChangeTimeDef = 0.5f;
-
+    
     public bool EndAnim { get; private set; } = true;
     public bool IsAvoid { get; private set; } = false;
     public bool IsLockon { get; private set; } = false;
@@ -161,7 +158,7 @@ public class Player : CharaBase, IDamage
                 float angle = Mathf.Abs(Vector3.Dot(cmForwrad, dir.normalized) * Mathf.Rad2Deg);
                 if (saveAngle < angle)
                 {
-                    set = e.GetComponentInChildren<TargetCorrector>().gameObject;
+                    set = e.GetComponent<CharaBase>().OffSetPosObj;
                     saveAngle = angle;
                 }
             }

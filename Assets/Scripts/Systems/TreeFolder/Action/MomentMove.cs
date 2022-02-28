@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
 
@@ -21,7 +19,7 @@ public class MomentMove : IAction
 
     public bool Execute()
     {
-        Vector3 setPos = _player.GetComponentInChildren<TargetCorrector>().gameObject.transform.position;
+        Vector3 setPos = _player.GetComponent<CharaBase>().OffSetPosObj.transform.position;
         if (!_apllayPosY) setPos.y = _user.transform.position.y;
         Vector3 forward = _user.transform.forward;
         forward.y = 0;
