@@ -36,7 +36,7 @@ public class BossShadow : EnemyBase, IDamage
     {
         object[] setUiData = { damage, gameObject, ColorType.Enemy };
         UIManager.CallBack(UIType.Game, 4, setUiData);
-        Sounds.SoundMaster.Request(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
+        Sounds.SoundMaster.PlayRequest(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
         HP -= damage;
         if (HP < 0) base.Dead(gameObject);
     }

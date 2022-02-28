@@ -210,6 +210,7 @@ MonoBehaviour:
       type: {class: AnyPressedTitle, ns: , asm: Assembly-CSharp}
       data:
         _buttonName: TitleButton
+        _titleButtonTextName: TitleButtonText
         _requestActivePanelName: ButtonPanel
     00000011:
       type: {class: TitleUIAnim, ns: , asm: Assembly-CSharp}

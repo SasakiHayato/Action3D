@@ -92,7 +92,7 @@ public class FieldManager : MonoBehaviour
     /// <param name="id">ƒAƒNƒVƒ‡ƒ“‚É“o˜^‚·‚éID</param>
     public static void FieldTimeRate(Action<UIType, int, object[]> action, UIType type, int id)
     {
-        SoundMaster.Request(null, "StartSlowMotion", SEDataBase.DataType.Field);
+        SoundMaster.PlayRequest(null, "StartSlowMotion", SEDataBase.DataType.Field);
         Instance.StartCoroutine(Instance.SetRate(action, type, id));
     }
 

@@ -31,6 +31,7 @@ public class SetStart : UIWindowParent.UIWindowChild
 
     public override void CallBack(object[] data) 
     {
+        Sounds.SoundMaster.StopRequest("TitleBGM", Sounds.SEDataBase.DataType.BGM);
         Fader.Instance.Request(Fader.FadeType.Out, WaitTime);
         SceneSettings.Instance.LoadAsync(1, WaitTime);
     }

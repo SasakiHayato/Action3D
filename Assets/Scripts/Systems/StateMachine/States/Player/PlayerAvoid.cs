@@ -21,7 +21,7 @@ public class PlayerAvoid : StateMachine.State
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
         _input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
         _input = _input.normalized;
-        SoundMaster.Request(Target.transform, "Avoid", 0);
+        SoundMaster.PlayRequest(Target.transform, "Avoid", 0);
         GameObject t = GameManager.Instance.LockonTarget;
         if (t != null)
         {

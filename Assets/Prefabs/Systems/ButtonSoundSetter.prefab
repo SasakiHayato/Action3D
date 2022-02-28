@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6062749097194246783}
   - component: {fileID: 8710303410375892471}
   m_Layer: 0
-  m_Name: SoundSetter
+  m_Name: ButtonSoundSetter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

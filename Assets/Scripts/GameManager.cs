@@ -78,11 +78,11 @@ public class GameManager
                 Object.Instantiate((GameObject)Resources.Load("Systems/ItemManager"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/BulletSettings"));
 
-                SoundMaster.Request(null, "FieldBGM", SEDataBase.DataType.BGM);
+                SoundMaster.PlayRequest(null, "FieldBGM", SEDataBase.DataType.BGM);
                 break;
 
             case GameState.Title:
-                SoundMaster.Request(null, "TitleBGM", SEDataBase.DataType.BGM);
+                SoundMaster.PlayRequest(null, "TitleBGM", SEDataBase.DataType.BGM);
                 break;
 
             case GameState.Dead:
@@ -193,7 +193,7 @@ public class GameManager
             UIManager.CallBack(UIType.Player, 4, new object[] { PlayerData.Player.Level });
             // Leveltext
             UIManager.CallBack(UIType.Player, 3, new object[] { PlayerData.Player.HP });
-            Sounds.SoundMaster.Request(null, "LevelUp", 0);
+            Sounds.SoundMaster.PlayRequest(null, "LevelUp", 0);
         }
     }
 

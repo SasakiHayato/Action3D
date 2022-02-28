@@ -10,6 +10,10 @@ namespace Sounds
     {
         AudioSource _source;
         Transform _parent;
+
+        public SEDataBase.DataType Type { get; private set; }
+        public SEData SEData { get; private set; }
+
         public bool IsUse { get; private set; }
 
         void Update()
@@ -18,8 +22,11 @@ namespace Sounds
             if (!_source.isPlaying) Delete();
         }
 
-        public void Use(SEData data, Transform user)
+        public void Use(SEData data, Transform user, SEDataBase.DataType type)
         {
+            SEData = data;
+            Type = type;
+
             transform.SetParent(user);
             _source = GetComponent<AudioSource>();
             _source.clip = data.Clip;
@@ -40,6 +47,7 @@ namespace Sounds
 
         public void Delete()
         {
+            SEData = null;
             IsUse = false;
             _source.clip = null;
             _source = null;

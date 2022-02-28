@@ -7,7 +7,7 @@ namespace Sounds
     /// Button‚É‘Î‚·‚éSound‚Ìİ’è
     /// </summary>
 
-    public class SoundSetter : MonoBehaviour
+    public class ButtonSoundSetter : MonoBehaviour
     {
         [SerializeField] int _id;
         [SerializeField] SEDataBase.DataType _dataType;
@@ -15,7 +15,7 @@ namespace Sounds
         void Start()
         {
             Button button = transform.parent.GetComponent<Button>();
-            button.onClick.AddListener(() => SoundMaster.Request(null, _id, _dataType));
+            button.onClick.AddListener(() => SoundMaster.PlayRequest(null, _id, _dataType));
         }
     }
 }

@@ -87,7 +87,7 @@ public class Player : CharaBase, IDamage
     {
         var getObj = BulletSettings.UseRequest(2);
         getObj.transform.position = _muzzle.position;
-        Sounds.SoundMaster.Request(_muzzle, "ShotBullet", 0);
+        Sounds.SoundMaster.PlayRequest(_muzzle, "ShotBullet", 0);
 
         if (GameManager.Instance.IsLockOn)
         {
@@ -186,7 +186,7 @@ public class Player : CharaBase, IDamage
         if (_attack.IsCounter) return;
         if (type == AttackType.None) return;
 
-        Sounds.SoundMaster.Request(transform, "Damage", 0);
+        Sounds.SoundMaster.PlayRequest(transform, "Damage", 0);
 
         object[] datas = { damage, gameObject, ColorType.Player };
         UIManager.CallBack(UIType.Game, 4, datas);

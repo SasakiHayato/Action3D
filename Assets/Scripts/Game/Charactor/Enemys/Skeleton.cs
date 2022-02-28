@@ -29,7 +29,7 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
 
     public void GetDamage(int damage, AttackType type)
     {
-        Sounds.SoundMaster.Request(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
+        Sounds.SoundMaster.PlayRequest(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
         _isDamage = true;
         _attack.Cancel();
 

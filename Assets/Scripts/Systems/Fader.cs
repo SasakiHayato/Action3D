@@ -140,7 +140,7 @@ public class Fader : MonoBehaviour
             return;
         }
 
-        GameObject parent = new GameObject("Canvas");
+        GameObject parent = new GameObject("FadeCanvas");
         Canvas canvas = parent.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.sortingOrder = 999;
