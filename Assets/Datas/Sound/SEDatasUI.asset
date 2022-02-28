@@ -12,17 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88285ea6a1ffd7347951d3ea01085d7c, type: 3}
   m_Name: SEDatasUI
   m_EditorClassIdentifier: 
+  _masterType: 1
   _type: 1
   _datas:
   - Name: Click
     ID: 0
     Clip: {fileID: 8300000, guid: 9a17c62016a9e1b4d831599ed954fc6b, type: 3}
-    Volume: 4.35
+    Volume: 0.5
     SpatialBrend: 0
     Loop: 0
   - Name: TextDisplay
     ID: 1
     Clip: {fileID: 8300000, guid: 5c4c0b0180f16134d87b22b4aa8c0dde, type: 3}
-    Volume: 4.35
+    Volume: 0.5
+    SpatialBrend: 0
+    Loop: 0
+  - Name: DecisionClick
+    ID: 2
+    Clip: {fileID: 8300000, guid: 63648488c48196646b461a7bd4aa613f, type: 3}
+    Volume: 0.5
     SpatialBrend: 0
     Loop: 0

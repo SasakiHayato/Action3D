@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3f01619adb65c44ad5f52ced034d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _volumRate: 100
+  _volumRateMaster: 0.2
+  _volumRateBGM: 1
+  _volumRateSE: 1
   _se: {fileID: 8476991370387231719, guid: 3dc6cbe679e7c1b49809ad3cc072e617, type: 3}
   _dataBases:
   - {fileID: 11400000, guid: 1a7a2ac0573dc4e45a991cc9228b2d40, type: 2}

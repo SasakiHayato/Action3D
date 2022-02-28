@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88285ea6a1ffd7347951d3ea01085d7c, type: 3}
   m_Name: SEDatasFields
   m_EditorClassIdentifier: 
+  _masterType: 1
   _type: 2
   _datas:
   - Name: StartSlowMotion
     ID: 0
     Clip: {fileID: 8300000, guid: 9f25f4965005c7a47b218b074c4660c0, type: 3}
-    Volume: 7.3
+    Volume: 0.7
     SpatialBrend: 0
     Loop: 0

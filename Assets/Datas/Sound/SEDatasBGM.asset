@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88285ea6a1ffd7347951d3ea01085d7c, type: 3}
   m_Name: SEDatasBGM
   m_EditorClassIdentifier: 
+  _masterType: 0
   _type: 0
   _datas:
   - Name: FieldBGM
     ID: 0
     Clip: {fileID: 8300000, guid: 3c48803507b8dc54185d521d1a0d7f7a, type: 3}
-    Volume: 4.76
+    Volume: 0.232
     SpatialBrend: 0
     Loop: 1
   - Name: TitleBGM
     ID: 1
     Clip: {fileID: 8300000, guid: c74e476eecc4ab742afc322d0148578d, type: 3}
-    Volume: 4.76
+    Volume: 0.5
     SpatialBrend: 0
     Loop: 1

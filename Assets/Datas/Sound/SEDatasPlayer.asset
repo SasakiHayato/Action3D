@@ -12,29 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88285ea6a1ffd7347951d3ea01085d7c, type: 3}
   m_Name: SEDatasPlayer
   m_EditorClassIdentifier: 
+  _masterType: 1
   _type: 4
   _datas:
   - Name: Avoid
     ID: 0
     Clip: {fileID: 8300000, guid: 53a3981dbaf49914286becbabcbd1ae7, type: 3}
-    Volume: 6.71
+    Volume: 1
     SpatialBrend: 0
     Loop: 0
   - Name: Damage
     ID: 1
     Clip: {fileID: 8300000, guid: bf909781e65ca2546a127904b4cb731f, type: 3}
-    Volume: 6.71
+    Volume: 0.6
     SpatialBrend: 0
     Loop: 0
   - Name: ShotBullet
     ID: 2
     Clip: {fileID: 8300000, guid: 4bba218c8a39bc44089631424fb9ad03, type: 3}
-    Volume: 2
+    Volume: 0.2
     SpatialBrend: 0
     Loop: 0
   - Name: LevelUp
     ID: 3
     Clip: {fileID: 8300000, guid: ea4cb8d6f673efd4aa2108b3e4c874f0, type: 3}
-    Volume: 10
+    Volume: 1
     SpatialBrend: 0
     Loop: 0

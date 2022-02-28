@@ -15,6 +15,9 @@ namespace Sounds
             Player,
         }
 
+        [SerializeField] MasterType _masterType;
+        public MasterType Master => _masterType; 
+
         [SerializeField] DataType _type;
         public DataType GetDataType => _type;
 
@@ -28,7 +31,7 @@ namespace Sounds
         public string Name;
         public int ID;
         public AudioClip Clip;
-        [Range(0, 10)] public float Volume;
+        [Range(0, 1)] public float Volume;
         [Range(0, 1)] public float SpatialBrend;
         public bool Loop;
     }

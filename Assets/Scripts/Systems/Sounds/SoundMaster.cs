@@ -8,18 +8,29 @@ using System.Linq;
 
 namespace Sounds
 {
+    public enum MasterType
+    {
+        BGM,
+        SE,
+    }
+
     public class SoundMaster : MonoBehaviour
     {
         private static SoundMaster _instance = null;
         public static SoundMaster Instance => _instance;
 
-        [SerializeField, Range(0, 100)] float _volumRate = 100;
+        [SerializeField, Range(0, 1)] float _volumRateMaster = 1;
+        [SerializeField, Range(0, 1)] float _volumRateBGM = 1;
+        [SerializeField, Range(0, 1)] float _volumRateSE = 1;
 
         [SerializeField] SoundEffect _se;
         [SerializeField] List<SEDataBase> _dataBases;
 
         ObjectPool<SoundEffect> _pool;
-        public float MasterVolumeRate { get => _volumRate; }
+
+        public float MasterVolumeRate { get => _volumRateMaster; }
+        public float BGMVolumeRate { get => _volumRateBGM; }
+        public float SEVolumeRate { get => _volumRateSE; }
 
         List<SoundEffect> _soundList;
 
@@ -46,7 +57,7 @@ namespace Sounds
                 {
                     SoundEffect sound = Instance._pool.Respons();
                     Instance._soundList.Add(sound);
-                    sound.Use(se, user, type);
+                    sound.Use(se, user, type, dataBase.Master);
                     return;
                 }
             }
@@ -67,7 +78,7 @@ namespace Sounds
                 {
                     SoundEffect sound = Instance._pool.Respons();
                     Instance._soundList.Add(sound);
-                    sound.Use(se, user, type);
+                    sound.Use(se, user, type, dataBase.Master);
                     return;
                 }
             }

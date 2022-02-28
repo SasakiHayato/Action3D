@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88285ea6a1ffd7347951d3ea01085d7c, type: 3}
   m_Name: SEDatasEnemys
   m_EditorClassIdentifier: 
+  _masterType: 1
   _type: 3
   _datas:
   - Name: Damage
     ID: 0
     Clip: {fileID: 8300000, guid: bf909781e65ca2546a127904b4cb731f, type: 3}
-    Volume: 6.25
+    Volume: 0.6
     SpatialBrend: 0
     Loop: 0
   - Name: EnemyDead
     ID: 1
     Clip: {fileID: 8300000, guid: ace8abddc60f2ef40b5f77b761b82e5c, type: 3}
-    Volume: 5.71
+    Volume: 0.5
     SpatialBrend: 0
     Loop: 0
