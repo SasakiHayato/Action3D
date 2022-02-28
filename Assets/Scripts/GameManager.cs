@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Sounds;
 
 /// <summary>
 /// ゲーム全体の管理クラス
@@ -76,9 +77,12 @@ public class GameManager
                 Object.Instantiate((GameObject)Resources.Load("Systems/FieldSystems"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/ItemManager"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/BulletSettings"));
+
+                SoundMaster.Request(null, "FieldBGM", SEDataBase.DataType.BGM);
                 break;
 
             case GameState.Title:
+                SoundMaster.Request(null, "TitleBGM", SEDataBase.DataType.BGM);
                 break;
 
             case GameState.Dead:

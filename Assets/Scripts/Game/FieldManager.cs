@@ -69,8 +69,7 @@ public class FieldManager : MonoBehaviour
     {
         _fieldData = new FieldData(_spownDatas, _enemyMasterData);
         _fieldData.UpdateEnemy();
-        SoundMaster.Request(null, "FieldBGM", 3);
-
+        
         _setUpdateTime = _updateTime;
     }
 
@@ -93,7 +92,7 @@ public class FieldManager : MonoBehaviour
     /// <param name="id">ƒAƒNƒVƒ‡ƒ“‚É“o˜^‚·‚éID</param>
     public static void FieldTimeRate(Action<UIType, int, object[]> action, UIType type, int id)
     {
-        SoundMaster.Request(null, "StartSlowMotion", 1);
+        SoundMaster.Request(null, "StartSlowMotion", SEDataBase.DataType.Field);
         Instance.StartCoroutine(Instance.SetRate(action, type, id));
     }
 

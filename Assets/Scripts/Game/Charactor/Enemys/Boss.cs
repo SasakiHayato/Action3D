@@ -49,7 +49,7 @@ public class Boss : EnemyBase, IDamage
 
         if (_attack.EndCurrentAnim) _anim.Play("Damage_Back_Small_ver_B");
         else _isBackKnock = false;
-        Sounds.SoundMaster.Request(transform, "Damage", 2);
+        Sounds.SoundMaster.Request(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
         object[] setUiData = { damage, gameObject, ColorType.Enemy };
         UIManager.CallBack(UIType.Game, 4, setUiData);
 

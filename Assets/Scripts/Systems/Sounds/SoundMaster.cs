@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Soundの管理クラス
@@ -33,9 +34,9 @@ namespace Sounds
         /// <param name="user">使う人</param>
         /// <param name="id">SEDataのID</param>
         /// <param name="groupID">SEDataBaseのID</param>
-        public static void Request(Transform user, int id, int groupID = 0)
+        public static void Request(Transform user, int id, SEDataBase.DataType type)
         {
-            SEDataBase dataBase = Instance._dataBases[groupID];
+            SEDataBase dataBase = Instance._dataBases.First(d => d.GetDataType == type);
             foreach (SEData se in dataBase.GetData)
             {
                 if (se.ID == id)
@@ -53,9 +54,9 @@ namespace Sounds
         /// <param name="user">使う人</param>
         /// <param name="name">SEDataのName</param>
         /// <param name="groupID">SEDataBaseのID</param>
-        public static void Request(Transform user, string name, int groupID = 0)
+        public static void Request(Transform user, string name, SEDataBase.DataType type)
         {
-            SEDataBase dataBase = Instance._dataBases[groupID];
+            SEDataBase dataBase = Instance._dataBases.First(d => d.GetDataType == type);
             foreach (SEData se in dataBase.GetData)
             {
                 if (se.Name == name)

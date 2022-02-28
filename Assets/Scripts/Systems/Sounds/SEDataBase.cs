@@ -6,6 +6,18 @@ namespace Sounds
     [CreateAssetMenu(fileName = "SEDatas")]
     public class SEDataBase : ScriptableObject
     {
+        public enum DataType
+        {
+            BGM,
+            UI,
+            Field,
+            Enemys,
+            Player,
+        }
+
+        [SerializeField] DataType _type;
+        public DataType GetDataType => _type;
+
         [SerializeField] List<SEData> _datas;
         public List<SEData> GetData => _datas;
     }

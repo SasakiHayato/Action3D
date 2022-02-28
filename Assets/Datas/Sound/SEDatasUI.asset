@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88285ea6a1ffd7347951d3ea01085d7c, type: 3}
   m_Name: SEDatasUI
   m_EditorClassIdentifier: 
+  _type: 1
   _datas:
   - Name: Click
     ID: 0

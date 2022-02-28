@@ -28,7 +28,7 @@ public abstract class EnemyBase : CharaBase
     {
         ParticleUser particle = FieldManager.Instance.GetDeadParticle.Respons();
         particle.Use(target.transform);
-        Sounds.SoundMaster.Request(null, "EnemyDead", 2);
+        Sounds.SoundMaster.Request(null, "EnemyDead", Sounds.SEDataBase.DataType.Enemys);
 
         IFieldEnemy iEnemy = target.GetComponent<IFieldEnemy>();
 
