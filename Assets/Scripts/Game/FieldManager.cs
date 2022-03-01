@@ -23,7 +23,8 @@ public class FieldManager : MonoBehaviour
     private static FieldManager _instance = null;
     public static FieldManager Instance => _instance;
 
-    [SerializeField] List<SpawnData> _spownDatas;
+    [SerializeField] List<SpawnData> _worldSpownDatas;
+    [SerializeField] List<SpawnData> _arenaSpawnDatas;
 
     [Serializable]
     public class SpawnData
@@ -48,6 +49,8 @@ public class FieldManager : MonoBehaviour
 
     int _setUpdateTime;
 
+    const float FirstSetUpArena = 10;
+
     private void Awake()
     {
         _instance = this;
@@ -69,14 +72,18 @@ public class FieldManager : MonoBehaviour
     {
         if (GameManager.Instance.InGameFieldType == GameManager.FieldType.Warld)
         {
-            _fieldData = new FieldData(_spownDatas, _enemyMasterData);
+            _fieldData = new FieldData(_worldSpownDatas, _enemyMasterData);
             _fieldData.UpdateEnemy();
 
             _setUpdateTime = _updateTime;
         }
         else
         {
-
+            _fieldData = new FieldData(_arenaSpawnDatas, _enemyMasterData);
+            _fieldData.UpdateEnemy();
+            // Log
+            UIManager.CallBack(UIType.Game, 3, new object[] { 6 });
+            UIManager.CallBack(UIType.Game, 3, new object[] { 5 });
         }
     }
 
@@ -95,7 +102,11 @@ public class FieldManager : MonoBehaviour
         }
         else
         {
+            if (GameManager.Instance.GetCurrentTime > FirstSetUpArena)
+            {
+                _fieldData.SetUpArena();   
 
+            }
         }
     }
 

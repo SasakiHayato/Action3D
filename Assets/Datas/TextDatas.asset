@@ -23,3 +23,7 @@ MonoBehaviour:
     Text: "Boss\u304C\u51FA\u73FE\u3057\u307E\u3057\u305F\u3002"
   - ID: 4
     Text: "Boss\u306E\u5E7B\u5F71\u304C\u51FA\u73FE\u3057\u307E\u3057\u305F\u3002"
+  - ID: 6
+    Text: "Enemy\u304C\u51FA\u73FE\u3057\u307E\u3059"
+  - ID: 6
+    Text: 'SetUp : Arena '

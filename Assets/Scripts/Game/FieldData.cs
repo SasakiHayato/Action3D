@@ -64,18 +64,28 @@ public class FieldData
         UpdateEnemy();
     }
 
+    public void SetUpArena()
+    {
+
+    }
+
     /// <summary>
     /// FieldDataÇ…ëŒÇ∑ÇÈEnemyÇÃê›íË
     /// </summary>
     public void UpdateEnemy()
     {
         Transform player = GameObject.FindWithTag("Player").transform;
+        
         foreach (EnemyGroupData groupData in _enemyGroupDatas)
         {
             FieldManager.SpawnData spawnData = _spawnData[groupData.SpawnID - 1];
 
-            float dist = Vector3.Distance(spawnData.Point.position, player.position);
-            if (dist < SetDist) continue;
+
+            if (GameManager.FieldType.Arena != GameManager.Instance.InGameFieldType)
+            {
+                float dist = Vector3.Distance(spawnData.Point.position, player.position);
+                if (dist < SetDist) continue;
+            }
 
             if (!groupData.IsSet)
             {
