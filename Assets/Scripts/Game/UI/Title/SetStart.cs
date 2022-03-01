@@ -10,26 +10,63 @@ using UniRx;
 public class SetStart : UIWindowParent.UIWindowChild
 {
     [SerializeField] string _buttonPanelName;
-    [SerializeField] string _buttonName;
+    [SerializeField] string _startButtonName;
+    [SerializeField] string _activePanelName;
+    [SerializeField] string _warldButtonName;
+    [SerializeField] string _arenaButtonName;
 
-    Button _button;
+    Button _startButton;
+    Button _startWarldButton;
+    Button _startArenaButton;
 
     const float WaitTime = 1f;
     
     public override void SetUp()
     {
         Transform transform = ParentPanel.transform.Find(_buttonPanelName);
-        _button = transform.Find(_buttonName).GetComponent<Button>();
-        _button.OnClickAsObservable()
-            .TakeUntilDestroy(_button)
+        _startButton = transform.Find(_startButtonName).GetComponent<Button>();
+        _startButton.OnClickAsObservable()
+            .TakeUntilDestroy(_startButton)
             .ThrottleFirst(TimeSpan.FromSeconds(1f))
             .Subscribe(_ => CallBack(null))
-            .AddTo(_button);
+            .AddTo(_startButton);
+
+        GameObject panel = ParentPanel.transform.Find(_activePanelName).gameObject;
+        panel.SetActive(true);
+
+        _startWarldButton = panel.transform.Find(_warldButtonName).GetComponent<Button>();
+        _startWarldButton.OnClickAsObservable()
+            .TakeUntilDestroy(_startWarldButton)
+            .ThrottleFirst(TimeSpan.FromSeconds(1f))
+            .Subscribe(_ => SetWarldCallBack())
+            .AddTo(_startWarldButton);
+
+        _startArenaButton = panel.transform.Find(_arenaButtonName).GetComponent<Button>();
+        _startArenaButton.OnClickAsObservable()
+            .TakeUntilDestroy(_startArenaButton)
+            .ThrottleFirst(TimeSpan.FromSeconds(1f))
+            .Subscribe(_ => SetArenaCallBack())
+            .AddTo(_startArenaButton);
+
+        panel.SetActive(false);
     }
 
     public override void UpDate() { }
 
     public override void CallBack(object[] data) 
+    {
+        GameObject panel = ParentPanel.transform.Find(_activePanelName).gameObject;
+        panel.SetActive(true);
+    }
+
+    void SetArenaCallBack()
+    {
+        Sounds.SoundMaster.StopRequest("TitleBGM", Sounds.SEDataBase.DataType.BGM);
+        Fader.Instance.Request(Fader.FadeType.Out, WaitTime);
+        SceneSettings.Instance.LoadAsync(2, WaitTime);
+    }
+
+    void SetWarldCallBack()
     {
         Sounds.SoundMaster.StopRequest("TitleBGM", Sounds.SEDataBase.DataType.BGM);
         Fader.Instance.Request(Fader.FadeType.Out, WaitTime);

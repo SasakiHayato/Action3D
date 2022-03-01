@@ -16,6 +16,12 @@ public class GameManager
         Load,
     }
 
+    public enum FieldType
+    {
+        Warld,
+        Arena,
+    }
+
     public enum Option
     {
         Open,
@@ -32,7 +38,9 @@ public class GameManager
     public PlayerData PlayerData { get; private set; } = new PlayerData();
 
     public List<IAttackCollision> AttackCollisions { get; set; } = new List<IAttackCollision>();
-    
+
+    public FieldType InGameFieldType { get; set; }
+
     // Singleton
     private static GameManager _instance = null;
     public static GameManager Instance
@@ -78,7 +86,14 @@ public class GameManager
                 Object.Instantiate((GameObject)Resources.Load("Systems/ItemManager"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/BulletSettings"));
 
-                SoundMaster.PlayRequest(null, "FieldBGM", SEDataBase.DataType.BGM);
+                if (FieldType.Warld == Instance.InGameFieldType)
+                {
+                    SoundMaster.PlayRequest(null, "FieldBGM", SEDataBase.DataType.BGM);
+                }
+                else
+                {
+                    SoundMaster.PlayRequest(null, "ArenaBGM", SEDataBase.DataType.BGM);
+                }
                 break;
 
             case GameState.Title:

@@ -67,20 +67,35 @@ public class FieldManager : MonoBehaviour
 
     void Start()
     {
-        _fieldData = new FieldData(_spownDatas, _enemyMasterData);
-        _fieldData.UpdateEnemy();
-        
-        _setUpdateTime = _updateTime;
+        if (GameManager.Instance.InGameFieldType == GameManager.FieldType.Warld)
+        {
+            _fieldData = new FieldData(_spownDatas, _enemyMasterData);
+            _fieldData.UpdateEnemy();
+
+            _setUpdateTime = _updateTime;
+        }
+        else
+        {
+
+        }
     }
 
     void Update()
     {
         GameManager.Instance.GameTime();
-        if (GameManager.Instance.GetCurrentTime > _updateTime)
+
+        if (GameManager.Instance.InGameFieldType == GameManager.FieldType.Warld)
         {
-            _updateTime += _setUpdateTime;
-            _fieldData.Update();
-            UIManager.CallBack(UIType.Game, 3, new object[] { 0 });
+            if (GameManager.Instance.GetCurrentTime > _updateTime)
+            {
+                _updateTime += _setUpdateTime;
+                _fieldData.Update();
+                UIManager.CallBack(UIType.Game, 3, new object[] { 0 });
+            }
+        }
+        else
+        {
+
         }
     }
 

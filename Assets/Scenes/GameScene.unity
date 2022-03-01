@@ -12128,6 +12128,11 @@ PrefabInstance:
       propertyPath: IgnoreTag
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 572088131421527472, guid: 44a955f13438e024c9392d235a8e725f,
+        type: 3}
+      propertyPath: CameraCollisionFilter.m_Bits
+      value: 520
+      objectReference: {fileID: 0}
     - target: {fileID: 572088131811373264, guid: 44a955f13438e024c9392d235a8e725f,
         type: 3}
       propertyPath: _rotateSpeed
@@ -12196,7 +12201,7 @@ PrefabInstance:
     - target: {fileID: 572088131811373266, guid: 44a955f13438e024c9392d235a8e725f,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.601303
+      value: 1.5974026
       objectReference: {fileID: 0}
     - target: {fileID: 572088131811373267, guid: 44a955f13438e024c9392d235a8e725f,
         type: 3}

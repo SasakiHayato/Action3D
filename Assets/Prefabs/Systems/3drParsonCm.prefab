@@ -63,8 +63,8 @@ MonoBehaviour:
   CameraDistance: 5
   CameraCollisionFilter:
     serializedVersion: 2
-    m_Bits: 8
-  IgnoreTag: 
+    m_Bits: 520
+  IgnoreTag: Player
   CameraRadius: 0.311
 --- !u!1 &572088131811373267
 GameObject:
@@ -130,7 +130,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5984961, y: 1}
+    m_SensorSize: {x: 1.5974026, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -211,5 +211,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateSpeed: 2
   _offSet: {x: 0.5, y: 1, z: 0.5}
-  _lockonCollection: 20
+  _lockonCollectionY: 0
   _maxAngle: 55

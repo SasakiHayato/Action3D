@@ -205,7 +205,10 @@ MonoBehaviour:
       type: {class: SetStart, ns: , asm: Assembly-CSharp}
       data:
         _buttonPanelName: ButtonPanel
-        _buttonName: StartButton
+        _startButtonName: StartButton
+        _activePanelName: SetStartPanel
+        _warldButtonName: WarldButton
+        _arenaButtonName: ArenaButton
     00000010:
       type: {class: AnyPressedTitle, ns: , asm: Assembly-CSharp}
       data:

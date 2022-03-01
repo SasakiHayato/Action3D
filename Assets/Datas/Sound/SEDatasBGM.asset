@@ -27,3 +27,9 @@ MonoBehaviour:
     Volume: 0.5
     SpatialBrend: 0
     Loop: 1
+  - Name: ArenaBGM
+    ID: 2
+    Clip: {fileID: 8300000, guid: 5689ed8b6823dd8469d668ab0e9ba8a8, type: 3}
+    Volume: 0.359
+    SpatialBrend: 0
+    Loop: 1
