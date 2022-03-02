@@ -1194,7 +1194,7 @@ MonoBehaviour:
       data:
         _setPrefab: {fileID: 8735183208793564310, guid: 57b59c585c517d148afcb9090bcaa158,
           type: 3}
-        _count: 5
+        _count: 7
         _range: 10
     00000037:
       type: {class: SetLimitConditional, ns: , asm: Assembly-CSharp}

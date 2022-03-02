@@ -1,7 +1,7 @@
 using UnityEngine;
 using AttackSetting;
 
-public class Boss : EnemyBase, IDamage
+public class Boss : EnemyBase, IDamage, IFieldEnemy
 {
     bool _isBackKnock = false;
     GameObject _player;

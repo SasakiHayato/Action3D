@@ -22,7 +22,7 @@ public class SetBossShadow : IAction
             float x = Random.Range(-1, 1);
             float y = Random.Range(-1, 1);
 
-            Vector3 setVec = new Vector3(x, 0, y) * _range;
+            Vector3 setVec = new Vector3(x, _player.transform.position.y + 1, y) * _range;
 
             GameObject obj = Object.Instantiate(_setPrefab);
             UIManager.CallBack(UIType.Game, 3, new object[] { 4 });

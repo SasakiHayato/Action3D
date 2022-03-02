@@ -14,6 +14,7 @@ public class GameManager : SingletonAttribute<GameManager>
         Title,
         Dead,
         Load,
+        EndArena,
     }
 
     public enum FieldType
@@ -96,6 +97,9 @@ public class GameManager : SingletonAttribute<GameManager>
 
             case GameState.Load:
                 break;
+
+            case GameState.EndArena:
+                break;
         }
     }
 
@@ -124,6 +128,11 @@ public class GameManager : SingletonAttribute<GameManager>
                 break;
 
             case GameState.Load:
+                break;
+
+            case GameState.EndArena:
+                Fader.Instance.Request(Fader.FadeType.Out, 1f);
+                SceneSettings.Instance.LoadAsync(0, 1);
                 break;
         }
     }

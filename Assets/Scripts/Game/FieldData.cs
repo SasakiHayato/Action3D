@@ -68,8 +68,6 @@ public class FieldData
 
     public void SetUpArena()
     {
-        Debug.Log(_enemyGroupDatas.All(e => !e.IsSet));
-
         if (_enemyGroupDatas.All(e => !e.IsSet))
         {
             _timer += Time.deltaTime;
@@ -79,7 +77,14 @@ public class FieldData
 
                 _arenaPhaseID++;
                 Level++;
-                
+
+                if (_spawnData[0].GroupTip.GetDatas.Count <= _arenaPhaseID)
+                {
+                    GameManager.Instance.GameStateSetUpSystems(GameManager.GameState.EndArena);
+                    GameManager.Instance.GameStateSetUpEvents(GameManager.GameState.EndArena);
+                    return;
+                }
+
                 foreach (EnemyGroupData data in _enemyGroupDatas)
                 {
                     SetEnemyToArena(data);
