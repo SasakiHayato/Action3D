@@ -6,7 +6,7 @@ using Sounds;
 /// ゲーム全体の管理クラス
 /// </summary>
 
-public class GameManager
+public class GameManager : SingletonAttribute<GameManager>
 {
     public enum GameState
     {
@@ -20,6 +20,8 @@ public class GameManager
     {
         Warld,
         Arena,
+
+        None,
     }
 
     public enum Option
@@ -41,17 +43,6 @@ public class GameManager
 
     public FieldType InGameFieldType { get; set; }
 
-    // Singleton
-    private static GameManager _instance = null;
-    public static GameManager Instance
-    {
-        get
-        {
-            if (_instance == null) _instance = new GameManager();
-            return _instance;
-        }
-    }
-    
     public bool IsLockOn
     {
         get

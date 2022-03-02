@@ -13799,7 +13799,6 @@ Transform:
   m_LocalPosition: {x: -344.2766, y: 40.49093, z: -340.02963}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 364488602}
   - {fileID: 2105526699}
   - {fileID: 901738259}
   - {fileID: 1657466938}
@@ -13822,6 +13821,7 @@ Transform:
   - {fileID: 1368206202}
   - {fileID: 177836883}
   - {fileID: 715862680}
+  - {fileID: 364488602}
   - {fileID: 205908405}
   - {fileID: 686885069}
   - {fileID: 1241827635}
@@ -17230,6 +17230,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _gameState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485689058776393409, guid: 920354aff31393049848b514f9cee1a4,
+        type: 3}
+      propertyPath: _inGamefieldType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5485689058776393410, guid: 920354aff31393049848b514f9cee1a4,
         type: 3}

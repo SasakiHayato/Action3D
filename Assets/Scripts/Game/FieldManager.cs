@@ -50,6 +50,7 @@ public class FieldManager : MonoBehaviour
     int _setUpdateTime;
 
     const float FirstSetUpArena = 10;
+    bool _isSetUpArena = false;
 
     private void Awake()
     {
@@ -80,7 +81,7 @@ public class FieldManager : MonoBehaviour
         else
         {
             _fieldData = new FieldData(_arenaSpawnDatas, _enemyMasterData);
-            _fieldData.UpdateEnemy();
+            
             // Log
             UIManager.CallBack(UIType.Game, 3, new object[] { 6 });
             UIManager.CallBack(UIType.Game, 3, new object[] { 5 });
@@ -93,20 +94,34 @@ public class FieldManager : MonoBehaviour
 
         if (GameManager.Instance.InGameFieldType == GameManager.FieldType.Warld)
         {
-            if (GameManager.Instance.GetCurrentTime > _updateTime)
-            {
-                _updateTime += _setUpdateTime;
-                _fieldData.Update();
-                UIManager.CallBack(UIType.Game, 3, new object[] { 0 });
-            }
+            UpDateWorld();
         }
         else
         {
-            if (GameManager.Instance.GetCurrentTime > FirstSetUpArena)
-            {
-                _fieldData.SetUpArena();   
+            UpDateArena();
+        }
+    }
 
-            }
+    void UpDateWorld()
+    {
+        if (GameManager.Instance.GetCurrentTime > _updateTime)
+        {
+            _updateTime += _setUpdateTime;
+            _fieldData.Update();
+            UIManager.CallBack(UIType.Game, 3, new object[] { 0 });
+        }
+    }
+
+    void UpDateArena()
+    {
+        if (GameManager.Instance.GetCurrentTime > FirstSetUpArena && !_isSetUpArena)
+        {
+            _isSetUpArena = true;
+            _fieldData.UpdateEnemy();
+        }
+        else
+        {
+            _fieldData.SetUpArena();
         }
     }
 

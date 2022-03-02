@@ -47,7 +47,6 @@ public class FieldData
 
         for (int i = 0; i < spawn.Count(); i++)
         {
-            Debug.Log(spawn[i].Point.position);
             _enemyGroupDatas.Add(new EnemyGroupData(spawn[i].ID, false, new List<IFieldEnemy>()));
         }
         
