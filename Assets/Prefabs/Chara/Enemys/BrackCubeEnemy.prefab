@@ -249,7 +249,7 @@ MonoBehaviour:
       type: {class: ShotBulletDeviation, ns: , asm: Assembly-CSharp}
       data:
         _speed: 3
-        _coolTime: 0.2
+        _coolTime: 1
         _bulletID: 0
     00000008:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}

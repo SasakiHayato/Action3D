@@ -20,6 +20,9 @@ public class FieldData
     List<EnemyGroupData> _enemyGroupDatas;
 
     const float SetDist = 50;
+    int _arenaPhaseID = 0;
+
+    float _timer = 0;
 
     class EnemyGroupData
     {
@@ -65,7 +68,22 @@ public class FieldData
 
     public void SetUpArena()
     {
+        if (_enemyGroupDatas.All(e => !e.IsSet))
+        {
+            _timer += Time.deltaTime;
+            if (_timer > 5)
+            {
+                _timer = 0;
 
+                _arenaPhaseID++;
+                Level++;
+
+                foreach (EnemyGroupData data in _enemyGroupDatas)
+                {
+                    SetEnemyToArena(data);
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -88,7 +106,7 @@ public class FieldData
 
             if (!groupData.IsSet)
             {
-                SetEnemy(groupData);
+                SetEnemyToWorld(groupData);
             }
             else
             {
@@ -97,8 +115,51 @@ public class FieldData
             }
         }
     }
+
+    void SetEnemyToArena(EnemyGroupData groupData)
+    {
+        FieldManager.SpawnData spawnData = _spawnData[groupData.SpawnID - 1];
+        
+        foreach (EnemyData enemyData in _enemyMasterData.GetData)
+        {
+            foreach (EnemyName enemyName in spawnData.GroupTip.GetDatas[_arenaPhaseID].Types)
+            {
+                if (enemyData.Name == enemyName.ToString())
+                {
+                    float rate = spawnData.Range / 2;
+                    float x = Random.Range(-rate, rate);
+                    float y = Random.Range(-rate, rate);
+                    float z = Random.Range(-rate, rate);
+
+                    GameObject obj = Object.Instantiate(enemyData.Prefab);
+                    obj.transform.SetParent(spawnData.Point);
+
+                    int level = spawnData.Level + Level;
+                    CharaBase charaBase = obj.GetComponent<CharaBase>();
+                    charaBase.Character.ChangeLocalPos(new Vector3(x, y, z), obj);
+                    charaBase.SetParam(enemyData.HP, enemyData.Power, enemyData.Speed, level);
+                    
+                    IFieldEnemy iEnemy = obj.GetComponent<IFieldEnemy>();
+
+                    if (iEnemy != null)
+                    {
+                        iEnemy.GroupID = spawnData.ID;
+                        iEnemy.Target = obj;
+                        iEnemy.EnemyData = enemyData;
+
+                        if (enemyData.EnemyType == EnemyType.Boss)
+                            UIManager.CallBack(UIType.EnemyConnect, 1, new object[] { enemyData.DisplayName });
+
+                        groupData.FieldEnemies.Add(iEnemy);
+                    }
+                }
+            }
+        }
+
+        groupData.IsSet = true;
+    }
     
-    void SetEnemy(EnemyGroupData groupData)
+    void SetEnemyToWorld(EnemyGroupData groupData)
     {
         FieldManager.SpawnData spawnData = _spawnData[groupData.SpawnID - 1];
 

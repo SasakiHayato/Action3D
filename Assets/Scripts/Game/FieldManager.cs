@@ -121,7 +121,7 @@ public class FieldManager : MonoBehaviour
         }
         else
         {
-            _fieldData.SetUpArena();
+            if (_isSetUpArena) _fieldData.SetUpArena();
         }
     }
 
@@ -172,12 +172,15 @@ public class FieldManager : MonoBehaviour
         ParticleUser particle = Instance._explosionParticlePool.Respons();
         particle.Use(obj.transform);
 
-        for (int i = 0; i < 5; i++)
+        if (GameManager.FieldType.Arena != GameManager.Instance.InGameFieldType)
         {
-            ItemExp itemExp = Instantiate(itemBase).GetComponent<ItemExp>();
-            itemExp.SetOtherData(datas);
-            itemExp.gameObject.transform.position = obj.transform.position;
-            itemExp.Force(obj.transform.position);
+            for (int i = 0; i < 5; i++)
+            {
+                ItemExp itemExp = Instantiate(itemBase).GetComponent<ItemExp>();
+                itemExp.SetOtherData(datas);
+                itemExp.gameObject.transform.position = obj.transform.position;
+                itemExp.Force(obj.transform.position);
+            }
         }
 
         Destroy(obj);
