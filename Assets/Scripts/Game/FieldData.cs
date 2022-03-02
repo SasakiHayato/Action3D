@@ -77,7 +77,7 @@ public class FieldData
 
                 _arenaPhaseID++;
                 Level++;
-
+                
                 foreach (EnemyGroupData data in _enemyGroupDatas)
                 {
                     SetEnemyToArena(data);
@@ -97,11 +97,15 @@ public class FieldData
         {
             FieldManager.SpawnData spawnData = _spawnData[groupData.SpawnID - 1];
 
-
             if (GameManager.FieldType.Arena != GameManager.Instance.InGameFieldType)
             {
                 float dist = Vector3.Distance(spawnData.Point.position, player.position);
                 if (dist < SetDist) continue;
+            }
+            else
+            {
+                SetEnemyToArena(groupData);
+                continue;
             }
 
             if (!groupData.IsSet)
@@ -124,6 +128,8 @@ public class FieldData
         {
             foreach (EnemyName enemyName in spawnData.GroupTip.GetDatas[_arenaPhaseID].Types)
             {
+                if (enemyName == EnemyName.None) continue;
+
                 if (enemyData.Name == enemyName.ToString())
                 {
                     float rate = spawnData.Range / 2;

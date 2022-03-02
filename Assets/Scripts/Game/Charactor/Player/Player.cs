@@ -158,8 +158,12 @@ public class Player : CharaBase, IDamage
                 float angle = Mathf.Abs(Vector3.Dot(cmForwrad, dir.normalized) * Mathf.Rad2Deg);
                 if (saveAngle < angle)
                 {
-                    set = e.GetComponent<CharaBase>().OffSetPosObj;
-                    saveAngle = angle;
+                    CharaBase chara = e.GetComponent<CharaBase>();
+                    if (chara != null)
+                    {
+                        set = e.GetComponent<CharaBase>().OffSetPosObj;
+                        saveAngle = angle;
+                    }
                 }
             }
 

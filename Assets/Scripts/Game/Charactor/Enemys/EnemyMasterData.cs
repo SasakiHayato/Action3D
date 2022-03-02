@@ -10,6 +10,8 @@ namespace EnemysData
         RunSkeleton = 2,
         Boss = 3,
         BrackCubeEnemy = 4,
+
+        None,
     }
 
     public enum EnemyType
