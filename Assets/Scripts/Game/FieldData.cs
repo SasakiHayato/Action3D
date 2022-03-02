@@ -68,6 +68,8 @@ public class FieldData
 
     public void SetUpArena()
     {
+        Debug.Log(_enemyGroupDatas.All(e => !e.IsSet));
+
         if (_enemyGroupDatas.All(e => !e.IsSet))
         {
             _timer += Time.deltaTime;
@@ -128,7 +130,11 @@ public class FieldData
         {
             foreach (EnemyName enemyName in spawnData.GroupTip.GetDatas[_arenaPhaseID].Types)
             {
-                if (enemyName == EnemyName.None) continue;
+                if (enemyName == EnemyName.None)
+                {
+                    groupData.IsSet = false;
+                    return;
+                }
 
                 if (enemyData.Name == enemyName.ToString())
                 {
@@ -233,7 +239,11 @@ public class FieldData
             if (data.SpawnID == id)
             {
                 data.FieldEnemies.Remove(enemy);
-                if (data.FieldEnemies.Count() == 0) data.IsSet = false;
+                if (data.FieldEnemies.Count() == 0)
+                {
+                    Debug.Log("IsSet. false");
+                    data.IsSet = false;
+                }
             }
         }
     }
