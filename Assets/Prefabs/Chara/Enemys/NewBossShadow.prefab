@@ -686,7 +686,7 @@ MonoBehaviour:
       Power: 7
       Type: 0
     NextAcceptTime: 1
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 6618350ba7f7e9e4fb84688bd31b4369, type: 3}
     SEVol: 0
     Action: 2
     Effects: 00000000030000000200000001000000

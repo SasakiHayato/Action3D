@@ -46,6 +46,8 @@ public class BossInform : UIWindowParent.UIWindowChild
     public override void CallBack(object[] data)
     {
         if (_isSetting) return;
+        Sounds.SoundMaster.PlayRequest(null, "BossDisplay", Sounds.SEDataBase.DataType.Enemys);
+
         _isSetting = true;
         _nameText.text = (string)data[0];
         RectTransform warningTextRect = _warningText.gameObject.GetRect();

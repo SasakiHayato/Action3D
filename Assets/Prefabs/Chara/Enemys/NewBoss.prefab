@@ -569,7 +569,7 @@ MonoBehaviour:
       Power: 0
       Type: 0
     NextAcceptTime: 99
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
     SEVol: 0
     Action: 0
     Effects: 0000000002000000
@@ -581,7 +581,7 @@ MonoBehaviour:
       Power: 0
       Type: 0
     NextAcceptTime: 99
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
     SEVol: 0
     Action: 0
     Effects: 0000000002000000
@@ -593,7 +593,7 @@ MonoBehaviour:
       Power: 5
       Type: 0
     NextAcceptTime: 99
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 6618350ba7f7e9e4fb84688bd31b4369, type: 3}
     SEVol: 0
     Action: 0
     Effects: 00000000010000000300000002000000
@@ -605,7 +605,7 @@ MonoBehaviour:
       Power: 1
       Type: 0
     NextAcceptTime: 99
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
     SEVol: 0
     Action: 1
     Effects: 000000000300000002000000
@@ -617,7 +617,7 @@ MonoBehaviour:
       Power: 1
       Type: 0
     NextAcceptTime: 99
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
     SEVol: 0
     Action: 1
     Effects: 000000000300000002000000
@@ -629,7 +629,7 @@ MonoBehaviour:
       Power: 1
       Type: 0
     NextAcceptTime: 99
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
     SEVol: 0
     Action: 1
     Effects: 000000000300000002000000
@@ -641,7 +641,7 @@ MonoBehaviour:
       Power: 1
       Type: 0
     NextAcceptTime: 99
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
     SEVol: 0
     Action: 1
     Effects: 000000000300000002000000
@@ -653,7 +653,7 @@ MonoBehaviour:
       Power: 1
       Type: 0
     NextAcceptTime: 99
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
     SEVol: 0
     Action: 1
     Effects: 000000000300000002000000
@@ -665,7 +665,7 @@ MonoBehaviour:
       Power: 1
       Type: 0
     NextAcceptTime: 99
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
     SEVol: 0
     Action: 1
     Effects: 000000000300000002000000
@@ -677,7 +677,7 @@ MonoBehaviour:
       Power: 8
       Type: 0
     NextAcceptTime: 99
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 6618350ba7f7e9e4fb84688bd31b4369, type: 3}
     SEVol: 0
     Action: 1
     Effects: 000000000300000002000000
@@ -689,7 +689,7 @@ MonoBehaviour:
       Power: 7
       Type: 0
     NextAcceptTime: 1
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 6618350ba7f7e9e4fb84688bd31b4369, type: 3}
     SEVol: 0
     Action: 2
     Effects: 00000000030000000200000001000000
