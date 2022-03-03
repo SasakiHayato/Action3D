@@ -15,7 +15,7 @@ public class PlayerIdle : StateMachine.State
         }
 
         _input = Vector2.zero;
-        Target.GetComponent<Animator>().Play("Idle");
+        Target.GetComponent<Animator>().CrossFade("Idle", 0.1f);
     }
 
     public override void Run(out Vector3 move)

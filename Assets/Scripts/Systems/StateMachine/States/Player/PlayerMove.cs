@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMove : StateMachine.State
 {
     [SerializeField] float _dashSpeedRate;
+    [SerializeField, Range(0, 1)] float _setRunAnimRate;
 
     Animator _anim = null;
     GameObject _mainCm;
@@ -18,12 +19,12 @@ public class PlayerMove : StateMachine.State
         
         if (beforeType == StateMachine.StateType.Avoid)
         {
-            _anim.Play("Run");
+            _anim.CrossFade("Run", 0.2f);
             _setSpeedRate = _dashSpeedRate;
         }
         else
         {
-            _anim.Play("RunNoamal");
+            _anim.CrossFade("RunNoamal", 0.1f);
             _setSpeedRate = 1;
         }
         if (beforeType == StateMachine.StateType.Floating)
