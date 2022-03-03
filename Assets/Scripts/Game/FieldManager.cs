@@ -172,6 +172,7 @@ public class FieldManager : MonoBehaviour
         ParticleUser particle = Instance._explosionParticlePool.Respons();
         particle.Use(obj.transform);
 
+        SoundMaster.PlayRequest(null, 1, SEDataBase.DataType.Field);
         if (GameManager.FieldType.Arena != GameManager.Instance.InGameFieldType)
         {
             for (int i = 0; i < 5; i++)

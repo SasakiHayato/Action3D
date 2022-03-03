@@ -85,7 +85,6 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
             if (item.ID == id)
             {
                 _pickUpEvents = item;
-                Debug.Log($"SetRequest{id}");
                 return;
             }
         }

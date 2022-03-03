@@ -125,7 +125,7 @@ public class Bullet : MonoBehaviour, IDamage
         _rb.velocity = Vector3.zero;
         _powerRate = powerRate;
         _parent = parent;
-        
+        Sounds.SoundMaster.PlayRequest(transform, "ShotBullet2", Sounds.SEDataBase.DataType.Enemys);
         _rb.AddForce(dir * speed, ForceMode.Impulse);
         _isSet = true;
     }

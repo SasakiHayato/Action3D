@@ -28,12 +28,30 @@ public class AttackCollision : MonoBehaviour, IAttack, IAttackCollision
     GameObject _parent;
     GameObject _hitObj;
     IDamage _iDamage;
-    
+
+    TrailRenderer _trail = null;
+    Collider _collider;
+
     bool _check;
     bool _isHit = false;
 
     const float EffectDist = 2f;
     const float SetSize = 2;
+
+    void Update()
+    {
+        if (_trail != null)
+        {
+            if (_collider.enabled)
+            {
+                _trail.enabled = true;
+            }
+            else
+            {
+                _trail.enabled = false;
+            }
+        }
+    }
 
     /// <summary>
     /// UserÇÃê›íË
@@ -42,16 +60,18 @@ public class AttackCollision : MonoBehaviour, IAttack, IAttackCollision
     public void SetUp(GameObject parent)
     {
         _parent = parent;
-        Collider collider = GetComponent<Collider>();
+        _collider = GetComponent<Collider>();
         if (_parent.CompareTag("Player")) ParentID = Parent.Player;
         else ParentID = Parent.Enemy;
 
         ParentTagName = parent.tag;
         Target = parent;
-        Collider = collider;
+        Collider = _collider;
 
-        collider.enabled = false;
+        _collider.enabled = false;
         GameManager.Instance.AddIAttackCollision(gameObject.GetComponent<IAttackCollision>());
+
+        _trail = GetComponentInChildren<TrailRenderer>();
 
         Init();
     }
