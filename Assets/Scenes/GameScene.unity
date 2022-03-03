@@ -12720,6 +12720,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 2050274719406043200, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050274719406043200, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6987243538677896234, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: m_RootOrder

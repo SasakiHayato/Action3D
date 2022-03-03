@@ -31,14 +31,16 @@ public class MenuPanel : UIWindowParent.UIWindowChild
     {
         if (_isActive)
         {
-            GameManager.Instance.OptionState = GameManager.Option.Close;
+            GameManager.Instance.SetOptionState(GameManager.Option.Close);
+
             _rect.DOAnchorPosX(_setPos.x, 0.2f)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => _isActive = false);
         }
         else
         {
-            GameManager.Instance.OptionState = GameManager.Option.Open;
+            GameManager.Instance.SetOptionState(GameManager.Option.Open);
+
             _rect.DOAnchorPosX(_saveVec.x, 0.2f)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => _isActive = true);

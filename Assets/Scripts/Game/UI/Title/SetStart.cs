@@ -38,7 +38,7 @@ public class SetStart : UIWindowParent.UIWindowChild
         _startWarldButton.OnClickAsObservable()
             .TakeUntilDestroy(_startWarldButton)
             .ThrottleFirst(TimeSpan.FromSeconds(1f))
-            .Subscribe(_ => SetWarldCallBack())
+            .Subscribe(_ => SetWorldCallBack())
             .AddTo(_startWarldButton);
 
         _startArenaButton = panel.transform.Find(_arenaButtonName).GetComponent<Button>();
@@ -48,15 +48,28 @@ public class SetStart : UIWindowParent.UIWindowChild
             .Subscribe(_ => SetArenaCallBack())
             .AddTo(_startArenaButton);
 
+        GamePadButtonEvents.Instance.CreateList(1)
+            .AddEvents(_startButton, () => CallBack(null))
+            .FirstSetUp();
+
+        GamePadButtonEvents.Instance.CreateList(2)
+            .AddEvents(_startArenaButton, SetArenaCallBack)
+            .AddEvents(_startWarldButton, SetWorldCallBack)
+            .FirstSetUp();
+
         panel.SetActive(false);
     }
 
-    public override void UpDate() { }
+    public override void UpDate() 
+    {
+        
+    }
 
     public override void CallBack(object[] data) 
     {
         GameObject panel = ParentPanel.transform.Find(_activePanelName).gameObject;
         panel.SetActive(true);
+        GamePadButtonEvents.Instance.PickUpRequest(2);
     }
 
     void SetArenaCallBack()
@@ -66,7 +79,7 @@ public class SetStart : UIWindowParent.UIWindowChild
         SceneSettings.Instance.LoadAsync(2, WaitTime);
     }
 
-    void SetWarldCallBack()
+    void SetWorldCallBack()
     {
         Sounds.SoundMaster.StopRequest("TitleBGM", Sounds.SEDataBase.DataType.BGM);
         Fader.Instance.Request(Fader.FadeType.Out, WaitTime);

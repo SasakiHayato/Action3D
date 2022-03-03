@@ -26,6 +26,11 @@ public class AnyPressedTitle : UIWindowParent.UIWindowChild
             .ThrottleFirst(TimeSpan.FromSeconds(1f))
             .Subscribe(_ => CallBack(null))
             .AddTo(_button);
+
+        GamePadButtonEvents.Instance.CreateList(0)
+            .AddEvents(_button, () => CallBack(null));
+
+        GamePadButtonEvents.Instance.PickUpRequest(0);
     }
 
     public override void UpDate()
@@ -39,5 +44,6 @@ public class AnyPressedTitle : UIWindowParent.UIWindowChild
         _titleTextObj.SetActive(false);
         _button.gameObject.SetActive(false);
         ParentPanel.transform.Find(_requestActivePanelName).gameObject.SetActive(true);
+        GamePadButtonEvents.Instance.PickUpRequest(1);
     }
 }

@@ -565,6 +565,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Check",
+                    "type": "Button",
+                    "id": "39e862e6-92c3-446d-ab72-cf957979a6a2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -1016,6 +1024,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da3c3d82-5396-4778-921b-005dc5b8da3f",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Check",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -190,8 +190,6 @@ public class Player : CharaBase, IDamage
         if (_attack.IsCounter) return;
         if (type == AttackType.None) return;
 
-        return;
-
         Sounds.SoundMaster.PlayRequest(transform, "Damage", 0);
 
         object[] datas = { damage, gameObject, ColorType.Player };

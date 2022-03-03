@@ -32,7 +32,7 @@ public class GameManager : SingletonAttribute<GameManager>
     }
 
     public GameState CurrentGameState { get; private set; }
-    public Option OptionState { get; set; } = Option.Close;
+    public Option OptionState { get; private set; } = Option.Close;
 
     bool _islockOn = false;
     public GameObject LockonTarget { get; set; }
@@ -114,16 +114,20 @@ public class GameManager : SingletonAttribute<GameManager>
             case GameState.InGame:
                 Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
                 player.SetAnim("Intro", () => { PlayerData.CanMove = true; });
+                SetOptionState(Option.Close);
                 break;
 
             case GameState.Title:
                 Fader.Instance.Request(Fader.FadeType.In, 0.25f);
+                SetOptionState(Option.Open);
+                GamePadButtonEvents.Instance.PickUpRequest(0);
                 break;
 
             case GameState.Dead:
                 PlayerData.CanMove = false;
                 player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
                 Fader.Instance.Request(Fader.FadeType.Out, 0.5f);
+                GamePadButtonEvents.Instance.Dispose();
                 player.SetAnim("Damage_Die", () => SceneSettings.Instance.LoadSync(0));
                 break;
 
@@ -132,7 +136,21 @@ public class GameManager : SingletonAttribute<GameManager>
 
             case GameState.EndArena:
                 Fader.Instance.Request(Fader.FadeType.Out, 1f);
+                GamePadButtonEvents.Instance.Dispose();
                 SceneSettings.Instance.LoadAsync(0, 1);
+                break;
+        }
+    }
+
+    public void SetOptionState(Option option)
+    {
+        OptionState = option;
+
+        switch (option)
+        {
+            case Option.Open:
+                break;
+            case Option.Close:
                 break;
         }
     }

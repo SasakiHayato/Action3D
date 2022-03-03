@@ -578,6 +578,14 @@ public class @InputData : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Check"",
+                    ""type"": ""Button"",
+                    ""id"": ""39e862e6-92c3-446d-ab72-cf957979a6a2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -1031,6 +1039,17 @@ public class @InputData : IInputActionCollection, IDisposable
                     ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da3c3d82-5396-4778-921b-005dc5b8da3f"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Check"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1123,6 +1142,7 @@ public class @InputData : IInputActionCollection, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_Options = m_UI.FindAction("Options", throwIfNotFound: true);
         m_UI_Select = m_UI.FindAction("Select", throwIfNotFound: true);
+        m_UI_Check = m_UI.FindAction("Check", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1281,6 +1301,7 @@ public class @InputData : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_Options;
     private readonly InputAction m_UI_Select;
+    private readonly InputAction m_UI_Check;
     public struct UIActions
     {
         private @InputData m_Wrapper;
@@ -1297,6 +1318,7 @@ public class @InputData : IInputActionCollection, IDisposable
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
         public InputAction @Options => m_Wrapper.m_UI_Options;
         public InputAction @Select => m_Wrapper.m_UI_Select;
+        public InputAction @Check => m_Wrapper.m_UI_Check;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1342,6 +1364,9 @@ public class @InputData : IInputActionCollection, IDisposable
                 @Select.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSelect;
                 @Select.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSelect;
                 @Select.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSelect;
+                @Check.started -= m_Wrapper.m_UIActionsCallbackInterface.OnCheck;
+                @Check.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnCheck;
+                @Check.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnCheck;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1382,6 +1407,9 @@ public class @InputData : IInputActionCollection, IDisposable
                 @Select.started += instance.OnSelect;
                 @Select.performed += instance.OnSelect;
                 @Select.canceled += instance.OnSelect;
+                @Check.started += instance.OnCheck;
+                @Check.performed += instance.OnCheck;
+                @Check.canceled += instance.OnCheck;
             }
         }
     }
@@ -1457,5 +1485,6 @@ public class @InputData : IInputActionCollection, IDisposable
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnOptions(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
+        void OnCheck(InputAction.CallbackContext context);
     }
 }

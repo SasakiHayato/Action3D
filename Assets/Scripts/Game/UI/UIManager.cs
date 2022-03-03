@@ -29,6 +29,14 @@ public class UIManager : MonoBehaviour
 
             ui.SetPanel = parent.GetComponent<Image>();
         }
+
+        Inputter.Instance.Inputs.UI.Check.started += context => IsSelectButton();
+    }
+
+    void IsSelectButton()
+    {
+        if (GameManager.Option.Open != GameManager.Instance.OptionState) return;
+        GamePadButtonEvents.Instance.IsSelected();
     }
 
     GameObject CreateCanvas()
@@ -52,6 +60,12 @@ public class UIManager : MonoBehaviour
         foreach (UIWindowParent ui in _windows)
         {
             ui.UpDate();
+        }
+
+        if (GameManager.Instance.OptionState == GameManager.Option.Open)
+        {
+            GamePadButtonEvents.Instance.Select();
+            GamePadButtonEvents.Instance.SelectChangeScale(Vector2.one, Vector2.one * 1.2f);
         }
     }
 
