@@ -74,12 +74,14 @@ public class SceneSettings : MonoBehaviour
         action?.Invoke();
         yield return new WaitForSeconds(waitTime);
         bool isDone = false;
+        GameManager.Instance.GameStateSetUpEvents(GameManager.GameState.Load);
+
         while (!isDone)
         {
             if (_operation.progress >= 0.9f) isDone = true;
             yield return null;
         }
-
+        
         _operation.allowSceneActivation = true;
     }
 }

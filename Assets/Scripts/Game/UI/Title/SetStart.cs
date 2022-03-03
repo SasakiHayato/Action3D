@@ -49,13 +49,11 @@ public class SetStart : UIWindowParent.UIWindowChild
             .AddTo(_startArenaButton);
 
         GamePadButtonEvents.Instance.CreateList(1)
-            .AddEvents(_startButton, () => CallBack(null))
-            .FirstSetUp();
+            .AddEvents(_startButton, () => CallBack(null));
 
         GamePadButtonEvents.Instance.CreateList(2)
             .AddEvents(_startArenaButton, SetArenaCallBack)
-            .AddEvents(_startWarldButton, SetWorldCallBack)
-            .FirstSetUp();
+            .AddEvents(_startWarldButton, SetWorldCallBack);
 
         panel.SetActive(false);
     }

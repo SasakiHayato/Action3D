@@ -11,9 +11,7 @@ public class Test : MonoBehaviour
 
     void Start()
     {
-        GamePadButtonEvents events = new GamePadButtonEvents();
-        GamePadButtonEvents.SetInstance(events, events);
-
+       
         GamePadButtonEvents.Instance.CreateList(0)
             .AddEvents(_button1, CallBackA)
             .AddEvents(_button2, CallBackB)

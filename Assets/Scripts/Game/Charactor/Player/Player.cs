@@ -50,8 +50,6 @@ public class Player : CharaBase, IDamage
 
         Inputter.Instance.Inputs.Player
             .RockOn.started += context => SetLockon();
-
-        
     }
 
     void Update()

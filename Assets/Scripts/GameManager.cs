@@ -120,23 +120,22 @@ public class GameManager : SingletonAttribute<GameManager>
             case GameState.Title:
                 Fader.Instance.Request(Fader.FadeType.In, 0.25f);
                 SetOptionState(Option.Open);
-                GamePadButtonEvents.Instance.PickUpRequest(0);
                 break;
 
             case GameState.Dead:
                 PlayerData.CanMove = false;
                 player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
                 Fader.Instance.Request(Fader.FadeType.Out, 0.5f);
-                GamePadButtonEvents.Instance.Dispose();
                 player.SetAnim("Damage_Die", () => SceneSettings.Instance.LoadSync(0));
                 break;
 
             case GameState.Load:
+                GamePadButtonEvents.Instance.Dispose();
+                End();
                 break;
 
             case GameState.EndArena:
                 Fader.Instance.Request(Fader.FadeType.Out, 1f);
-                GamePadButtonEvents.Instance.Dispose();
                 SceneSettings.Instance.LoadAsync(0, 1);
                 break;
         }

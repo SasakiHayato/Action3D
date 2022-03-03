@@ -2,10 +2,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using System.Linq;
 
 public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
 {
+    public class ButtonEventsData
+    {
+        public int ID { get; set; }
+
+        bool _isSetUp = false;
+
+        public List<Button> Buttons { get; private set; } = new List<Button>();
+        public List<Action> Actions { get; private set; } = new List<Action>();
+
+        public ButtonEventsData AddEvents(Button button, Action action)
+        {
+            if (_isSetUp) return this;
+
+            Buttons.Add(button);
+            Actions.Add(action);
+            return this;
+        }
+
+        public ButtonEventsData FirstSetUp()
+        {
+            _isSetUp = true;
+            return this;
+        }
+    }
+
     List<ButtonEventsData> _eventsDatas;
     ButtonEventsData _pickUpEvents; 
     
@@ -61,6 +85,7 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
             if (item.ID == id)
             {
                 _pickUpEvents = item;
+                Debug.Log($"SetRequest{id}");
                 return;
             }
         }
@@ -122,36 +147,10 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
 
     public void Dispose()
     {
-        for (int i = 0; i < _eventsDatas.Count; i++)
-        {
-            _eventsDatas.Remove(_eventsDatas.First());
-        }
-
+        _eventsDatas = new List<ButtonEventsData>();
         _pickUpEvents = null;
-    }
-}
-
-public class ButtonEventsData
-{
-    public int ID { get; set; }
-
-    bool _isSetUp = false;
-
-    public List<Button> Buttons { get; private set; } = new List<Button>();
-    public List<Action> Actions { get; private set; } = new List<Action>();
-    
-    public ButtonEventsData AddEvents(Button button, Action action)
-    {
-        if (_isSetUp) return this;
-
-        Buttons.Add(button);
-        Actions.Add(action);
-        return this;
-    }
-
-    public ButtonEventsData FirstSetUp()
-    {
-        _isSetUp = true;
-        return this;
+        _currentSelectID = 0;
+        _saveID = 0;
+        _setID = 0;
     }
 }
