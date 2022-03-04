@@ -26,14 +26,21 @@ public class PlayerAttack : StateMachine.State
         _timer = 0;
         if (beforeType == StateMachine.StateType.Avoid)
         {
-            if(GameManager.Instance.IsLockOn && _player.IsAvoid)
+            if(_player.IsAvoid)
             {
-                Transform t = GameManager.Instance.LockonTarget.transform;
-                Vector3 tPos = t.position;
-                Vector3 tForward = t.forward;
-                tPos.y -= 0.5f;
-                Target.transform.DOMove(tPos - tForward, 0.1f).SetEase(Ease.Linear);
-                _attack.Request(ActionType.Counter);
+                if (GameManager.Instance.IsLockOn)
+                {
+                    Transform t = GameManager.Instance.LockonTarget.transform;
+                    Vector3 tPos = t.position;
+                    Vector3 tForward = t.forward;
+                    tPos.y -= 0.5f;
+                    Target.transform.DOMove(tPos - tForward, 0.1f).SetEase(Ease.Linear);
+                    _attack.RequestAt(ActionType.Counter, 0);
+                }
+                else
+                {
+                    _attack.RequestAt(ActionType.Counter, 1);
+                }
             }
         }
         else

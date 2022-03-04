@@ -810,7 +810,19 @@ MonoBehaviour:
   - AnimName: Skill_A
     GroupID: 0
     Power: 4
-    IsEndCombo: 0
+    IsEndCombo: 1
+    KnockBackData:
+      Power: 6
+      Type: 0
+    NextAcceptTime: 5
+    SE: {fileID: 8300000, guid: 35952cea61a4a22429e8c092a8df76e0, type: 3}
+    SEVol: 0.1
+    Action: 2
+    Effects: 00000000020000000300000001000000
+  - AnimName: Skill_B
+    GroupID: 0
+    Power: 4
+    IsEndCombo: 1
     KnockBackData:
       Power: 6
       Type: 0

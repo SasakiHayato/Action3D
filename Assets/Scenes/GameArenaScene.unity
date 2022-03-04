@@ -134,6 +134,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 984375943469860072, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
+      propertyPath: field of view
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 984375943469860072, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
@@ -881,6 +886,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 4833830171947244894, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _count
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5133409705361938506, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: m_RootOrder
@@ -1116,6 +1126,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1838137473}
     m_Modifications:
+    - target: {fileID: 572088131811373264, guid: 44a955f13438e024c9392d235a8e725f,
+        type: 3}
+      propertyPath: _rotateSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 572088131811373265, guid: 44a955f13438e024c9392d235a8e725f,
         type: 3}
       propertyPath: m_RootOrder

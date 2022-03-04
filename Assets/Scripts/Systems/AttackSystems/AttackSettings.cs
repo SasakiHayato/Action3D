@@ -267,6 +267,34 @@ namespace AttackSetting
             }
         }
 
+        public void RequestAt(ActionType type, int id)
+        {
+            if (!_isRequest || _attacking)
+            {
+                Debug.Log("ReturnRequest");
+                Debug.Log($"IsRequest{_isRequest} : Attaking {_attacking}");
+                return;
+            }
+
+            _isRequest = false;
+            IsNextRequest = false;
+
+            if (_saveActionType == ActionType.None || _saveActionType != type)
+            {
+                _saveActionType = type;
+                InitParam();
+            }
+
+            List<AttackData> list = new List<AttackData>();
+
+            foreach (var item in _attacks)
+            {
+                if (item.Action == type) list.Add(item);
+            }
+
+            SetData(list[id]);
+        }
+
         // êÊçsì¸óÕÇÃéÛït
         public void NextRequest() { if (_nextRequest) IsNextRequest = true; }
         
