@@ -17,6 +17,8 @@ public class CmCotrol : MonoBehaviour
     GameObject _player;
     GameObject _core;
 
+    float _timer;
+
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -34,6 +36,8 @@ public class CmCotrol : MonoBehaviour
     {
         if (!GameManager.Instance.PlayerData.CanMove) return;
         if (GameManager.Instance.OptionState != GameManager.Option.Open) Move();
+
+        _timer += Time.deltaTime;
         
         _core.transform.position = _player.transform.position;
     }

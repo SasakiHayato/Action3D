@@ -123,6 +123,7 @@ MonoBehaviour:
         - id: 11
         - id: 12
         - id: 13
+        - id: 14
     00000002:
       type: {class: EnemyConnectUI, ns: , asm: Assembly-CSharp}
       data:
@@ -130,7 +131,7 @@ MonoBehaviour:
           type: 3}
         _type: 2
         _windows:
-        - id: 14
+        - id: 15
     00000003:
       type: {class: TitleUI, ns: , asm: Assembly-CSharp}
       data:
@@ -138,9 +139,9 @@ MonoBehaviour:
           type: 3}
         _type: 3
         _windows:
-        - id: 15
         - id: 16
         - id: 17
+        - id: 18
     00000004:
       type: {class: PostProcessToAvoid, ns: , asm: Assembly-CSharp}
       data:
@@ -195,13 +196,20 @@ MonoBehaviour:
         _playerTextColor: {r: 0, g: 0, b: 0, a: 1}
         _enemyTextColor: {r: 1, g: 0, b: 0, a: 1}
     0000000E:
+      type: {class: OptionButtons, ns: , asm: Assembly-CSharp}
+      data:
+        _menuPanelName: MenuPanel
+        _mapButtonName: Map
+        _itemButtonName: Item
+        _optinButtonName: Option
+    0000000F:
       type: {class: BossInform, ns: , asm: Assembly-CSharp}
       data:
         _panelName: BossAlertPanel
         _backGroundName: BackGroundImage
         _warningTextName: WaringText
         _nameTextName: NameText
-    0000000F:
+    00000010:
       type: {class: SetStart, ns: , asm: Assembly-CSharp}
       data:
         _buttonPanelName: ButtonPanel
@@ -209,13 +217,13 @@ MonoBehaviour:
         _activePanelName: SetStartPanel
         _warldButtonName: WarldButton
         _arenaButtonName: ArenaButton
-    00000010:
+    00000011:
       type: {class: AnyPressedTitle, ns: , asm: Assembly-CSharp}
       data:
         _buttonName: TitleButton
         _titleButtonTextName: TitleButtonText
         _requestActivePanelName: ButtonPanel
-    00000011:
+    00000012:
       type: {class: TitleUIAnim, ns: , asm: Assembly-CSharp}
       data:
         _titleButtonTextName: TitleButtonText

@@ -20,7 +20,7 @@ public class OptionButtons : UIWindowParent.UIWindowChild
 
     public override void SetUp()
     {
-        GameObject obj = ParentPanel.transform.Find(_mapButtonName).gameObject;
+        GameObject obj = ParentPanel.transform.Find(_menuPanelName).gameObject;
 
         _mapButton = obj.transform.Find(_mapButtonName).GetComponent<Button>();
         _mapButton.OnClickAsObservable()
@@ -42,21 +42,29 @@ public class OptionButtons : UIWindowParent.UIWindowChild
             .ThrottleFirst(TimeSpan.FromSeconds(1f))
             .Subscribe(_ => OptionPanelActive())
             .AddTo(_optionButton);
+
+        GamePadButtonEvents.Instance.CreateList(3)
+            .AddEvents(_optionButton, OptionPanelActive)
+            .AddEvents(_itemButton, ItemPanelActive)
+            .AddEvents(_mapButton, MapPanelActive)
+            .FirstSetUp();
+
+        GamePadButtonEvents.Instance.PickUpRequest(3);
     }
 
     void MapPanelActive()
     {
-
+        Debug.Log("Map");
     }
 
     void ItemPanelActive()
     {
-
+        Debug.Log("Item");
     }
 
     void OptionPanelActive()
     {
-
+        Debug.Log("option");
     }
 
     public override void UpDate() { }

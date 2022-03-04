@@ -92,6 +92,8 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
 
     public void SelectChangeScale(Vector2 offset, Vector2 selected)
     {
+        if (_pickUpEvents == null) return;
+
         for (int id = 0; id < _pickUpEvents.Buttons.Count; id++)
         {
             if (id == _currentSelectID)
@@ -134,6 +136,8 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
 
     public void IsSelected()
     {
+        if (_pickUpEvents == null) return;
+
         for (int id = 0; id < _pickUpEvents.Buttons.Count; id++)
         {
             if (id == _currentSelectID)

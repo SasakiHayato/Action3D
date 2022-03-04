@@ -32,17 +32,19 @@ public class MenuPanel : UIWindowParent.UIWindowChild
         if (_isActive)
         {
             GameManager.Instance.SetOptionState(GameManager.Option.Close);
-
+            Time.timeScale = 1;
             _rect.DOAnchorPosX(_setPos.x, 0.2f)
                 .SetEase(Ease.Linear)
+                .SetUpdate(true)
                 .OnComplete(() => _isActive = false);
         }
         else
         {
             GameManager.Instance.SetOptionState(GameManager.Option.Open);
-
+            Time.timeScale = 0;
             _rect.DOAnchorPosX(_saveVec.x, 0.2f)
                 .SetEase(Ease.Linear)
+                .SetUpdate(true)
                 .OnComplete(() => _isActive = true);
         }
     }
