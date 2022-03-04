@@ -27,3 +27,9 @@ MonoBehaviour:
     Volume: 0.5
     SpatialBrend: 0
     Loop: 0
+  - Name: ShotBullet2
+    ID: 2
+    Clip: {fileID: 8300000, guid: bc5cc17af2597ac4195ea661f86e58b3, type: 3}
+    Volume: 0.5
+    SpatialBrend: 0
+    Loop: 0

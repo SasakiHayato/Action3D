@@ -111,6 +111,7 @@ public class Player : CharaBase, IDamage
     {
         if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
         _state.ChangeState(StateMachine.StateType.Floating);
+        _attack.Cancel();
         PhsicsBase.SetJump();
     }
 

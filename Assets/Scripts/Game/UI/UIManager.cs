@@ -36,7 +36,6 @@ public class UIManager : MonoBehaviour
     void IsSelectButton()
     {
         if (GameManager.Option.Open != GameManager.Instance.OptionState) return;
-        Debug.Log("aaaaaaaaaaaaaaa");
         GamePadButtonEvents.Instance.IsSelected();
     }
 

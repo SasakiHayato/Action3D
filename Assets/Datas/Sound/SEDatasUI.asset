@@ -33,3 +33,9 @@ MonoBehaviour:
     Volume: 0.5
     SpatialBrend: 0
     Loop: 0
+  - Name: BossDisplay
+    ID: 3
+    Clip: {fileID: 8300000, guid: a720aaa54cafb4f4792e44a3052184d1, type: 3}
+    Volume: 0.647
+    SpatialBrend: 0
+    Loop: 0

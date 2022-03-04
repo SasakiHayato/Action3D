@@ -21,3 +21,9 @@ MonoBehaviour:
     Volume: 0.7
     SpatialBrend: 0
     Loop: 0
+  - Name: Explosion
+    ID: 1
+    Clip: {fileID: 8300000, guid: 47dc7576d1167774c83a2bb0fa08aa90, type: 3}
+    Volume: 0.719
+    SpatialBrend: 0
+    Loop: 0
