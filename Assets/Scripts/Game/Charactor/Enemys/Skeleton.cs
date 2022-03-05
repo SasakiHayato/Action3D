@@ -34,7 +34,7 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
         _attack.Cancel();
 
         object[] setUiData = { damage, gameObject, ColorType.Enemy };
-        UIManager.CallBack(UIType.Game, 4, setUiData);
+        UIManager.CallBack(UIType.Game, 3, setUiData);
 
         StartCoroutine(EndAnim());
         HP -= damage;

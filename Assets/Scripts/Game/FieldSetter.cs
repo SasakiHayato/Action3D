@@ -8,9 +8,9 @@ using System.Linq;
 /// </summary>
 
 [System.Serializable]
-public class FieldData
+public class FieldSetter
 {
-    public FieldData() { }
+    public FieldSetter() { }
 
     public bool DebugBool { get; set; }
     public int DebugLevel { get; set; }
@@ -40,7 +40,7 @@ public class FieldData
 
     public int Level { get; private set; } = 1;
 
-    public FieldData(List<FieldManager.SpawnData> spawn, EnemyMasterData masterDatas)
+    public FieldSetter(List<FieldManager.SpawnData> spawn, EnemyMasterData masterDatas)
     {
         _spawnData = spawn;
         _enemyMasterData = masterDatas;

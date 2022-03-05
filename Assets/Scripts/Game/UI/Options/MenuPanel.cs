@@ -24,14 +24,21 @@ public class MenuPanel : UIWindowParent.UIWindowChild
         _saveVec = _rect.anchoredPosition;
         _rect.anchoredPosition = _setPos;
 
-        Inputter.Instance.Inputs.UI.Options.started += context => SetCanvas();
+        if (GameManager.GameState.Title != GameManager.Instance.CurrentGameState)
+        {
+            Inputter.Instance.Inputs.UI.Options.started += context => SetCanvas();
+        }
     }
 
     void SetCanvas()
     {
         if (_isActive)
         {
-            GameManager.Instance.SetOptionState(GameManager.Option.Close);
+            if (GameManager.GameState.Title != GameManager.Instance.CurrentGameState)
+            {
+                GameManager.Instance.SetOptionState(GameManager.Option.Close);
+            }
+            
             Time.timeScale = 1;
             _rect.DOAnchorPosX(_setPos.x, 0.2f)
                 .SetEase(Ease.Linear)
@@ -51,19 +58,13 @@ public class MenuPanel : UIWindowParent.UIWindowChild
 
     public override void UpDate()
     {
-        if (_isActive)
-        {
-            Select();
-        }
-    }
-
-    void Select()
-    {
-
+     
     }
 
     public override void CallBack(object[] data)
     {
-        
+        Debug.Log((int)data[0]);
+        SetCanvas();
+        GamePadButtonEvents.Instance.PickUpRequest((int)data[0]);
     }
 }

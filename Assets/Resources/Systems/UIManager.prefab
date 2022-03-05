@@ -97,6 +97,7 @@ MonoBehaviour:
   - id: 1
   - id: 2
   - id: 3
+  - id: 4
   references:
     version: 1
     00000000:
@@ -106,12 +107,12 @@ MonoBehaviour:
           type: 3}
         _type: 0
         _windows:
-        - id: 4
         - id: 5
         - id: 6
         - id: 7
         - id: 8
         - id: 9
+        - id: 10
     00000001:
       type: {class: GameUI, ns: , asm: Assembly-CSharp}
       data:
@@ -119,11 +120,9 @@ MonoBehaviour:
           type: 3}
         _type: 1
         _windows:
-        - id: 10
         - id: 11
         - id: 12
         - id: 13
-        - id: 14
     00000002:
       type: {class: EnemyConnectUI, ns: , asm: Assembly-CSharp}
       data:
@@ -131,7 +130,7 @@ MonoBehaviour:
           type: 3}
         _type: 2
         _windows:
-        - id: 15
+        - id: 14
     00000003:
       type: {class: TitleUI, ns: , asm: Assembly-CSharp}
       data:
@@ -139,48 +138,52 @@ MonoBehaviour:
           type: 3}
         _type: 3
         _windows:
+        - id: 15
         - id: 16
         - id: 17
-        - id: 18
     00000004:
+      type: {class: OptionsUI, ns: , asm: Assembly-CSharp}
+      data:
+        _targetPanel: {fileID: 8705289887935624827, guid: 3629747457ba7d94881971f81c1b262f,
+          type: 3}
+        _type: 4
+        _windows:
+        - id: 18
+        - id: 19
+    00000005:
       type: {class: PostProcessToAvoid, ns: , asm: Assembly-CSharp}
       data:
         _profile: {fileID: 11400000, guid: 3e14f8bf63d929f479475d178826acba, type: 2}
         _fadeSpeed: 10
         _intencity: 0.2
-    00000005:
+    00000006:
       type: {class: Lockon, ns: , asm: Assembly-CSharp}
       data:
         _sprite: {fileID: 21300000, guid: 6ef0b43a886080b4f9669affe82e41db, type: 3}
         _color: {r: 0.6226415, g: 0, b: 0.012183531, a: 0.5019608}
-    00000006:
+    00000007:
       type: {class: HPSlider, ns: , asm: Assembly-CSharp}
       data:
         _sliderName: HPSlider
         _slideSpeed: 5
-    00000007:
+    00000008:
       type: {class: LevelTextSetter, ns: , asm: Assembly-CSharp}
       data:
         _imageName: LevelImage
-    00000008:
+    00000009:
       type: {class: ExpSlider, ns: , asm: Assembly-CSharp}
       data:
         _sliderName: ExpSlider
-    00000009:
+    0000000A:
       type: {class: PostProcessGrain, ns: , asm: Assembly-CSharp}
       data:
         _processProfile: {fileID: 11400000, guid: 3e14f8bf63d929f479475d178826acba,
           type: 2}
         _effectHpParcent: 0.3
-    0000000A:
+    0000000B:
       type: {class: Timer, ns: , asm: Assembly-CSharp}
       data:
         _name: Timer
-    0000000B:
-      type: {class: MenuPanel, ns: , asm: Assembly-CSharp}
-      data:
-        _name: MenuPanel
-        _setPos: {x: -1600, y: 0}
     0000000C:
       type: {class: LogCountrol, ns: , asm: Assembly-CSharp}
       data:
@@ -196,34 +199,41 @@ MonoBehaviour:
         _playerTextColor: {r: 0, g: 0, b: 0, a: 1}
         _enemyTextColor: {r: 1, g: 0, b: 0, a: 1}
     0000000E:
-      type: {class: OptionButtons, ns: , asm: Assembly-CSharp}
-      data:
-        _menuPanelName: MenuPanel
-        _mapButtonName: Map
-        _itemButtonName: Item
-        _optinButtonName: Option
-    0000000F:
       type: {class: BossInform, ns: , asm: Assembly-CSharp}
       data:
         _panelName: BossAlertPanel
         _backGroundName: BackGroundImage
         _warningTextName: WaringText
         _nameTextName: NameText
-    00000010:
+    0000000F:
       type: {class: SetStart, ns: , asm: Assembly-CSharp}
       data:
         _buttonPanelName: ButtonPanel
         _startButtonName: StartButton
+        _optionButtonName: OptionButton
         _activePanelName: SetStartPanel
         _warldButtonName: WarldButton
         _arenaButtonName: ArenaButton
-    00000011:
+    00000010:
       type: {class: AnyPressedTitle, ns: , asm: Assembly-CSharp}
       data:
         _buttonName: TitleButton
         _titleButtonTextName: TitleButtonText
         _requestActivePanelName: ButtonPanel
-    00000012:
+    00000011:
       type: {class: TitleUIAnim, ns: , asm: Assembly-CSharp}
       data:
         _titleButtonTextName: TitleButtonText
+    00000012:
+      type: {class: MenuPanel, ns: , asm: Assembly-CSharp}
+      data:
+        _name: MenuPanel
+        _setPos: {x: 2000, y: 0}
+    00000013:
+      type: {class: OptionButtons, ns: , asm: Assembly-CSharp}
+      data:
+        _menuPanelName: MenuPanel
+        _mapButtonName: Map
+        _itemButtonName: Item
+        _systemButtonName: Systems
+        _backButtonName: Back

@@ -84,12 +84,12 @@ namespace AttackSetting
             }
             if (parent == AttackCollision.Parent.Player)
             {
-                EnemyBase enemyBase = target.GetComponent<EnemyBase>();
+                EnemyBase enemyBase = target?.GetComponent<EnemyBase>();
                 if (enemyBase != null) enemyBase.KnockBack(setVec * knock.Power);
             }
             else
             {
-                Player player = target.GetComponent<Player>();
+                Player player = target?.GetComponent<Player>();
                 if (player != null) player.KnockBack(setVec * knock.Power);
             }
         }

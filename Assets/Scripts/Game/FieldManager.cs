@@ -16,8 +16,8 @@ public class FieldManager : MonoBehaviour
     [SerializeField] float _rate;
     [SerializeField] float _time;
     
-    FieldData _fieldData = new FieldData();
-    public FieldData FieldData => _fieldData;
+    FieldSetter _fieldData = new FieldSetter();
+    public FieldSetter FieldData => _fieldData;
     
     // ‚Ç‚±‚©‚ç‚Å‚àŒÄ‚×‚é‚æ‚¤‚É
     private static FieldManager _instance = null;
@@ -73,18 +73,18 @@ public class FieldManager : MonoBehaviour
     {
         if (GameManager.Instance.InGameFieldType == GameManager.FieldType.Warld)
         {
-            _fieldData = new FieldData(_worldSpownDatas, _enemyMasterData);
+            _fieldData = new FieldSetter(_worldSpownDatas, _enemyMasterData);
             _fieldData.UpdateEnemy();
 
             _setUpdateTime = _updateTime;
         }
         else
         {
-            _fieldData = new FieldData(_arenaSpawnDatas, _enemyMasterData);
+            _fieldData = new FieldSetter(_arenaSpawnDatas, _enemyMasterData);
             
             // Log
-            UIManager.CallBack(UIType.Game, 3, new object[] { 6 });
-            UIManager.CallBack(UIType.Game, 3, new object[] { 5 });
+            UIManager.CallBack(UIType.Game, 2, new object[] { 6 });
+            UIManager.CallBack(UIType.Game, 2, new object[] { 5 });
         }
     }
 

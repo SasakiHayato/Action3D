@@ -22,6 +22,7 @@ public enum UIType
     Game,
     EnemyConnect,
     Title,
+    Options,
 }
 
 public enum InputType

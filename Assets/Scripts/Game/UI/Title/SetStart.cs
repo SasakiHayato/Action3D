@@ -11,11 +11,13 @@ public class SetStart : UIWindowParent.UIWindowChild
 {
     [SerializeField] string _buttonPanelName;
     [SerializeField] string _startButtonName;
+    [SerializeField] string _optionButtonName; 
     [SerializeField] string _activePanelName;
     [SerializeField] string _warldButtonName;
     [SerializeField] string _arenaButtonName;
 
     Button _startButton;
+    Button _optionButton;
     Button _startWarldButton;
     Button _startArenaButton;
 
@@ -30,6 +32,13 @@ public class SetStart : UIWindowParent.UIWindowChild
             .ThrottleFirst(TimeSpan.FromSeconds(1f))
             .Subscribe(_ => CallBack(null))
             .AddTo(_startButton);
+
+        _optionButton = transform.Find(_optionButtonName).GetComponent<Button>();
+        _optionButton.OnClickAsObservable()
+            .TakeUntilDestroy(_optionButton)
+            .ThrottleFirst(TimeSpan.FromSeconds(1f))
+            .Subscribe(_ => SetOptionPanel())
+            .AddTo(_optionButton);
 
         GameObject panel = ParentPanel.transform.Find(_activePanelName).gameObject;
         panel.SetActive(true);
@@ -49,7 +58,9 @@ public class SetStart : UIWindowParent.UIWindowChild
             .AddTo(_startArenaButton);
 
         GamePadButtonEvents.Instance.CreateList(1)
+            .AddEvents(_optionButton, () => SetOptionPanel())
             .AddEvents(_startButton, () => CallBack(null));
+            
 
         GamePadButtonEvents.Instance.CreateList(2)
             .AddEvents(_startArenaButton, SetArenaCallBack)
@@ -68,6 +79,11 @@ public class SetStart : UIWindowParent.UIWindowChild
         GameObject panel = ParentPanel.transform.Find(_activePanelName).gameObject;
         panel.SetActive(true);
         GamePadButtonEvents.Instance.PickUpRequest(2);
+    }
+    
+    void SetOptionPanel()
+    {
+        UIManager.CallBack(UIType.Options, 1, new object[] { 3 });
     }
 
     void SetArenaCallBack()
