@@ -165,7 +165,7 @@ public class FieldSetter
                         iEnemy.EnemyData = enemyData;
 
                         if (enemyData.EnemyType == EnemyType.Boss)
-                            UIManager.CallBack(UIType.EnemyConnect, 1, new object[] { enemyData.DisplayName });
+                            BaseUI.Instance.CallBack("EnemyConnect", "BossInfo", new object[] { enemyData.DisplayName });
 
                         groupData.FieldEnemies.Add(iEnemy);
                     }
@@ -208,7 +208,7 @@ public class FieldSetter
                         iEnemy.EnemyData = enemyData;
                         
                         if (enemyData.EnemyType == EnemyType.Boss)
-                            UIManager.CallBack(UIType.EnemyConnect, 1, new object[] { enemyData.DisplayName });
+                            BaseUI.Instance.CallBack("EnemyConnect", "BossInfo", new object[] { enemyData.DisplayName });
 
                         groupData.FieldEnemies.Add(iEnemy);
                     }

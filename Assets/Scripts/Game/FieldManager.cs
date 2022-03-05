@@ -81,10 +81,10 @@ public class FieldManager : MonoBehaviour
         else
         {
             _fieldData = new FieldSetter(_arenaSpawnDatas, _enemyMasterData);
-            
+
             // Log
-            UIManager.CallBack(UIType.Game, 2, new object[] { 6 });
-            UIManager.CallBack(UIType.Game, 2, new object[] { 5 });
+            BaseUI.Instance.CallBack("Game", "Log", new object[] { 6 });
+            BaseUI.Instance.CallBack("Game", "Log", new object[] { 5 });
         }
     }
 
@@ -108,7 +108,7 @@ public class FieldManager : MonoBehaviour
         {
             _updateTime += _setUpdateTime;
             _fieldData.Update();
-            UIManager.CallBack(UIType.Game, 3, new object[] { 0 });
+            BaseUI.Instance.CallBack("Game", "Log", new object[] { 0 });
         }
     }
 
@@ -131,19 +131,19 @@ public class FieldManager : MonoBehaviour
     /// <param name="action">スローモーションが終わった際に実行する関数</param>
     /// <param name="type">アクションに登録するUiType</param>
     /// <param name="id">アクションに登録するID</param>
-    public static void FieldTimeRate(Action<UIType, int, object[]> action, UIType type, int id)
+    public static void FieldTimeRate(Action action)
     {
         SoundMaster.PlayRequest(null, "StartSlowMotion", SEDataBase.DataType.Field);
-        Instance.StartCoroutine(Instance.SetRate(action, type, id));
+        Instance.StartCoroutine(Instance.SetRate(action));
     }
 
-    IEnumerator SetRate(Action<UIType, int, object[]> action, UIType type, int id)
+    IEnumerator SetRate(Action action)
     {
         Time.timeScale = 1 / _rate;
         yield return new WaitForSecondsRealtime(_time);
         Time.timeScale = 1;
 
-        if (action != null) action.Invoke(type, id, null);
+        if (action != null) action.Invoke();
     }
 
     /// <summary>

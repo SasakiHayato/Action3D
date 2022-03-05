@@ -7,19 +7,16 @@ using UniRx;
 /// TitleÉVÅ[ÉìÇÃàÍî‘ç≈èâÇÃButton
 /// </summary>
 
-public class AnyPressedTitle : UIWindowParent.UIWindowChild
+public class AnyPressedTitle : ChildrenUI
 {
-    [SerializeField] string _buttonName;
-    [SerializeField] string _titleButtonTextName;
-    [SerializeField] string _requestActivePanelName;
-    Button _button;
+    [SerializeField] GameObject _requestActivePanel;
+    [SerializeField] GameObject _titleTextObj;
 
-    GameObject _titleTextObj;
+    Button _button;
 
     public override void SetUp()
     {
-        _titleTextObj = ParentPanel.transform.Find(_titleButtonTextName).gameObject;
-        _button = ParentPanel.transform.Find(_buttonName).GetComponent<Button>();
+        _button = GetComponent<Button>();
         
         _button.OnClickAsObservable()
             .TakeUntilDestroy(_button)
@@ -33,17 +30,12 @@ public class AnyPressedTitle : UIWindowParent.UIWindowChild
         GamePadButtonEvents.Instance.PickUpRequest(0);
     }
 
-    public override void UpDate()
-    {
-        
-    }
-
     public override void CallBack(object[] data)
     {
         Fader.Instance.Cancel();
         _titleTextObj.SetActive(false);
         _button.gameObject.SetActive(false);
-        ParentPanel.transform.Find(_requestActivePanelName).gameObject.SetActive(true);
+        _requestActivePanel.SetActive(true);
         GamePadButtonEvents.Instance.PickUpRequest(1);
     }
 }

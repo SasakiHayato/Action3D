@@ -71,7 +71,7 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
                 }
             }
         }
-
+        
         ButtonEventsData data = new ButtonEventsData();
         data.ID = createID;
         _eventsDatas.Add(data);
@@ -84,6 +84,7 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
         {
             if (item.ID == id)
             {
+                Debug.Log($"PickUp {id}");
                 _pickUpEvents = item;
                 return;
             }

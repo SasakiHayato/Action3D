@@ -4,25 +4,17 @@ using UnityEngine;
 /// DamageÇéÛÇØÇΩç€ÇÃTextï\é¶
 /// </summary>
 
-public class DamageText : UIWindowParent.UIWindowChild
+public class DamageText : ChildrenUI
 {
-    [SerializeField] string _damageTextName;
     [SerializeField] Color _playerTextColor;
     [SerializeField] Color _enemyTextColor;
 
     ObjectPool<DamageTextSetter> _textPool = new ObjectPool<DamageTextSetter>();
-    GameObject _damageTextPrefab;
-
+    
     public override void SetUp()
     {
-        _damageTextPrefab = ParentPanel.transform.Find(_damageTextName).gameObject;
-        _textPool.SetUp(_damageTextPrefab.GetComponent<DamageTextSetter>(), ParentPanel.transform, 10);
-        _damageTextPrefab.SetActive(false);
-    }
-
-    public override void UpDate()
-    {
-        
+        _textPool.SetUp(gameObject.GetComponent<DamageTextSetter>(), ParentPanel.transform, 10);
+        gameObject.SetActive(false);
     }
 
     public override void CallBack(object[] data)

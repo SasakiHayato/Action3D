@@ -5,7 +5,7 @@ using UnityEngine.Rendering.PostProcessing;
 /// PostProcess,　グレインの表示
 /// </summary>
 
-public class PostProcessGrain : UIWindowParent.UIWindowChild
+public class PostProcessGrain : ChildrenUI
 {
     [SerializeField] PostProcessProfile _processProfile;
     [SerializeField] float _effectHpParcent;
@@ -19,10 +19,10 @@ public class PostProcessGrain : UIWindowParent.UIWindowChild
         _grain = _processProfile.GetSetting<Grain>();
     }
 
-    public override void UpDate()
+    private void Update()
     {
         float effect = Mathf.Lerp(0, _charaBase.MaxHP, _effectHpParcent);
-        
+
         if (effect > _charaBase.HP) _grain.active = true;
         else _grain.active = false;
     }

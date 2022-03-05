@@ -67,8 +67,8 @@ public class GameManager : SingletonAttribute<GameManager>
     {
         CurrentGameState = state;
 
-        Object.Instantiate((GameObject)Resources.Load("Systems/UIManager"));
         Object.Instantiate((GameObject)Resources.Load("Systems/SoundMaster"));
+        BaseUI.Instance.Load();
 
         switch (state)
         {
@@ -90,6 +90,7 @@ public class GameManager : SingletonAttribute<GameManager>
 
             case GameState.Title:
                 SoundMaster.PlayRequest(null, "TitleBGM", SEDataBase.DataType.BGM);
+                BaseUI.Instance.ParentActive("Title", true);
                 break;
 
             case GameState.Dead:
@@ -203,7 +204,7 @@ public class GameManager : SingletonAttribute<GameManager>
         if (currentExp >= PlayerData.NextLevelExp)
         {
             // Log
-            UIManager.CallBack(UIType.Game, 3, new object[] { 1 });
+            //UIManager.CallBack(UIType.Game, 3, new object[] { 1 });
 
             int set = currentExp - PlayerData.NextLevelExp;
             PlayerData.NextLevelExp += 100;
@@ -215,17 +216,17 @@ public class GameManager : SingletonAttribute<GameManager>
             PlayerData.Player.SetParam(hp, power, speed, level);
 
             // ExpSlider
-            UIManager.CallBack(UIType.Player, 5, null);
+            //UIManager.CallBack(UIType.Player, 5, null);
 
             AddExp(PlayerData.CurrentExp = set);
         }
         else
         {
             // HpSlider
-            UIManager.CallBack(UIType.Player, 4, new object[] { PlayerData.Player.Level });
+            //UIManager.CallBack(UIType.Player, 4, new object[] { PlayerData.Player.Level });
             // Leveltext
-            UIManager.CallBack(UIType.Player, 3, new object[] { PlayerData.Player.HP });
-            Sounds.SoundMaster.PlayRequest(null, "LevelUp", 0);
+            //UIManager.CallBack(UIType.Player, 3, new object[] { PlayerData.Player.HP });
+            SoundMaster.PlayRequest(null, "LevelUp", 0);
         }
     }
 

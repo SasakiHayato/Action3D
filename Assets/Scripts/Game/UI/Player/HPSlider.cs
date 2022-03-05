@@ -5,9 +5,8 @@ using UnityEngine.UI;
 /// åªç›ÇÃPlayerÇÃHPÇÃï\é¶
 /// </summary>
 
-public class HPSlider : UIWindowParent.UIWindowChild
+public class HPSlider : ChildrenUI
 {
-    [SerializeField] string _sliderName;
     [SerializeField] float _slideSpeed = 1;
     Slider _slider;
     Player _player;
@@ -17,14 +16,14 @@ public class HPSlider : UIWindowParent.UIWindowChild
 
     public override void SetUp()
     {
-        _player = Object.FindObjectOfType<Player>();
-        _slider = ParentPanel.gameObject.transform.Find(_sliderName).GetComponent<Slider>();
+        _player = FindObjectOfType<Player>();
+        _slider = GetComponent<Slider>();
         _slider.maxValue = _player.HP;
         _slider.value = _player.HP;
         _saveHp = _player.HP;
     }
 
-    public override void UpDate()
+    private void Update()
     {
         if (_saveHp != _player.HP)
         {

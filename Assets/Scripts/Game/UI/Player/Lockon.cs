@@ -6,7 +6,7 @@ using DG.Tweening;
 /// ロックオンしたEnemyに対するUIの表示
 /// </summary>
 
-public class Lockon : UIWindowParent.UIWindowChild
+public class Lockon : ChildrenUI
 {
     [SerializeField] Sprite _sprite;
     [SerializeField] Color _color;
@@ -36,7 +36,7 @@ public class Lockon : UIWindowParent.UIWindowChild
         _setUI.SetActive(false);
     }
 
-    public override void UpDate()
+    private void Update()
     {
         if (!GameManager.Instance.IsLockOn)
         {

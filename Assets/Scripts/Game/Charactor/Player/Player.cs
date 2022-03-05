@@ -167,7 +167,7 @@ public class Player : CharaBase, IDamage
             }
 
             GameManager.Instance.LockonTarget = set;
-            UIManager.CallBack(UIType.Player, 2, new object[] { set });
+            BaseUI.Instance.CallBack("Player", "Lockon", new object[] { set });
         }
         else
             GameManager.Instance.IsLockOn = false;
@@ -180,8 +180,8 @@ public class Player : CharaBase, IDamage
             if (IsAvoid) return;
             IsAvoid = true;
 
-            UIManager.CallBack(UIType.Player, 1);
-            FieldManager.FieldTimeRate(UIManager.CallBack, UIType.Player, 1);
+            BaseUI.Instance.CallBack("Player", "Avoid");
+            FieldManager.FieldTimeRate(() => BaseUI.Instance.CallBack("Player", "Avoid"));
             
             return;
         }
@@ -192,8 +192,8 @@ public class Player : CharaBase, IDamage
         Sounds.SoundMaster.PlayRequest(transform, "Damage", 0);
 
         object[] datas = { damage, gameObject, ColorType.Player };
-        UIManager.CallBack(UIType.Game, 4, datas);
-        
+        BaseUI.Instance.CallBack("Game", "Damage", datas);
+
         HP -= damage;
         if (HP <= 0)
         {

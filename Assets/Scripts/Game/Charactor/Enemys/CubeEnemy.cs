@@ -20,7 +20,8 @@ public class CubeEnemy : EnemyBase, IDamage, IFieldEnemy
     public void GetDamage(int damage, AttackType type)
     {
         object[] setUiData = { damage, gameObject, ColorType.Enemy };
-        UIManager.CallBack(UIType.Game, 3, setUiData);
+        BaseUI.Instance.CallBack("Game", "Damage", setUiData);
+        
         Sounds.SoundMaster.PlayRequest(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
         HP -= damage;
         if (HP <= 0) base.Dead(gameObject);

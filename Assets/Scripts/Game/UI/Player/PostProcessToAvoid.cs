@@ -5,7 +5,7 @@ using UnityEngine.Rendering.PostProcessing;
 /// PostProcess, ‰ñ”ðŽž‚ÌEffect
 /// </summary>
 
-public class PostProcessToAvoid : UIWindowParent.UIWindowChild
+public class PostProcessToAvoid : ChildrenUI
 {
     [SerializeField] PostProcessProfile _profile;
     [SerializeField] float _fadeSpeed = 1;
@@ -22,7 +22,7 @@ public class PostProcessToAvoid : UIWindowParent.UIWindowChild
 
     public override void SetUp()
     {
-        _radial = Object.FindObjectOfType<RadialBlur>();
+        _radial = FindObjectOfType<RadialBlur>();
 
         _vignette = _profile.GetSetting<Vignette>();
         _vignette.active = false;
@@ -31,13 +31,13 @@ public class PostProcessToAvoid : UIWindowParent.UIWindowChild
         _grading.active = false;
     }
 
-    public override void UpDate()
+    private void Update()
     {
         float vignetteVal = 0;
         float gradingVal = 0;
 
         _time += Time.unscaledDeltaTime * _fadeSpeed;
-        
+
         if (_isEffect)
         {
             vignetteVal = Mathf.Lerp(0, _intencity, _time);

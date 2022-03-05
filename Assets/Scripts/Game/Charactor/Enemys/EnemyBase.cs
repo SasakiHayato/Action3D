@@ -45,8 +45,6 @@ public abstract class EnemyBase : CharaBase
             GameManager.Instance.RemoveAttackCollsion(attackCollision);
         }
         
-        FieldManager.FieldTimeRate(null, UIType.Player, 1);
-        
         Destroy(target);
     }
 

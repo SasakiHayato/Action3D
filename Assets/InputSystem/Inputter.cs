@@ -4,38 +4,24 @@ using UnityEngine;
 /// InputSystemのデータ管理クラス
 /// </summary>
 
-public class Inputter : MonoBehaviour
+public class Inputter : SingletonAttribute<Inputter>
 {
-    private static Inputter _instance = null;
-    public static Inputter Instance
-    {
-        get
-        {
-            object instance = FindObjectOfType(typeof(Inputter));
-            if (instance != null) _instance = (Inputter)instance;
-            else
-            {
-                GameObject obj = new GameObject("Inputter");
-                _instance = obj.AddComponent<Inputter>();
-                obj.hideFlags = HideFlags.HideInHierarchy;
-            }
-
-            return _instance;
-        }
-    }
-
     public InputData Inputs { get => _inputs; }
     InputData _inputs;
 
-    private void Awake()
+    public override void SetUp()
     {
+        base.SetUp();
+
         _inputs = new InputData();
         _inputs.Enable();
+
+        Inputs.UI.Check.started += context => IsSelectButton();
     }
 
     public static void Init()
     {
-        _instance._inputs.Dispose();
+        Instance._inputs.Dispose();
     }
 
     public static object GetValue(InputType type)
@@ -58,5 +44,11 @@ public class Inputter : MonoBehaviour
         }
 
         return obj;
+    }
+
+    void IsSelectButton()
+    {
+        if (GameManager.Option.Open != GameManager.Instance.OptionState) return;
+        GamePadButtonEvents.Instance.IsSelected();
     }
 }

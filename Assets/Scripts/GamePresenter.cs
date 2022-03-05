@@ -16,6 +16,12 @@ public class GamePresenter : MonoBehaviour
 
         GamePadButtonEvents gamePadButtonEvents = new GamePadButtonEvents();
         GamePadButtonEvents.SetInstance(gamePadButtonEvents, gamePadButtonEvents);
+
+        Inputter inputter = new Inputter();
+        Inputter.SetInstance(inputter, inputter);
+
+        BaseUI baseUI = new BaseUI();
+        BaseUI.SetInstance(baseUI, baseUI);
     }
 
     void Start()
@@ -23,5 +29,14 @@ public class GamePresenter : MonoBehaviour
         GameManager.Instance.InGameFieldType = _inGamefieldType;
         GameManager.Instance.GameStateSetUpSystems(_gameState);
         GameManager.Instance.GameStateSetUpEvents(_gameState);
+    }
+
+    void Update()
+    {
+        if (GameManager.Instance.OptionState == GameManager.Option.Open)
+        {
+            GamePadButtonEvents.Instance.Select();
+            GamePadButtonEvents.Instance.SelectChangeScale(Vector2.one, Vector2.one * 1.2f);
+        }
     }
 }

@@ -8,18 +8,12 @@ using DG.Tweening;
 /// BossèoåªéûÇÃTextÇÃï\é¶
 /// </summary>
 
-public class BossInform : UIWindowParent.UIWindowChild
+public class BossInform : ChildrenUI
 {
-    [SerializeField] string _panelName;
-    [SerializeField] string _backGroundName;
-    [SerializeField] string _warningTextName;
-    [SerializeField] string _nameTextName;
+    [SerializeField] RectTransform _backGroundRect;
 
-    Image _panel;
-    RectTransform _backGroundRect;
-
-    Text _warningText;
-    Text _nameText;
+    [SerializeField] Text _warningText;
+    [SerializeField] Text _nameText;
 
     // const
     Vector2 OutLineOffSet = new Vector2(200, 1);
@@ -32,16 +26,9 @@ public class BossInform : UIWindowParent.UIWindowChild
 
     public override void SetUp()
     {
-        _panel = ParentPanel.transform.Find(_panelName).GetComponent<Image>();
-        _backGroundRect = _panel.transform.Find(_backGroundName).GetComponent<RectTransform>();
         _backGroundRect.localScale = Vector2.right;
-
-        _warningText = _panel.transform.Find(_warningTextName).GetComponent<Text>();
         _warningText.gameObject.GetRect().localScale = Vector2.right;
-        _nameText = _panel.transform.Find(_nameTextName).GetComponent<Text>();
     }
-
-    public override void UpDate() { }
 
     public override void CallBack(object[] data)
     {

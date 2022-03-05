@@ -42,7 +42,7 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
             int x = Random.Range(-5, 5);
             int z = Random.Range(-5, 5);
             Character.ChangeLocalPos(new Vector3(mPos.x + x, mPos.y, mPos.z + z), gameObject);
-            if (GameManager.Instance.IsLockOn) UIManager.CallBack(UIType.Game, 2, new object[] { 2 });
+            if (GameManager.Instance.IsLockOn) BaseUI.Instance.CallBack("Game", "Log", new object[] { 2 });
             GameManager.Instance.IsLockOn = false;
             return;
         }
@@ -51,7 +51,7 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
         else _isBackKnock = false;
         Sounds.SoundMaster.PlayRequest(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
         object[] setUiData = { damage, gameObject, ColorType.Enemy };
-        UIManager.CallBack(UIType.Game, 3, setUiData);
+        BaseUI.Instance.CallBack("Game", "Damage", setUiData);
 
         HP -= damage;
         if (HP < 0) base.Dead(gameObject);

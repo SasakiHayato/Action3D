@@ -5,50 +5,55 @@ using UnityEngine.UI;
 
 public class Test : MonoBehaviour
 {
+    int a = 0;
+
     [SerializeField] Button _button1;
     [SerializeField] Button _button2;
     [SerializeField] Button _button3;
 
     void Start()
     {
-       
-        GamePadButtonEvents.Instance.CreateList(0)
-            .AddEvents(_button1, CallBackA)
-            .AddEvents(_button2, CallBackB)
-            .AddEvents(_button3, CallBackC)
-            .FirstSetUp();
+        //a = 1;
+        //int b = (int)a + 1;
+        Debug.Log(a.GetType());
 
-        GamePadButtonEvents.Instance.PickUpRequest(0);
+        //GamePadButtonEvents.Instance.CreateList(0)
+        //    .AddEvents(_button1, CallBackA)
+        //    .AddEvents(_button2, CallBackB)
+        //    .AddEvents(_button3, CallBackC)
+        //    .FirstSetUp();
 
-        Inputter.Instance.Inputs.UI.Check.started += context => Selected();
+        //GamePadButtonEvents.Instance.PickUpRequest(0);
+
+        //Inputter.Instance.Inputs.UI.Check.started += context => Selected();
     }
 
-    void Update()
-    {
-        //Select();
-        GamePadButtonEvents.Instance.SelectChangeScale(Vector2.one, Vector2.one * 1.5f);
-    }
+    //void Update()
+    //{
+    //    //Select();
+    //    GamePadButtonEvents.Instance.SelectChangeScale(Vector2.one, Vector2.one * 1.5f);
+    //}
 
-    void Selected()
-    {
-        GamePadButtonEvents.Instance.IsSelected();
-    }
+    //void Selected()
+    //{
+    //    GamePadButtonEvents.Instance.IsSelected();
+    //}
 
-    int _saveID = 0;
-    int _setID = 0;
+    //int _saveID = 0;
+    //int _setID = 0;
 
-    void CallBackA()
-    {
-        Debug.Log("A");
-    }
+    //void CallBackA()
+    //{
+    //    Debug.Log("A");
+    //}
 
-    void CallBackB()
-    {
-        Debug.Log("B");
-    }
+    //void CallBackB()
+    //{
+    //    Debug.Log("B");
+    //}
 
-    void CallBackC()
-    {
-        Debug.Log("C");
-    }
+    //void CallBackC()
+    //{
+    //    Debug.Log("C");
+    //}
 }

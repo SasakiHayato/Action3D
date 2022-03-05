@@ -9,9 +9,8 @@ using Sounds;
 /// ÉQÅ[ÉÄè„Ç…Ç»Ç…Ç©ÇµÇÁÇÃLogÇÃï\é¶
 /// </summary>
 
-public class LogCountrol : UIWindowParent.UIWindowChild
+public class LogCountrol : ChildrenUI
 {
-    [SerializeField] string _panelName;
     [SerializeField] float _displayTime;
     [SerializeField] TextDataBase _textDataBase;
     [SerializeField] Vector2 _offSetPos;
@@ -25,14 +24,14 @@ public class LogCountrol : UIWindowParent.UIWindowChild
 
     public override void SetUp()
     {
-        _panelRect = GameObject.Find(_panelName).GetComponent<RectTransform>();
+        _panelRect = gameObject.GetRect();
         _savePos = _panelRect.anchoredPosition;
         _panelRect.anchoredPosition = _offSetPos;
         _txt = _panelRect.GetComponentInChildren<Text>();
         _txt.text = "";
     }
 
-    public override void UpDate()
+    private void Update()
     {
         if (!_isActive) return;
 

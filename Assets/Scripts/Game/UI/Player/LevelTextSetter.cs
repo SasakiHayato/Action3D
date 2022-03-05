@@ -5,19 +5,15 @@ using UnityEngine.UI;
 /// Player‚ÌŒ»İ‚ÌƒŒƒxƒ‹‚Ì•\¦
 /// </summary>
 
-public class LevelTextSetter : UIWindowParent.UIWindowChild
+public class LevelTextSetter : ChildrenUI
 {
-    [SerializeField] string _imageName;
-    Text _txt;
+    [SerializeField] Text _txt;
 
     public override void SetUp()
     {
-        _txt = GameObject.Find(_imageName).GetComponentInChildren<Text>();
         _txt.text = "Level : 001";
     }
 
-    public override void UpDate() { }
-   
     public override void CallBack(object[] data)
     {
         int level = (int)data[0];
