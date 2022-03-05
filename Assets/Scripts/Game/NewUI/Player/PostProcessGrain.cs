@@ -15,7 +15,7 @@ public class PostProcessGrain : ChildrenUI
 
     public override void SetUp()
     {
-        _charaBase = Object.FindObjectOfType<Player>().GetComponent<CharaBase>();
+        _charaBase = FindObjectOfType<Player>().GetComponent<CharaBase>();
         _grain = _processProfile.GetSetting<Grain>();
     }
 

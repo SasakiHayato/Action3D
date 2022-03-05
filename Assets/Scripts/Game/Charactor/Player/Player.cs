@@ -62,6 +62,7 @@ public class Player : CharaBase, IDamage
         Shot();
        
         Vector3 set = Vector3.Scale(_state.Move * Speed, PhsicsBase.GetVelocity);
+        
         Character.Move(set * Time.deltaTime);
     }
 

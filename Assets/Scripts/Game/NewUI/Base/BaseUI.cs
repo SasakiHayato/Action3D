@@ -26,8 +26,6 @@ public class BaseUI : SingletonAttribute<BaseUI>
 
         foreach (ParentUI ui in parents)
         {
-            Debug.Log(ui.gameObject.name);
-
             ui.ID = id;
             ui.gameObject.GetComponent<Image>().raycastTarget = false;
             ui.CanvasGroup = ui.gameObject.AddComponent<CanvasGroup>();

@@ -47,7 +47,7 @@ public class SetStart : ChildrenUI
         GamePadButtonEvents.Instance.CreateList(1)
             .AddEvents(_optionButton, () => SetOptionPanel())
             .AddEvents(_startButton, () => CallBack(null));
-            
+
 
         GamePadButtonEvents.Instance.CreateList(2)
             .AddEvents(_startArenaButton, SetArenaCallBack)

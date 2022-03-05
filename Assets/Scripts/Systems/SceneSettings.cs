@@ -38,6 +38,7 @@ public class SceneSettings : MonoBehaviour
     {
         DOTween.KillAll();
         action?.Invoke();
+        GameManager.Instance.GameStateSetUpEvents(GameManager.GameState.Load);
         SceneManager.LoadScene(name);
     }
 
@@ -45,6 +46,7 @@ public class SceneSettings : MonoBehaviour
     {
         DOTween.KillAll();
         action?.Invoke();
+        GameManager.Instance.GameStateSetUpEvents(GameManager.GameState.Load);
         SceneManager.LoadScene(id);
     }
 

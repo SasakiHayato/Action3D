@@ -14,11 +14,12 @@ public class GamePresenter : MonoBehaviour
         GameManager gameManager = new GameManager();
         GameManager.SetInstance(gameManager, gameManager);
 
-        GamePadButtonEvents gamePadButtonEvents = new GamePadButtonEvents();
-        GamePadButtonEvents.SetInstance(gamePadButtonEvents, gamePadButtonEvents);
-
         Inputter inputter = new Inputter();
         Inputter.SetInstance(inputter, inputter);
+        Inputter.Instance.Load();
+
+        GamePadButtonEvents gamePadButtonEvents = new GamePadButtonEvents();
+        GamePadButtonEvents.SetInstance(gamePadButtonEvents, gamePadButtonEvents);
 
         BaseUI baseUI = new BaseUI();
         BaseUI.SetInstance(baseUI, baseUI);

@@ -58,7 +58,6 @@ public class GameManager : SingletonAttribute<GameManager>
         }
     }
 
-
     /// <summary>
     /// 対象となるステートの各マネージャーの生成
     /// </summary>
@@ -86,10 +85,12 @@ public class GameManager : SingletonAttribute<GameManager>
                 {
                     SoundMaster.PlayRequest(null, "ArenaBGM", SEDataBase.DataType.BGM);
                 }
+               
                 break;
 
             case GameState.Title:
                 SoundMaster.PlayRequest(null, "TitleBGM", SEDataBase.DataType.BGM);
+                
                 BaseUI.Instance.ParentActive("Title", true);
                 break;
 
@@ -116,11 +117,13 @@ public class GameManager : SingletonAttribute<GameManager>
                 Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
                 player.SetAnim("Intro", () => { PlayerData.CanMove = true; });
                 SetOptionState(Option.Close);
+                
                 break;
 
             case GameState.Title:
                 Fader.Instance.Request(Fader.FadeType.In, 0.25f);
                 SetOptionState(Option.Open);
+                
                 break;
 
             case GameState.Dead:
@@ -131,7 +134,6 @@ public class GameManager : SingletonAttribute<GameManager>
                 break;
 
             case GameState.Load:
-                GamePadButtonEvents.Instance.Dispose();
                 End();
                 break;
 
@@ -150,6 +152,7 @@ public class GameManager : SingletonAttribute<GameManager>
         {
             case Option.Open:
                 break;
+
             case Option.Close:
                 break;
         }
@@ -162,6 +165,7 @@ public class GameManager : SingletonAttribute<GameManager>
     {
         Init();
         Inputter.Init();
+        GamePadButtonEvents.Instance.Dispose();
     }
 
     /// <summary>

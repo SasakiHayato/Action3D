@@ -9,13 +9,11 @@ public class Inputter : SingletonAttribute<Inputter>
     public InputData Inputs { get => _inputs; }
     InputData _inputs;
 
-    public override void SetUp()
+    public void Load()
     {
-        base.SetUp();
-
         _inputs = new InputData();
         _inputs.Enable();
-
+        Debug.Log("aa");
         Inputs.UI.Check.started += context => IsSelectButton();
     }
 
@@ -49,6 +47,8 @@ public class Inputter : SingletonAttribute<Inputter>
     void IsSelectButton()
     {
         if (GameManager.Option.Open != GameManager.Instance.OptionState) return;
+
+        Debug.Log("Click");
         GamePadButtonEvents.Instance.IsSelected();
     }
 }
