@@ -105,12 +105,16 @@ public class Player : CharaBase, IDamage
     void Avoid()
     {
         if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
+        if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
+
         _state.ChangeState(StateMachine.StateType.Avoid);
     }
 
     void Jump()
     {
         if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
+        if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
+
         _state.ChangeState(StateMachine.StateType.Floating);
         _attack.Cancel();
         PhsicsBase.SetJump();
@@ -120,6 +124,8 @@ public class Player : CharaBase, IDamage
     {
         if (_attack.IsCounter) return;
         if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
+        if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
+
         _attack.SetAction = ActionType.WeakGround;
         _attack.NextRequest();
         _state.ChangeState(StateMachine.StateType.Attack);
@@ -129,6 +135,8 @@ public class Player : CharaBase, IDamage
     {
         if (_attack.IsCounter) return;
         if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
+        if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
+
         _attack.SetAction = ActionType.StrengthGround;
         _attack.NextRequest();
         _state.ChangeState(StateMachine.StateType.Attack);
@@ -136,6 +144,8 @@ public class Player : CharaBase, IDamage
 
     void SetLockon()
     {
+        if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
+
         if (!GameManager.Instance.IsLockOn)
         {
             var finds = GameObject.FindGameObjectsWithTag("Enemy")

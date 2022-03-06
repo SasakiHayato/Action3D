@@ -480,7 +480,7 @@ PrefabInstance:
     - target: {fileID: 2764607737274536188, guid: 3629747457ba7d94881971f81c1b262f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2764607737274536189, guid: 3629747457ba7d94881971f81c1b262f,
         type: 3}
@@ -1342,6 +1342,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
       value: 1.5987014
+      objectReference: {fileID: 0}
+    - target: {fileID: 572088131811373266, guid: 44a955f13438e024c9392d235a8e725f,
+        type: 3}
+      propertyPath: m_Transitions.m_OnCameraLive.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 572088131811373266, guid: 44a955f13438e024c9392d235a8e725f,
+        type: 3}
+      propertyPath: m_Transitions.m_OnCameraLive.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 572088131811373266, guid: 44a955f13438e024c9392d235a8e725f,
+        type: 3}
+      propertyPath: m_Transitions.m_OnCameraLive.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 572088131811373267, guid: 44a955f13438e024c9392d235a8e725f,
         type: 3}

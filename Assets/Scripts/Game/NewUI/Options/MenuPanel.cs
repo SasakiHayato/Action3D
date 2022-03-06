@@ -30,16 +30,21 @@ public class MenuPanel : ChildrenUI
     {
         if (_isActive)
         {
-            if (GameManager.GameState.Title != GameManager.Instance.CurrentGameState)
-            {
-                GameManager.Instance.SetOptionState(GameManager.Option.Close);
-            }
             
-            Time.timeScale = 1;
             _rect.DOAnchorPosX(_setPos.x, 0.2f)
                 .SetEase(Ease.Linear)
                 .SetUpdate(true)
-                .OnComplete(() => _isActive = false);
+                .OnComplete(() => 
+                {
+                    _isActive = false;
+
+                    if (GameManager.GameState.Title != GameManager.Instance.CurrentGameState)
+                    {
+                        GameManager.Instance.SetOptionState(GameManager.Option.Close);
+                    }
+
+                    Time.timeScale = 1;
+                });
         }
         else
         {
