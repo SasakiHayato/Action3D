@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System.Linq;
 using System;
-using AttackSetting;
+using NewAttacks;
 
 /// <summary>
 /// PlayerÇÃä«óùÉNÉâÉX
@@ -17,8 +17,9 @@ public class Player : CharaBase, IDamage
 
     StateMachine _state;
     Animator _anim;
-    AttackSettings _attack;
 
+    NewAttackSettings _settings;
+    
     float _shotTimer = 0;
     
     public bool EndAnim { get; private set; } = true;
@@ -34,8 +35,8 @@ public class Player : CharaBase, IDamage
 
         _state = GetComponent<StateMachine>();
         _anim = GetComponent<Animator>();
-        _attack = GetComponent<AttackSettings>();
-
+        _settings = GetComponent<NewAttackSettings>();
+        
         Inputter.Instance.Inputs.Player
             .Fire.started += context => Avoid();
 
@@ -106,7 +107,7 @@ public class Player : CharaBase, IDamage
     {
         if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
         if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
-
+        _settings.Cancel();
         _state.ChangeState(StateMachine.StateType.Avoid);
     }
 
@@ -116,29 +117,29 @@ public class Player : CharaBase, IDamage
         if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
 
         _state.ChangeState(StateMachine.StateType.Floating);
-        _attack.Cancel();
+        _settings.Cancel();
         PhsicsBase.SetJump();
     }
 
     void WeakAttack()
     {
-        if (_attack.IsCounter) return;
+        if (_settings.ReadAttackType == NewAttacks.AttackType.Counter) return;
         if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
         if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
 
-        _attack.SetAction = ActionType.WeakGround;
-        _attack.NextRequest();
+        _settings.SetAttackType = NewAttacks.AttackType.Weak;
+        _settings.SetNextRequest();
         _state.ChangeState(StateMachine.StateType.Attack);
     }
 
     void StrengthAttack()
     {
-        if (_attack.IsCounter) return;
+        if (_settings.ReadAttackType == NewAttacks.AttackType.Counter) return;
         if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
         if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
 
-        _attack.SetAction = ActionType.StrengthGround;
-        _attack.NextRequest();
+        _settings.SetAttackType = NewAttacks.AttackType.Strength;
+        _settings.SetNextRequest();
         _state.ChangeState(StateMachine.StateType.Attack);
     }
 
@@ -196,8 +197,8 @@ public class Player : CharaBase, IDamage
             
             return;
         }
-        
-        if (_attack.IsCounter) return;
+
+        if (_settings.ReadAttackType == NewAttacks.AttackType.Counter) return;
         if (type == AttackType.None) return;
 
         Sounds.SoundMaster.PlayRequest(transform, "Damage", 0);
@@ -217,7 +218,7 @@ public class Player : CharaBase, IDamage
     {
         if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
         if (_state.GetCurrentState == StateMachine.StateType.Avoid) return;
-        if (_attack.IsCounter) return;
+        if (_settings.ReadAttackType == NewAttacks.AttackType.Counter) return;
 
         GetKnockDir = dir;
         _state.ChangeState(StateMachine.StateType.KnockBack);

@@ -6,17 +6,15 @@ using EnemysData;
 [RequireComponent(typeof(TreeManager))]
 public abstract class EnemyBase : CharaBase
 {
-    [SerializeField] float _knockBackPower;
-    [SerializeField] float _knockBackTime;
     [SerializeField] TreeManager _tree;
+    [SerializeField] StateMachine _state;
     [SerializeField] List<EnemyConditionalData> _enemyConditionals;
 
     protected TreeManager Tree { get => _tree; set { _tree = value; } }
-    protected float GetKnockBackPower => _knockBackPower;
+    public StateMachine State => _state;
 
     public Vector3 MoveDir { protected get; set; } = new Vector3(0 ,1, 0);
-    float _timer = 0;
-
+    
     public List<EnemyConditionalData> GetEnemyConditionalDatas => _enemyConditionals;
 
     // IFieldEnemy
@@ -47,29 +45,6 @@ public abstract class EnemyBase : CharaBase
         
         Destroy(target);
     }
-
-    protected void SetKnockBack(ref bool check)
-    {
-        if (check)
-        {
-            _timer += Time.deltaTime;
-            if (_timer > _knockBackTime)
-            {
-                check = false;
-                PhsicsBase.Gravity.ResetTimer();
-            }
-            else check = true;
-
-            Character.Move(MoveDir * Time.deltaTime * GetKnockBackPower);
-            return;
-        }
-        else
-        {
-            _timer = 0;
-        }
-    }
-    
-    public abstract void KnockBack(Vector3 dir);
 }
 
 [System.Serializable]

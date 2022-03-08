@@ -3,7 +3,6 @@ using AttackSetting;
 
 public class Boss : EnemyBase, IDamage, IFieldEnemy
 {
-    bool _isBackKnock = false;
     GameObject _player;
 
     Animator _anim;
@@ -19,7 +18,6 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
 
     void Update()
     {
-        SetKnockBack(ref _isBackKnock);
         Tree.Run();
         Rotate();
         
@@ -48,18 +46,12 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
         }
 
         if (_attack.EndCurrentAnim) _anim.Play("Damage_Back_Small_ver_B");
-        else _isBackKnock = false;
+        
         Sounds.SoundMaster.PlayRequest(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
         object[] setUiData = { damage, gameObject, ColorType.Enemy };
         BaseUI.Instance.CallBack("Game", "Damage", setUiData);
 
         HP -= damage;
         if (HP < 0) base.Dead(gameObject);
-    }
-
-    public override void KnockBack(Vector3 dir)
-    {
-        _isBackKnock = true;
-        MoveDir = dir;
     }
 }

@@ -17,7 +17,7 @@ public class PlayerAvoid : StateMachine.State
     public override void Entry(StateMachine.StateType beforeType)
     {
         _currentTime = 0;
-        Target.GetComponent<AttackSetting.AttackSettings>().Cancel();
+        
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
         _input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
         _input = _input.normalized;

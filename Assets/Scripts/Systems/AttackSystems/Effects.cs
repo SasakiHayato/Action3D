@@ -85,7 +85,7 @@ namespace AttackSetting
             if (parent == AttackCollision.Parent.Player)
             {
                 EnemyBase enemyBase = target?.GetComponent<EnemyBase>();
-                if (enemyBase != null) enemyBase.KnockBack(setVec * knock.Power);
+                
             }
             else
             {

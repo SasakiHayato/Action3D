@@ -15,6 +15,8 @@ public class GameManager : SingletonAttribute<GameManager>
         Dead,
         Load,
         EndArena,
+
+        Debug,
     }
 
     public enum FieldType
@@ -140,6 +142,11 @@ public class GameManager : SingletonAttribute<GameManager>
             case GameState.EndArena:
                 Fader.Instance.Request(Fader.FadeType.Out, 1f);
                 SceneSettings.Instance.LoadAsync(0, 1);
+                break;
+
+            case GameState.Debug:
+                PlayerData.CanMove = true;
+                SetOptionState(Option.Close);
                 break;
         }
     }

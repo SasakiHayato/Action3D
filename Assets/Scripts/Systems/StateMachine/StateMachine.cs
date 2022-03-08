@@ -15,6 +15,7 @@ public class StateMachine : MonoBehaviour
         Attack = 3,
         Floating = 4,
         KnockBack = 5,
+        BehaviorTree = 6,
 
         None = -1,
         RetuneNext = -2,
@@ -53,6 +54,7 @@ public class StateMachine : MonoBehaviour
     public void Base()
     {
         if (!_isRunning) return;
+        
  
         if (StateType.RetuneNext != _saveType)
         {

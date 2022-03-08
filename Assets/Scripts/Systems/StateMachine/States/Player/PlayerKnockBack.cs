@@ -1,5 +1,6 @@
 using UnityEngine;
 using AttackSetting;
+using NewAttacks;
 
 public class PlayerKnockBack : StateMachine.State
 {
@@ -12,14 +13,14 @@ public class PlayerKnockBack : StateMachine.State
     bool _isKnockBack = false;
 
     Animator _anim = null;
-    AttackSettings _attack;
+    NewAttackSettings _attack;
 
     public override void Entry(StateMachine.StateType beforeType)
     {
         if (_anim == null)
         {
             _anim = Target.GetComponent<Animator>();
-            _attack = Target.GetComponent<AttackSettings>();
+            _attack = Target.GetComponent<NewAttackSettings>();
         }
         _attack.Cancel();
         _anim.Play("Damage_Front_Big_ver_C");

@@ -339,7 +339,7 @@ namespace AttackSetting
             _nextRequest = false;
             EndCurrentAnim = false;
             _resetCombTime = 0;
-            _anim.Play(data.AnimName);
+            _anim.CrossFade(data.AnimName, 0.1f);
             
             _audio.volume = data.SEVol;
             if (data.SE != null) _audio.PlayOneShot(data.SE);
@@ -347,7 +347,7 @@ namespace AttackSetting
             _attacking = true;
             _data = data;
 
-            StartCoroutine(WaitAnim());
+            //StartCoroutine(WaitAnim());
         }
 
         IEnumerator WaitAnim()
@@ -386,6 +386,15 @@ namespace AttackSetting
                 collider.enabled = true;
                 _targetWeapon.RipllesRequest();
             }       
+        }
+
+        /// <summary> AnimEventÇ≈ÇÃåƒÇ—èoÇµ </summary>
+        void EndAnim()
+        {
+            EndCurrentAnim = true;
+            _attacking = false;
+            _targetWeapon.GetComponent<Collider>().enabled = false;
+            IsCounter = false;
         }
     }
 }
