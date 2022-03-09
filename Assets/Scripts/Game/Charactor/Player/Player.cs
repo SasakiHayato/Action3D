@@ -216,7 +216,7 @@ public class Player : CharaBase, IDamage
     public void SetAnim(string name, Action action = null)
     {
         if (!EndAnim) return;
-
+        if (_anim == null) _anim = GetComponent<Animator>();
         EndAnim = false;
         _anim.Play(name);
         StartCoroutine(WaitAnim(action));

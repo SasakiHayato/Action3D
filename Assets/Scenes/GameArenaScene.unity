@@ -139,6 +139,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984375943469860072, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
+      propertyPath: far clip plane
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 984375943469860072, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 984375943469860072, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
@@ -503,7 +513,7 @@ PrefabInstance:
     - target: {fileID: 2764607737274536188, guid: 3629747457ba7d94881971f81c1b262f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2764607737274536189, guid: 3629747457ba7d94881971f81c1b262f,
         type: 3}
@@ -1363,8 +1373,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 572088131811373266, guid: 44a955f13438e024c9392d235a8e725f,
         type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 572088131811373266, guid: 44a955f13438e024c9392d235a8e725f,
+        type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.5987014
+      value: 1.5986886
       objectReference: {fileID: 0}
     - target: {fileID: 572088131811373267, guid: 44a955f13438e024c9392d235a8e725f,
         type: 3}

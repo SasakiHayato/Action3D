@@ -67,12 +67,11 @@ public class GameManager : SingletonAttribute<GameManager>
         CurrentGameState = state;
 
         Object.Instantiate((GameObject)Resources.Load("Systems/SoundMaster"));
-        BaseUI.Instance.Load();
 
         switch (state)
         {
             case GameState.InGame:
-                
+                BaseUI.Instance.Load();
                 Object.Instantiate((GameObject)Resources.Load("Systems/FieldSystems"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/ItemManager"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/BulletSettings"));
@@ -90,7 +89,7 @@ public class GameManager : SingletonAttribute<GameManager>
 
             case GameState.Title:
                 SoundMaster.PlayRequest(null, "TitleBGM", SEDataBase.DataType.BGM);
-                
+                BaseUI.Instance.Load();
                 BaseUI.Instance.ParentActive("Title", true);
                 break;
 
@@ -98,6 +97,7 @@ public class GameManager : SingletonAttribute<GameManager>
                 break;
 
             case GameState.Load:
+                BaseUI.Instance.Load();
                 break;
 
             case GameState.EndArena:

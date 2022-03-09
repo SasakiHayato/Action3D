@@ -13,7 +13,7 @@ public class Inputter : SingletonAttribute<Inputter>
     {
         _inputs = new InputData();
         _inputs.Enable();
-        Debug.Log("aa");
+        
         Inputs.UI.Check.started += context => IsSelectButton();
     }
 

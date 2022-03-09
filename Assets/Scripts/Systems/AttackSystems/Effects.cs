@@ -37,6 +37,8 @@ namespace AttackSetting
             }
         }
 
+        const float HitStopTime = 0.2f;
+
         public static void HitStop(Animator anim)
         {
             Instance.StartCoroutine(Instance.WaitTime(anim));
@@ -45,7 +47,7 @@ namespace AttackSetting
         IEnumerator WaitTime(Animator anim)
         {
             anim.speed = 1 / 48;
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(HitStopTime);
             anim.speed = 1f;
         }
 

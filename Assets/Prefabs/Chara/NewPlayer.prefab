@@ -686,7 +686,7 @@ MonoBehaviour:
     SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
     SEVol: 0.05
     Action: 0
-    Effects: 040000000200000003000000
+    Effects: 000000000200000003000000
   - AnimName: Attack_4Combo_4_Inplace
     GroupID: 0
     Power: 2
@@ -698,7 +698,7 @@ MonoBehaviour:
     SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
     SEVol: 0.05
     Action: 0
-    Effects: 040000000200000003000000
+    Effects: 000000000200000003000000
   - AnimName: Attack_3Combo_1
     GroupID: 0
     Power: 3
