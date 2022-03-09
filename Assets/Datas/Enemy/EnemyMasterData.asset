@@ -21,7 +21,7 @@ MonoBehaviour:
       type: 3}
     DummyPrefab: {fileID: 7980940582174284826, guid: d5e3177cb18025c45883ac5086f7998e,
       type: 3}
-    HP: 200
+    HP: 100
     Power: 10
     Speed: 4
     Exp: 150
@@ -69,7 +69,7 @@ MonoBehaviour:
       type: 3}
     DummyPrefab: {fileID: 7980940582174284826, guid: bf08f62adccde204397af3ac5c3b932f,
       type: 3}
-    HP: 200
+    HP: 100
     Power: 10
     Speed: 3
     Exp: 150
