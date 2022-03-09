@@ -310,29 +310,6 @@ Transform:
   m_Father: {fileID: 1503201225}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &277983940 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 984375943469860074, guid: 2e110ddf55fedf347b7a6166422f37fe,
-    type: 3}
-  m_PrefabInstance: {fileID: 145141608}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &277983941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277983940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 3e14f8bf63d929f479475d178826acba, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!224 &404024985 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 771930817683829132, guid: 64993083486c12d43af952cf0c9ff267,
@@ -1315,6 +1292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _rotateSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 572088131811373264, guid: 44a955f13438e024c9392d235a8e725f,
+        type: 3}
+      propertyPath: _lockonCollectionY
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 572088131811373265, guid: 44a955f13438e024c9392d235a8e725f,
         type: 3}

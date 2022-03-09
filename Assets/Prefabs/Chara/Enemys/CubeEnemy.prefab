@@ -287,7 +287,8 @@ MonoBehaviour:
       data:
         _runType: 1
         _offsetAngle: 30
-        _setDistance: 9
+        _offSetPos: {x: 0, y: 6, z: 0}
+        _setDistance: 12
 --- !u!1001 &2932163159214366345
 PrefabInstance:
   m_ObjectHideFlags: 0

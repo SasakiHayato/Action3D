@@ -5,6 +5,7 @@ public class MoveInCamera : IAction
 {
     [SerializeField] TreeManager.RunType _runType;
     [SerializeField] float _offsetAngle;
+    [SerializeField] Vector3 _offSetPos;
     [SerializeField] float _setDistance;
 
     Transform _user;
@@ -26,9 +27,9 @@ public class MoveInCamera : IAction
         float rad = Vector3.Dot(dir.normalized, Camera.main.transform.forward);
         float angle = Mathf.Acos(rad) * Mathf.Rad2Deg;
 
-        Vector3 setPos = _cmPos.position + _cmPos.forward * _setDistance;
+        Vector3 setPos = (_cmPos.position + _cmPos.forward * _setDistance) + _offSetPos;
 
-        if (setPos.y < _player.transform.position.y) setPos.y = _player.transform.position.y;
+        if (setPos.y < _player.transform.position.y) setPos.y = _player.transform.position.y + _offSetPos.y;
 
         _enemyBase.MoveDir = (setPos - _user.position).normalized;
         
