@@ -41,10 +41,10 @@ public class OptionButtons : ChildrenUI
             .AddTo(_backButton);
 
         GamePadButtonEvents.Instance.CreateList(3)
-            .AddEvents(_backButton, Back)
-            .AddEvents(_optionButton, OptionPanelActive)
-            .AddEvents(_itemButton, ItemPanelActive)
             .AddEvents(_mapButton, MapPanelActive)
+            .AddEvents(_itemButton, ItemPanelActive)
+            .AddEvents(_optionButton, OptionPanelActive)
+            .AddEvents(_backButton, Back)
             .FirstSetUp();
 
         if (GameManager.GameState.InGame == GameManager.Instance.CurrentGameState)

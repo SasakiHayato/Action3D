@@ -122,13 +122,13 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
             if ((int)getVal.y < 0)
             {
                 _saveID = (int)getVal.y;
-                _setID--;
+                _setID++;
                 SetSelectID(ref _setID);
             }
             else
             {
                 _saveID = (int)getVal.y;
-                _setID++;
+                _setID--;
                 SetSelectID(ref _setID);
             }
         }

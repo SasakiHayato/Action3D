@@ -45,13 +45,13 @@ public class SetStart : ChildrenUI
             .AddTo(_startArenaButton);
 
         GamePadButtonEvents.Instance.CreateList(1)
-            .AddEvents(_optionButton, () => SetOptionPanel())
-            .AddEvents(_startButton, () => CallBack(null));
+            .AddEvents(_startButton, () => CallBack(null))
+            .AddEvents(_optionButton, () => SetOptionPanel());
 
 
         GamePadButtonEvents.Instance.CreateList(2)
-            .AddEvents(_startArenaButton, SetArenaCallBack)
-            .AddEvents(_startWarldButton, SetWorldCallBack);
+            .AddEvents(_startWarldButton, SetWorldCallBack)
+            .AddEvents(_startArenaButton, SetArenaCallBack);
 
         gameObject.SetActive(false);
     }
