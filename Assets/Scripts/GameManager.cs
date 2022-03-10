@@ -208,8 +208,8 @@ public class GameManager : SingletonAttribute<GameManager>
         if (currentExp >= PlayerData.NextLevelExp)
         {
             // Log
-            //UIManager.CallBack(UIType.Game, 3, new object[] { 1 });
-
+            BaseUI.Instance.CallBack("Game", "Log", new object[] { 1 });
+            
             int set = currentExp - PlayerData.NextLevelExp;
             PlayerData.NextLevelExp += 100;
 
@@ -220,16 +220,16 @@ public class GameManager : SingletonAttribute<GameManager>
             PlayerData.Player.SetParam(hp, power, speed, level);
 
             // ExpSlider
-            //UIManager.CallBack(UIType.Player, 5, null);
-
+            BaseUI.Instance.CallBack("Player", "Exp");
+            
             AddExp(PlayerData.CurrentExp = set);
         }
         else
         {
             // HpSlider
-            //UIManager.CallBack(UIType.Player, 4, new object[] { PlayerData.Player.Level });
+            BaseUI.Instance.CallBack("Player", "HP");
             // Leveltext
-            //UIManager.CallBack(UIType.Player, 3, new object[] { PlayerData.Player.HP });
+            BaseUI.Instance.CallBack("Player", "Level");
             SoundMaster.PlayRequest(null, "LevelUp", 0);
         }
     }
