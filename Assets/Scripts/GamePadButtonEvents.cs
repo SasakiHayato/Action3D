@@ -164,6 +164,7 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
         {
             if (id == _currentSelectID)
             {
+                Sounds.SoundMaster.PlayRequest(null, "Click", Sounds.SEDataBase.DataType.UI);
                 _pickUpEvents.Actions[id].Invoke();
                 return;
             }
