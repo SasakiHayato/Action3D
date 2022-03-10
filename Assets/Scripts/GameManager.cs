@@ -229,7 +229,7 @@ public class GameManager : SingletonAttribute<GameManager>
             // HpSlider
             BaseUI.Instance.CallBack("Player", "HP");
             // Leveltext
-            BaseUI.Instance.CallBack("Player", "Level");
+            BaseUI.Instance.CallBack("Player", "Level", new object[] { PlayerData.Player.Level });
             SoundMaster.PlayRequest(null, "LevelUp", 0);
         }
     }
