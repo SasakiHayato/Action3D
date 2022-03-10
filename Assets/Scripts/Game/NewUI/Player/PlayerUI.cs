@@ -16,4 +16,9 @@ public class PlayerUI : ParentUI
             return;
         }
     }
+
+    public override void CallBack(object[] datas)
+    {
+        
+    }
 }

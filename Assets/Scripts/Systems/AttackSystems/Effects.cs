@@ -46,9 +46,12 @@ namespace AttackSetting
 
         IEnumerator WaitTime(Animator anim)
         {
-            anim.speed = 1 / 48;
-            yield return new WaitForSeconds(HitStopTime);
-            anim.speed = 1f;
+            if (anim != null)
+            {
+                anim.speed = 1 / 48;
+                yield return new WaitForSeconds(HitStopTime);
+                anim.speed = 1f;
+            }
         }
 
         public static void ShakeCm()

@@ -37,6 +37,9 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
     int _saveID = 0;
     int _setID = 0;
 
+    int _savePickUpID = 0;
+    public int SavePickUpID { set { _savePickUpID = value; } }
+
     public override void SetUp()
     {
         base.SetUp();
@@ -80,6 +83,8 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
 
     public void PickUpRequest(int id)
     {
+        if (id < 0) id = _savePickUpID;
+
         foreach (var item in _eventsDatas)
         {
             if (item.ID == id)
