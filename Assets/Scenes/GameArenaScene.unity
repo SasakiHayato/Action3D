@@ -1039,6 +1039,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1621812649496804920, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _stateList.Array.data[3]._moveTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621812649496804920, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _stateList.Array.data[3]._moveSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621812649496804920, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _stateList.Array.data[3]._lockOnDist
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2361502983919704695, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: m_Name

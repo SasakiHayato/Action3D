@@ -2,17 +2,21 @@ using UnityEngine;
 using AttackSetting;
 using ObjectPhysics;
 using DG.Tweening;
+using System.Linq;
 
 public class PlayerAttack : StateMachine.State
 {
     [SerializeField] float _moveTime;
     [SerializeField] float _moveSpeed = 1;
+    [SerializeField] float _lockOnDist;
 
     float _timer;
 
     Player _player;
     AttackSettings _attack = null;
     PhysicsBase _physics;
+
+    Transform _setTarget;
     
     public override void Entry(StateMachine.StateType beforeType)
     {
@@ -50,6 +54,8 @@ public class PlayerAttack : StateMachine.State
             else
                 _attack.Request(_attack.ReadAction);
         }
+
+        _setTarget = SetTarget();
     }
 
     public override void Run(out Vector3 move)
@@ -59,13 +65,49 @@ public class PlayerAttack : StateMachine.State
         if (_timer > _moveTime) move = Vector3.zero;
         else move = Target.transform.forward * _moveSpeed;
 
-        if (GameManager.Instance.IsLockOn) Rotate();
+        if (GameManager.Instance.IsLockOn) Rotate(GameManager.Instance.LockonTarget.transform);
+        else Rotate(_setTarget);
     }
 
-    void Rotate()
+    Transform SetTarget()
     {
-        Vector3 t = GameManager.Instance.LockonTarget.transform.position;
-        Vector3 forward = t - Target.transform.position;
+        var finds = GameObject.FindGameObjectsWithTag("Enemy")
+                .Where(e =>
+                {
+                    float dist = Vector3.Distance(e.transform.position, Target.transform.position);
+                    if (dist < _lockOnDist) return e;
+                    else return false;
+                });
+
+        if (finds.Count() <= 0) return null;
+
+        Vector3 cmForwrad = Camera.main.transform.forward;
+        GameObject set = null;
+        float saveDist = float.MaxValue;
+
+        foreach (var e in finds)
+        {
+            float dist = Vector3.Distance(Target.transform.position, e.transform.position);
+           
+            if (saveDist > dist)
+            {
+                CharaBase chara = e.GetComponent<CharaBase>();
+                if (chara != null)
+                {
+                    set = e.GetComponent<CharaBase>().OffSetPosObj;
+                    saveDist = dist;
+                }
+            }
+        }
+        
+        return set.transform;
+    }
+
+    void Rotate(Transform target)
+    {
+        if (target == null) return;
+
+        Vector3 forward = target.position - Target.transform.position;
 
         forward.y = 0;
         if (forward.magnitude > 0.01f)
