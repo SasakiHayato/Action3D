@@ -65,8 +65,22 @@ public class PlayerAttack : StateMachine.State
         if (_timer > _moveTime) move = Vector3.zero;
         else move = Target.transform.forward * _moveSpeed;
 
-        if (GameManager.Instance.IsLockOn) Rotate(GameManager.Instance.LockonTarget.transform);
-        else Rotate(_setTarget);
+        if (GameManager.Instance.IsLockOn) Rotate(GameManager.Instance.LockonTarget.transform.position);
+        else
+        {
+            Vector2 get = (Vector2)Inputter.GetValue(InputType.PlayerMove);
+            if (get == Vector2.zero && _setTarget != null) Rotate(_setTarget.position);
+            else
+            {
+                Vector3 forward = new Vector3(get.x, 0, get.y);
+
+                if (forward.magnitude > 0.01f)
+                {
+                    Quaternion rotation = Quaternion.LookRotation(forward);
+                    Target.transform.rotation = rotation;
+                }
+            }
+        }
     }
 
     Transform SetTarget()
@@ -103,11 +117,9 @@ public class PlayerAttack : StateMachine.State
         return set.transform;
     }
 
-    void Rotate(Transform target)
+    void Rotate(Vector3 target)
     {
-        if (target == null) return;
-
-        Vector3 forward = target.position - Target.transform.position;
+        Vector3 forward = target - Target.transform.position;
 
         forward.y = 0;
         if (forward.magnitude > 0.01f)
