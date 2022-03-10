@@ -17,9 +17,13 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
         public ButtonEventsData AddEvents(Button button, Action action)
         {
             if (_isSetUp) return this;
-
-            Buttons.Add(button);
-            Actions.Add(action);
+            
+            if (button.gameObject.activeSelf)
+            {
+                Buttons.Add(button);
+                Actions.Add(action);
+            }
+            
             return this;
         }
 

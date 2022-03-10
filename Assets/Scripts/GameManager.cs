@@ -14,7 +14,7 @@ public class GameManager : SingletonAttribute<GameManager>
         Title,
         Dead,
         Load,
-        EndArena,
+        End,
     }
 
     public enum FieldType
@@ -100,7 +100,7 @@ public class GameManager : SingletonAttribute<GameManager>
                 BaseUI.Instance.Load();
                 break;
 
-            case GameState.EndArena:
+            case GameState.End:
                 break;
         }
     }
@@ -128,8 +128,8 @@ public class GameManager : SingletonAttribute<GameManager>
 
             case GameState.Dead:
                 PlayerData.CanMove = false;
-                player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
                 Fader.Instance.Request(Fader.FadeType.Out, 0.5f);
+                player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
                 player.SetAnim("Damage_Die", () => SceneSettings.Instance.LoadSync(0));
                 break;
 
@@ -137,7 +137,7 @@ public class GameManager : SingletonAttribute<GameManager>
                 End();
                 break;
 
-            case GameState.EndArena:
+            case GameState.End:
                 Fader.Instance.Request(Fader.FadeType.Out, 1f);
                 SceneSettings.Instance.LoadAsync(0, 1);
                 break;

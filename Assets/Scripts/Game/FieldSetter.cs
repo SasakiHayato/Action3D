@@ -80,8 +80,8 @@ public class FieldSetter
 
                 if (_spawnData[0].GroupTip.GetDatas.Count <= _arenaPhaseID)
                 {
-                    GameManager.Instance.GameStateSetUpSystems(GameManager.GameState.EndArena);
-                    GameManager.Instance.GameStateSetUpEvents(GameManager.GameState.EndArena);
+                    GameManager.Instance.GameStateSetUpSystems(GameManager.GameState.End);
+                    GameManager.Instance.GameStateSetUpEvents(GameManager.GameState.End);
                     return;
                 }
 
