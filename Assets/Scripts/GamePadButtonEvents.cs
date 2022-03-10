@@ -39,6 +39,8 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
 
     int _savePickUpID = 0;
     public int SavePickUpID { set { _savePickUpID = value; } }
+    Action _saveCallBackAction = null;
+    public Action SaveCallBackAction { set { _saveCallBackAction = value; } } 
 
     public override void SetUp()
     {
@@ -81,10 +83,21 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
         return data;
     }
 
+    public void BackPickUp()
+    {
+        foreach (var item in _eventsDatas)
+        {
+            if (item.ID == _savePickUpID)
+            {
+                _pickUpEvents = item;
+                _saveCallBackAction?.Invoke();
+                return;
+            }
+        }
+    }
+
     public void PickUpRequest(int id)
     {
-        if (id < 0) id = _savePickUpID;
-
         foreach (var item in _eventsDatas)
         {
             if (item.ID == id)
