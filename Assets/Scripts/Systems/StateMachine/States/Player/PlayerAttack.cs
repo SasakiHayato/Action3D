@@ -72,11 +72,13 @@ public class PlayerAttack : StateMachine.State
             if (get == Vector2.zero && _setTarget != null) Rotate(_setTarget.position);
             else
             {
-                Vector3 forward = new Vector3(get.x, 0, get.y);
-
+                Vector3 forward = Camera.main.transform.forward * get.y;
+                Vector3 right = Camera.main.transform.right * get.x;
+                Vector3 set = new Vector3(forward.x + right.x, 0, right.z + forward.z);
+                
                 if (forward.magnitude > 0.01f)
                 {
-                    Quaternion rotation = Quaternion.LookRotation(forward);
+                    Quaternion rotation = Quaternion.LookRotation(set);
                     Target.transform.rotation = rotation;
                 }
             }
