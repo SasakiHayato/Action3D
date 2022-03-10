@@ -671,7 +671,7 @@ MonoBehaviour:
     Effects: 000000000300000002000000
   - AnimName: Attack_7Combo_7_Inplace
     GroupID: 0
-    Power: 4
+    Power: 2
     IsEndCombo: 1
     KnockBackData:
       Power: 8
