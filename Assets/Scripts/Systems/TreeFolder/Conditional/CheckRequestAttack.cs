@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
-using AttackSetting;
+using NewAttacks;
 
 public class CheckRequestAttack : IConditional
 {
@@ -15,7 +13,6 @@ public class CheckRequestAttack : IConditional
     [SerializeField] RequestType _type;
     [SerializeField] bool _checkBool;
 
-    AttackSettings _attack = null;
     EnemyAttackSystem _enemySystem = null;
 
     GameObject _user;
@@ -23,16 +20,11 @@ public class CheckRequestAttack : IConditional
     public void SetUp(GameObject user)
     {
         _user = user;
+        _enemySystem = _user.GetComponent<EnemyAttackSystem>();
     }
 
     public bool Try()
     {
-        if (_attack == null)
-        {
-            _attack = _user.GetComponent<AttackSettings>();
-            _enemySystem = _user.GetComponent<EnemyAttackSystem>();
-        }
-
         switch (_type)
         {
             case RequestType.Master:

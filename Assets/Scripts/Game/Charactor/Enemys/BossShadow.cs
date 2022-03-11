@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using AttackSetting;
 
 public class BossShadow : EnemyBase, IDamage
 {
-    bool _isBackKnock = false;
     GameObject _player;
 
     void Start()
@@ -16,7 +12,6 @@ public class BossShadow : EnemyBase, IDamage
 
     void Update()
     {
-        SetKnockBack(ref _isBackKnock);
         Tree.Run();
         Rotate();
         Vector3 move = MoveDir;
@@ -39,11 +34,5 @@ public class BossShadow : EnemyBase, IDamage
         Sounds.SoundMaster.PlayRequest(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
         HP -= damage;
         if (HP < 0) base.Dead(gameObject);
-    }
-
-    public override void KnockBack(Vector3 dir)
-    {
-        _isBackKnock = true;
-        MoveDir = dir;
     }
 }

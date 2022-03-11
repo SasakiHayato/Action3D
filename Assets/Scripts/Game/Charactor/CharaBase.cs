@@ -28,6 +28,10 @@ public class CharaBase : MonoBehaviour
     CharacterController _character;
     public CharacterController Character { get => _character; }
 
+    public float KnonckUpPower { get; set; }
+    public float KnonckForwardPower { get; set; }
+    public Vector3 KnockDir { get; set; }
+
     // Note. ステータスの上昇最大倍率
     const float MaxAddCount = 0.4f;
 

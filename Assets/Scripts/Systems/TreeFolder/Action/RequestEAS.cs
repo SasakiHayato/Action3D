@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AttackSetting;
+using NewAttacks;
 using BehaviourTree;
 
 public class RequestEAS : IAction

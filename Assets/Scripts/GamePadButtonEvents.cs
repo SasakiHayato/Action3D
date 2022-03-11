@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Linq;
 
 public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
 {
@@ -40,6 +41,7 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
     int _currentSelectID = 0;
     int _saveID = 0;
     int _setID = 0;
+    List<int> _savePickUpIDList = new List<int>();
 
     int _savePickUpID = 0;
     public int SavePickUpID { set { _savePickUpID = value; } }
@@ -107,6 +109,7 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
             if (item.ID == id)
             {
                 _pickUpEvents = item;
+                _savePickUpIDList.Add(id);
                 return;
             }
         }
@@ -178,5 +181,6 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
         _currentSelectID = 0;
         _saveID = 0;
         _setID = 0;
+        _savePickUpIDList = new List<int>();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 /// Enemy‚ÌAI‚ÅBeheviaTree‚Æ•¹—p‚³‚¹‚éƒNƒ‰ƒX
 /// </summary>
 
-namespace AttackSetting
+namespace NewAttacks
 {
     public class EnemyAttackSystem : MonoBehaviour
     {

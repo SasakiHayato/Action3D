@@ -17,8 +17,6 @@ public class CmCotrol : MonoBehaviour
     GameObject _player;
     GameObject _core;
 
-    float _timer;
-
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -37,8 +35,6 @@ public class CmCotrol : MonoBehaviour
         if (!GameManager.Instance.PlayerData.CanMove) return;
         if (GameManager.Instance.OptionState != GameManager.Option.Open) Move();
 
-        _timer += Time.deltaTime;
-        
         _core.transform.position = _player.transform.position;
     }
 
@@ -71,9 +67,10 @@ public class CmCotrol : MonoBehaviour
     void LockOn(out Vector3 rotate)
     {
         Transform t = GameManager.Instance.LockonTarget.transform;
+
         Vector3 forward = (t.position - _player.transform.position).normalized;
         float angleY = Mathf.Atan2(forward.z, forward.x) * Mathf.Rad2Deg;
-        
+       
         rotate = Quaternion.Euler
             (0, ((angleY - 90) * -1) - _lockonCollectionY, 0).eulerAngles;
     }

@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
-using AttackSetting;
+using NewAttacks;
 
 public class ShortDistanceAttack : IAction
 {
-    [SerializeField] ActionType _type = ActionType.WeakGround;
+    [SerializeField] NewAttacks.AttackType _type = NewAttacks.AttackType.Weak;
 
     EnemyBase _enemyBase = null;
-    AttackSettings _attack = null;
+    NewAttackSettings _attack = null;
     GameObject _player = null;
 
     GameObject _user;
@@ -18,7 +18,7 @@ public class ShortDistanceAttack : IAction
     {
         _user = user;
         _enemyBase = user.GetComponent<EnemyBase>();
-        _attack = user.GetComponent<AttackSettings>();
+        _attack = user.GetComponent<NewAttackSettings>();
         _player = GameObject.FindWithTag("Player");
     }
 
@@ -42,7 +42,7 @@ public class ShortDistanceAttack : IAction
         }
         else
         {
-            _attack.NextRequest();
+            _attack.SetNextRequest();
         }
 
         return false;

@@ -67174,8 +67174,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.8
+  - time: 0.53333336
     functionName: ColliderActive
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.1666666
+    functionName: EndAnim
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
