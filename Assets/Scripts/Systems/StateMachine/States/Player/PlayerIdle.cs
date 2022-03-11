@@ -1,32 +1,43 @@
 using UnityEngine;
 using ObjectPhysics;
+using StateMachine;
+using System;
 
-public class PlayerIdle : StateMachine.State
+public class PlayerIdle : State
 {
     Vector2 _input;
     PhysicsBase _physics = null;
 
-    public override void Entry(StateMachine.StateType beforeType)
+    Player _player;
+    Animator _anim;
+
+    public override void SetUp(GameObject user)
     {
-        if (beforeType == StateMachine.StateType.Attack)
+        _physics = user.GetComponent<PhysicsBase>();
+        _player = user.GetComponent<Player>();
+        _anim = user.GetComponent<Animator>();
+    }
+
+    public override void Entry(Enum beforeType)
+    {
+        if (beforeType.ToString() == Player.State.Attack.ToString())
         {
-            if (_physics == null) _physics = Target.GetComponent<PhysicsBase>();
             _physics.Gravity.ResetTimer();
         }
 
         _input = Vector2.zero;
-        Target.GetComponent<Animator>().CrossFade("Idle", 0.1f);
+        _anim.CrossFade("Idle", 0.1f);
     }
 
-    public override void Run(out Vector3 move)
+    public override void Run()
     {
         _input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
-        move = new Vector3(0, 1, 0);
+        _player.Move = new Vector3(0, 1, 0);
     }
 
-    public override StateMachine.StateType Exit()
+    public override Enum Exit()
     {
-        if (_input != Vector2.zero) return StateMachine.StateType.Move;
-        else return StateMachine.StateType.Idle;
+        if (_input != Vector2.zero) return Player.State.Move;
+        else return Player.State.Idle;
     }
 }

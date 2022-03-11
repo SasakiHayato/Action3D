@@ -514,7 +514,13 @@ GameObject:
   - component: {fileID: 4833830171947244894}
   - component: {fileID: 8195346034173187192}
   - component: {fileID: 8107732332690145594}
-  - component: {fileID: 1621812649496804920}
+  - component: {fileID: 7248459957034524781}
+  - component: {fileID: 8130654482837409867}
+  - component: {fileID: 2145248219733621569}
+  - component: {fileID: 9142161059911114449}
+  - component: {fileID: 6242670556615028420}
+  - component: {fileID: 1084479045152712506}
+  - component: {fileID: 5214533629733316604}
   m_Layer: 0
   m_Name: NewPlayer
   m_TagString: Player
@@ -629,11 +635,25 @@ MonoBehaviour:
   _power: 20
   _speed: 9
   _level: 1
+  _baseState:
+    _stateDatas:
+    - Path: Idle
+      State: {fileID: 7248459957034524781}
+    - Path: Move
+      State: {fileID: 8130654482837409867}
+    - Path: Float
+      State: {fileID: 2145248219733621569}
+    - Path: Avoid
+      State: {fileID: 9142161059911114449}
+    - Path: Attack
+      State: {fileID: 6242670556615028420}
+    - Path: Knock
+      State: {fileID: 1084479045152712506}
   _lockOnDist: 50
   _muzzle: {fileID: 9123008900525352248}
   _shotCoolTime: 0.1
   _modeChangeTime: 1
---- !u!114 &1621812649496804920
+--- !u!114 &7248459957034524781
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -642,60 +662,97 @@ MonoBehaviour:
   m_GameObject: {fileID: 1875955427570302162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d201f099bcadf7947a3fba3131a2e429, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b6e7afa0b3968d4aa3f52bb438dcd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateList:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  - id: 4
-  - id: 5
-  - id: 6
-  references:
-    version: 1
-    00000000:
-      type: {class: PlayerIdle, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 0
-    00000001:
-      type: {class: PlayerMove, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 1
-        _dashSpeedRate: 2
-        _setRunAnimRate: 0
-    00000002:
-      type: {class: PlayerAvoid, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 2
-        _avoidTime: 0.25
-        _defSpeed: 5
-        _isLockOnSpeed: 1.5
-        _targetDist: 5
-    00000003:
-      type: {class: PlayerAttack, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 3
-        _moveTime: 0.1
-        _moveSpeed: 0.5
-    00000004:
-      type: {class: PlayerKnockBack, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 5
-        _player: {fileID: 8107732332690145594}
-        _knockTime: 0.7
-        _power: 0.5
-    00000005:
-      type: {class: PlayerFloating, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 4
-        _dashSpeedRate: 2
-    00000006:
-      type: {class: StateNone, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: -1
-        _nextState: 0
+--- !u!114 &8130654482837409867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875955427570302162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b49dec25a677ad4a880bcabbd870c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dashSpeedRate: 0
+  _setRunAnimRate: 0
+--- !u!114 &2145248219733621569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875955427570302162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a2ef30258142347bf098505d7e6771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dashSpeedRate: 0
+--- !u!114 &9142161059911114449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875955427570302162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9676452fb3240cf458854284fd4e62f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _avoidTime: 0
+  _defSpeed: 0
+  _isLockOnSpeed: 0
+  _targetDist: 0
+--- !u!114 &6242670556615028420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875955427570302162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f9a52a256e4da4fa1d328befa72b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveTime: 0
+  _moveSpeed: 1
+--- !u!114 &1084479045152712506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875955427570302162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61ecde0c4525e6419cd1552cba995ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockTime: 0
+  _power: 0
+--- !u!114 &5214533629733316604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875955427570302162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a9cba23fec826429a4ce3f6077372d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 1875955427570302162}
+  _targetWeapon: {fileID: 1657703229661925047}
+  _dataLists:
+  - AttackType: 0
+    AttackDatas: []
 --- !u!1 &1908007640654097388
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,7 +2221,7 @@ GameObject:
   - component: {fileID: 4110128315009950842}
   - component: {fileID: 6797593499569184159}
   - component: {fileID: 2625566334978818280}
-  - component: {fileID: 5421690969463825515}
+  - component: {fileID: 1657703229661925047}
   m_Layer: 0
   m_Name: Modeling_Weapon_katana_Blade
   m_TagString: Weapon
@@ -2250,7 +2307,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0.00015102158, y: 0.00768522, z: 0.86}
---- !u!114 &5421690969463825515
+--- !u!114 &1657703229661925047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2259,10 +2316,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7709205466503444233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 615ddff2119349d4eabeea5364f7bb7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 716585bb7e6366c4d886c3ff17de0439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groupID: 0
 --- !u!1 &7841303107273502428
 GameObject:
   m_ObjectHideFlags: 0

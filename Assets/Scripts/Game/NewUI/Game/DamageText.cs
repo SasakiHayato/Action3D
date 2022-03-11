@@ -23,8 +23,8 @@ public class DamageText : ChildrenUI
         GameObject target = (GameObject)data[1];
         Color color = (ColorType)data[2] == ColorType.Player ? _enemyTextColor : _playerTextColor;
 
-        StateMachine state = target.GetComponent<StateMachine>();
-        if (state == null || state.GetCurrentState != StateMachine.StateType.Avoid)
+        CharaBase charaBase = target.GetComponent<CharaBase>();
+        if (charaBase == null || charaBase.BaseState.CurrentStateType != Player.State.Avoid.ToString())
         {
             _textPool.Respons().Use(damage, target.transform, color);
         }

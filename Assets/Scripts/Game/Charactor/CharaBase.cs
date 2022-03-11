@@ -1,5 +1,6 @@
 using UnityEngine;
 using ObjectPhysics;
+using StateMachine;
 
 /// <summary>
 /// Charactor‚ÌŠî’êƒNƒ‰ƒX
@@ -14,6 +15,7 @@ public class CharaBase : MonoBehaviour
     [SerializeField] int _power;
     [SerializeField] float _speed;
     [SerializeField] int _level;
+    [SerializeField] StateManager _baseState = new StateManager();
 
     public GameObject OffSetPosObj => _offSetPos;
     public int HP { get => _hp; protected set { _hp = value; } }
@@ -27,6 +29,9 @@ public class CharaBase : MonoBehaviour
 
     CharacterController _character;
     public CharacterController Character { get => _character; }
+
+    public StateManager BaseState => _baseState;
+
 
     public float KnonckUpPower { get; set; }
     public float KnonckForwardPower { get; set; }

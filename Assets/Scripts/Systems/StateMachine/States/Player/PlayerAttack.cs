@@ -2,8 +2,10 @@ using UnityEngine;
 using NewAttacks;
 using ObjectPhysics;
 using DG.Tweening;
+using StateMachine;
+using System;
 
-public class PlayerAttack : StateMachine.State
+public class PlayerAttack : State
 {
     [SerializeField] float _moveTime;
     [SerializeField] float _moveSpeed = 1;
@@ -13,18 +15,21 @@ public class PlayerAttack : StateMachine.State
     Player _player;
     PhysicsBase _physics;
     NewAttackSettings _settings;
-    
-    public override void Entry(StateMachine.StateType beforeType)
+
+    GameObject _user;
+
+    public override void SetUp(GameObject user)
     {
-        if (_player == null)
-        {
-            _settings = Target.GetComponent<NewAttackSettings>();
-            _player = Target.GetComponent<Player>();
-            _physics = Target.GetComponent<PhysicsBase>();
-        }
-        
+        _settings = user.GetComponent<NewAttackSettings>();
+        _player = user.GetComponent<Player>();
+        _physics = user.GetComponent<PhysicsBase>();
+    }
+
+    public override void Entry(Enum beforeType)
+    {
         _timer = 0;
-        if (beforeType == StateMachine.StateType.Avoid)
+
+        if (beforeType.ToString() == Player.State.Avoid.ToString())
         {
             if(_player.IsAvoid)
             {
@@ -34,7 +39,7 @@ public class PlayerAttack : StateMachine.State
                     Vector3 tPos = t.position;
                     Vector3 tForward = t.forward;
                     tPos.y -= 0.5f;
-                    Target.transform.DOMove(tPos - tForward, 0.1f).SetEase(Ease.Linear);
+                    _user.transform.DOMove(tPos - tForward, 0.1f).SetEase(Ease.Linear);
                     _settings.Request(NewAttacks.AttackType.Counter, 0);
                 }
                 else
@@ -47,7 +52,7 @@ public class PlayerAttack : StateMachine.State
         {
             if (_settings.ReadAttackType != NewAttacks.AttackType.Counter)
             {
-                if (beforeType == StateMachine.StateType.Floating || !_physics.IsGround)
+                if (beforeType.ToString() == Player.State.Float.ToString() || !_physics.IsGround)
                 {
                     _settings.SetAttackType = NewAttacks.AttackType.Float;
                     _settings.Request(NewAttacks.AttackType.Float);
@@ -58,12 +63,12 @@ public class PlayerAttack : StateMachine.State
         }
     }
 
-    public override void Run(out Vector3 move)
+    public override void Run()
     {
         _timer += Time.deltaTime;
         
-        if (_timer > _moveTime) move = Vector3.zero;
-        else move = Target.transform.forward * _moveSpeed;
+        if (_timer > _moveTime) _player.Move = Vector3.zero;
+        else _player.Move = _user.transform.forward * _moveSpeed;
 
         if (GameManager.Instance.IsLockOn) Rotate();
     }
@@ -71,30 +76,30 @@ public class PlayerAttack : StateMachine.State
     void Rotate()
     {
         Vector3 t = GameManager.Instance.LockonTarget.transform.position;
-        Vector3 forward = t - Target.transform.position;
+        Vector3 forward = t - _user.transform.position;
 
         forward.y = 0;
         if (forward.magnitude > 0.01f)
         {
             Quaternion rotation = Quaternion.LookRotation(forward);
-            Target.transform.rotation = rotation;
+            _user.transform.rotation = rotation;
         }
     }
 
-    public override StateMachine.StateType Exit()
+    public override Enum Exit()
     {
         if (!_settings.EndCurrentAnim)
         {
             if (_settings.IsNextRequest && _settings.IsSetNextRequest)
             {
-                return Target.GetComponent<StateMachine>().RetuneState(StateMachine.StateType.Attack);
+                return _player.BaseState.ChangeState(Player.State.Attack);
             }
 
-            return StateMachine.StateType.Attack;
+            return Player.State.Attack;
         }
         else
         {
-            return StateMachine.StateType.Idle;
+            return Player.State.Idle;
         }
     }
 }

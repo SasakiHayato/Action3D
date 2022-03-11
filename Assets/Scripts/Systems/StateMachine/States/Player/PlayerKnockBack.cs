@@ -1,10 +1,10 @@
 using UnityEngine;
-using AttackSetting;
 using NewAttacks;
+using StateMachine;
+using System;
 
-public class PlayerKnockBack : StateMachine.State
+public class PlayerKnockBack : State
 {
-    [SerializeField] Player _player;
     [SerializeField] float _knockTime;
     [SerializeField] float _power;
 
@@ -15,13 +15,18 @@ public class PlayerKnockBack : StateMachine.State
     Animator _anim = null;
     NewAttackSettings _attack;
 
-    public override void Entry(StateMachine.StateType beforeType)
+    Player _player;
+
+    public override void SetUp(GameObject user)
     {
-        if (_anim == null)
-        {
-            _anim = Target.GetComponent<Animator>();
-            _attack = Target.GetComponent<NewAttackSettings>();
-        }
+        _anim = user.GetComponent<Animator>();
+        _attack = user.GetComponent<NewAttackSettings>();
+        _player = user.GetComponent<Player>();
+    }
+
+    public override void Entry(Enum beforeType)
+    {
+        
         _attack.Cancel();
         _anim.Play("Damage_Front_Big_ver_C");
 
@@ -31,16 +36,16 @@ public class PlayerKnockBack : StateMachine.State
         _timer = 0;
     }
 
-    public override void Run(out Vector3 move)
+    public override void Run()
     {
         _timer += Time.deltaTime;
         if (_timer > _knockTime) _isKnockBack = false;
-        move = _setDir * _power;
+        _player.Move = _setDir * _power;
     }
 
-    public override StateMachine.StateType Exit()
+    public override Enum Exit()
     {
-        if (_isKnockBack) return StateMachine.StateType.KnockBack;
-        else return StateMachine.StateType.Idle;
+        if (_isKnockBack) return Player.State.KnockBack;
+        else return Player.State.Idle;
     }
 }

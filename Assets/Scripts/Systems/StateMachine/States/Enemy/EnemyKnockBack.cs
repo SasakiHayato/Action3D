@@ -1,19 +1,26 @@
 using UnityEngine;
+using StateMachine;
+using System;
 
-public class EnemyKnockBack : StateMachine.State
+public class EnemyKnockBack : State
 {
     [SerializeField] string _animName;
     EnemyBase _enemyBase;
+    Animator _anim;
 
     bool _isSetUp = false;
     float _timer;
     float _gravity = Physics.gravity.y * -1;
 
-    public override void Entry(StateMachine.StateType beforeType)
+    public override void SetUp(GameObject user)
     {
-        _enemyBase = Target.GetComponent<EnemyBase>();
+        _enemyBase = user.GetComponent<EnemyBase>();
+        _anim = user.GetComponent<Animator>();
+    }
 
-        if (_animName != "") Target.GetComponent<Animator>().Play(_animName);
+    public override void Entry(Enum beforeType)
+    {
+        if (_animName != "") _anim.Play(_animName);
 
         if (_enemyBase.KnonckForwardPower == 0 && _enemyBase.KnonckUpPower == 0) _isSetUp = false;
         else
@@ -23,7 +30,7 @@ public class EnemyKnockBack : StateMachine.State
         }
     }
 
-    public override void Run(out Vector3 move)
+    public override void Run()
     {
         _timer += Time.deltaTime;
 
@@ -36,12 +43,12 @@ public class EnemyKnockBack : StateMachine.State
         setVec.y = 1;
         setVec.y *= _enemyBase.KnonckUpPower;
 
-        move = setVec;
+        _enemyBase.MoveDir = setVec;
     }
 
-    public override StateMachine.StateType Exit()
+    public override Enum Exit()
     {
-        if (!_isSetUp) return StateMachine.StateType.BehaviorTree;
-        else return StateMachine.StateType.KnockBack;
+        if (!_isSetUp) return EnemyBase.State.BehaviorTree;
+        else return EnemyBase.State.KnockBack;
     }
 }

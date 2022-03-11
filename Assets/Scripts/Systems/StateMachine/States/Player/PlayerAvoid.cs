@@ -1,7 +1,9 @@
 using UnityEngine;
+using System;
 using Sounds;
+using StateMachine;
 
-public class PlayerAvoid : StateMachine.State
+public class PlayerAvoid : State
 {
     [SerializeField] float _avoidTime;
     [SerializeField] float _defSpeed;
@@ -14,18 +16,28 @@ public class PlayerAvoid : StateMachine.State
     float _currentTime;
     float _setSpeed;
 
-    public override void Entry(StateMachine.StateType beforeType)
+    Player _player;
+    GameObject _user;
+
+    public override void SetUp(GameObject user)
+    {
+        _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
+        _player = user.GetComponent<Player>();
+
+        _user = user;
+    }
+
+    public override void Entry(Enum beforeType)
     {
         _currentTime = 0;
         
-        _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
         _input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
         _input = _input.normalized;
-        SoundMaster.PlayRequest(Target.transform, "Avoid", 0);
+        SoundMaster.PlayRequest(_user.transform, "Avoid", 0);
         GameObject t = GameManager.Instance.LockonTarget;
         if (t != null)
         {
-            float dist = Vector3.Distance(t.transform.position, Target.transform.position);
+            float dist = Vector3.Distance(t.transform.position, _user.transform.position);
             if (dist < _targetDist) _setSpeed = _isLockOnSpeed;
             else _setSpeed = _defSpeed;
         }
@@ -33,29 +45,29 @@ public class PlayerAvoid : StateMachine.State
         {
             _setSpeed = _defSpeed;
         }
+
+        GetComponent<Animator>().Play("Dodge");
     }
 
-    public override void Run(out Vector3 move)
+    public override void Run()
     {
-        Target.GetComponent<Animator>().Play("Dodge");
         if (_input == Vector2.zero) _input = Vector2.up * -1;
         _currentTime += Time.deltaTime;
         
         Vector3 forward = _mainCm.transform.forward * _input.y * _setSpeed;
         Vector3 right = _mainCm.transform.right * _input.x * _setSpeed;
-
-        move = new Vector3(forward.x + right.x, 1, right.z + forward.z);
+        _player.Move = new Vector3(forward.x + right.x, 1, right.z + forward.z);
     }
 
-    public override StateMachine.StateType Exit()
+    public override Enum Exit()
     {
         if (_currentTime > _avoidTime)
         {
-            return StateMachine.StateType.Move;
+            return Player.State.Move;
         }
         else
         {
-            return StateMachine.StateType.Avoid;
+            return Player.State.Avoid;
         }
     }
 }

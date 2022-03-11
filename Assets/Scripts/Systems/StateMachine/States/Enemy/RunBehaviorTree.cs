@@ -1,26 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
+using StateMachine;
+using System;
 
-public class RunBehaviorTree : StateMachine.State
+public class RunBehaviorTree : State
 {
     TreeManager _tree;
 
-    public override void Entry(StateMachine.StateType beforeType)
+    public override void SetUp(GameObject user)
     {
-        _tree = Target.GetComponent<TreeManager>();
+        _tree = user.GetComponent<TreeManager>();
         _tree.SetUp();
     }
 
-    public override void Run(out Vector3 move)
+    public override void Entry(Enum beforeType)
     {
-        move = Vector3.zero;
+        
+    }
+
+    public override void Run()
+    {
         _tree.Run();
     }
 
-    public override StateMachine.StateType Exit()
+    public override Enum Exit()
     {
-        return StateMachine.StateType.BehaviorTree;
+        return EnemyBase.State.BehaviorTree;
     }
 }

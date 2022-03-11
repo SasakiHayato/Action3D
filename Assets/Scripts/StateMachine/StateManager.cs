@@ -18,6 +18,7 @@ namespace StateMachine
 
         State _runState;
         Enum _saveType;
+        public string CurrentStateType => _saveType.ToString();
 
         bool _isRun = false;
 
@@ -68,12 +69,12 @@ namespace StateMachine
                 if (data.Key.ToString() == type.ToString())
                 {
                     _runState = data.Value;
-                    _runState.Entry(null);
+                    _runState.Entry(type);
 
                     _saveType = data.Key;
 
                     _isRun = true;
-
+                    Debug.Log($"IsSet. Request => State:{type}");
                     return this;
                 }
             }
@@ -103,7 +104,7 @@ namespace StateMachine
         /// Update‚³‚¹‚éState‚ð•Ï‚¦‚é
         /// </summary>
         /// <param name="type">Update‚³‚¹‚éState</param>
-        public void ChangeState(Enum type)
+        public Enum ChangeState(Enum type)
         {
             foreach (var data in _stateDic)
             {
@@ -113,8 +114,12 @@ namespace StateMachine
                     _runState.Entry(_saveType);
 
                     _saveType = type;
+
+                    return type;
                 }
             }
+
+            return null;
         }
     }
 }

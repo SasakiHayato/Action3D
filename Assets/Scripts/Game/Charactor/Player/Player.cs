@@ -10,18 +10,28 @@ using NewAttacks;
 
 public class Player : CharaBase, IDamage
 {
+    public enum State
+    {
+        Idle,
+        Move,
+        Float,
+        Attack,
+        Avoid,
+        KnockBack
+    }
+
     [SerializeField] float _lockOnDist;
     [SerializeField] Transform _muzzle;
     [SerializeField] float _shotCoolTime;
     [SerializeField] float _modeChangeTime;
 
-    StateMachine _state;
     Animator _anim;
 
     NewAttackSettings _settings;
     
     float _shotTimer = 0;
-    
+    public Vector3 Move { get; set; } = Vector3.zero;
+
     public bool EndAnim { get; private set; } = true;
     public bool IsAvoid { get; private set; } = false;
     public bool IsLockon { get; private set; } = false;
@@ -33,7 +43,6 @@ public class Player : CharaBase, IDamage
         GameManager.Instance.PlayerData.HP = HP;
         GameManager.Instance.PlayerData.Power = Power;
 
-        _state = GetComponent<StateMachine>();
         _anim = GetComponent<Animator>();
         _settings = GetComponent<NewAttackSettings>();
         
@@ -51,18 +60,27 @@ public class Player : CharaBase, IDamage
 
         Inputter.Instance.Inputs.Player
             .RockOn.started += context => SetLockon();
+
+        BaseState.SetUp(gameObject)
+            .AddState(State.Idle, "Idle")
+            .AddState(State.Move, "Move")
+            .AddState(State.Avoid, "Avoid")
+            .AddState(State.Float, "Float")
+            .AddState(State.KnockBack, "Knock")
+            .AddState(State.Attack, "Attack")
+            .RunRequest(State.Idle);
     }
 
     void Update()
     {
         if (!GameManager.Instance.PlayerData.CanMove) return;
 
-        _state.Base();
-        if (_state.GetCurrentState != StateMachine.StateType.Avoid) IsAvoid = false;
+        BaseState.Update();
+        if (BaseState.CurrentStateType != State.Avoid.ToString()) IsAvoid = false;
 
         Shot();
        
-        Vector3 set = Vector3.Scale(_state.Move * Speed, PhsicsBase.GetVelocity);
+        Vector3 set = Vector3.Scale(Move * Speed, PhsicsBase.GetVelocity);
         
         Character.Move(set * Time.deltaTime);
     }
@@ -105,18 +123,18 @@ public class Player : CharaBase, IDamage
 
     void Avoid()
     {
-        if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
+        if (BaseState.CurrentStateType == State.KnockBack.ToString()) return;
         if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
         _settings.Cancel();
-        _state.ChangeState(StateMachine.StateType.Avoid);
+        BaseState.ChangeState(State.Avoid);
     }
 
     void Jump()
     {
-        if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
+        if (BaseState.CurrentStateType == State.KnockBack.ToString()) return;
         if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
 
-        _state.ChangeState(StateMachine.StateType.Floating);
+        BaseState.ChangeState(State.Float);
         _settings.Cancel();
         PhsicsBase.SetJump();
     }
@@ -124,23 +142,23 @@ public class Player : CharaBase, IDamage
     void WeakAttack()
     {
         if (_settings.ReadAttackType == NewAttacks.AttackType.Counter) return;
-        if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
+        if (BaseState.CurrentStateType == State.KnockBack.ToString()) return;
         if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
 
         _settings.SetAttackType = NewAttacks.AttackType.Weak;
         _settings.SetNextRequest();
-        _state.ChangeState(StateMachine.StateType.Attack);
+        BaseState.ChangeState(State.Attack);
     }
 
     void StrengthAttack()
     {
         if (_settings.ReadAttackType == NewAttacks.AttackType.Counter) return;
-        if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
+        if (BaseState.CurrentStateType == State.KnockBack.ToString()) return;
         if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
 
         _settings.SetAttackType = NewAttacks.AttackType.Strength;
         _settings.SetNextRequest();
-        _state.ChangeState(StateMachine.StateType.Attack);
+        BaseState.ChangeState(State.Attack);
     }
 
     void SetLockon()
@@ -187,7 +205,7 @@ public class Player : CharaBase, IDamage
 
     public void GetDamage(int damage, AttackType type)
     {
-        if (_state.GetCurrentState == StateMachine.StateType.Avoid)
+        if (BaseState.CurrentStateType == State.Avoid.ToString())
         {
             if (IsAvoid) return;
             IsAvoid = true;
@@ -216,18 +234,18 @@ public class Player : CharaBase, IDamage
 
     public void KnockBack(Vector3 dir)
     {
-        if (_state.GetCurrentState == StateMachine.StateType.KnockBack) return;
-        if (_state.GetCurrentState == StateMachine.StateType.Avoid) return;
+        if (BaseState.CurrentStateType == State.KnockBack.ToString()) return;
+        if (BaseState.CurrentStateType == State.Avoid.ToString()) return;
         if (_settings.ReadAttackType == NewAttacks.AttackType.Counter) return;
 
         GetKnockDir = dir;
-        _state.ChangeState(StateMachine.StateType.KnockBack);
+        BaseState.ChangeState(State.KnockBack);
     }
 
     public void SetAnim(string name, Action action = null)
     {
         if (!EndAnim) return;
-
+        
         EndAnim = false;
         _anim.Play(name);
         StartCoroutine(WaitAnim(action));

@@ -14,17 +14,15 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
 
     void Update()
     {
-        State.Base();
+        BaseState.Update();
 
         Vector3 set = Vector3.Scale(MoveDir * Speed, PhsicsBase.GetVelocity);
-        if(State.Move != Vector3.zero) set = State.Move;
-
         Character.Move(set * Time.deltaTime);
     }
 
     public void GetDamage(int damage, AttackType type)
     {
-        State.ChangeState(StateMachine.StateType.KnockBack);
+        BaseState.ChangeState(State.KnockBack);
         
         Sounds.SoundMaster.PlayRequest(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
         
