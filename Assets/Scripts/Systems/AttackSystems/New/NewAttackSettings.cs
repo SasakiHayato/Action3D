@@ -10,12 +10,13 @@ namespace NewAttacks
         [SerializeField] GameObject _target;
         [SerializeField] NewAttackCollider _targetWeapon;
         [SerializeField] List<AttackDataList> _dataLists = new List<AttackDataList>();
-
+        
         int _setID = 0;
         TrailRenderer _trail;
         AttackEffectSetter _effectSetter;
         CharaBase _charaBase;
         AttackData _data;
+        EnemyAttackSystem _enemyAttackSystem;
 
         Animator _targetAnim;
         Collider _weaponCllider;
@@ -40,12 +41,15 @@ namespace NewAttacks
             _weaponCllider.enabled = false;
 
             _trail = _targetWeapon.GetComponentInChildren<TrailRenderer>();
-            _trail.enabled = false;
+            if (_trail != null) _trail.enabled = false;
 
             _targetWeapon.SetUp(gameObject, this);
 
             _effectSetter = new AttackEffectSetter();
             _effectSetter.SetUpUserData(gameObject, _targetWeapon);
+
+            if (_target.tag == "Enemy") 
+                _enemyAttackSystem = gameObject.AddComponent<EnemyAttackSystem>();
         }
 
         public void Request(AttackType type, int id = -1)
@@ -81,7 +85,8 @@ namespace NewAttacks
         {
             EndAnim();
             _weaponCllider.enabled = false;
-            _trail.enabled = false;
+
+            if (_trail != null) _trail.enabled = false;
         }
 
         public void IsHitCallBack(Collider collider)
@@ -126,12 +131,13 @@ namespace NewAttacks
             if (!_weaponCllider.enabled)
             {
                 _weaponCllider.enabled = true;
-                _trail.enabled = true;
+
+                if (_trail != null) _trail.enabled = true;
             }
             else
             {
                 _weaponCllider.enabled = false;
-                _trail.enabled = false;
+                if (_trail != null) _trail.enabled = false;
                 IsNextRequest = true;
             }
         }

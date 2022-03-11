@@ -201,9 +201,9 @@ GameObject:
   - component: {fileID: 1541433764607956061}
   - component: {fileID: 1541433764607956062}
   - component: {fileID: 1541433764607956063}
-  - component: {fileID: 1541433764607956049}
   - component: {fileID: 7090726717776632346}
   - component: {fileID: 7059856067712300299}
+  - component: {fileID: 4238981876684111246}
   m_Layer: 0
   m_Name: RunSkeleton
   m_TagString: Enemy
@@ -320,35 +320,6 @@ MonoBehaviour:
   _tree: {fileID: 7090726717776632346}
   _state: {fileID: 7059856067712300299}
   _enemyConditionals: []
---- !u!114 &1541433764607956049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541433764607956050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11c336e4123f1b64d9ab2802787669c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parent: {fileID: 1541433764607956050}
-  _requestEnemySystem: 1
-  _requestCoolTime: 1
-  _targetWeapon: {fileID: 1541433765520133809}
-  _attacks:
-  - AnimName: SkeletonAttack
-    GroupID: 0
-    Power: 1
-    IsEndCombo: 0
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 1
-    SE: {fileID: 0}
-    SEVol: 0
-    Action: 0
-    Effects: 0200000003000000
 --- !u!114 &7090726717776632346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,6 +536,31 @@ MonoBehaviour:
       data:
         StateID: -1
         _nextState: 6
+--- !u!114 &4238981876684111246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541433764607956050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a9cba23fec826429a4ce3f6077372d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 1541433764607956050}
+  _targetWeapon: {fileID: 8234834441360414106}
+  _dataLists:
+  - AttackType: 0
+    AttackDatas:
+    - AnimName: SkeletonAttack
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
 --- !u!1 &1541433764611268897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,9 +1223,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1541433765520133811}
   - component: {fileID: 1541433765520133808}
-  - component: {fileID: 1541433765520133809}
   - component: {fileID: 1541433765520133810}
   - component: {fileID: 5703064741812921431}
+  - component: {fileID: 8234834441360414106}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Weapon
@@ -1305,19 +1301,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0014118608, y: 0.00002192147, z: 0.040557608}
     m_Extent: {x: 0.012434602, y: 0.006705285, z: 0.05640191}
   m_DirtyAABB: 0
---- !u!114 &1541433765520133809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541433765520133812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 615ddff2119349d4eabeea5364f7bb7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groupID: 0
 --- !u!65 &1541433765520133810
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1344,6 +1327,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _avoidDist: 5.5
+--- !u!114 &8234834441360414106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541433765520133812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716585bb7e6366c4d886c3ff17de0439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1541433765625171511
 GameObject:
   m_ObjectHideFlags: 0

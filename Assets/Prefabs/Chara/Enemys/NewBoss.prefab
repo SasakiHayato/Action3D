@@ -43,7 +43,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.63, y: 0.48, z: 2.47}
   m_Center: {x: -0.00000056040824, y: 0.0000001709411, z: 0.61083317}
---- !u!114 &1520026632161214190
+--- !u!114 &3409067356140262715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -52,10 +52,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8117627567819245669}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 615ddff2119349d4eabeea5364f7bb7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 716585bb7e6366c4d886c3ff17de0439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groupID: 0
 --- !u!114 &7772319148189311009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,8 +422,9 @@ GameObject:
   - component: {fileID: 6446958624377032662}
   - component: {fileID: 4140609566805778294}
   - component: {fileID: 4666240207695605514}
-  - component: {fileID: 9170105215925174720}
   - component: {fileID: 3225593644156799479}
+  - component: {fileID: 8403257864341664884}
+  - component: {fileID: 1851647151745222977}
   m_Layer: 0
   m_Name: NewBoss
   m_TagString: Enemy
@@ -538,161 +538,11 @@ MonoBehaviour:
   _power: 0
   _speed: 0
   _level: 0
-  _knockBackPower: 0
-  _knockBackTime: 0
   _tree: {fileID: 3225593644156799479}
+  _state: {fileID: 1851647151745222977}
   _enemyConditionals:
   - ID: 1
   - ID: 2
---- !u!114 &9170105215925174720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8735183208793564310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11c336e4123f1b64d9ab2802787669c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parent: {fileID: 8735183208793564310}
-  _requestEnemySystem: 1
-  _requestCoolTime: 0
-  _targetWeapon: {fileID: 1520026632161214190}
-  _attacks:
-  - AnimName: Attack_3Combo_1_Inplace
-    GroupID: 0
-    Power: 1
-    IsEndCombo: 0
-    KnockBackData:
-      Power: 0
-      Type: 0
-    NextAcceptTime: 99
-    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
-    SEVol: 0
-    Action: 0
-    Effects: 0000000002000000
-  - AnimName: Attack_3Combo_2_Inplace
-    GroupID: 0
-    Power: 1
-    IsEndCombo: 0
-    KnockBackData:
-      Power: 0
-      Type: 0
-    NextAcceptTime: 99
-    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
-    SEVol: 0
-    Action: 0
-    Effects: 0000000002000000
-  - AnimName: Attack_3Combo_3_Inplace
-    GroupID: 0
-    Power: 1
-    IsEndCombo: 1
-    KnockBackData:
-      Power: 5
-      Type: 0
-    NextAcceptTime: 99
-    SE: {fileID: 8300000, guid: 6618350ba7f7e9e4fb84688bd31b4369, type: 3}
-    SEVol: 0
-    Action: 0
-    Effects: 00000000010000000300000002000000
-  - AnimName: Attack_7Combo_1_Inplace
-    GroupID: 0
-    Power: 2
-    IsEndCombo: 0
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 99
-    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
-    SEVol: 0
-    Action: 1
-    Effects: 000000000300000002000000
-  - AnimName: Attack_7Combo_2_Inplace
-    GroupID: 0
-    Power: 2
-    IsEndCombo: 0
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 99
-    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
-    SEVol: 0
-    Action: 1
-    Effects: 000000000300000002000000
-  - AnimName: Attack_7Combo_3_Inplace
-    GroupID: 0
-    Power: 2
-    IsEndCombo: 0
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 99
-    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
-    SEVol: 0
-    Action: 1
-    Effects: 000000000300000002000000
-  - AnimName: Attack_7Combo_4_Inplace
-    GroupID: 0
-    Power: 2
-    IsEndCombo: 0
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 99
-    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
-    SEVol: 0
-    Action: 1
-    Effects: 000000000300000002000000
-  - AnimName: Attack_7Combo_5_Inplace
-    GroupID: 0
-    Power: 2
-    IsEndCombo: 0
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 99
-    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
-    SEVol: 0
-    Action: 1
-    Effects: 000000000300000002000000
-  - AnimName: Attack_7Combo_6_Inplace
-    GroupID: 0
-    Power: 2
-    IsEndCombo: 0
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 99
-    SE: {fileID: 8300000, guid: 2242ddad492b933459791117caca5538, type: 3}
-    SEVol: 0
-    Action: 1
-    Effects: 000000000300000002000000
-  - AnimName: Attack_7Combo_7_Inplace
-    GroupID: 0
-    Power: 4
-    IsEndCombo: 1
-    KnockBackData:
-      Power: 8
-      Type: 0
-    NextAcceptTime: 99
-    SE: {fileID: 8300000, guid: 6618350ba7f7e9e4fb84688bd31b4369, type: 3}
-    SEVol: 0
-    Action: 1
-    Effects: 000000000300000002000000
-  - AnimName: Skill_I
-    GroupID: 0
-    Power: 3
-    IsEndCombo: 1
-    KnockBackData:
-      Power: 7
-      Type: 0
-    NextAcceptTime: 1
-    SE: {fileID: 8300000, guid: 6618350ba7f7e9e4fb84688bd31b4369, type: 3}
-    SEVol: 0
-    Action: 2
-    Effects: 00000000030000000200000001000000
 --- !u!114 &3225593644156799479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1201,6 +1051,147 @@ MonoBehaviour:
       data:
         _setID: 2
         _setBool: 1
+--- !u!114 &8403257864341664884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735183208793564310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a9cba23fec826429a4ce3f6077372d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 8735183208793564310}
+  _targetWeapon: {fileID: 3409067356140262715}
+  _dataLists:
+  - AttackType: 0
+    AttackDatas:
+    - AnimName: Attack_3Combo_1_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Attack_3Combo_2_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Attack_3Combo_3_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+  - AttackType: 1
+    AttackDatas:
+    - AnimName: Attack_7Combo_1_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Attack_7Combo_2_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Attack_7Combo_3_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Attack_7Combo_4_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Attack_7Combo_5_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Attack_7Combo_6_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Attack_7Combo_7_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+  - AttackType: 2
+    AttackDatas:
+    - AnimName: Skill_I
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+--- !u!114 &1851647151745222977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735183208793564310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d201f099bcadf7947a3fba3131a2e429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateList:
+  - id: 0
+  - id: 1
+  - id: 2
+  references:
+    version: 1
+    00000000:
+      type: {class: RunBehaviorTree, ns: , asm: Assembly-CSharp}
+      data:
+        StateID: 6
+    00000001:
+      type: {class: EnemyKnockBack, ns: , asm: Assembly-CSharp}
+      data:
+        StateID: 5
+        _animName: Damage_Back_Small_ver_B
+    00000002:
+      type: {class: StateNone, ns: , asm: Assembly-CSharp}
+      data:
+        StateID: -1
+        _nextState: 6
 --- !u!1 &8735183208793564312
 GameObject:
   m_ObjectHideFlags: 0

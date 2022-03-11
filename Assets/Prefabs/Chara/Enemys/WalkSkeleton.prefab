@@ -535,8 +535,9 @@ GameObject:
   - component: {fileID: 941701008408256702}
   - component: {fileID: 6440286998496788529}
   - component: {fileID: 3253592056411195766}
-  - component: {fileID: 8309729996784240578}
   - component: {fileID: 1533691912657367723}
+  - component: {fileID: 5441390384126800617}
+  - component: {fileID: 3499851343304127826}
   m_Layer: 0
   m_Name: WalkSkeleton
   m_TagString: Enemy
@@ -650,39 +651,9 @@ MonoBehaviour:
   _power: 0
   _speed: 0
   _level: 0
-  _knockBackPower: 2
-  _knockBackTime: 0.4
   _tree: {fileID: 1533691912657367723}
+  _state: {fileID: 3499851343304127826}
   _enemyConditionals: []
---- !u!114 &8309729996784240578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2448143286815395276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11c336e4123f1b64d9ab2802787669c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parent: {fileID: 2448143286815395276}
-  _requestEnemySystem: 1
-  _requestCoolTime: 1
-  _targetWeapon: {fileID: 4841142406442941461}
-  _attacks:
-  - AnimName: SkeletonAttack
-    GroupID: 0
-    Power: 1
-    IsEndCombo: 0
-    KnockBackData:
-      Power: 1
-      Type: 0
-    NextAcceptTime: 1
-    SE: {fileID: 0}
-    SEVol: 0
-    Action: 0
-    Effects: 0200000003000000
 --- !u!114 &1533691912657367723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,6 +838,53 @@ MonoBehaviour:
       data:
         _type: 1
         _checkBool: 0
+--- !u!114 &5441390384126800617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448143286815395276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a9cba23fec826429a4ce3f6077372d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 2448143286815395276}
+  _targetWeapon: {fileID: 2492898638037187930}
+  _dataLists: []
+--- !u!114 &3499851343304127826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448143286815395276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d201f099bcadf7947a3fba3131a2e429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateList:
+  - id: 0
+  - id: 1
+  - id: 2
+  references:
+    version: 1
+    00000000:
+      type: {class: RunBehaviorTree, ns: , asm: Assembly-CSharp}
+      data:
+        StateID: 6
+    00000001:
+      type: {class: EnemyKnockBack, ns: , asm: Assembly-CSharp}
+      data:
+        StateID: 5
+        _animName: SkeletonDamage
+    00000002:
+      type: {class: StateNone, ns: , asm: Assembly-CSharp}
+      data:
+        StateID: -1
+        _nextState: 6
 --- !u!1 &2565751911822226107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,9 +1048,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7954188784143394312}
   - component: {fileID: 617993250238657558}
-  - component: {fileID: 4841142406442941461}
   - component: {fileID: 1691012452239464673}
   - component: {fileID: 1493395736839747242}
+  - component: {fileID: 2492898638037187930}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Weapon
@@ -1108,19 +1126,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0014118608, y: 0.00002192147, z: 0.040557608}
     m_Extent: {x: 0.012434602, y: 0.006705285, z: 0.05640191}
   m_DirtyAABB: 0
---- !u!114 &4841142406442941461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3305584495784071643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 615ddff2119349d4eabeea5364f7bb7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groupID: 0
 --- !u!65 &1691012452239464673
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1147,6 +1152,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _avoidDist: 5.5
+--- !u!114 &2492898638037187930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3305584495784071643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716585bb7e6366c4d886c3ff17de0439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3440413924755436782
 GameObject:
   m_ObjectHideFlags: 0

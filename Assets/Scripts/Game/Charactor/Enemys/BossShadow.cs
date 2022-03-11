@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using AttackSetting;
 
 public class BossShadow : EnemyBase, IDamage
 {

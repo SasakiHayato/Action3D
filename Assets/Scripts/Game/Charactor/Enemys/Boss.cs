@@ -1,18 +1,18 @@
 using UnityEngine;
-using AttackSetting;
+using NewAttacks;
 
 public class Boss : EnemyBase, IDamage, IFieldEnemy
 {
     GameObject _player;
 
     Animator _anim;
-    AttackSettings _attack;
+    NewAttackSettings _attack;
     
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
         _anim = GetComponent<Animator>();
-        _attack = GetComponent<AttackSettings>();
+        _attack = GetComponent<NewAttackSettings>();
         Tree.SetUp();
     }
 
