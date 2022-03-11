@@ -1,5 +1,5 @@
 using UnityEngine;
-using AttackSetting;
+using NewAttacks;
 using ObjectPhysics;
 using DG.Tweening;
 using System.Linq;
@@ -13,16 +13,16 @@ public class PlayerAttack : StateMachine.State
     float _timer;
 
     Player _player;
-    AttackSettings _attack = null;
+    NewAttackSettings _settings = null;
     PhysicsBase _physics;
 
     Transform _setTarget;
     
     public override void Entry(StateMachine.StateType beforeType)
     {
-        if (_attack == null)
+        if (_settings == null)
         {
-            _attack = Target.GetComponent<AttackSettings>();
+            _settings = Target.GetComponent<NewAttackSettings>();
             _player = Target.GetComponent<Player>();
             _physics = Target.GetComponent<PhysicsBase>();
         }
@@ -39,20 +39,26 @@ public class PlayerAttack : StateMachine.State
                     Vector3 tForward = t.forward;
                     tPos.y -= 0.5f;
                     Target.transform.DOMove(tPos - tForward, 0.1f).SetEase(Ease.Linear);
-                    _attack.RequestAt(ActionType.Counter, 0);
+                    _settings.Request(NewAttacks.AttackType.Counter, 0);
                 }
                 else
                 {
-                    _attack.RequestAt(ActionType.Counter, 1);
+                    _settings.Request(NewAttacks.AttackType.Counter, 1);
                 }
             }
         }
         else
         {
-            if (beforeType == StateMachine.StateType.Floating || !_physics.IsGround)
-                _attack.Request(ActionType.Float);
-            else
-                _attack.Request(_attack.ReadAction);
+            if (_settings.ReadAttackType != NewAttacks.AttackType.Counter)
+            {
+                if (beforeType == StateMachine.StateType.Floating || !_physics.IsGround)
+                {
+                    _settings.SetAttackType = NewAttacks.AttackType.Float;
+                    _settings.Request(NewAttacks.AttackType.Float);
+                }
+                else
+                    _settings.Request(_settings.ReadAttackType);
+            }
         }
 
         _setTarget = SetTarget();
@@ -133,20 +139,18 @@ public class PlayerAttack : StateMachine.State
 
     public override StateMachine.StateType Exit()
     {
-        if (!_attack.EndCurrentAnim)
+        if (!_settings.EndCurrentAnim)
         {
+            if (_settings.IsNextRequest && _settings.IsSetNextRequest)
+            {
+                return Target.GetComponent<StateMachine>().RetuneState(StateMachine.StateType.Attack);
+            }
+
             return StateMachine.StateType.Attack;
         }
         else
         {
-            if (_attack.IsNextRequest)
-            {
-                return Target.GetComponent<StateMachine>().RetuneState(StateMachine.StateType.Attack);
-            }
-            else
-            {
-                return StateMachine.StateType.Idle;
-            }
+            return StateMachine.StateType.Idle;
         }
     }
 }
