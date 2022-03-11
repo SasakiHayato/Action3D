@@ -47,6 +47,7 @@ public class Inputter : SingletonAttribute<Inputter>
     void IsSelectButton()
     {
         if (GameManager.Option.Open != GameManager.Instance.OptionState) return;
+
         GamePadButtonEvents.Instance.IsSelected();
     }
 }

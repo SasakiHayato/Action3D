@@ -37,6 +37,16 @@ public class BaseUI : SingletonAttribute<BaseUI>
         }
     }
 
+    public void CallBackParent(int parentID, object[] data = null)
+    {
+        _uiList.First(u => u.ID == parentID).CallBack(data);
+    }
+
+    public void CallBackParent(string parentPath, object[] data = null)
+    {
+        _uiList.First(u => u.Path == parentPath).CallBack(data);
+    }
+
     public void CallBack(int parentID, int childrenID, object[] data = null)
     {
         var parent = _uiList.First(u => u.ID == parentID);

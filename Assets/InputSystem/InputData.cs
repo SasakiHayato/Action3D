@@ -877,7 +877,7 @@ public class @InputData : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""cff8163d-3478-435d-8491-b502e948f5da"",
+                    ""id"": ""f161ec72-6082-4985-8846-5bbc6021071f"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",

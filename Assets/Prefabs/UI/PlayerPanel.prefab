@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3307764d188a7fa4199433c1c9e35322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _path: 
+  _path: HP
   _slideSpeed: 5
 --- !u!1 &1127123279494997395
 GameObject:
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f408285a64ca49044bbc0c1eeb1e3677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _path: 
+  _path: Level
   _txt: {fileID: 1127123280920386081}
 --- !u!1 &1127123280161741629
 GameObject:
@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50632f61b3c66ff42b6090b0bfd68751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _path: 
+  _path: Exp
 --- !u!1 &1127123280891007253
 GameObject:
   m_ObjectHideFlags: 0

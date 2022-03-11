@@ -21,8 +21,8 @@ MonoBehaviour:
       type: 3}
     DummyPrefab: {fileID: 7980940582174284826, guid: d5e3177cb18025c45883ac5086f7998e,
       type: 3}
-    HP: 200
-    Power: 10
+    HP: 100
+    Power: 5
     Speed: 4
     Exp: 150
   - Name: WalkSkeleton
@@ -34,7 +34,7 @@ MonoBehaviour:
     DummyPrefab: {fileID: 3301239994622150715, guid: 3fafde769f726f24a91925299beaaa03,
       type: 3}
     HP: 250
-    Power: 10
+    Power: 5
     Speed: 1
     Exp: 100
   - Name: RunSkeleton
@@ -46,7 +46,7 @@ MonoBehaviour:
     DummyPrefab: {fileID: 3301239994622150715, guid: 3fafde769f726f24a91925299beaaa03,
       type: 3}
     HP: 250
-    Power: 10
+    Power: 5
     Speed: 3
     Exp: 100
   - Name: Boss
@@ -58,7 +58,7 @@ MonoBehaviour:
     DummyPrefab: {fileID: 8735183208793564310, guid: 73cfdf44fae8f61428739109573aa8f5,
       type: 3}
     HP: 1200
-    Power: 15
+    Power: 7
     Speed: 7
     Exp: 500
   - Name: BrackCubeEnemy
@@ -69,8 +69,8 @@ MonoBehaviour:
       type: 3}
     DummyPrefab: {fileID: 7980940582174284826, guid: bf08f62adccde204397af3ac5c3b932f,
       type: 3}
-    HP: 200
-    Power: 10
+    HP: 100
+    Power: 5
     Speed: 3
     Exp: 150
   - Name: BossShadow

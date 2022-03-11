@@ -39,4 +39,6 @@ public abstract class ParentUI : MonoBehaviour
         if (active) CanvasGroup.alpha = 1;
         else CanvasGroup.alpha = 0;
     }
+
+    public abstract void CallBack(object[] datas);
 }

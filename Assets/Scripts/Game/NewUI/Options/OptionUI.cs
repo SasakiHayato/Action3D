@@ -5,4 +5,9 @@ public class OptionUI : ParentUI
     {
         base.SetUp();
     }
+
+    public override void CallBack(object[] datas)
+    {
+        
+    }
 }

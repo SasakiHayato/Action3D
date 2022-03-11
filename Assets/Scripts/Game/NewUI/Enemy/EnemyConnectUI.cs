@@ -14,4 +14,9 @@ public class EnemyConnectUI : ParentUI
             return;
         }
     }
+
+    public override void CallBack(object[] datas)
+    {
+        
+    }
 }

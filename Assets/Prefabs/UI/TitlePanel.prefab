@@ -839,7 +839,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: AnyPressedButton
+  m_Text: "Pressed \u3007 Button"
 --- !u!114 &854048882069384077
 MonoBehaviour:
   m_ObjectHideFlags: 0

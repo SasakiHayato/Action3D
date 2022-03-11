@@ -18,9 +18,13 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
         public ButtonEventsData AddEvents(Button button, Action action)
         {
             if (_isSetUp) return this;
-
-            Buttons.Add(button);
-            Actions.Add(action);
+            
+            if (button.gameObject.activeSelf)
+            {
+                Buttons.Add(button);
+                Actions.Add(action);
+            }
+            
             return this;
         }
 
@@ -38,6 +42,11 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
     int _saveID = 0;
     int _setID = 0;
     List<int> _savePickUpIDList = new List<int>();
+
+    int _savePickUpID = 0;
+    public int SavePickUpID { set { _savePickUpID = value; } }
+    Action _saveCallBackAction = null;
+    public Action SaveCallBackAction { set { _saveCallBackAction = value; } } 
 
     public override void SetUp()
     {
@@ -78,6 +87,19 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
         data.ID = createID;
         _eventsDatas.Add(data);
         return data;
+    }
+
+    public void BackPickUp()
+    {
+        foreach (var item in _eventsDatas)
+        {
+            if (item.ID == _savePickUpID)
+            {
+                _pickUpEvents = item;
+                _saveCallBackAction?.Invoke();
+                return;
+            }
+        }
     }
 
     public void PickUpRequest(int id)
@@ -125,13 +147,13 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
             if ((int)getVal.y < 0)
             {
                 _saveID = (int)getVal.y;
-                _setID--;
+                _setID++;
                 SetSelectID(ref _setID);
             }
             else
             {
                 _saveID = (int)getVal.y;
-                _setID++;
+                _setID--;
                 SetSelectID(ref _setID);
             }
         }
@@ -145,6 +167,7 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
         {
             if (id == _currentSelectID)
             {
+                Sounds.SoundMaster.PlayRequest(null, "Click", Sounds.SEDataBase.DataType.UI);
                 _pickUpEvents.Actions[id].Invoke();
                 return;
             }

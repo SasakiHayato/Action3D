@@ -14,9 +14,7 @@ public class GameManager : SingletonAttribute<GameManager>
         Title,
         Dead,
         Load,
-        EndArena,
-
-        Debug,
+        End,
     }
 
     public enum FieldType
@@ -69,12 +67,11 @@ public class GameManager : SingletonAttribute<GameManager>
         CurrentGameState = state;
 
         Object.Instantiate((GameObject)Resources.Load("Systems/SoundMaster"));
-        BaseUI.Instance.Load();
 
         switch (state)
         {
             case GameState.InGame:
-                
+                BaseUI.Instance.Load();
                 Object.Instantiate((GameObject)Resources.Load("Systems/FieldSystems"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/ItemManager"));
                 Object.Instantiate((GameObject)Resources.Load("Systems/BulletSettings"));
@@ -92,7 +89,7 @@ public class GameManager : SingletonAttribute<GameManager>
 
             case GameState.Title:
                 SoundMaster.PlayRequest(null, "TitleBGM", SEDataBase.DataType.BGM);
-                
+                BaseUI.Instance.Load();
                 BaseUI.Instance.ParentActive("Title", true);
                 break;
 
@@ -100,9 +97,10 @@ public class GameManager : SingletonAttribute<GameManager>
                 break;
 
             case GameState.Load:
+                BaseUI.Instance.Load();
                 break;
 
-            case GameState.EndArena:
+            case GameState.End:
                 break;
         }
     }
@@ -130,8 +128,8 @@ public class GameManager : SingletonAttribute<GameManager>
 
             case GameState.Dead:
                 PlayerData.CanMove = false;
-                player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
                 Fader.Instance.Request(Fader.FadeType.Out, 0.5f);
+                player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
                 player.SetAnim("Damage_Die", () => SceneSettings.Instance.LoadSync(0));
                 break;
 
@@ -139,14 +137,9 @@ public class GameManager : SingletonAttribute<GameManager>
                 End();
                 break;
 
-            case GameState.EndArena:
+            case GameState.End:
                 Fader.Instance.Request(Fader.FadeType.Out, 1f);
                 SceneSettings.Instance.LoadAsync(0, 1);
-                break;
-
-            case GameState.Debug:
-                PlayerData.CanMove = true;
-                SetOptionState(Option.Close);
                 break;
         }
     }
@@ -215,8 +208,8 @@ public class GameManager : SingletonAttribute<GameManager>
         if (currentExp >= PlayerData.NextLevelExp)
         {
             // Log
-            //UIManager.CallBack(UIType.Game, 3, new object[] { 1 });
-
+            BaseUI.Instance.CallBack("Game", "Log", new object[] { 1 });
+            
             int set = currentExp - PlayerData.NextLevelExp;
             PlayerData.NextLevelExp += 100;
 
@@ -227,16 +220,16 @@ public class GameManager : SingletonAttribute<GameManager>
             PlayerData.Player.SetParam(hp, power, speed, level);
 
             // ExpSlider
-            //UIManager.CallBack(UIType.Player, 5, null);
-
+            BaseUI.Instance.CallBack("Player", "Exp");
+            
             AddExp(PlayerData.CurrentExp = set);
         }
         else
         {
             // HpSlider
-            //UIManager.CallBack(UIType.Player, 4, new object[] { PlayerData.Player.Level });
+            BaseUI.Instance.CallBack("Player", "HP");
             // Leveltext
-            //UIManager.CallBack(UIType.Player, 3, new object[] { PlayerData.Player.HP });
+            BaseUI.Instance.CallBack("Player", "Level", new object[] { PlayerData.Player.Level });
             SoundMaster.PlayRequest(null, "LevelUp", 0);
         }
     }
