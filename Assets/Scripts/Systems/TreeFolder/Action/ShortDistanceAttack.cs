@@ -27,25 +27,10 @@ public class ShortDistanceAttack : IAction
         _enemyBase.MoveDir = Vector3.zero;
         
         Rotate();
-        if (_attack.EndCurrentAnim)
-        {
-            if (_attack.IsNextRequest)
-            {
-                _attack.Request(_type);
-                //Debug.Log("IsNext");
-                return true;
-            }
-            //Debug.Log("Request");
-            _attack.Cancel();
-            _attack.Request(_type);
-            return  true;
-        }
-        else
-        {
-            _attack.SetNextRequest();
-        }
+        _attack.Request(_type);
+        _attack.SetNextRequest();
 
-        return false;
+        return true;
     }
 
     void Rotate()

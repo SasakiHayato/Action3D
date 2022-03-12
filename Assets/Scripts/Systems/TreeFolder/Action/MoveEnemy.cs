@@ -34,11 +34,6 @@ public class MoveEnemy : IAction
 
     public bool Execute()
     {
-        if (_attack != null)
-        {
-            if (!_attack.EndCurrentAnim) return false;
-        }
-
         Vector3 dir = Vector3.zero;
 
         switch (_moveType)

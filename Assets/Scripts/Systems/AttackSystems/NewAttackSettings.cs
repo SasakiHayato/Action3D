@@ -32,6 +32,12 @@ namespace NewAttacks
 
         const float Duration = 0.1f;
 
+        void Awake()
+        {
+            if (_target.tag == "Enemy")
+                _enemyAttackSystem = gameObject.AddComponent<EnemyAttackSystem>();
+        }
+
         void Start()
         {
             _charaBase = _target.GetComponent<CharaBase>();
@@ -47,9 +53,6 @@ namespace NewAttacks
 
             _effectSetter = new AttackEffectSetter();
             _effectSetter.SetUpUserData(gameObject, _targetWeapon);
-
-            if (_target.tag == "Enemy") 
-                _enemyAttackSystem = gameObject.AddComponent<EnemyAttackSystem>();
         }
 
         public void Request(AttackType type, int id = -1)

@@ -20,7 +20,7 @@ public class CheckRequestAttack : IConditional
     public void SetUp(GameObject user)
     {
         _user = user;
-        _enemySystem = _user.GetComponent<EnemyAttackSystem>();
+        _enemySystem = user.GetComponent<EnemyAttackSystem>();
     }
 
     public bool Try()
@@ -32,7 +32,6 @@ public class CheckRequestAttack : IConditional
             case RequestType.Individual:
                 return Set(_enemySystem.Request);
             default:
-                Debug.Log("None");
                 return false;
         }
     }

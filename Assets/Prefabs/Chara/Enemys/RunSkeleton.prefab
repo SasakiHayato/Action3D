@@ -472,9 +472,9 @@ MonoBehaviour:
     0000000E:
       type: {class: WaitTime, ns: , asm: Assembly-CSharp}
       data:
-        _minWaitTime: 0.5
-        _maxWaitTime: 1
-        _setRandom: 1
+        _minWaitTime: 1.5
+        _maxWaitTime: 1.5
+        _setRandom: 0
     0000000F:
       type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
       data:

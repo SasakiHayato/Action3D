@@ -212,6 +212,19 @@ MonoBehaviour:
         - id: 8
         Actions:
         - id: 9
+  - BrockType: 2
+    Condition: 0
+    BranchConditionals:
+    - id: 10
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 11
+        Actions:
+        - id: 12
   references:
     version: 1
     00000000:
@@ -269,6 +282,19 @@ MonoBehaviour:
         _applyYPos: 1
         _moveType: 1
         _speedRate: 3
+    0000000A:
+      type: {class: DrawingJudgment, ns: , asm: Assembly-CSharp}
+      data:
+        _returnType: 1
+    0000000B:
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    0000000C:
+      type: {class: MoveInCamera, ns: , asm: Assembly-CSharp}
+      data:
+        _runType: 0
+        _offsetAngle: 0
+        _offSetPos: {x: 0, y: 0, z: 0}
+        _setDistance: 0
 --- !u!114 &4184691060614374985
 MonoBehaviour:
   m_ObjectHideFlags: 0

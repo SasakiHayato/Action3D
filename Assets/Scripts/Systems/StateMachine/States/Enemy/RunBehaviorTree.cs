@@ -10,12 +10,11 @@ public class RunBehaviorTree : State
     public override void SetUp(GameObject user)
     {
         _tree = user.GetComponent<TreeManager>();
-        _tree.SetUp();
     }
 
     public override void Entry(Enum beforeType)
     {
-        
+        _tree.SetUp();
     }
 
     public override void Run()
