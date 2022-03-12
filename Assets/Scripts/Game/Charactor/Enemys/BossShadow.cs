@@ -7,12 +7,15 @@ public class BossShadow : EnemyBase, IDamage
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
-        Tree.SetUp();
+
+        BaseState.SetUp(gameObject)
+            .AddState(State.BehaviorTree, "Tree")
+            .AddState(State.KnockBack, "Knock")
+            .RunRequest(State.BehaviorTree);
     }
 
     void Update()
     {
-        Tree.Run();
         Rotate();
         Vector3 move = MoveDir;
         

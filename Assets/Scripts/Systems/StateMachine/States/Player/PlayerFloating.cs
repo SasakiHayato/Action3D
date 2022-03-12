@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using ObjectPhysics;
+using StateMachine;
+using System;
 
-public class PlayerFloating : StateMachine.State
+public class PlayerFloating : State
 {
     [SerializeField] float _dashSpeedRate;
     
@@ -19,26 +18,31 @@ public class PlayerFloating : StateMachine.State
 
     bool _isGround = false;
 
-    public override void Entry(StateMachine.StateType beforeType)
+    GameObject _user;
+
+    public override void SetUp(GameObject user)
     {
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
-        if (_player == null)
-        {
-            _player = Target.GetComponent<Player>();
-            _anim = Target.GetComponent<Animator>();
-            _character = Target.GetComponent<CharacterController>();
-        }
+        _player = user.GetComponent<Player>();
+        _anim = user.GetComponent<Animator>();
+        _character = user.GetComponent<CharacterController>();
+
+        _user = user;
+    }
+
+    public override void Entry(Enum beforeType)
+    {
         _isGround = false;
         _player.SetAnim("Jump_Start");
     }
 
-    public override void Run(out Vector3 move)
+    public override void Run()
     {
         _input = (Vector2)Inputter.GetValue(InputType.PlayerMove) * _setSpeedRate;
 
         Vector3 forward = _mainCm.transform.forward * _input.y;
         Vector3 right = _mainCm.transform.right * _input.x;
-        move = new Vector3(forward.x + right.x, 1, right.z + forward.z);
+        _player.Move = new Vector3(forward.x + right.x, 1, right.z + forward.z);
 
         Rotate();
         if (_player.EndAnim)
@@ -50,20 +54,20 @@ public class PlayerFloating : StateMachine.State
 
     void Rotate()
     {
-        Vector3 forward = Target.transform.position - _beforePos;
-        _beforePos = Target.transform.position;
+        Vector3 forward = _user.transform.position - _beforePos;
+        _beforePos = _user.transform.position;
         forward.y = 0;
         if (forward.magnitude > 0.01f)
         {
             Quaternion rotation = Quaternion.LookRotation(forward);
-            Target.transform.rotation =
-                Quaternion.Lerp(Target.transform.rotation, rotation, Time.deltaTime * 8);
+            _user.transform.rotation =
+                Quaternion.Lerp(_user.transform.rotation, rotation, Time.deltaTime * 8);
         }
     }
 
-    public override StateMachine.StateType Exit()
+    public override Enum Exit()
     {
-        if (_isGround) return StateMachine.StateType.Idle;
-        else return StateMachine.StateType.Floating;
+        if (_isGround) return Player.State.Idle;
+        else return Player.State.Float;
     }
 }

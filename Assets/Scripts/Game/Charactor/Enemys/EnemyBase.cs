@@ -2,17 +2,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
 using EnemysData;
+using StateMachine;
 
 [RequireComponent(typeof(TreeManager))]
 public abstract class EnemyBase : CharaBase
 {
+    public enum State
+    {
+        BehaviorTree,
+        KnockBack,
+    }
+
     [SerializeField] TreeManager _tree;
-    [SerializeField] StateMachine _state;
     [SerializeField] List<EnemyConditionalData> _enemyConditionals;
 
     protected TreeManager Tree { get => _tree; set { _tree = value; } }
-    public StateMachine State => _state;
-
     public Vector3 MoveDir { protected get; set; } = new Vector3(0 ,1, 0);
     
     public List<EnemyConditionalData> GetEnemyConditionalDatas => _enemyConditionals;

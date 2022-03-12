@@ -1,24 +1,27 @@
 using UnityEngine;
-using NewAttacks;
+using AttackSetting;
 
 public class Boss : EnemyBase, IDamage, IFieldEnemy
 {
     GameObject _player;
 
     Animator _anim;
-    NewAttackSettings _attack;
+    AttackSettings _attack;
     
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
         _anim = GetComponent<Animator>();
-        _attack = GetComponent<NewAttackSettings>();
-        Tree.SetUp();
+        _attack = GetComponent<AttackSettings>();
+
+        BaseState.SetUp(gameObject)
+            .AddState(State.BehaviorTree, "Tree")
+            .AddState(State.KnockBack, "Knock")
+            .RunRequest(State.BehaviorTree);
     }
 
     void Update()
     {
-        Tree.Run();
         Rotate();
         
         Vector3 set = Vector3.Scale(MoveDir * Speed, PhsicsBase.GetVelocity);
