@@ -106,13 +106,15 @@ namespace StateMachine
         /// <param name="type">Update‚³‚¹‚éState</param>
         public Enum ChangeState(Enum type)
         {
+            if (_saveType.ToString() == type.ToString()) return type;
+
             foreach (var data in _stateDic)
             {
                 if (data.Key.ToString() == type.ToString())
                 {
                     _runState = data.Value;
                     _runState.Entry(_saveType);
-
+                    
                     _saveType = type;
 
                     return type;
@@ -120,6 +122,14 @@ namespace StateMachine
             }
 
             return null;
+        }
+
+        public Enum SetEntry(Enum type)
+        {
+            _runState.Entry(type);
+            _saveType = type;
+
+            return type;
         }
     }
 }

@@ -5,8 +5,7 @@ using System;
 public class PlayerMove : State
 {
     [SerializeField] float _dashSpeedRate;
-    [SerializeField, Range(0, 1)] float _setRunAnimRate;
-
+    
     Animator _anim = null;
     GameObject _mainCm;
     Vector2 _input = Vector2.zero;

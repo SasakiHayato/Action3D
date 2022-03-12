@@ -677,8 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b49dec25a677ad4a880bcabbd870c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dashSpeedRate: 0
-  _setRunAnimRate: 0
+  _dashSpeedRate: 2
 --- !u!114 &2145248219733621569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,7 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a2ef30258142347bf098505d7e6771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dashSpeedRate: 0
+  _dashSpeedRate: 2
 --- !u!114 &9142161059911114449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,10 +703,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9676452fb3240cf458854284fd4e62f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _avoidTime: 0
-  _defSpeed: 0
-  _isLockOnSpeed: 0
-  _targetDist: 0
+  _avoidTime: 0.25
+  _defSpeed: 5
+  _isLockOnSpeed: 1.5
+  _targetDist: 5
 --- !u!114 &6242670556615028420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,8 +719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f9a52a256e4da4fa1d328befa72b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveTime: 0
-  _moveSpeed: 1
+  _moveTime: 0.1
+  _moveSpeed: 0.5
 --- !u!114 &1084479045152712506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,8 +733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61ecde0c4525e6419cd1552cba995ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _knockTime: 0
-  _power: 0
+  _knockTime: 0.7
+  _power: 0.5
 --- !u!114 &5214533629733316604
 MonoBehaviour:
   m_ObjectHideFlags: 0

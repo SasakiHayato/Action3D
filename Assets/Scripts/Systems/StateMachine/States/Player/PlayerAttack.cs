@@ -23,6 +23,8 @@ public class PlayerAttack : State
         _settings = user.GetComponent<NewAttackSettings>();
         _player = user.GetComponent<Player>();
         _physics = user.GetComponent<PhysicsBase>();
+
+        _user = user;
     }
 
     public override void Entry(Enum beforeType)
@@ -92,9 +94,9 @@ public class PlayerAttack : State
         {
             if (_settings.IsNextRequest && _settings.IsSetNextRequest)
             {
-                return _player.BaseState.ChangeState(Player.State.Attack);
+                return _player.BaseState.SetEntry(Player.State.Attack);
             }
-
+            
             return Player.State.Attack;
         }
         else
