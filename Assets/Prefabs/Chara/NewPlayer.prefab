@@ -752,7 +752,133 @@ MonoBehaviour:
   _targetWeapon: {fileID: 1657703229661925047}
   _dataLists:
   - AttackType: 0
-    AttackDatas: []
+    AttackDatas:
+    - AnimName: Attack_4Combo_1_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Attack_4Combo_2_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Attack_4Combo_3_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Attack_4Combo_4_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+  - AttackType: 1
+    AttackDatas:
+    - AnimName: Attack_3Combo_1
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Attack_3Combo_2
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Attack_3Combo_3
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+  - AttackType: 3
+    AttackDatas:
+    - AnimName: Jump_Attack_Combo_1
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Jump_Attack_Combo_2
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Jump_Attack_Combo_3
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Jump_Attack_Combo_4
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Jump_Attack_Combo_5
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Jump_Attack_Combo_6
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+  - AttackType: 2
+    AttackDatas:
+    - AnimName: Skill_A
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
+    - AnimName: Skill_B
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 000000000100000002000000
 --- !u!1 &1908007640654097388
 GameObject:
   m_ObjectHideFlags: 0
