@@ -16,6 +16,8 @@ public class BossShadow : EnemyBase, IDamage
 
     void Update()
     {
+        BaseState.Update();
+
         Rotate();
         Vector3 move = MoveDir;
         

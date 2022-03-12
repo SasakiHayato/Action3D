@@ -23,6 +23,7 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
     void Update()
     {
         Rotate();
+        BaseState.Update();
         
         Vector3 set = Vector3.Scale(MoveDir * Speed, PhsicsBase.GetVelocity);
         Character.Move(set * Time.deltaTime);

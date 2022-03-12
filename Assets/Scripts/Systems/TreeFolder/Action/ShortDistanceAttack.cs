@@ -28,7 +28,6 @@ public class ShortDistanceAttack : IAction
         
         Rotate();
         _attack.Request(_type);
-        _attack.SetNextRequest();
 
         return true;
     }
@@ -42,6 +41,6 @@ public class ShortDistanceAttack : IAction
 
     public void InitParam()
     {
-
+        
     }
 }
