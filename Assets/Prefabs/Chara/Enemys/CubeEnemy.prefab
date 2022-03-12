@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 7980940582174284802}
   - component: {fileID: 7980940582174284806}
   - component: {fileID: 8891125759827804182}
+  - component: {fileID: 8217542041859164463}
+  - component: {fileID: 1293359366291562141}
   m_Layer: 0
   m_Name: CubeEnemy
   m_TagString: Enemy
@@ -123,8 +125,12 @@ MonoBehaviour:
   _power: 0
   _speed: 0
   _level: 0
-  _knockBackPower: 3
-  _knockBackTime: 0.2
+  _baseState:
+    _stateDatas:
+    - Path: Tree
+      State: {fileID: 8217542041859164463}
+    - Path: Knock
+      State: {fileID: 1293359366291562141}
   _tree: {fileID: 8891125759827804182}
   _enemyConditionals: []
 --- !u!114 &7980940582174284802
@@ -263,6 +269,31 @@ MonoBehaviour:
         _applyYPos: 1
         _moveType: 1
         _speedRate: 3
+--- !u!114 &8217542041859164463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980940582174284826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244c8e60b812d6446bb95250c081cd4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1293359366291562141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980940582174284826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87171630d2db494c8e1a9644a38683a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animName: 
 --- !u!1001 &2932163159214366345
 PrefabInstance:
   m_ObjectHideFlags: 0

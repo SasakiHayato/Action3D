@@ -93,10 +93,8 @@ public class PlayerAttack : State
         if (!_settings.EndCurrentAnim)
         {
             if (_settings.IsNextRequest && _settings.IsSetNextRequest)
-            {
-                return _player.BaseState.SetEntry(Player.State.Attack);
-            }
-            
+                return _player.BaseState.ReturnEntry();
+
             return Player.State.Attack;
         }
         else

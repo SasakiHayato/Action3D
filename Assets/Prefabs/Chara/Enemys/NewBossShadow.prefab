@@ -425,6 +425,8 @@ GameObject:
   - component: {fileID: 2902419257207798147}
   - component: {fileID: 9170105215925174720}
   - component: {fileID: 6272485905513677356}
+  - component: {fileID: 2395524822528264370}
+  - component: {fileID: 78286337511532000}
   m_Layer: 0
   m_Name: NewBossShadow
   m_TagString: Enemy
@@ -537,8 +539,12 @@ MonoBehaviour:
   _power: 1
   _speed: 9
   _level: 0
-  _knockBackPower: 0
-  _knockBackTime: 0
+  _baseState:
+    _stateDatas:
+    - Path: Tree
+      State: {fileID: 78286337511532000}
+    - Path: Knock
+      State: {fileID: 2395524822528264370}
   _tree: {fileID: 6272485905513677356}
   _enemyConditionals: []
 --- !u!114 &9170105215925174720
@@ -885,6 +891,31 @@ MonoBehaviour:
       data:
         _type: 0
         _checkBool: 0
+--- !u!114 &2395524822528264370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735183208793564310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87171630d2db494c8e1a9644a38683a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animName: Damage_Back_Small_ver_B
+--- !u!114 &78286337511532000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735183208793564310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244c8e60b812d6446bb95250c081cd4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8735183208793564312
 GameObject:
   m_ObjectHideFlags: 0

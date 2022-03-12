@@ -13,12 +13,15 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
         _player = GameObject.FindWithTag("Player");
         _anim = GetComponent<Animator>();
         _attack = GetComponent<AttackSettings>();
-        Tree.SetUp();
+
+        BaseState.SetUp(gameObject)
+            .AddState(State.BehaviorTree, "Tree")
+            .AddState(State.KnockBack, "Knock")
+            .RunRequest(State.BehaviorTree);
     }
 
     void Update()
     {
-        Tree.Run();
         Rotate();
         
         Vector3 set = Vector3.Scale(MoveDir * Speed, PhsicsBase.GetVelocity);

@@ -203,7 +203,8 @@ GameObject:
   - component: {fileID: 1541433764607956063}
   - component: {fileID: 1541433764607956049}
   - component: {fileID: 7090726717776632346}
-  - component: {fileID: 7059856067712300299}
+  - component: {fileID: 8943847764499172352}
+  - component: {fileID: 2713803392541575734}
   m_Layer: 0
   m_Name: RunSkeleton
   m_TagString: Enemy
@@ -317,8 +318,13 @@ MonoBehaviour:
   _power: 0
   _speed: 0
   _level: 0
+  _baseState:
+    _stateDatas:
+    - Path: Tree
+      State: {fileID: 8943847764499172352}
+    - Path: Knock
+      State: {fileID: 2713803392541575734}
   _tree: {fileID: 7090726717776632346}
-  _state: {fileID: 7059856067712300299}
   _enemyConditionals: []
 --- !u!114 &1541433764607956049
 MonoBehaviour:
@@ -533,7 +539,7 @@ MonoBehaviour:
       data:
         _type: 1
         _checkBool: 0
---- !u!114 &7059856067712300299
+--- !u!114 &8943847764499172352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -542,29 +548,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1541433764607956050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d201f099bcadf7947a3fba3131a2e429, type: 3}
+  m_Script: {fileID: 11500000, guid: 244c8e60b812d6446bb95250c081cd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateList:
-  - id: 0
-  - id: 1
-  - id: 2
-  references:
-    version: 1
-    00000000:
-      type: {class: RunBehaviorTree, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 6
-    00000001:
-      type: {class: EnemyKnockBack, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 5
-        _animName: SkeletonDamage
-    00000002:
-      type: {class: StateNone, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: -1
-        _nextState: 6
+--- !u!114 &2713803392541575734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541433764607956050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87171630d2db494c8e1a9644a38683a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animName: SkeletonDamage
 --- !u!1 &1541433764611268897
 GameObject:
   m_ObjectHideFlags: 0

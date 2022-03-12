@@ -4,13 +4,16 @@ public class CubeEnemy : EnemyBase, IDamage, IFieldEnemy
 {
     void Start()
     {
-        Tree.SetUp();
+        BaseState.SetUp(gameObject)
+            .AddState(State.BehaviorTree, "Tree")
+            .AddState(State.KnockBack, "Knock")
+            .RunRequest(State.BehaviorTree);
     }
 
     void Update()
     {
-        
-        Tree.Run();
+        BaseState.Update();
+
         Vector3 set = Speed * MoveDir;
         Character.Move(set * Time.deltaTime);
     }

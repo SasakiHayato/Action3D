@@ -10,6 +10,11 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
     void Start()
     {
         _attack = GetComponent<AttackSettings>();
+
+        BaseState.SetUp(gameObject)
+            .AddState(State.BehaviorTree, "Tree")
+            .AddState(State.KnockBack, "Knock")
+            .RunRequest(State.BehaviorTree);
     }
 
     void Update()

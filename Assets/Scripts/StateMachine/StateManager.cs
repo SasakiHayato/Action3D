@@ -124,12 +124,11 @@ namespace StateMachine
             return null;
         }
 
-        public Enum SetEntry(Enum type)
+        public Enum ReturnEntry()
         {
-            _runState.Entry(type);
-            _saveType = type;
+            _runState.Entry(_saveType);
 
-            return type;
+            return _saveType;
         }
     }
 }
