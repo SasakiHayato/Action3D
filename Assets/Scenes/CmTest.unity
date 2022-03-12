@@ -411,5 +411,6 @@ MonoBehaviour:
   _user: {fileID: 597710989}
   _targetCm: {fileID: 1318394626}
   _offSetPos: {x: 0, y: 5, z: -10}
-  _sensitivity: 0.5
-  _rotateDelay: 5
+  _sensitivityX: 0
+  _sensitivityY: 0.1
+  _viewDelay: 0
