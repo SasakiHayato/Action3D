@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 7980940582174284802}
   - component: {fileID: 7980940582174284806}
   - component: {fileID: 8891125759827804182}
-  - component: {fileID: 4278766179079166666}
+  - component: {fileID: 4184691060614374985}
+  - component: {fileID: 5588957004100169152}
   m_Layer: 0
   m_Name: CubeEnemy
   m_TagString: Enemy
@@ -124,8 +125,13 @@ MonoBehaviour:
   _power: 0
   _speed: 0
   _level: 0
+  _baseState:
+    _stateDatas:
+    - Path: Tree
+      State: {fileID: 4184691060614374985}
+    - Path: Knock
+      State: {fileID: 5588957004100169152}
   _tree: {fileID: 8891125759827804182}
-  _state: {fileID: 4278766179079166666}
   _enemyConditionals: []
 --- !u!114 &7980940582174284802
 MonoBehaviour:
@@ -263,7 +269,7 @@ MonoBehaviour:
         _applyYPos: 1
         _moveType: 1
         _speedRate: 3
---- !u!114 &4278766179079166666
+--- !u!114 &4184691060614374985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -272,29 +278,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 7980940582174284826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d201f099bcadf7947a3fba3131a2e429, type: 3}
+  m_Script: {fileID: 11500000, guid: 244c8e60b812d6446bb95250c081cd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateList:
-  - id: 0
-  - id: 1
-  - id: 2
-  references:
-    version: 1
-    00000000:
-      type: {class: RunBehaviorTree, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 6
-    00000001:
-      type: {class: EnemyKnockBack, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 5
-        _animName: 
-    00000002:
-      type: {class: StateNone, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: -1
-        _nextState: 6
+--- !u!114 &5588957004100169152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980940582174284826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87171630d2db494c8e1a9644a38683a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animName: 
 --- !u!1001 &2932163159214366345
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -424,7 +424,8 @@ GameObject:
   - component: {fileID: 2902419257207798147}
   - component: {fileID: 6272485905513677356}
   - component: {fileID: 5557335475837286324}
-  - component: {fileID: 3540542966175585005}
+  - component: {fileID: 2082878605817345072}
+  - component: {fileID: 8299017735390786624}
   m_Layer: 0
   m_Name: NewBossShadow
   m_TagString: Enemy
@@ -537,8 +538,13 @@ MonoBehaviour:
   _power: 1
   _speed: 9
   _level: 0
+  _baseState:
+    _stateDatas:
+    - Path: Tree
+      State: {fileID: 8299017735390786624}
+    - Path: Knock
+      State: {fileID: 2082878605817345072}
   _tree: {fileID: 6272485905513677356}
-  _state: {fileID: 0}
   _enemyConditionals: []
 --- !u!114 &6272485905513677356
 MonoBehaviour:
@@ -844,7 +850,7 @@ MonoBehaviour:
         UpPower: 0
         ForwardPower: 0
       Effects: 000000000100000002000000
---- !u!114 &3540542966175585005
+--- !u!114 &2082878605817345072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -853,29 +859,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 8735183208793564310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d201f099bcadf7947a3fba3131a2e429, type: 3}
+  m_Script: {fileID: 11500000, guid: f87171630d2db494c8e1a9644a38683a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateList:
-  - id: 0
-  - id: 1
-  - id: 2
-  references:
-    version: 1
-    00000000:
-      type: {class: RunBehaviorTree, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 6
-    00000001:
-      type: {class: EnemyKnockBack, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 5
-        _animName: Damage_Back_Small_ver_B
-    00000002:
-      type: {class: StateNone, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: -1
-        _nextState: 6
+  _animName: Damage_Back_Small_ver_B
+--- !u!114 &8299017735390786624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735183208793564310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244c8e60b812d6446bb95250c081cd4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8735183208793564312
 GameObject:
   m_ObjectHideFlags: 0

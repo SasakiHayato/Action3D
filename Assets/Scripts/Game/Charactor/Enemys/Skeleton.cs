@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AttackSetting;
+using NewAttacks;
 
 public class Skeleton : EnemyBase, IDamage, IFieldEnemy
 {
-    AttackSettings _attack;
+    NewAttackSettings _attack;
     
     void Start()
     {
-        _attack = GetComponent<AttackSettings>();
+        _attack = GetComponent<NewAttackSettings>();
 
         BaseState.SetUp(gameObject)
             .AddState(State.BehaviorTree, "Tree")

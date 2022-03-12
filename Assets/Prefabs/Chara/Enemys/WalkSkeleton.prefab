@@ -537,7 +537,8 @@ GameObject:
   - component: {fileID: 3253592056411195766}
   - component: {fileID: 1533691912657367723}
   - component: {fileID: 5441390384126800617}
-  - component: {fileID: 3499851343304127826}
+  - component: {fileID: 1826431267241854616}
+  - component: {fileID: 4912865492408140545}
   m_Layer: 0
   m_Name: WalkSkeleton
   m_TagString: Enemy
@@ -651,8 +652,13 @@ MonoBehaviour:
   _power: 0
   _speed: 0
   _level: 0
+  _baseState:
+    _stateDatas:
+    - Path: Tree
+      State: {fileID: 4912865492408140545}
+    - Path: Knock
+      State: {fileID: 1826431267241854616}
   _tree: {fileID: 1533691912657367723}
-  _state: {fileID: 3499851343304127826}
   _enemyConditionals: []
 --- !u!114 &1533691912657367723
 MonoBehaviour:
@@ -853,7 +859,7 @@ MonoBehaviour:
   _target: {fileID: 2448143286815395276}
   _targetWeapon: {fileID: 2492898638037187930}
   _dataLists: []
---- !u!114 &3499851343304127826
+--- !u!114 &1826431267241854616
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -862,29 +868,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2448143286815395276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d201f099bcadf7947a3fba3131a2e429, type: 3}
+  m_Script: {fileID: 11500000, guid: f87171630d2db494c8e1a9644a38683a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateList:
-  - id: 0
-  - id: 1
-  - id: 2
-  references:
-    version: 1
-    00000000:
-      type: {class: RunBehaviorTree, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 6
-    00000001:
-      type: {class: EnemyKnockBack, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: 5
-        _animName: SkeletonDamage
-    00000002:
-      type: {class: StateNone, ns: , asm: Assembly-CSharp}
-      data:
-        StateID: -1
-        _nextState: 6
+  _animName: SkeletonDamage
+--- !u!114 &4912865492408140545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448143286815395276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244c8e60b812d6446bb95250c081cd4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2565751911822226107
 GameObject:
   m_ObjectHideFlags: 0
