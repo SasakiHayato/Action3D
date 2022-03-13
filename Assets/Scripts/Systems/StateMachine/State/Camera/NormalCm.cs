@@ -41,15 +41,15 @@ public class NormalCm : State
     {
         Vector2 input = (Vector2)Inputter.GetValue(InputType.CmMove);
 
-        Vector2 pos = HorizontalPos(input.normalized.x);
+        Vector3 pos = HorizontalPos(input.normalized.x);
         float y = VerticlePos(input.normalized.y);
 
-        _cm.position = new Vector3(pos.x, y, pos.y);
+        _cm.position = new Vector3(pos.x, y, pos.z);
 
         View();
     }
 
-    Vector2 HorizontalPos(float x)
+    Vector3 HorizontalPos(float x)
     {
         float s = float.Parse(x.ToString("0.0"));
         if (Mathf.Abs(s * s) < _dead) return _saveHorizontalPos + _user.position;
@@ -67,10 +67,10 @@ public class NormalCm : State
 
         float rad = angle * Mathf.Deg2Rad;
         Vector3 pos = new Vector3(Mathf.Cos(rad), 0, Mathf.Sin(rad)) * _dist;
-
+        
         _saveHorizontalPos = pos;
         
-        return _saveHorizontalPos;
+        return _saveHorizontalPos + _user.position;
     }
 
     float VerticlePos(float y)
