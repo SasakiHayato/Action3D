@@ -4,7 +4,6 @@ using System;
 
 public class TransitionCm : State
 {
-    
     [SerializeField] float _transitionSpeed;
     [SerializeField] float _viewDelay;
 

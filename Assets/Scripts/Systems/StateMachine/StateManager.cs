@@ -112,6 +112,7 @@ namespace StateMachine
             {
                 if (data.Key.ToString() == type.ToString())
                 {
+                    _runState.Exit();
                     _runState = data.Value;
                     _runState.Entry(_saveType);
                     

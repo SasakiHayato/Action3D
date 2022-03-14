@@ -5,6 +5,7 @@ using System;
 public class LockonCm : State
 {
     [SerializeField] Vector3 _offSetPos;
+    [SerializeField] float _deadDist;
     [SerializeField] float _viewDelay;
 
     Transform _user;
@@ -13,6 +14,8 @@ public class LockonCm : State
 
     float _rotateTimer;
     float _dist;
+
+    Vector3 _saveHorizontalPos;
 
     public override void SetUp(GameObject user)
     {
@@ -27,6 +30,7 @@ public class LockonCm : State
     {
         _lookonTarget = GameManager.Instance.LockonTarget.transform;
         _rotateTimer = 0;
+        _saveHorizontalPos = Vector3.zero;
 
         CmManager.CmData.Instance.CurrentState = CmManager.State.Lockon;
     }
@@ -45,17 +49,36 @@ public class LockonCm : State
 
     void HorizontalPos(out Vector3 setPos)
     {
+        if (CheckDeadDist())
+        {
+            setPos = _saveHorizontalPos;
+            return;
+        }
+
         Vector3 diff = _lookonTarget.position - _user.position;
         float angle = (Mathf.Atan2(diff.z, diff.x) * Mathf.Rad2Deg) - 180;
 
         float rad = angle * Mathf.Deg2Rad;
         Vector3 pos = new Vector3(Mathf.Cos(rad), 0, Mathf.Sin(rad)) * _dist;
         setPos = pos + _user.position;
+
+        _saveHorizontalPos = setPos;
+    }
+
+    bool CheckDeadDist()
+    {
+        Vector2 userPos = new Vector2(_user.position.x, _user.position.z);
+        Vector2 targetPos = new Vector2(_lookonTarget.position.x, _lookonTarget.position.z);
+
+        float dist = Vector2.Distance(userPos, targetPos);
+
+        if (dist < _deadDist) return true;
+        else return false;
     }
 
     float VerticlePos()
     {
-        return _offSetPos.y;
+        return _offSetPos.y + _user.position.y;
     }
 
     void View()

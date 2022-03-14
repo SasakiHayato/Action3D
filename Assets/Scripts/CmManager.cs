@@ -54,13 +54,6 @@ public class CmManager : MonoBehaviour
     [SerializeField] Transform _user;
     [SerializeField] StateManager _state = new StateManager();
 
-    private void Awake()
-    {
-        Inputter inputter = new Inputter();
-        Inputter.SetInstance(inputter, inputter);
-        Inputter.Instance.Load();
-    }
-
     void Start()
     {
         CmData.Instance.User = _user;
