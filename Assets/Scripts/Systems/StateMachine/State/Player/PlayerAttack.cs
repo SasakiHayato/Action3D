@@ -4,11 +4,13 @@ using ObjectPhysics;
 using DG.Tweening;
 using StateMachine;
 using System;
+using System.Linq;
 
 public class PlayerAttack : State
 {
     [SerializeField] float _moveTime;
     [SerializeField] float _moveSpeed = 1;
+    [SerializeField] float _lockOnDist;
 
     float _timer;
 
@@ -17,6 +19,7 @@ public class PlayerAttack : State
     NewAttackSettings _settings;
 
     GameObject _user;
+    Transform _target;
 
     public override void SetUp(GameObject user)
     {
@@ -63,6 +66,8 @@ public class PlayerAttack : State
                     _settings.Request(_settings.ReadAttackType);
             }
         }
+
+        _target = SetTarget();
     }
 
     public override void Run()
@@ -72,12 +77,66 @@ public class PlayerAttack : State
         if (_timer > _moveTime) _player.Move = Vector3.zero;
         else _player.Move = _user.transform.forward * _moveSpeed;
 
-        if (GameManager.Instance.IsLockOn) Rotate();
+        if (GameManager.Instance.IsLockOn) Rotate(GameManager.Instance.LockonTarget.transform);
+        else
+        {
+            Vector2 input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
+            if (input == Vector2.zero && _target != null) Rotate(_target);
+            else
+            {
+                Vector3 forward = Camera.main.transform.forward * input.y;
+                Vector3 right = Camera.main.transform.right * input.x;
+                
+                Vector3 set = new Vector3(forward.x + right.x, 0, right.z + forward.z);
+
+                if (forward.magnitude > 0.01f)
+                {
+                    Quaternion rotation = Quaternion.LookRotation(set);
+                    _user.transform.rotation = rotation;
+                }
+            }
+        }
     }
 
-    void Rotate()
+    Transform SetTarget()
     {
-        Vector3 t = GameManager.Instance.LockonTarget.transform.position;
+        var finds = GameObject.FindGameObjectsWithTag("Enemy")
+                .Where(e =>
+                {
+                    float dist = Vector3.Distance(e.transform.position,_user.transform.position);
+                    if (dist < _lockOnDist) return e;
+                    else return false;
+                });
+
+        if (finds.Count() <= 0) return null;
+
+        Vector3 cmForwrad = Camera.main.transform.forward;
+        GameObject set = null;
+        float saveDist = float.MaxValue;
+
+        foreach (var e in finds)
+        {
+            float dist = Vector3.Distance(_user.transform.position, e.transform.position);
+
+            if (saveDist > dist)
+            {
+                CharaBase chara = e.GetComponent<CharaBase>();
+                if (chara != null)
+                {
+                    set = e.GetComponent<CharaBase>().OffSetPosObj;
+                    saveDist = dist;
+                }
+            }
+        }
+
+        return set.transform;
+    }
+
+    void Rotate(Transform target)
+    {
+        if (target == null) return;
+
+        Vector3 t = target.position;
         Vector3 forward = t - _user.transform.position;
 
         forward.y = 0;

@@ -14,6 +14,7 @@ public class ShakeCm : State
     float _timer;
     float _rotateTimer;
     bool _shakeEnd = false;
+    bool _shaking = false;
 
     Vector3 _saveCmPos;
 
@@ -31,7 +32,7 @@ public class ShakeCm : State
 
         _saveCmPos = _cm.position;
 
-        StartCoroutine(Shake());
+        if (!_shaking) StartCoroutine(Shake());
     }
 
     public override void Run()
@@ -43,6 +44,8 @@ public class ShakeCm : State
 
     IEnumerator Shake()
     {
+        _shaking = true;
+
         while (_timer < _shakeTime)
         {
             float x = _saveCmPos.x + UnityEngine.Random.Range(-1f, 1f) * _shakePower;
@@ -55,6 +58,7 @@ public class ShakeCm : State
         }
 
         _cm.position = _saveCmPos;
+        _shaking = false;
     }
 
     void View()
