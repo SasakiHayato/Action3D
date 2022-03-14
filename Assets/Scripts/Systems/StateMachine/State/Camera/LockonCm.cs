@@ -4,12 +4,12 @@ using System;
 
 public class LockonCm : State
 {
-    [SerializeField] Transform _lookonTarget;
     [SerializeField] Transform _user;
     [SerializeField] Vector3 _offSetPos;
     [SerializeField] float _viewDelay;
 
     Transform _cm;
+    Transform _lookonTarget;
 
     float _rotateTimer;
     float _dist;

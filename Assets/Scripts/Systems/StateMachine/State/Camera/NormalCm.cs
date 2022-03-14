@@ -10,6 +10,7 @@ public class NormalCm : State
     [SerializeField] float _sensitivityY = 0.5f;
     [SerializeField] float _viewDelay;
     [SerializeField] float _dead = 0.1f;
+    [SerializeField] float _cmDist;
 
     Transform _cm;
 
@@ -17,22 +18,19 @@ public class NormalCm : State
     float _horizontalAngle;
     float _verticleAngle;
 
-    float _dist;
     float _savePosY;
     Vector3 _saveHorizontalPos;
 
     public override void SetUp(GameObject user)
     {
         _cm = user.transform;
-
-        _cm.position = _user.position + _offSetPos;
-        _dist = Vector3.Distance(_user.position, _cm.position);
+        _cm.position = _user.position + (_offSetPos.normalized * _cmDist);
     }
 
     public override void Entry(Enum before)
     {
-        _saveHorizontalPos = new Vector2(_cm.position.x, _cm.position.z);
-        _horizontalAngle = Mathf.Atan2(_saveHorizontalPos.z, _saveHorizontalPos.x) * Mathf.Rad2Deg - 90;
+        _saveHorizontalPos = new Vector3(_cm.position.x, 0, _cm.position.z);
+        _horizontalAngle = Mathf.Atan2(_cm.position.z, _cm.position.x) * Mathf.Rad2Deg;
 
         _savePosY = _cm.position.y;
     }
@@ -43,7 +41,7 @@ public class NormalCm : State
 
         Vector3 pos = HorizontalPos(input.normalized.x);
         float y = VerticlePos(input.normalized.y);
-
+        
         _cm.position = new Vector3(pos.x, y, pos.z);
 
         View();
@@ -66,7 +64,7 @@ public class NormalCm : State
         }
 
         float rad = angle * Mathf.Deg2Rad;
-        Vector3 pos = new Vector3(Mathf.Cos(rad), 0, Mathf.Sin(rad)) * _dist;
+        Vector3 pos = new Vector3(Mathf.Cos(rad), 0, Mathf.Sin(rad)) * _cmDist;
         
         _saveHorizontalPos = pos;
         
@@ -95,7 +93,7 @@ public class NormalCm : State
         }
 
         float rad = angle * Mathf.Deg2Rad;
-        _savePosY = _offSetPos.y + Mathf.Sin(rad) * _dist;
+        _savePosY = _offSetPos.y + Mathf.Sin(rad) * _cmDist;
 
         return _savePosY;
     }

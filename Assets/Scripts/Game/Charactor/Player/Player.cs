@@ -183,8 +183,9 @@ public class Player : CharaBase, IDamage
             float saveAngle = float.MinValue;
             foreach (var e in finds)
             {
-                Vector3 dir = transform.position - e.transform.position;
-                float angle = Mathf.Abs(Vector3.Dot(cmForwrad, dir.normalized) * Mathf.Rad2Deg);
+                Vector3 dir = e.transform.position - cmForwrad;
+                float rad = Mathf.Abs(Vector3.Dot(cmForwrad, dir.normalized));
+                float angle = Mathf.Acos(rad) * Mathf.Rad2Deg;
                 if (saveAngle < angle)
                 {
                     CharaBase chara = e.GetComponent<CharaBase>();
