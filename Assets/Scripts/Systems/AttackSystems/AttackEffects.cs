@@ -1,5 +1,4 @@
 using System.Collections;
-using Cinemachine;
 using UnityEngine;
 
 namespace NewAttacks
@@ -50,9 +49,7 @@ namespace NewAttacks
 
         public void ShakeCm()
         {
-            GameObject obj = GameObject.Find("3drParsonCm");
-            CinemachineImpulseSource source = obj.GetComponent<CinemachineImpulseSource>();
-            source.GenerateImpulse();
+            FindObjectOfType<CmManager>().RequestShakeCm();
         }
     }
 }

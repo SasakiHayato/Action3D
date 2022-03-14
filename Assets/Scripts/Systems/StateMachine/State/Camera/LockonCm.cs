@@ -16,6 +16,7 @@ public class LockonCm : State
     float _dist;
 
     Vector3 _saveHorizontalPos;
+    Quaternion _saveQuaternion;
 
     public override void SetUp(GameObject user)
     {
@@ -28,9 +29,19 @@ public class LockonCm : State
 
     public override void Entry(Enum before)
     {
-        _lookonTarget = GameManager.Instance.LockonTarget.transform;
+        if (GameManager.Instance.LockonTarget != null)
+        {
+            _lookonTarget = GameManager.Instance.LockonTarget.transform;
+        }
+        else
+        {
+            _lookonTarget = null;
+        }
+
         _rotateTimer = 0;
+
         _saveHorizontalPos = Vector3.zero;
+        _saveQuaternion = Quaternion.identity;
 
         CmManager.CmData.Instance.CurrentState = CmManager.State.Lockon;
     }
@@ -49,7 +60,7 @@ public class LockonCm : State
 
     void HorizontalPos(out Vector3 setPos)
     {
-        if (CheckDeadDist())
+        if (_lookonTarget == null)
         {
             setPos = _saveHorizontalPos;
             return;
@@ -65,17 +76,6 @@ public class LockonCm : State
         _saveHorizontalPos = setPos;
     }
 
-    bool CheckDeadDist()
-    {
-        Vector2 userPos = new Vector2(_user.position.x, _user.position.z);
-        Vector2 targetPos = new Vector2(_lookonTarget.position.x, _lookonTarget.position.z);
-
-        float dist = Vector2.Distance(userPos, targetPos);
-
-        if (dist < _deadDist) return true;
-        else return false;
-    }
-
     float VerticlePos()
     {
         return _offSetPos.y + _user.position.y;
@@ -83,11 +83,19 @@ public class LockonCm : State
 
     void View()
     {
+        if (_lookonTarget == null)
+        {
+            _cm.rotation = _saveQuaternion;
+            return;
+        }
+
         _rotateTimer += Time.deltaTime / _viewDelay;
 
         Vector3 dir = _lookonTarget.position - _cm.position;
         Quaternion q = Quaternion.LookRotation(dir.normalized);
         _cm.rotation = Quaternion.Lerp(_cm.rotation, q, _rotateTimer);
+
+        _saveQuaternion = _cm.rotation;
 
         if (_cm.rotation == q) _rotateTimer = 0;
     }

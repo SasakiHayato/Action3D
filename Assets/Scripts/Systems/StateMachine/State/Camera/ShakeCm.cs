@@ -1,6 +1,7 @@
 using UnityEngine;
 using StateMachine;
 using System;
+using System.Collections;
 
 public class ShakeCm : State
 {
@@ -11,7 +12,10 @@ public class ShakeCm : State
     Transform _cm;
 
     float _timer;
+    float _rotateTimer;
     bool _shakeEnd = false;
+
+    Vector3 _saveCmPos;
 
     public override void SetUp(GameObject user)
     {
@@ -22,16 +26,46 @@ public class ShakeCm : State
     public override void Entry(Enum before)
     {
         _timer = 0;
+        _rotateTimer = 0;
         _shakeEnd = false;
+
+        _saveCmPos = _cm.position;
+
+        StartCoroutine(Shake());
     }
 
     public override void Run()
     {
         _timer += Time.deltaTime;
-
-
-
+        View();
         if (_timer > _shakeTime) _shakeEnd = true;
+    }
+
+    IEnumerator Shake()
+    {
+        while (_timer < _shakeTime)
+        {
+            float x = _saveCmPos.x + UnityEngine.Random.Range(-1f, 1f) * _shakePower;
+            float y = _saveCmPos.y + UnityEngine.Random.Range(-1f, 1f) * _shakePower;
+            float z = _saveCmPos.z + UnityEngine.Random.Range(-1f, 1f) * _shakePower;
+
+            _cm.position = new Vector3(x, y, z);
+
+            yield return null;
+        }
+
+        _cm.position = _saveCmPos;
+    }
+
+    void View()
+    {
+        _rotateTimer += Time.deltaTime;
+
+        Vector3 dir = _user.position - _cm.position;
+        Quaternion q = Quaternion.LookRotation(dir.normalized);
+        _cm.rotation = Quaternion.Lerp(_cm.rotation, q, _rotateTimer);
+
+        if (_cm.rotation == q) _rotateTimer = 0;
     }
 
     public override Enum Exit()

@@ -62,11 +62,17 @@ public class CmManager : MonoBehaviour
             .AddState(State.Normal, "Normal")
             .AddState(State.Lockon, "Lockon")
             .AddState(State.Transition, "Transition")
+            .AddState(State.Shake, "Shake")
             .RunRequest(State.Normal);
     }
 
     void Update()
     {
         _state.Update();
+    }
+
+    public void RequestShakeCm()
+    {
+        _state.ChangeState(State.Shake);
     }
 }
