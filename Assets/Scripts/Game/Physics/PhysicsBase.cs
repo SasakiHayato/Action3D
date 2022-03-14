@@ -33,6 +33,7 @@ namespace ObjectPhysics
         
         Vector3 _velocity = Vector3.one;
         public Vector3 GetVelocity => _velocity;
+        public Vector3 SetVelocity { set { _velocity = value; } }
 
         bool _isJump = false;
 

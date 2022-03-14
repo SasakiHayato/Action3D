@@ -21,7 +21,7 @@ public class CharaBase : MonoBehaviour
     public int HP { get => _hp; protected set { _hp = value; } }
     public int MaxHP { get; private set; } = 0;
     public int Power { get => _power; protected set { _power = value; } }
-    public float Speed { get => _speed; protected set { _speed = value; } }
+    public float Speed { get => _speed; set { _speed = value; } }
     public int Level { get => _level; protected set { _level = value; } }
 
     PhysicsBase _phsicsBase;

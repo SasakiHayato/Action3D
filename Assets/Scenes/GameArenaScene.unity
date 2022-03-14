@@ -217,6 +217,26 @@ PrefabInstance:
       propertyPath: _user
       value: 
       objectReference: {fileID: 2019641997}
+    - target: {fileID: 3838557692302222812, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
+      propertyPath: _cmDist
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838557692302222812, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
+      propertyPath: _offSetPos.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838557692302222812, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
+      propertyPath: _sensitivityX
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838557692302222812, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
+      propertyPath: _sensitivityY
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3838557692302222813, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
       propertyPath: _offSetPos.z
@@ -230,7 +250,7 @@ PrefabInstance:
     - target: {fileID: 8214551939451003023, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
       propertyPath: _shakePower
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e110ddf55fedf347b7a6166422f37fe, type: 3}
@@ -1150,6 +1170,36 @@ PrefabInstance:
     - target: {fileID: 5133409705361938506, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214533629733316604, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[0].KnockBackData.UpPower
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214533629733316604, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[1].KnockBackData.UpPower
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214533629733316604, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[2].KnockBackData.UpPower
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214533629733316604, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[3].KnockBackData.UpPower
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214533629733316604, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[0].KnockBackData.ForwardPower
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214533629733316604, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[1].KnockBackData.ForwardPower
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6242670556615028420, guid: 59ef05e806e32994c91492a4deb01892,

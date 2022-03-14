@@ -11,11 +11,14 @@ public class EnemyKnockBack : State
     bool _isSetUp = false;
     float _timer;
     float _gravity = Physics.gravity.y * -1;
+    float _speed;
 
     public override void SetUp(GameObject user)
     {
         _enemyBase = user.GetComponent<EnemyBase>();
         _anim = user.GetComponent<Animator>();
+
+        _speed = _enemyBase.Speed;
     }
 
     public override void Entry(Enum beforeType)
@@ -26,6 +29,7 @@ public class EnemyKnockBack : State
         else
         {
             _timer = 0;
+            _enemyBase.Speed = 1;
             _isSetUp = true;
         }
     }
@@ -33,6 +37,8 @@ public class EnemyKnockBack : State
     public override void Run()
     {
         _timer += Time.deltaTime;
+
+        _enemyBase.PhsicsBase.SetVelocity = Vector3.one;
 
         float vY = _enemyBase.KnonckUpPower - _gravity * _timer;
         float vX = _enemyBase.KnonckForwardPower - _gravity * _timer;
@@ -48,7 +54,11 @@ public class EnemyKnockBack : State
 
     public override Enum Exit()
     {
-        if (!_isSetUp) return EnemyBase.State.BehaviorTree;
+        if (!_isSetUp)
+        {
+            _enemyBase.Speed = _speed;
+            return EnemyBase.State.BehaviorTree;
+        }
         else return EnemyBase.State.KnockBack;
     }
 }
