@@ -9,7 +9,7 @@ public class NormalCm : State
     [SerializeField] float _sensitivityX = 0.5f;
     [SerializeField] float _sensitivityY = 0.5f;
     [SerializeField] float _viewDelay;
-    [SerializeField] float _dead = 0.1f;
+    [SerializeField] float _deadInput = 0.1f;
     [SerializeField] float _cmDist;
 
     Transform _cm;
@@ -20,19 +20,22 @@ public class NormalCm : State
 
     float _savePosY;
     Vector3 _saveHorizontalPos;
+    Vector3 _saveCmPos;
+
+    const float Degree90 = 90f;
 
     public override void SetUp(GameObject user)
     {
         _cm = user.transform;
         _cm.position = _user.position + (_offSetPos.normalized * _cmDist);
+
+        _saveCmPos = _user.position + (_offSetPos.normalized * _cmDist);
+        _saveHorizontalPos = _offSetPos.normalized * _cmDist;
     }
 
     public override void Entry(Enum before)
     {
-        _saveHorizontalPos = new Vector3(_cm.position.x, 0, _cm.position.z);
-        _horizontalAngle = Mathf.Atan2(_cm.position.z, _cm.position.x) * Mathf.Rad2Deg;
-
-        _savePosY = _cm.position.y;
+        _cm.position = _saveCmPos;
     }
 
     public override void Run()
@@ -50,7 +53,7 @@ public class NormalCm : State
     Vector3 HorizontalPos(float x)
     {
         float s = float.Parse(x.ToString("0.0"));
-        if (Mathf.Abs(s * s) < _dead) return _saveHorizontalPos + _user.position;
+        if (Mathf.Abs(s * s) < _deadInput) return _saveHorizontalPos + _user.position;
 
         if (x > 0) _horizontalAngle++;
         else if (x < 0) _horizontalAngle--;
@@ -63,7 +66,7 @@ public class NormalCm : State
             angle = 0;
         }
 
-        float rad = angle * Mathf.Deg2Rad;
+        float rad = (angle - Degree90) * Mathf.Deg2Rad;
         Vector3 pos = new Vector3(Mathf.Cos(rad), 0, Mathf.Sin(rad)) * _cmDist;
         
         _saveHorizontalPos = pos;
@@ -74,28 +77,28 @@ public class NormalCm : State
     float VerticlePos(float y)
     {
         float s = float.Parse(y.ToString("0.0"));
-        if (Mathf.Abs(s * s) < _dead) return _savePosY;
+        if (Mathf.Abs(s * s) < _deadInput) return _savePosY + _offSetPos.y;
 
         if (y > 0) _verticleAngle++;
         else if (y < 0) _verticleAngle--;
 
         float angle = _verticleAngle * _sensitivityY * -1;
 
-        if (angle > 90)
+        if (angle > Degree90)
         {
-            angle = 90;
+            angle = Degree90;
             _verticleAngle++;
         }
-        else if (angle < -90)
+        else if (angle < Degree90 * -1)
         {
-            angle = -90;
+            angle = Degree90 * -1;
             _verticleAngle--;
         }
 
         float rad = angle * Mathf.Deg2Rad;
-        _savePosY = _offSetPos.y + Mathf.Sin(rad) * _cmDist;
+        _savePosY =  Mathf.Sin(rad) * _cmDist;
 
-        return _savePosY;
+        return _savePosY + _offSetPos.y;
     }
 
     void View()
@@ -111,7 +114,11 @@ public class NormalCm : State
 
     public override Enum Exit()
     {
-        if (GameManager.Instance.LockonTarget != null) return CmManager.State.Lockon;
+        if (GameManager.Instance.LockonTarget != null)
+        {
+            _saveCmPos = _cm.position;
+            return CmManager.State.Lockon;
+        }
         else return CmManager.State.Normal;
     }
 }

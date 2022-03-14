@@ -23,6 +23,7 @@ public class LockonCm : State
     public override void Entry(Enum before)
     {
         _lookonTarget = GameManager.Instance.LockonTarget.transform;
+        _rotateTimer = 0;
     }
 
     public override void Run()
