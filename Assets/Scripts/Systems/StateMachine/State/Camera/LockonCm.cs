@@ -4,10 +4,10 @@ using System;
 
 public class LockonCm : State
 {
-    [SerializeField] Transform _user;
     [SerializeField] Vector3 _offSetPos;
     [SerializeField] float _viewDelay;
 
+    Transform _user;
     Transform _cm;
     Transform _lookonTarget;
 
@@ -16,14 +16,19 @@ public class LockonCm : State
 
     public override void SetUp(GameObject user)
     {
+        _user = CmManager.CmData.Instance.User;
         _cm = user.transform;
         _dist = Vector3.Distance(_user.position, _cm.position);
+
+        CmManager.CmData.Instance.AddData(CmManager.State.Lockon, _cm.position);
     }
 
     public override void Entry(Enum before)
     {
         _lookonTarget = GameManager.Instance.LockonTarget.transform;
         _rotateTimer = 0;
+
+        CmManager.CmData.Instance.CurrentState = CmManager.State.Lockon;
     }
 
     public override void Run()
@@ -67,6 +72,15 @@ public class LockonCm : State
     public override Enum Exit()
     {
         if (GameManager.Instance.LockonTarget != null) return CmManager.State.Lockon;
-        else return CmManager.State.Normal;
+        else
+        {
+            CmManager.CmData.Data data = CmManager.CmData.Instance.GetData(CmManager.State.Lockon);
+            data.Pos = _cm.position - _user.position;
+
+            CmManager.CmData.Instance.NextState = CmManager.State.Normal;
+            CmManager.CmData.Instance.NextTarget = CmManager.CmData.Instance.User;
+
+            return CmManager.State.Transition;
+        }
     }
 }

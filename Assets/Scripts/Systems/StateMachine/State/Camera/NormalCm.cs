@@ -4,7 +4,6 @@ using System;
 
 public class NormalCm : State
 {
-    [SerializeField] Transform _user;
     [SerializeField] Vector3 _offSetPos;
     [SerializeField] float _sensitivityX = 0.5f;
     [SerializeField] float _sensitivityY = 0.5f;
@@ -12,6 +11,7 @@ public class NormalCm : State
     [SerializeField] float _deadInput = 0.1f;
     [SerializeField] float _cmDist;
 
+    Transform _user;
     Transform _cm;
 
     float _rotateTimer;
@@ -26,16 +26,20 @@ public class NormalCm : State
 
     public override void SetUp(GameObject user)
     {
+        _user = CmManager.CmData.Instance.User;
         _cm = user.transform;
         _cm.position = _user.position + (_offSetPos.normalized * _cmDist);
 
         _saveCmPos = _user.position + (_offSetPos.normalized * _cmDist);
         _saveHorizontalPos = _offSetPos.normalized * _cmDist;
+
+        CmManager.CmData.Instance.AddData(CmManager.State.Normal, _cm.position);
     }
 
     public override void Entry(Enum before)
     {
         _cm.position = _saveCmPos;
+        CmManager.CmData.Instance.CurrentState = CmManager.State.Normal;
     }
 
     public override void Run()
@@ -117,7 +121,14 @@ public class NormalCm : State
         if (GameManager.Instance.LockonTarget != null)
         {
             _saveCmPos = _cm.position;
-            return CmManager.State.Lockon;
+
+            CmManager.CmData.Data data = CmManager.CmData.Instance.GetData(CmManager.State.Normal);
+            data.Pos = _cm.position - _user.position;
+
+            CmManager.CmData.Instance.NextState = CmManager.State.Lockon;
+            CmManager.CmData.Instance.NextTarget = GameManager.Instance.LockonTarget.transform;
+
+            return CmManager.State.Transition;
         }
         else return CmManager.State.Normal;
     }
