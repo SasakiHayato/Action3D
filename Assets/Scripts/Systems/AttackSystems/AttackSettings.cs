@@ -8,7 +8,7 @@ namespace NewAttacks
     public partial class AttackSettings : MonoBehaviour
     {
         [SerializeField] GameObject _target;
-        [SerializeField] NewAttackCollider _targetWeapon;
+        [SerializeField] AttackCollider _targetWeapon;
         [SerializeField] List<AttackDataList> _dataLists = new List<AttackDataList>();
         
         int _setID = 0;

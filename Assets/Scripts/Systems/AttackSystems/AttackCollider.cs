@@ -5,7 +5,7 @@ using DG.Tweening;
 
 namespace NewAttacks
 {
-    public class NewAttackCollider : MonoBehaviour, IAttackCollision
+    public class AttackCollider : MonoBehaviour, IAttackCollision
     {
         public enum Parent
         {

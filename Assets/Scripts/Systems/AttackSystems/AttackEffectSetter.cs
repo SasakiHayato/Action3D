@@ -8,9 +8,9 @@ namespace NewAttacks
         public class AttackEffectSetter
         {
             GameObject _user;
-            NewAttackCollider _weapon;
+            AttackCollider _weapon;
 
-            public void SetUpUserData(GameObject user, NewAttackCollider collider)
+            public void SetUpUserData(GameObject user, AttackCollider collider)
             {
                 _user = user;
                 _weapon = collider;
