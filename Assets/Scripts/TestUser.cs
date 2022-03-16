@@ -18,4 +18,9 @@ public class TestUser : MonoBehaviour
         Vector3 set = Vector3.Scale(new Vector3(0, 1, 0), _physicsBase.Gravity);
         _character.Move(set * Time.deltaTime);
     }
+
+    public void OnClick()
+    {
+        _physicsBase.Force(NewPhysicsBase.ForceType.Jump);
+    }
 }
