@@ -27,7 +27,7 @@ public class Player : CharaBase, IDamage
 
     Animator _anim;
 
-    NewAttackSettings _settings;
+    AttackSettings _settings;
     
     float _shotTimer = 0;
     public Vector3 Move { get; set; } = Vector3.zero;
@@ -44,7 +44,7 @@ public class Player : CharaBase, IDamage
         GameManager.Instance.PlayerData.Power = Power;
 
         _anim = GetComponent<Animator>();
-        _settings = GetComponent<NewAttackSettings>();
+        _settings = GetComponent<AttackSettings>();
         
         Inputter.Instance.Inputs.Player
             .Fire.started += context => Avoid();

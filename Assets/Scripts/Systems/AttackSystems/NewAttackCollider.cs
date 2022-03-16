@@ -15,7 +15,7 @@ namespace NewAttacks
 
         GameObject _parent;
         Transform _target;
-        NewAttackSettings _settings;
+        AttackSettings _settings;
 
         bool _isHit = false;
 
@@ -29,7 +29,7 @@ namespace NewAttacks
         const float EffectDist = 2f;
         const float SetSize = 2;
 
-        public void SetUp(GameObject target, NewAttackSettings settings)
+        public void SetUp(GameObject target, AttackSettings settings)
         {
             _parent = target;
             _target = target.transform;

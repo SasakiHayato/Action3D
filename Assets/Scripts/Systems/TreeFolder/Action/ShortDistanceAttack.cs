@@ -9,7 +9,7 @@ public class ShortDistanceAttack : IAction
     [SerializeField] NewAttacks.AttackType _type = NewAttacks.AttackType.Weak;
 
     EnemyBase _enemyBase = null;
-    NewAttackSettings _attack = null;
+    AttackSettings _attack = null;
     GameObject _player = null;
 
     GameObject _user;
@@ -18,7 +18,7 @@ public class ShortDistanceAttack : IAction
     {
         _user = user;
         _enemyBase = user.GetComponent<EnemyBase>();
-        _attack = user.GetComponent<NewAttackSettings>();
+        _attack = user.GetComponent<AttackSettings>();
         _player = GameObject.FindWithTag("Player");
     }
 

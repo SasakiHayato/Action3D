@@ -3,7 +3,7 @@ using System;
 
 namespace NewAttacks
 {
-    public partial class NewAttackSettings : MonoBehaviour
+    public partial class AttackSettings : MonoBehaviour
     {
         public class AttackEffectSetter
         {

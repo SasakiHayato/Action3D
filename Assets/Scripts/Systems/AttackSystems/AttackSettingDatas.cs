@@ -19,7 +19,7 @@ namespace NewAttacks
         ShakeCm,
     }
 
-    public partial class NewAttackSettings : MonoBehaviour
+    public partial class AttackSettings : MonoBehaviour
     {
         [System.Serializable]
         public class AttackDataList

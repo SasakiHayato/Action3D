@@ -4,11 +4,11 @@ using NewAttacks;
 
 public class AttackCancel : IAction
 {
-    NewAttackSettings _attack;
+    AttackSettings _attack;
 
     public void SetUp(GameObject user)
     {
-        _attack = user.GetComponent<NewAttackSettings>();
+        _attack = user.GetComponent<AttackSettings>();
     }
 
     public bool Execute()

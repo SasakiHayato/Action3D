@@ -16,14 +16,14 @@ public class PlayerAttack : State
 
     Player _player;
     PhysicsBase _physics;
-    NewAttackSettings _settings;
+    AttackSettings _settings;
 
     GameObject _user;
     Transform _target;
 
     public override void SetUp(GameObject user)
     {
-        _settings = user.GetComponent<NewAttackSettings>();
+        _settings = user.GetComponent<AttackSettings>();
         _player = user.GetComponent<Player>();
         _physics = user.GetComponent<PhysicsBase>();
 

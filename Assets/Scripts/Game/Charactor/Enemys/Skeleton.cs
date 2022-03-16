@@ -3,11 +3,11 @@ using NewAttacks;
 
 public class Skeleton : EnemyBase, IDamage, IFieldEnemy
 {
-    NewAttackSettings _attack;
+    AttackSettings _attack;
     
     void Start()
     {
-        _attack = GetComponent<NewAttackSettings>();
+        _attack = GetComponent<AttackSettings>();
 
         BaseState.SetUp(gameObject)
             .AddState(State.BehaviorTree, "Tree")

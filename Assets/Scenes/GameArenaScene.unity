@@ -1194,6 +1194,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5214533629733316604, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
+      propertyPath: _dataLists.Array.data[3].AttackDatas.Array.data[0].KnockBackData.UpPower
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214533629733316604, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[3].AttackDatas.Array.data[1].KnockBackData.UpPower
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214533629733316604, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
       propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[0].KnockBackData.ForwardPower
       value: 0
       objectReference: {fileID: 0}
@@ -1201,6 +1211,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[1].KnockBackData.ForwardPower
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214533629733316604, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[3].AttackDatas.Array.data[0].KnockBackData.ForwardPower
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214533629733316604, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[3].AttackDatas.Array.data[1].KnockBackData.ForwardPower
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6242670556615028420, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}

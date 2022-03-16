@@ -18,7 +18,7 @@ public class MoveEnemy : IAction
 
     Animator _anim = null;
     EnemyBase _enemyBase = null;
-    NewAttackSettings _attack;
+    AttackSettings _attack;
 
     GameObject _player = null;
     GameObject _user;
@@ -27,7 +27,7 @@ public class MoveEnemy : IAction
     {
         _user = user;
         _enemyBase = user.GetComponent<EnemyBase>();
-        _attack = user.GetComponent<NewAttackSettings>();
+        _attack = user.GetComponent<AttackSettings>();
         _anim = user.gameObject.GetComponent<Animator>();
         _player = GameObject.FindWithTag("Player");
     }

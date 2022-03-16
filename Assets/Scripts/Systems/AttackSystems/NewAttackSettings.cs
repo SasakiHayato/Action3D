@@ -5,7 +5,7 @@ using Sounds;
 
 namespace NewAttacks
 {
-    public partial class NewAttackSettings : MonoBehaviour
+    public partial class AttackSettings : MonoBehaviour
     {
         [SerializeField] GameObject _target;
         [SerializeField] NewAttackCollider _targetWeapon;

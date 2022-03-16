@@ -13,14 +13,14 @@ public class PlayerKnockBack : State
     bool _isKnockBack = false;
 
     Animator _anim = null;
-    NewAttackSettings _attack;
+    AttackSettings _attack;
 
     Player _player;
 
     public override void SetUp(GameObject user)
     {
         _anim = user.GetComponent<Animator>();
-        _attack = user.GetComponent<NewAttackSettings>();
+        _attack = user.GetComponent<AttackSettings>();
         _player = user.GetComponent<Player>();
     }
 

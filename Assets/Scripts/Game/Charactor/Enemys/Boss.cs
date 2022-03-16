@@ -6,13 +6,13 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
     GameObject _player;
 
     Animator _anim;
-    NewAttackSettings _attack;
+    AttackSettings _attack;
     
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
         _anim = GetComponent<Animator>();
-        _attack = GetComponent<NewAttackSettings>();
+        _attack = GetComponent<AttackSettings>();
 
         BaseState.SetUp(gameObject)
             .AddState(State.BehaviorTree, "Tree")
