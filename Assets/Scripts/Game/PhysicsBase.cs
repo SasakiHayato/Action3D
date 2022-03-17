@@ -54,7 +54,7 @@ public class PhysicsBase : MonoBehaviour
 
     float _physicsGravity = Physics.gravity.y;
     float _timer;
-    bool _isSetGravity;
+    bool _isSetGravity = true;
 
     public bool IsGround { get; private set; }
 
@@ -73,7 +73,21 @@ public class PhysicsBase : MonoBehaviour
 
     void Update()
     {
-        ForceUpdate();
+        switch (_forceType)
+        {
+            case ForceType.Jump:
+
+                SetJump();
+                break;
+            case ForceType.Impulse:
+
+                SetImpulse();
+                break;
+            case ForceType.None:
+
+                GroundCheck();
+                break;
+        }
     }
 
     void FixedUpdate()
@@ -117,26 +131,6 @@ public class PhysicsBase : MonoBehaviour
         }
     }
 
-    void ForceUpdate()
-    {
-        switch (_forceType)
-        {
-            case ForceType.Jump:
-               
-                SetJump();
-                break;
-            case ForceType.Impulse:
-
-                SetImpulse();
-                break;
-            case ForceType.None:
-
-                _isSetGravity = true;
-                GroundCheck();
-                break;
-        }
-    }
-
     void SetJump()
     {
         float g = _physicsGravity * -1;
@@ -149,7 +143,6 @@ public class PhysicsBase : MonoBehaviour
         {
             InitForceParam();
             InitGravityParam();
-            _forceType = ForceType.None;
         }
     }
 
@@ -162,13 +155,13 @@ public class PhysicsBase : MonoBehaviour
         {
             InitForceParam();
             InitGravityParam();
-            _forceType = ForceType.None;
         }
     }
 
     void SetGravity()
     {
         _timer += Time.fixedDeltaTime;
+        Debug.Log(_timer);
         _gravity.y = _timer * _physicsGravity * _gravityData.Scale;
     }
 
