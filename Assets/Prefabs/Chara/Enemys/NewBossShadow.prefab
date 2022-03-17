@@ -419,13 +419,12 @@ GameObject:
   - component: {fileID: 8735183208793995446}
   - component: {fileID: 8735183208800950044}
   - component: {fileID: 981644568826411728}
-  - component: {fileID: 6446958624377032662}
-  - component: {fileID: 4140609566805778294}
   - component: {fileID: 2902419257207798147}
   - component: {fileID: 6272485905513677356}
   - component: {fileID: 5557335475837286324}
   - component: {fileID: 2082878605817345072}
   - component: {fileID: 8299017735390786624}
+  - component: {fileID: 5439360263284992272}
   m_Layer: 0
   m_Name: NewBossShadow
   m_TagString: Enemy
@@ -487,40 +486,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.77, z: 0}
---- !u!114 &6446958624377032662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8735183208793564310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97a52bfd51cc74f418ee4eb329e3728f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _count: 1
-  _initialVelocity: 0
-  _speed: 1
---- !u!114 &4140609566805778294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8735183208793564310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 932d504d328aeb1438e016c933b7b792, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gravityScale: 1
-  _isReal: 0
-  _goundRayDir: {x: 0, y: 0, z: 0}
-  _offSet: {x: 0, y: 0, z: 0}
-  _mask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &2902419257207798147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,6 +840,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244c8e60b812d6446bb95250c081cd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5439360263284992272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735183208793564310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e3def43fd754e48a084568f652365d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offSet: {fileID: 5866389346992939814}
+  _gravityData:
+    Ray: {x: 0, y: -1, z: 0}
+    RayDistance: 1
+    HitLayer:
+      serializedVersion: 2
+      m_Bits: 513
+    Scale: 1
+  _jumpData:
+    Count: 0
+    InitialPower: 0
+    Speed: 0
 --- !u!1 &8735183208793564312
 GameObject:
   m_ObjectHideFlags: 0

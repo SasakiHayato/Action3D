@@ -1272,7 +1272,8 @@ PrefabInstance:
       propertyPath: _mask.m_Bits
       value: 520
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8195346034173187192, guid: 59ef05e806e32994c91492a4deb01892, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 59ef05e806e32994c91492a4deb01892, type: 3}
 --- !u!1 &1747506157
 GameObject:

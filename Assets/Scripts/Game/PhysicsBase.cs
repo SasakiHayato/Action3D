@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class NewPhysicsBase : MonoBehaviour
+public class PhysicsBase : MonoBehaviour
 {
     [Serializable]
     class JumpData
@@ -10,29 +10,22 @@ public class NewPhysicsBase : MonoBehaviour
         public float InitialPower;
         public float Speed;
 
-        int _count;
+        int _saveCount;
 
         public void SstUp()
         {
-            _count = Count;
+            _saveCount = Count;
         }
 
         public bool CheckCount()
         {
-            _count--;
+            _saveCount--;
 
-            if (_count < 0)
-            {
-                _count = Count;
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            if (_saveCount < 0) return false;
+            else return true;
         }
 
-        public void ResetCount() => _count = Count;
+        public void ResetCount() => _saveCount = Count;
     }
 
     [Serializable]
@@ -63,7 +56,11 @@ public class NewPhysicsBase : MonoBehaviour
     float _timer;
     bool _isSetGravity;
 
+    public bool IsGround { get; private set; }
+
     ForceType _forceType = ForceType.None;
+    public ForceType CurrentForceType => _forceType;
+
     Vector3 _forceDir = Vector3.zero;
     float _forcePower = 0;
 
@@ -101,17 +98,21 @@ public class NewPhysicsBase : MonoBehaviour
         {
             case ForceType.Jump:
 
-                if (!_jumpData.CheckCount())
-                {
-                    InitForceParam();
-                }
-                else
-                {
-                    _forceTimer = 0;
-                }
+                _isSetGravity = false;
+                if (!_jumpData.CheckCount()) InitForceParam();
+                else _forceTimer = 0;
 
                 break;
             case ForceType.Impulse:
+
+                _isSetGravity = false;
+                break;
+
+            case ForceType.None:
+
+                _isSetGravity = true;
+                InitGravityParam();
+
                 break;
         }
     }
@@ -121,18 +122,17 @@ public class NewPhysicsBase : MonoBehaviour
         switch (_forceType)
         {
             case ForceType.Jump:
-                Debug.Log("Jump");
+               
                 SetJump();
                 break;
             case ForceType.Impulse:
 
-
+                SetImpulse();
                 break;
             case ForceType.None:
 
-                Debug.Log("None");
+                _isSetGravity = true;
                 GroundCheck();
-                InitForceParam();
                 break;
         }
     }
@@ -147,6 +147,21 @@ public class NewPhysicsBase : MonoBehaviour
 
         if (y < 0)
         {
+            InitForceParam();
+            InitGravityParam();
+            _forceType = ForceType.None;
+        }
+    }
+
+    void SetImpulse()
+    {
+        float power = _forcePower - _forceTimer * _physicsGravity * -1;
+        _gravity = _forceDir * power;
+
+        if (power < 0)
+        {
+            InitForceParam();
+            InitGravityParam();
             _forceType = ForceType.None;
         }
     }
@@ -161,16 +176,17 @@ public class NewPhysicsBase : MonoBehaviour
     {
         Vector3 dir = _gravityData.Ray.normalized;
         float distance = _gravityData.RayDistance;
-
+        
         if (Physics.Raycast(_offSet.position, dir, distance, _gravityData.HitLayer))
         {
             InitGravityParam();
             _jumpData.ResetCount();
-            _isSetGravity = false;
+
+            IsGround = true;
         }
         else
         {
-            _isSetGravity = true;
+            IsGround = false;
         }
     }
 

@@ -80,7 +80,7 @@ public class Player : CharaBase, IDamage
 
         Shot();
        
-        Vector3 set = Vector3.Scale(Move * Speed, PhsicsBase.GetVelocity);
+        Vector3 set = Vector3.Scale(Move * Speed, PhsicsBase.Gravity);
         
         Character.Move(set * Time.deltaTime);
     }
@@ -136,7 +136,7 @@ public class Player : CharaBase, IDamage
 
         BaseState.ChangeState(State.Float);
         _settings.Cancel();
-        PhsicsBase.SetJump();
+        PhsicsBase.Force(PhysicsBase.ForceType.Jump);
     }
 
     void WeakAttack()

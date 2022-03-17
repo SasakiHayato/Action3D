@@ -13,11 +13,10 @@ GameObject:
   - component: {fileID: 7980940582174284807}
   - component: {fileID: 7980940582174284805}
   - component: {fileID: 7980940582174284804}
-  - component: {fileID: 7980940582174284802}
-  - component: {fileID: 7980940582174284806}
   - component: {fileID: 8891125759827804182}
   - component: {fileID: 4184691060614374985}
   - component: {fileID: 5588957004100169152}
+  - component: {fileID: 4751761146890201596}
   m_Layer: 0
   m_Name: CubeEnemy
   m_TagString: Enemy
@@ -133,40 +132,6 @@ MonoBehaviour:
       State: {fileID: 5588957004100169152}
   _tree: {fileID: 8891125759827804182}
   _enemyConditionals: []
---- !u!114 &7980940582174284802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7980940582174284826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97a52bfd51cc74f418ee4eb329e3728f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _count: 1
-  _initialVelocity: 0
-  _speed: 1
---- !u!114 &7980940582174284806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7980940582174284826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 932d504d328aeb1438e016c933b7b792, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gravityScale: 0
-  _isReal: 0
-  _goundRayDir: {x: 0, y: 0, z: 0}
-  _offSet: {x: 0, y: 0, z: 0}
-  _mask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &8891125759827804182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,6 +285,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animName: 
+--- !u!114 &4751761146890201596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980940582174284826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e3def43fd754e48a084568f652365d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offSet: {fileID: 7980940582174284801}
+  _gravityData:
+    Ray: {x: 0, y: 0, z: 0}
+    RayDistance: 1
+    HitLayer:
+      serializedVersion: 2
+      m_Bits: 513
+    Scale: 1
+  _jumpData:
+    Count: 0
+    InitialPower: 0
+    Speed: 0
 --- !u!1001 &2932163159214366345
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,11 +13,10 @@ GameObject:
   - component: {fileID: 7032200162906323369}
   - component: {fileID: 7032200162906323371}
   - component: {fileID: 7032200162906323370}
-  - component: {fileID: 7032200162906323372}
-  - component: {fileID: 7032200162906323368}
   - component: {fileID: 6440588958396254198}
   - component: {fileID: 4480120867623490363}
   - component: {fileID: 5796564174825516079}
+  - component: {fileID: 6851117019943559275}
   m_Layer: 0
   m_Name: BrackCubeEnemy
   m_TagString: Enemy
@@ -133,40 +132,6 @@ MonoBehaviour:
       State: {fileID: 4480120867623490363}
   _tree: {fileID: 6440588958396254198}
   _enemyConditionals: []
---- !u!114 &7032200162906323372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7032200162906323380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97a52bfd51cc74f418ee4eb329e3728f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _count: 1
-  _initialVelocity: 0
-  _speed: 1
---- !u!114 &7032200162906323368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7032200162906323380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 932d504d328aeb1438e016c933b7b792, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gravityScale: 0
-  _isReal: 0
-  _goundRayDir: {x: 0, y: 0, z: 0}
-  _offSet: {x: 0, y: 0, z: 0}
-  _mask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &6440588958396254198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,6 +285,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244c8e60b812d6446bb95250c081cd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6851117019943559275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032200162906323380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e3def43fd754e48a084568f652365d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offSet: {fileID: 7032200162906323375}
+  _gravityData:
+    Ray: {x: 0, y: 0, z: 0}
+    RayDistance: 1
+    HitLayer:
+      serializedVersion: 2
+      m_Bits: 513
+    Scale: 1
+  _jumpData:
+    Count: 0
+    InitialPower: 0
+    Speed: 0
 --- !u!1001 &189315302652758605
 PrefabInstance:
   m_ObjectHideFlags: 0

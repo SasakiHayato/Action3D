@@ -21,7 +21,7 @@ public class BossShadow : EnemyBase, IDamage
         Rotate();
         Vector3 move = MoveDir;
         
-        Vector3 set = Vector3.Scale(move * Speed, PhsicsBase.GetVelocity);
+        Vector3 set = Vector3.Scale(move * Speed, PhsicsBase.Gravity);
         Character.Move(set * Time.deltaTime);
     }
 

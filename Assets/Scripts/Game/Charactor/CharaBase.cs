@@ -1,5 +1,4 @@
 using UnityEngine;
-using ObjectPhysics;
 using StateMachine;
 
 /// <summary>
@@ -42,7 +41,7 @@ public class CharaBase : MonoBehaviour
 
     private void Awake()
     {
-        _phsicsBase = gameObject.AddComponent<PhysicsBase>();
+        _phsicsBase = gameObject.GetComponent<PhysicsBase>();
         _character = GetComponent<CharacterController>();
         MaxHP = HP;
     }

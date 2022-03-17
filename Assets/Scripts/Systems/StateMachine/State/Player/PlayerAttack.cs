@@ -1,6 +1,5 @@
 using UnityEngine;
 using NewAttacks;
-using ObjectPhysics;
 using DG.Tweening;
 using StateMachine;
 using System;
@@ -72,6 +71,7 @@ public class PlayerAttack : State
 
     public override void Run()
     {
+        _physics.Force(PhysicsBase.ForceType.None);
         _timer += Time.deltaTime;
         
         if (_timer > _moveTime) _player.Move = Vector3.zero;

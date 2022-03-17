@@ -1,5 +1,4 @@
 using UnityEngine;
-using ObjectPhysics;
 using StateMachine;
 using System;
 
@@ -20,10 +19,10 @@ public class PlayerIdle : State
 
     public override void Entry(Enum beforeType)
     {
-        if (beforeType.ToString() == Player.State.Attack.ToString())
-        {
-            _physics.Gravity.ResetTimer();
-        }
+        //if (beforeType.ToString() == Player.State.Attack.ToString())
+        //{
+        //    _physics.Gravity.ResetTimer();
+        //}
 
         _input = Vector2.zero;
         _anim.CrossFade("Idle", 0.1f);

@@ -19,7 +19,7 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
     {
         BaseState.Update();
 
-        Vector3 set = Vector3.Scale(MoveDir * Speed, PhsicsBase.GetVelocity);
+        Vector3 set = Vector3.Scale(MoveDir * Speed, PhsicsBase.Gravity);
         Character.Move(set * Time.deltaTime);
     }
 

@@ -511,8 +511,6 @@ GameObject:
   - component: {fileID: 6987243538677896234}
   - component: {fileID: 1004740323426515315}
   - component: {fileID: 7499851683423658290}
-  - component: {fileID: 4833830171947244894}
-  - component: {fileID: 8195346034173187192}
   - component: {fileID: 8107732332690145594}
   - component: {fileID: 7248459957034524781}
   - component: {fileID: 8130654482837409867}
@@ -521,6 +519,7 @@ GameObject:
   - component: {fileID: 6242670556615028420}
   - component: {fileID: 1084479045152712506}
   - component: {fileID: 5214533629733316604}
+  - component: {fileID: 2202411713659286959}
   m_Layer: 0
   m_Name: NewPlayer
   m_TagString: Player
@@ -584,40 +583,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.15, z: 0}
---- !u!114 &4833830171947244894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875955427570302162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97a52bfd51cc74f418ee4eb329e3728f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _count: 2
-  _initialVelocity: 7
-  _speed: 5
---- !u!114 &8195346034173187192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875955427570302162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 932d504d328aeb1438e016c933b7b792, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gravityScale: 1
-  _isReal: 0
-  _goundRayDir: {x: 0, y: -1, z: 0}
-  _offSet: {x: 0, y: 0.5, z: 0}
-  _mask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!114 &8107732332690145594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,6 +686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveTime: 0.1
   _moveSpeed: 0.5
+  _lockOnDist: 0
 --- !u!114 &1084479045152712506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,6 +844,30 @@ MonoBehaviour:
         UpPower: 0
         ForwardPower: 0
       Effects: 000000000100000002000000
+--- !u!114 &2202411713659286959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875955427570302162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e3def43fd754e48a084568f652365d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offSet: {fileID: 3630384162481239413}
+  _gravityData:
+    Ray: {x: 0, y: -1, z: 0}
+    RayDistance: 1
+    HitLayer:
+      serializedVersion: 2
+      m_Bits: 1
+    Scale: 1
+  _jumpData:
+    Count: 2
+    InitialPower: 7
+    Speed: 5
 --- !u!1 &1908007640654097388
 GameObject:
   m_ObjectHideFlags: 0
