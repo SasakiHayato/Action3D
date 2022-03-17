@@ -85,6 +85,7 @@ public class PhysicsBase : MonoBehaviour
                 break;
             case ForceType.None:
 
+                _isSetGravity = true;
                 GroundCheck();
                 break;
         }
