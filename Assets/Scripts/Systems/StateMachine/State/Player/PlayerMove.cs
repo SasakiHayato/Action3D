@@ -6,7 +6,6 @@ public class PlayerMove : State
 {
     [SerializeField] float _dashSpeedRate;
     
-    Animator _anim = null;
     GameObject _mainCm;
     Vector2 _input = Vector2.zero;
 
@@ -19,7 +18,6 @@ public class PlayerMove : State
     public override void SetUp(GameObject user)
     {
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
-        _anim = user.GetComponent<Animator>();
         _player = user.GetComponent<Player>();
 
         _user = user;
@@ -29,17 +27,13 @@ public class PlayerMove : State
     {
         if (beforeType.ToString() == Player.State.Avoid.ToString())
         {
-            _anim.CrossFade("Run", 0.2f);
+            _player.AnimController.RequestAnim("Run");
             _setSpeedRate = _dashSpeedRate;
         }
         else
         {
-            _anim.CrossFade("RunNoamal", 0.1f);
+            _player.AnimController.RequestAnim("RunNoamal");
             _setSpeedRate = 1;
-        }
-        if (beforeType.ToString() == Player.State.Float.ToString())
-        {
-            Debug.Log("aaa");
         }
     }
 

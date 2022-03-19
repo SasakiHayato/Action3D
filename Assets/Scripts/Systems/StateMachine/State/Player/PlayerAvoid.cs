@@ -46,7 +46,7 @@ public class PlayerAvoid : State
             _setSpeed = _defSpeed;
         }
 
-        GetComponent<Animator>().Play("Dodge");
+        _player.AnimController.RequestAnim("Dodge");
     }
 
     public override void Run()

@@ -12,23 +12,20 @@ public class PlayerKnockBack : State
     float _timer = 0;
     bool _isKnockBack = false;
 
-    Animator _anim = null;
     AttackSettings _attack;
 
     Player _player;
 
     public override void SetUp(GameObject user)
     {
-        _anim = user.GetComponent<Animator>();
         _attack = user.GetComponent<AttackSettings>();
         _player = user.GetComponent<Player>();
     }
 
     public override void Entry(Enum beforeType)
     {
-        
         _attack.Cancel();
-        _anim.Play("Damage_Front_Big_ver_C");
+        _player.AnimController.RequestAnim("Damage_Front_Big_ver_C");
 
         _isKnockBack = true;
         _setDir = _player.GetKnockDir;

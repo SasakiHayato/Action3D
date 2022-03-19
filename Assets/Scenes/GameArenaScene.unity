@@ -1117,6 +1117,31 @@ PrefabInstance:
       propertyPath: _gravityData.HitLayer.m_Bits
       value: 513
       objectReference: {fileID: 0}
+    - target: {fileID: 2202411713659286959, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _jumpData._jumpParams.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202411713659286959, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _jumpData._jumpParams.Array.data[0].Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202411713659286959, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _jumpData._jumpParams.Array.data[1].Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202411713659286959, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _jumpData._jumpParams.Array.data[0].InitialPower
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202411713659286959, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _jumpData._jumpParams.Array.data[1].InitialPower
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2361502983919704695, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: m_Name

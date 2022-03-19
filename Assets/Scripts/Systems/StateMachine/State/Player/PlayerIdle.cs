@@ -5,27 +5,23 @@ using System;
 public class PlayerIdle : State
 {
     Vector2 _input;
-    PhysicsBase _physics = null;
-
     Player _player;
-    Animator _anim;
-
+   
     public override void SetUp(GameObject user)
     {
-        _physics = user.GetComponent<PhysicsBase>();
         _player = user.GetComponent<Player>();
-        _anim = user.GetComponent<Animator>();
     }
 
     public override void Entry(Enum beforeType)
     {
-        //if (beforeType.ToString() == Player.State.Attack.ToString())
-        //{
-        //    _physics.Gravity.ResetTimer();
-        //}
-
         _input = Vector2.zero;
-        _anim.CrossFade("Idle", 0.1f);
+        string animName = "Idle";
+        if (beforeType.ToString() == Player.State.Float.ToString())
+        {
+            animName = "Jump_End";
+        }
+       
+        _player.AnimController.RequestAnim(animName);
     }
 
     public override void Run()

@@ -115,7 +115,7 @@ public class GameManager : SingletonAttribute<GameManager>
         {
             case GameState.InGame:
                 Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-                player.SetAnim("Intro", () => { PlayerData.CanMove = true; });
+                player.AnimController.RequestAnimCallBackEvent("Intro", () => { PlayerData.CanMove = true; });
                 SetOptionState(Option.Close);
                 
                 break;
@@ -130,7 +130,7 @@ public class GameManager : SingletonAttribute<GameManager>
                 PlayerData.CanMove = false;
                 Fader.Instance.Request(Fader.FadeType.Out, 0.5f);
                 player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-                player.SetAnim("Damage_Die", () => SceneSettings.Instance.LoadSync(0));
+                player.AnimController.RequestAnimCallBackEvent("Damage_Die", () => SceneSettings.Instance.LoadSync(0));
                 break;
 
             case GameState.Load:

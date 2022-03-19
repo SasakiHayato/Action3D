@@ -1,7 +1,5 @@
-using System.Collections;
 using UnityEngine;
 using System.Linq;
-using System;
 using NewAttacks;
 
 /// <summary>
@@ -25,16 +23,13 @@ public class Player : CharaBase, IDamage
     [SerializeField] float _shotCoolTime;
     [SerializeField] float _modeChangeTime;
 
-    Animator _anim;
-
     AttackSettings _settings;
+    public PlayerAnimController AnimController { get; private set; }
     
     float _shotTimer = 0;
     public Vector3 Move { get; set; } = Vector3.zero;
 
-    public bool EndAnim { get; private set; } = true;
     public bool IsAvoid { get; private set; } = false;
-    public bool IsLockon { get; private set; } = false;
     public Vector3 GetKnockDir { get; private set; } = Vector3.zero;
 
     void Start()
@@ -43,7 +38,7 @@ public class Player : CharaBase, IDamage
         GameManager.Instance.PlayerData.HP = HP;
         GameManager.Instance.PlayerData.Power = Power;
 
-        _anim = GetComponent<Animator>();
+        AnimController = GetComponent<PlayerAnimController>();
         _settings = GetComponent<AttackSettings>();
         
         Inputter.Instance.Inputs.Player
@@ -74,7 +69,7 @@ public class Player : CharaBase, IDamage
     void Update()
     {
         if (!GameManager.Instance.PlayerData.CanMove) return;
-
+        Debug.Log(BaseState.CurrentStateType);
         BaseState.Update();
         if (BaseState.CurrentStateType != State.Avoid.ToString()) IsAvoid = false;
 
@@ -134,7 +129,9 @@ public class Player : CharaBase, IDamage
         if (BaseState.CurrentStateType == State.KnockBack.ToString()) return;
         if (GameManager.Option.Close != GameManager.Instance.OptionState) return;
 
-        BaseState.ChangeState(State.Float);
+        if (BaseState.CurrentStateType == State.Float.ToString()) BaseState.ReturnEntry();
+        else BaseState.ChangeState(State.Float);
+
         _settings.Cancel();
         PhsicsBase.Force(PhysicsBase.ForceType.Jump);
     }
@@ -241,23 +238,6 @@ public class Player : CharaBase, IDamage
 
         GetKnockDir = dir;
         BaseState.ChangeState(State.KnockBack);
-    }
-
-    public void SetAnim(string name, Action action = null)
-    {
-        if (!EndAnim) return;
-        
-        EndAnim = false;
-        _anim.Play(name);
-        StartCoroutine(WaitAnim(action));
-    }
-
-    IEnumerator WaitAnim(Action action)
-    {
-        yield return null;
-        yield return new WaitAnim(_anim);
-        EndAnim = true;
-        if (action != null) action.Invoke();
     }
 
     public override void SetParam(int hp, int power, float speed, int level)

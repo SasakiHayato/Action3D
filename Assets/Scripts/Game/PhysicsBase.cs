@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PhysicsBase : MonoBehaviour
 {
     [Serializable]
-    class JumpData
+    public class JumpData
     {
         public List<JumpParam> _jumpParams = new List<JumpParam>();
 
@@ -17,6 +17,7 @@ public class PhysicsBase : MonoBehaviour
         }
 
         public int Count => _jumpParams.Count;
+        public int CurrntCount => _count;
         public float InitialPower => _jumpParams[_count - 1].InitialPower;
         public float Speed => _jumpParams[_count - 1].Speed;
 
@@ -53,7 +54,9 @@ public class PhysicsBase : MonoBehaviour
     [SerializeField] Transform _offSet;
     [SerializeField] GravityData _gravityData = new GravityData();
     [SerializeField] JumpData _jumpData = new JumpData();
-    
+
+    public JumpData GetJumpData => _jumpData;
+
     public Vector3 Gravity { get => _gravity; private set { _gravity = value; } }
     Vector3 _gravity = Vector3.one;
 

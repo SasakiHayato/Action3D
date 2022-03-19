@@ -4,40 +4,42 @@ using System;
 
 public class PlayerFloating : State
 {
-    [SerializeField] float _dashSpeedRate;
+    [SerializeField] float _nextStateSpan;
     
     Player _player = null;
-    Animator _anim;
-    CharacterController _character;
-
+    
     GameObject _mainCm;
     Vector2 _input = Vector2.zero;
 
     float _setSpeedRate = 1;
     Vector3 _beforePos;
 
-    bool _isGround = false;
-
     GameObject _user;
+
+    float _timer;
 
     public override void SetUp(GameObject user)
     {
         _mainCm = GameObject.FindGameObjectWithTag("MainCamera");
         _player = user.GetComponent<Player>();
-        _anim = user.GetComponent<Animator>();
-        _character = user.GetComponent<CharacterController>();
-
+        
         _user = user;
     }
 
     public override void Entry(Enum beforeType)
     {
-        _isGround = false;
-        _player.SetAnim("Jump_Start");
+        string animName = "Double_Jump_Start";
+        if (_player.PhsicsBase.GetJumpData.CurrntCount == 0) animName = "Jump_Start";
+
+        _player.AnimController.RequestAnimCallBackEvent(animName, null);
+
+        _timer = 0;
     }
 
     public override void Run()
     {
+        _timer += Time.deltaTime;
+
         _input = (Vector2)Inputter.GetValue(InputType.PlayerMove) * _setSpeedRate;
 
         Vector3 forward = _mainCm.transform.forward * _input.y;
@@ -45,10 +47,9 @@ public class PlayerFloating : State
         _player.Move = new Vector3(forward.x + right.x, 1, right.z + forward.z);
 
         Rotate();
-        if (_player.EndAnim)
+        if (_player.AnimController.EndAnim)
         {
-            _anim.Play("Jump_Loop");
-            if (_character.isGrounded) _isGround = true;
+            _player.AnimController.RequestAnim("Jump_Loop");
         }
     }
 
@@ -67,7 +68,7 @@ public class PlayerFloating : State
 
     public override Enum Exit()
     {
-        if (_isGround) return Player.State.Idle;
+        if (_player.PhsicsBase.IsGround && _timer > _nextStateSpan) return Player.State.Idle;
         else return Player.State.Float;
     }
 }

@@ -158,7 +158,8 @@ public class PlayerAttack : State
         }
         else
         {
-            return Player.State.Idle;
+            if (_player.PhsicsBase.IsGround) return Player.State.Idle;
+            else return Player.State.Float;
         }
     }
 }
