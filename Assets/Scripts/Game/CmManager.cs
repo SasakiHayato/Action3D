@@ -68,7 +68,10 @@ public class CmManager : MonoBehaviour
 
     void Update()
     {
-        _state.Update();
+        if (GameManager.Instance.OptionState == GameManager.Option.Close)
+        {
+            _state.Update();
+        }
     }
 
     public void RequestShakeCm()
