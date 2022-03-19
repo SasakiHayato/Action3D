@@ -1,31 +1,36 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class PhysicsBase : MonoBehaviour
 {
     [Serializable]
     class JumpData
     {
-        public int Count;
-        public float InitialPower;
-        public float Speed;
+        public List<JumpParam> _jumpParams = new List<JumpParam>();
 
-        int _saveCount;
-
-        public void SstUp()
+        [Serializable]
+        public class JumpParam
         {
-            _saveCount = Count;
+            public float InitialPower;
+            public float Speed;
         }
+
+        public int Count => _jumpParams.Count;
+        public float InitialPower => _jumpParams[_count - 1].InitialPower;
+        public float Speed => _jumpParams[_count - 1].Speed;
+
+        int _count = 0;
 
         public bool CheckCount()
         {
-            _saveCount--;
+            _count++;
 
-            if (_saveCount < 0) return false;
+            if (_count > Count) return false;
             else return true;
         }
 
-        public void ResetCount() => _saveCount = Count;
+        public void ResetCount() => _count = 0;
     }
 
     [Serializable]
@@ -65,11 +70,6 @@ public class PhysicsBase : MonoBehaviour
     float _forcePower = 0;
 
     float _forceTimer;
-
-    void Start()
-    {
-        _jumpData.SstUp();
-    }
 
     void Update()
     {
@@ -125,7 +125,6 @@ public class PhysicsBase : MonoBehaviour
 
             case ForceType.None:
 
-                _isSetGravity = true;
                 InitGravityParam();
 
                 break;
@@ -162,7 +161,6 @@ public class PhysicsBase : MonoBehaviour
     void SetGravity()
     {
         _timer += Time.fixedDeltaTime;
-        Debug.Log(_timer);
         _gravity.y = _timer * _physicsGravity * _gravityData.Scale;
     }
 

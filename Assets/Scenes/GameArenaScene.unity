@@ -1107,6 +1107,16 @@ PrefabInstance:
       propertyPath: _stateList.Array.data[3]._lockOnDist
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 2202411713659286959, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _gravityData.RayDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202411713659286959, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _gravityData.HitLayer.m_Bits
+      value: 513
+      objectReference: {fileID: 0}
     - target: {fileID: 2361502983919704695, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: m_Name
