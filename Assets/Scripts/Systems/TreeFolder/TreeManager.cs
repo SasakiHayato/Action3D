@@ -227,7 +227,7 @@ namespace BehaviourTree
             }
         }
 
-        void InitParam()
+        public void InitParam()
         {
             //Debug.Log("ManagerInit");
             State = TreeState.Run;

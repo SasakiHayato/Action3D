@@ -602,6 +602,8 @@ MonoBehaviour:
         _type: 2
     00000007:
       type: {class: WaitAttackAnim, ns: , asm: Assembly-CSharp}
+      data:
+        _forcedTimer: 1.1
     00000008:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
@@ -769,7 +771,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 513
     Scale: 1
-    Mass: 100
+    Mass: 50
   _jumpData:
     _jumpParams: []
 --- !u!1 &8735183208793564312

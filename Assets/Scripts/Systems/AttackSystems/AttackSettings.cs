@@ -22,6 +22,8 @@ namespace NewAttacks
         Collider _weaponCllider;
         Action _effectAction;
 
+        string _saveAnimName;
+
         AttackType _saveType = default;
         public AttackType SetAttackType { set { _saveType = value; } }
         public AttackType ReadAttackType => _saveType;
@@ -108,6 +110,7 @@ namespace NewAttacks
         void Set(AttackData data)
         {
             _data = data;
+            _weaponCllider.enabled = false;
 
             EndCurrentAnim = false;
             IsNextRequest = false;
@@ -115,7 +118,19 @@ namespace NewAttacks
 
             _effectAction = null;
 
-            _targetAnim.CrossFade(data.AnimName, Duration);
+            string animName = data.AnimName;
+            
+            if (_saveAnimName == "" || animName != _saveAnimName)
+            {
+                _saveAnimName = animName;
+                _targetAnim.CrossFade(animName, Duration);
+            }
+            else
+            {
+                _targetAnim.Play(animName, 0, 0);
+            }
+
+            
             SoundMaster.PlayRequest(_targetWeapon.transform, data.SEID, SEDataBase.DataType.Player);
             _effectSetter.Set(ref _effectAction, data.Effects);
         }
@@ -127,6 +142,7 @@ namespace NewAttacks
             _setID = 0;
             IsSetNextRequest = false;
             _saveType = AttackType.Weak;
+            Debug.Log("EndAnim");
         }
 
         /// <summary> AnimEventÇ≈åƒÇ—èoÇµ </summary>

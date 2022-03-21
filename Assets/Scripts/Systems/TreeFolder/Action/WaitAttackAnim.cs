@@ -13,12 +13,12 @@ public class WaitAttackAnim : IAction
 
     public bool Execute()
     {
-        Debug.Log(_settings.WeaponColliderEnable);
+        Debug.Log($"WaitAnim {_settings.EndCurrentAnim}");
         return _settings.EndCurrentAnim;
     }
 
     public void InitParam()
     {
-
+        
     }
 }

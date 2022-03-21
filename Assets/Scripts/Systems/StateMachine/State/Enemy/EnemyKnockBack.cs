@@ -1,6 +1,7 @@
 using UnityEngine;
 using StateMachine;
 using System;
+using NewAttacks;
 
 public class EnemyKnockBack : State
 {
@@ -9,6 +10,8 @@ public class EnemyKnockBack : State
     Animator _anim;
 
     PhysicsBase _physicsBase;
+    AttackSettings _settings;
+
 
     bool _isSetUp = false;
     float _speed;
@@ -18,17 +21,21 @@ public class EnemyKnockBack : State
         _enemyBase = user.GetComponent<EnemyBase>();
         _anim = user.GetComponent<Animator>();
         _physicsBase = user.GetComponent<PhysicsBase>();
+        _settings = user.GetComponent<AttackSettings>();
 
         _speed = _enemyBase.Speed;
     }
 
     public override void Entry(Enum beforeType)
     {
+        
+
         if (_enemyBase.KnonckForwardPower == 0 && _enemyBase.KnonckUpPower == 0) _isSetUp = false;
         else
         {
             _enemyBase.Speed = 1;
             _isSetUp = true;
+            _settings?.Cancel();
 
             Impluse();
         }
