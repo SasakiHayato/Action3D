@@ -69,7 +69,7 @@ public class Player : CharaBase, IDamage
     void Update()
     {
         if (!GameManager.Instance.PlayerData.CanMove) return;
-        Debug.Log(BaseState.CurrentStateType);
+
         BaseState.Update();
         if (BaseState.CurrentStateType != State.Avoid.ToString()) IsAvoid = false;
 

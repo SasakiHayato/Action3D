@@ -499,7 +499,7 @@ MonoBehaviour:
       KnockBackData:
         UpPower: 0
         ForwardPower: 0
-      Effects: 000000000100000002000000
+      Effects: 0000000001000000
 --- !u!114 &2666447687925516403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,9 +546,7 @@ MonoBehaviour:
       m_Bits: 513
     Scale: 1
   _jumpData:
-    Count: 0
-    InitialPower: 0
-    Speed: 0
+    _jumpParams: []
 --- !u!1 &1541433764611268897
 GameObject:
   m_ObjectHideFlags: 0

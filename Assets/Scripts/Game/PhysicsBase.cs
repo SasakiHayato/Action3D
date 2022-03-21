@@ -41,6 +41,7 @@ public class PhysicsBase : MonoBehaviour
         public float RayDistance = 1;
         public LayerMask HitLayer;
         public float Scale = 1;
+        public float Mass;
     }
 
     public enum ForceType
@@ -65,6 +66,7 @@ public class PhysicsBase : MonoBehaviour
     bool _isSetGravity = true;
 
     public bool IsGround { get; private set; }
+    public float ImpulsePower { get; private set; }
 
     ForceType _forceType = ForceType.None;
     public ForceType CurrentForceType => _forceType;
@@ -129,6 +131,7 @@ public class PhysicsBase : MonoBehaviour
             case ForceType.None:
 
                 InitGravityParam();
+                
 
                 break;
         }
@@ -151,7 +154,11 @@ public class PhysicsBase : MonoBehaviour
 
     void SetImpulse()
     {
-        float power = _forcePower - _forceTimer * _physicsGravity * -1;
+        float mass = _gravityData.Mass;
+        if (mass <= 0) mass = 1;
+
+        float power = (_forcePower - _forceTimer * _physicsGravity * -1) / mass;
+        ImpulsePower = power;
         _gravity = _forceDir * power;
 
         if (power < 0)
@@ -199,5 +206,7 @@ public class PhysicsBase : MonoBehaviour
         _forceType = ForceType.None;
 
         _forceTimer = 0;
+
+        ImpulsePower = 0;
     }
 }

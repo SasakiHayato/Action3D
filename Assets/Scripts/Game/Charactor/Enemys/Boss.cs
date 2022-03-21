@@ -49,8 +49,8 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
             return;
         }
 
-        if (_attack.EndCurrentAnim) _anim.Play("Damage_Back_Small_ver_B");
-        
+        BaseState.ChangeState(State.KnockBack);
+
         Sounds.SoundMaster.PlayRequest(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
         object[] setUiData = { damage, gameObject, ColorType.Enemy };
         BaseUI.Instance.CallBack("Game", "Damage", setUiData);

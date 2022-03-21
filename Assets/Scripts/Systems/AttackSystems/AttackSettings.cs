@@ -29,6 +29,7 @@ namespace NewAttacks
         public bool EndCurrentAnim { get; private set; } = false;
         public bool IsNextRequest { get; private set; } = false;
         public bool IsSetNextRequest { get; private set; } = false;
+        public bool WeaponColliderEnable => _weaponCllider.enabled;
 
         const float Duration = 0.1f;
 
