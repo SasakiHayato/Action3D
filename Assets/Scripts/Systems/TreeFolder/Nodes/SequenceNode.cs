@@ -13,22 +13,22 @@ namespace BehaviourTree
 
         class SequenceNode
         {
-            public int _brockID = 0;
+            public int _blockID = 0;
             public int _queueID = 0;
 
             public void InitQueueID() => _queueID = 0;
-            public void InitBrockID() => _brockID = 0;
+            public void InitBrockID() => _blockID = 0;
 
-            public int CurrentBrockID => _brockID;
+            public int CurrentBrockID => _blockID;
 
-            public BrockData SetBrockData(List<BrockData> brockDatas)
+            public BlockData SetBrockData(List<BlockData> brockDatas)
             {
-                if (brockDatas.Count <= _brockID)
+                if (brockDatas.Count <= _blockID)
                 {
                     return null;
                 }
 
-                return brockDatas[_brockID];
+                return brockDatas[_blockID];
             }
 
             public QueueData SetQueueData(List<QueueData> queueDatas)
@@ -47,11 +47,17 @@ namespace BehaviourTree
             /// <returns>ç∑ÇµçûÇﬂÇΩÇ©î€Ç©</returns>
             public bool SetNextBrockData(BranchData branch)
             {
-                _brockID++;
-
-                if (branch.BrockDatas.Count <= _brockID)
+                if (branch.BrockType == BrockType.ConditionallySelector)
                 {
-                    _brockID = 0;
+                    _blockID = 0;
+                    return false;
+                }
+
+                _blockID++;
+
+                if (branch.BrockDatas.Count <= _blockID)
+                {
+                    _blockID = 0;
                     return false;
                 }
 
@@ -60,9 +66,15 @@ namespace BehaviourTree
 
             public bool SetNextQueueData(BranchData branch)
             {
+                if (branch.BrockDatas[_blockID].QueueType == QueueType.Selector)
+                {
+                    _queueID = 0;
+                    return false;
+                }
+
                 _queueID++;
                 
-                if (branch.BrockDatas[_brockID].QueueDatas.Count <= _queueID)
+                if (branch.BrockDatas[_blockID].QueueDatas.Count <= _queueID)
                 {
                     _queueID = 0;
                     return false;
@@ -73,7 +85,7 @@ namespace BehaviourTree
 
             public void Init()
             {
-                _brockID = 0;
+                _blockID = 0;
                 _queueID = 0;
             }
         }

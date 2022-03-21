@@ -41,7 +41,7 @@ namespace BehaviourTree
 
         public TreeState State { get; set; } = TreeState.Run;
 
-        BranchData _saveBranch;
+        BranchData _runBranch;
 
         public void SetUp()
         {
@@ -81,7 +81,7 @@ namespace BehaviourTree
             _isSetUp = true;
         }
 
-        public void Run()
+        public void Update()
         {
             if (!_isSetUp)
             {
@@ -89,16 +89,11 @@ namespace BehaviourTree
                 return;
             }
 
-            if (NormalBranches.Count <= _branchID && NormalBranches.Count > 0)
-            {
-                InitParam();
-                return;
-            }
-
             switch (State)
             {
                 case TreeState.Run:
-                    
+
+                    Run();
                     break;
                 case TreeState.Task:
 
@@ -113,7 +108,7 @@ namespace BehaviourTree
                     _actionNode.Init();
                     _selectorNode.Init();
 
-                    _branchDatas[_saveBranch.ID].BrockDatas.ForEach(b =>
+                    _branchDatas[_runBranch.ID].BrockDatas.ForEach(b =>
                     {
                         b.QueueDatas.ForEach(q =>
                         {
@@ -122,19 +117,17 @@ namespace BehaviourTree
                         });
                     });
                     
-                    if (!_sequenceNode.SetNextQueueData(_saveBranch))
+                    if (!_sequenceNode.SetNextQueueData(_runBranch))
                     {
-                        if (!_sequenceNode.SetNextBrockData(_saveBranch))
+                        if (!_sequenceNode.SetNextBrockData(_runBranch))
                         {
                             State = TreeState.End;
-                            
                             return;
                         }
                         else
                         {
                             _sequenceNode.InitQueueID();
                             State = TreeState.Run;
-                            
                             return;
                         }
                     }
@@ -146,7 +139,7 @@ namespace BehaviourTree
                     return;
                 case TreeState.End:
 
-                    _branchDatas[_saveBranch.ID].BrockDatas.ForEach(b =>
+                    _branchDatas[_runBranch.ID].BrockDatas.ForEach(b =>
                     {
                         b.QueueDatas.ForEach(q => 
                         {
@@ -164,10 +157,22 @@ namespace BehaviourTree
 
                     return;       
             }
+        }
 
+        void Run()
+        {
             //　ブランチの取得
             BranchData branch = _conditionalNode.SetBranch(this, _branchID);
-            _saveBranch = branch;
+
+            if (branch == null)
+            {
+                InitParam();
+                return;
+            }
+            else
+            {
+                _runBranch = branch;
+            }
 
             if (branch.ID != _saveConditionalID)
             {
@@ -177,31 +182,36 @@ namespace BehaviourTree
                 _saveConditionalID = branch.ID;
             }
 
-            BrockData brockData = null;
+            BlockData blockData = null;
             QueueData queueData = null;
 
             //　ブロックの取得
-            if (branch.BrockType == BrockType.Sequence 
+            if (branch.BrockType == BrockType.Sequence
             || branch.BrockType == BrockType.ConditionallySequence)
             {
-                brockData = _sequenceNode.SetBrockData(branch.BrockDatas);
+                blockData = _sequenceNode.SetBrockData(branch.BrockDatas);
             }
             else
             {
-                brockData = _selectorNode.SetBrockData(branch.BrockDatas);
+                blockData = _selectorNode.SetBrockData(branch.BrockDatas);
             }
 
-            if (brockData == null)
+            if (blockData == null)
             {
                 State = TreeState.Set;
                 return;
             }
 
             //　キューの取得
-            if (brockData.QueueType == QueueType.Sequence)
-                queueData = _sequenceNode.SetQueueData(brockData.QueueDatas);
+            if (blockData.QueueType == QueueType.Sequence)
+            {
+                queueData = _sequenceNode.SetQueueData(blockData.QueueDatas);
+            }
             else
-                queueData = _selectorNode.SetQueueData(brockData.QueueDatas);
+            {
+                queueData = _selectorNode.SetQueueData(blockData.QueueDatas);
+            }
+
 
             if (queueData == null)
             {
@@ -216,10 +226,12 @@ namespace BehaviourTree
                 isAction = _conditionalNode.Sequence(queueData.Conditionals);
             else
                 isAction = _conditionalNode.Selector(queueData.Conditionals);
-            
+
             // アクションのタイプを調べ初期化
             _actionNode.SetUp(queueData, this);
-            
+
+            if (State == TreeState.Task) return;
+
             //　現在のキューデータの実行判定
             if (!isAction || !_actionNode.RunUpdate(queueData.Actions))
             {
@@ -229,7 +241,6 @@ namespace BehaviourTree
 
         public void InitParam()
         {
-            //Debug.Log("ManagerInit");
             State = TreeState.Run;
             _branchID = 0;
             _actionNode.Init();

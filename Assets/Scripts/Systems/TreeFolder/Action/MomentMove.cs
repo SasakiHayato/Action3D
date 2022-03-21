@@ -3,6 +3,7 @@ using BehaviourTree;
 
 public class MomentMove : IAction
 {
+    [SerializeField] float _distanceRate = 1;
     [SerializeField] bool _apllayPosY;
     
     GameObject _player = null;
@@ -23,7 +24,7 @@ public class MomentMove : IAction
         if (!_apllayPosY) setPos.y = _user.transform.position.y;
         Vector3 forward = _user.transform.forward;
         forward.y = 0;
-        _charaBase.Character.ChangePos(setPos - forward * 3, _user);
+        _charaBase.Character.ChangePos(setPos - forward * _distanceRate, _user);
         return true;
     }
 

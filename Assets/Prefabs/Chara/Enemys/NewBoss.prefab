@@ -546,22 +546,62 @@ MonoBehaviour:
         - id: 3
         Actions:
         - id: 4
+  - BrockType: 3
+    Condition: 0
+    BranchConditionals:
+    - id: 5
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 1
+        Condition: 0
+        Conditionals:
+        - id: 6
+        Actions:
+        - id: 7
+        - id: 8
+        - id: 9
+        - id: 10
+        - id: 11
+      - RunType: 1
+        Condition: 0
+        Conditionals:
+        - id: 6
+        Actions:
+        - id: 7
+        - id: 8
+        - id: 9
+        - id: 10
+        - id: 11
+      - RunType: 1
+        Condition: 0
+        Conditionals:
+        - id: 6
+        Actions:
+        - id: 7
+        - id: 8
+        - id: 9
+        - id: 10
+        - id: 12
     - QueueType: 1
       QueueDatas:
       - RunType: 1
         Condition: 0
         Conditionals:
-        - id: 5
-        Actions:
         - id: 6
+        Actions:
         - id: 7
+        - id: 8
+        - id: 9
+        - id: 13
+        - id: 14
       - RunType: 1
         Condition: 0
         Conditionals:
-        - id: 5
+        - id: 6
         Actions:
-        - id: 8
-        - id: 9
+        - id: 15
+        - id: 16
   references:
     version: 1
     00000000:
@@ -597,21 +637,46 @@ MonoBehaviour:
         _range: 5
         _type: 0
     00000006:
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    00000007:
+      type: {class: SetParticleEffect, ns: , asm: Assembly-CSharp}
+      data:
+        _particleName: WarningParticle
+        _setNextActionTime: 0.2
+        _offSet: {x: 4, y: 4, z: 4}
+    00000008:
+      type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+      data:
+        _distanceRate: 2
+        _apllayPosY: 0
+    00000009:
+      type: {class: WaitTime, ns: , asm: Assembly-CSharp}
+      data:
+        _minWaitTime: 0.1
+        _maxWaitTime: 0.1
+        _setRandom: 0
+    0000000A:
+      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+    0000000B:
+      type: {class: AttackNextRequest, ns: , asm: Assembly-CSharp}
+    0000000C:
+      type: {class: WaitAttackAnim, ns: , asm: Assembly-CSharp}
+    0000000D:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 2
-    00000007:
+    0000000E:
       type: {class: WaitAttackAnim, ns: , asm: Assembly-CSharp}
-      data:
-        _forcedTimer: 1.1
-    00000008:
+    0000000F:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         _animName: Dodge_Back
         _applyYPos: 0
         _moveType: 1
-        _speedRate: 0.5
-    00000009:
+        _speedRate: 0.3
+    00000010:
       type: {class: WaitTime, ns: , asm: Assembly-CSharp}
       data:
         _minWaitTime: 0.3

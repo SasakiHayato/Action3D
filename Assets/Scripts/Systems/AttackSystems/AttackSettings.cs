@@ -141,7 +141,6 @@ namespace NewAttacks
             _setID = 0;
             IsSetNextRequest = false;
             _saveType = AttackType.Weak;
-            Debug.Log("EndAnim");
         }
 
         /// <summary> AnimEvent‚ÅŒÄ‚Ño‚µ </summary>

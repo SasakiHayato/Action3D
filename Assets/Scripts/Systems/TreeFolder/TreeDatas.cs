@@ -45,11 +45,11 @@ namespace BehaviourTree
             [SerializeReference, SubclassSelector]
             public List<IConditional> BranchConditionals;
 
-            public List<BrockData> BrockDatas;
+            public List<BlockData> BrockDatas;
         }
 
         [System.Serializable]
-        public class BrockData
+        public class BlockData
         {
             public QueueType QueueType;
             public List<QueueData> QueueDatas;

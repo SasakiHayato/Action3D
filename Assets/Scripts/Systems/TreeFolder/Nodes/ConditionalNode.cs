@@ -46,7 +46,8 @@ namespace BehaviourTree
                     }
                 }
 
-                return manager.NormalBranches[branchID];
+                if (manager.NormalBranches.Count <= branchID) return null;
+                else return manager.NormalBranches[branchID];
             }
         }
     }

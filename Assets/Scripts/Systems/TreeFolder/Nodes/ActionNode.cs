@@ -63,7 +63,7 @@ namespace BehaviourTree
                     Debug.Log("EndTask");
                     return false;
                 }
-
+                
                 if (_actions[_executeID].Execute())
                 {
                     _executeID++;

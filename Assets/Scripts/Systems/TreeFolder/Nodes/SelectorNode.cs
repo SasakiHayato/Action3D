@@ -13,29 +13,28 @@ namespace BehaviourTree
 
         class SelectorNode
         {
-            BrockData _saveBrockData = null;
+            BlockData _saveBrockData = null;
             QueueData _saveQueueData = null;
 
-            public BrockData SetBrockData(List<BrockData> brockDatas)
+            public BlockData SetBrockData(List<BlockData> blockDatas)
             {
                 
                 if (_saveBrockData != null)
                 {
-                 
                     return _saveBrockData;
                 }
                 else
                 {
-                    int random = Random.Range(0, brockDatas.Count);
-                    _saveBrockData = brockDatas[random];
+                    int random = Random.Range(0, blockDatas.Count);
+                    _saveBrockData = blockDatas[random];
                     
-                    return brockDatas[random];
+                    return blockDatas[random];
                 }
             }
 
             public QueueData SetQueueData(List<QueueData> queueDatas)
             {
-                if (_saveBrockData != null)
+                if (_saveQueueData != null)
                 {
                     return _saveQueueData;
                 }

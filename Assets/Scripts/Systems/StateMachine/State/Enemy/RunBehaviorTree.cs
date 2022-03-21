@@ -20,7 +20,7 @@ public class RunBehaviorTree : State
 
     public override void Run()
     {
-        _tree.Run();
+        _tree.Update();
     }
 
     public override Enum Exit()
