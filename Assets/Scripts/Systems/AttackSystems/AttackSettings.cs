@@ -130,7 +130,6 @@ namespace NewAttacks
                 _targetAnim.Play(animName, 0, 0);
             }
 
-            
             SoundMaster.PlayRequest(_targetWeapon.transform, data.SEID, SEDataBase.DataType.Player);
             _effectSetter.Set(ref _effectAction, data.Effects);
         }

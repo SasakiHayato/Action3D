@@ -24,7 +24,6 @@ public class ShortDistanceAttack : IAction
 
     public bool Execute()
     {
-        Debug.Log("aaaaa");
         _enemyBase.MoveDir = Vector3.zero;
         
         Rotate();

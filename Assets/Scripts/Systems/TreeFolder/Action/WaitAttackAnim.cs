@@ -13,7 +13,6 @@ public class WaitAttackAnim : IAction
 
     public bool Execute()
     {
-        Debug.Log($"WaitAnim {_settings.EndCurrentAnim}");
         return _settings.EndCurrentAnim;
     }
 
