@@ -720,6 +720,134 @@ MonoBehaviour:
         Actions:
         - id: 42
         - id: 43
+  - BrockType: 2
+    Condition: 0
+    Priority: 5
+    BranchConditionals:
+    - id: 30
+    - id: 31
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 32
+        Actions:
+        - id: 33
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 34
+        Actions:
+        - id: 35
+        - id: 36
+        - id: 37
+        - id: 38
+        - id: 39
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 34
+        Actions:
+        - id: 35
+        - id: 36
+        - id: 37
+        - id: 38
+        - id: 39
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 34
+        Actions:
+        - id: 35
+        - id: 36
+        - id: 37
+        - id: 38
+        - id: 39
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 34
+        Actions:
+        - id: 35
+        - id: 36
+        - id: 37
+        - id: 38
+        - id: 39
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 34
+        Actions:
+        - id: 35
+        - id: 36
+        - id: 37
+        - id: 38
+        - id: 39
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 34
+        Actions:
+        - id: 35
+        - id: 36
+        - id: 37
+        - id: 38
+        - id: 39
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 34
+        Actions:
+        - id: 35
+        - id: 36
+        - id: 37
+        - id: 38
+        - id: 40
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 1
+        Condition: 0
+        Conditionals:
+        - id: 41
+        Actions:
+        - id: 42
+        - id: 43
+  - BrockType: 2
+    Condition: 0
+    Priority: 5
+    BranchConditionals:
+    - id: 44
+    - id: 45
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 32
+        Actions:
+        - id: 33
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 46
+        Actions:
+        - id: 47
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 1
+        Condition: 0
+        Conditionals:
+        - id: 41
+        Actions:
+        - id: 42
+        - id: 48
   references:
     version: 1
     00000000:
@@ -919,6 +1047,30 @@ MonoBehaviour:
       type: {class: SetLimitConditional, ns: , asm: Assembly-CSharp}
       data:
         _setID: 1
+        _setBool: 1
+    0000002C:
+      type: {class: CheckMyHP, ns: , asm: Assembly-CSharp}
+      data:
+        _checkType: 1
+        _effect: 0.5
+    0000002D:
+      type: {class: LimitConditional, ns: , asm: Assembly-CSharp}
+      data:
+        _checkID: 2
+        _checkBool: 0
+    0000002E:
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    0000002F:
+      type: {class: SetBossShadow, ns: , asm: Assembly-CSharp}
+      data:
+        _setPrefab: {fileID: 8735183208793564310, guid: 57b59c585c517d148afcb9090bcaa158,
+          type: 3}
+        _count: 7
+        _range: 10
+    00000030:
+      type: {class: SetLimitConditional, ns: , asm: Assembly-CSharp}
+      data:
+        _setID: 2
         _setBool: 1
 --- !u!114 &8403257864341664884
 MonoBehaviour:

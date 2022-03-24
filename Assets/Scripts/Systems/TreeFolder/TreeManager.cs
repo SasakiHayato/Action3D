@@ -75,6 +75,7 @@ namespace BehaviourTree
             });
 
             ConditionallyBranches.OrderByDescending(b => b.Priority);
+            NormalBranches.OrderByDescending(b => b.Priority);
 
             _sequenceNode = new SequenceNode();
             _selectorNode = new SelectorNode();
