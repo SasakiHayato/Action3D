@@ -546,62 +546,80 @@ MonoBehaviour:
         - id: 3
         Actions:
         - id: 4
+        - id: 5
+        - id: 6
   - BrockType: 3
     Condition: 0
     BranchConditionals:
-    - id: 5
+    - id: 7
+    - id: 8
     BrockDatas:
-    - QueueType: 0
-      QueueDatas:
-      - RunType: 1
-        Condition: 0
-        Conditionals:
-        - id: 6
-        Actions:
-        - id: 7
-        - id: 8
-        - id: 9
-        - id: 10
-        - id: 11
-      - RunType: 1
-        Condition: 0
-        Conditionals:
-        - id: 6
-        Actions:
-        - id: 7
-        - id: 8
-        - id: 9
-        - id: 10
-        - id: 11
-      - RunType: 1
-        Condition: 0
-        Conditionals:
-        - id: 6
-        Actions:
-        - id: 7
-        - id: 8
-        - id: 9
-        - id: 10
-        - id: 12
     - QueueType: 1
       QueueDatas:
       - RunType: 1
         Condition: 0
         Conditionals:
-        - id: 6
-        Actions:
-        - id: 7
-        - id: 8
         - id: 9
+        Actions:
+        - id: 10
+        - id: 11
+        - id: 12
         - id: 13
         - id: 14
       - RunType: 1
         Condition: 0
         Conditionals:
-        - id: 6
-        Actions:
         - id: 15
+        Actions:
         - id: 16
+        - id: 17
+  - BrockType: 2
+    Condition: 0
+    BranchConditionals:
+    - id: 18
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 9
+        Actions:
+        - id: 19
+        - id: 20
+        - id: 21
+        - id: 22
+        - id: 23
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 9
+        Actions:
+        - id: 19
+        - id: 20
+        - id: 21
+        - id: 22
+        - id: 23
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - id: 9
+        Actions:
+        - id: 19
+        - id: 20
+        - id: 21
+        - id: 22
+        - id: 24
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 1
+        Condition: 0
+        Conditionals:
+        - id: 25
+        Actions:
+        - id: 26
+        - id: 27
+        - id: 28
   references:
     version: 1
     00000000:
@@ -627,42 +645,52 @@ MonoBehaviour:
         _range: 5
         _type: 1
     00000004:
-      type: {class: EnemyIdle, ns: , asm: Assembly-CSharp}
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
-        _idleAnimName: BossIdle
-        _useGravity: 1
+        _animName: Walk_ver_B_Front_R45
+        _applyYPos: 0
+        _moveType: 2
+        _speedRate: 9
     00000005:
+      type: {class: WaitTime, ns: , asm: Assembly-CSharp}
+      data:
+        _minWaitTime: 1
+        _maxWaitTime: 2.5
+        _setRandom: 1
+    00000006:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 1
+    00000007:
       type: {class: FindDistance, ns: , asm: Assembly-CSharp}
       data:
         _range: 5
         _type: 0
-    00000006:
+    00000008:
+      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 0
+    00000009:
       type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
-    00000007:
+    0000000A:
       type: {class: SetParticleEffect, ns: , asm: Assembly-CSharp}
       data:
         _particleName: WarningParticle
         _setNextActionTime: 0.2
         _offSet: {x: 4, y: 4, z: 4}
-    00000008:
+    0000000B:
       type: {class: MomentMove, ns: , asm: Assembly-CSharp}
       data:
         _distanceRate: 2
         _apllayPosY: 0
-    00000009:
+    0000000C:
       type: {class: WaitTime, ns: , asm: Assembly-CSharp}
       data:
-        _minWaitTime: 0.1
-        _maxWaitTime: 0.1
+        _minWaitTime: 0.3
+        _maxWaitTime: 0.5
         _setRandom: 0
-    0000000A:
-      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 0
-    0000000B:
-      type: {class: AttackNextRequest, ns: , asm: Assembly-CSharp}
-    0000000C:
-      type: {class: WaitAttackAnim, ns: , asm: Assembly-CSharp}
     0000000D:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
@@ -670,18 +698,70 @@ MonoBehaviour:
     0000000E:
       type: {class: WaitAttackAnim, ns: , asm: Assembly-CSharp}
     0000000F:
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    00000010:
       type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
       data:
         _animName: Dodge_Back
         _applyYPos: 0
         _moveType: 1
         _speedRate: 0.3
-    00000010:
+    00000011:
       type: {class: WaitTime, ns: , asm: Assembly-CSharp}
       data:
         _minWaitTime: 0.3
         _maxWaitTime: 0.5
         _setRandom: 1
+    00000012:
+      type: {class: CheckRequestAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 1
+    00000013:
+      type: {class: SetParticleEffect, ns: , asm: Assembly-CSharp}
+      data:
+        _particleName: WarningParticle
+        _setNextActionTime: 0.2
+        _offSet: {x: 4, y: 4, z: 4}
+    00000014:
+      type: {class: MomentMove, ns: , asm: Assembly-CSharp}
+      data:
+        _distanceRate: 2
+        _apllayPosY: 0
+    00000015:
+      type: {class: WaitTime, ns: , asm: Assembly-CSharp}
+      data:
+        _minWaitTime: 0.3
+        _maxWaitTime: 0.5
+        _setRandom: 0
+    00000016:
+      type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+    00000017:
+      type: {class: AttackNextRequest, ns: , asm: Assembly-CSharp}
+    00000018:
+      type: {class: WaitAttackAnim, ns: , asm: Assembly-CSharp}
+    00000019:
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    0000001A:
+      type: {class: MoveEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: Dodge_Back
+        _applyYPos: 0
+        _moveType: 2
+        _speedRate: 0.3
+    0000001B:
+      type: {class: WaitTime, ns: , asm: Assembly-CSharp}
+      data:
+        _minWaitTime: 0.3
+        _maxWaitTime: 0.5
+        _setRandom: 1
+    0000001C:
+      type: {class: RequestEAS, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _checkBool: 0
 --- !u!114 &8403257864341664884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,7 +803,7 @@ MonoBehaviour:
         UpPower: 0
         ForwardPower: 0
       Effects: 000000000100000002000000
-  - AttackType: 1
+  - AttackType: 3
     AttackDatas:
     - AnimName: Attack_7Combo_1_Inplace
       ID: 0
@@ -791,6 +871,40 @@ MonoBehaviour:
         UpPower: 0
         ForwardPower: 0
       Effects: 000000000100000002000000
+  - AttackType: 1
+    AttackDatas:
+    - AnimName: Attack_4Combo_1B_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 0000000001000000
+    - AnimName: Attack_4Combo_2_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 0000000001000000
+    - AnimName: Attack_4Combo_3_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 0000000001000000
+    - AnimName: Attack_4Combo_4_Inplace
+      ID: 0
+      Power: 0
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 0
+      Effects: 0000000001000000
 --- !u!114 &1505618242595551840
 MonoBehaviour:
   m_ObjectHideFlags: 0
