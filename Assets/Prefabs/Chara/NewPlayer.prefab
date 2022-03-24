@@ -720,7 +720,7 @@ MonoBehaviour:
     AttackDatas:
     - AnimName: Attack_4Combo_1_Inplace
       ID: 0
-      Power: 0
+      Power: 1
       SEID: 0
       KnockBackData:
         UpPower: 0
@@ -728,7 +728,7 @@ MonoBehaviour:
       Effects: 000000000100000002000000
     - AnimName: Attack_4Combo_2_Inplace
       ID: 0
-      Power: 0
+      Power: 1
       SEID: 0
       KnockBackData:
         UpPower: 0
@@ -736,7 +736,7 @@ MonoBehaviour:
       Effects: 000000000100000002000000
     - AnimName: Attack_4Combo_3_Inplace
       ID: 0
-      Power: 0
+      Power: 1
       SEID: 0
       KnockBackData:
         UpPower: 0
@@ -744,7 +744,7 @@ MonoBehaviour:
       Effects: 000000000100000002000000
     - AnimName: Attack_4Combo_4_Inplace
       ID: 0
-      Power: 0
+      Power: 1
       SEID: 0
       KnockBackData:
         UpPower: 0
@@ -864,6 +864,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 1
     Scale: 1
+    Mass: 0
   _jumpData:
     _jumpParams: []
 --- !u!114 &4731051715545330855
