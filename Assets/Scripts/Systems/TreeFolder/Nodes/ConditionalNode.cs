@@ -29,21 +29,17 @@ namespace BehaviourTree
             {
                 var branch = manager.ConditionallyBranches.FirstOrDefault(b => 
                 {
-                    if (b.BrockType == BrockType.ConditionallySelector
-                        || b.BrockType == BrockType.ConditionallySequence)
-                    {
-                        if (b.Condition == ConditionalType.Sequence)
-                            if (Sequence(b.BranchConditionals))
-                            {
-                                return true;
-                            }
+                    if (b.Condition == ConditionalType.Sequence)
+                        if (Sequence(b.BranchConditionals))
+                        {
+                            return true;
+                        }
 
-                        if (b.Condition == ConditionalType.Selector)
-                            if (Selector(b.BranchConditionals))
-                            {
-                                return true;
-                            }
-                    }
+                    if (b.Condition == ConditionalType.Selector)
+                        if (Selector(b.BranchConditionals))
+                        {
+                            return true;
+                        }
 
                     return false;
                 });

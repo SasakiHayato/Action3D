@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace BehaviourTree
 {
@@ -72,6 +73,8 @@ namespace BehaviourTree
                     });
                 });
             });
+
+            ConditionallyBranches.OrderByDescending(b => b.Priority);
 
             _sequenceNode = new SequenceNode();
             _selectorNode = new SelectorNode();

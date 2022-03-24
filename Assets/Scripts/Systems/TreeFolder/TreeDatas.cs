@@ -40,6 +40,7 @@ namespace BehaviourTree
         {
             public BrockType BrockType;
             public ConditionalType Condition;
+            public int Priority;
             public int ID { get; set; }
 
             [SerializeReference, SubclassSelector]

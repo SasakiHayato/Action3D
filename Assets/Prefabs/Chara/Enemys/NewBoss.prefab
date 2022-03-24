@@ -529,6 +529,7 @@ MonoBehaviour:
   _branchDatas:
   - BrockType: 0
     Condition: 0
+    Priority: 0
     BranchConditionals: []
     BrockDatas:
     - QueueType: 0
@@ -550,6 +551,7 @@ MonoBehaviour:
         - id: 6
   - BrockType: 3
     Condition: 0
+    Priority: 0
     BranchConditionals:
     - id: 7
     - id: 8
@@ -576,6 +578,7 @@ MonoBehaviour:
         - id: 18
   - BrockType: 2
     Condition: 0
+    Priority: 0
     BranchConditionals:
     - id: 19
     BrockDatas:
@@ -623,6 +626,7 @@ MonoBehaviour:
         - id: 29
   - BrockType: 2
     Condition: 0
+    Priority: 5
     BranchConditionals:
     - id: 30
     - id: 31
@@ -707,13 +711,15 @@ MonoBehaviour:
         - id: 37
         - id: 38
         - id: 40
-      - RunType: 0
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 1
         Condition: 0
         Conditionals:
-        - id: 34
-        Actions:
         - id: 41
+        Actions:
         - id: 42
+        - id: 43
   references:
     version: 1
     00000000:
@@ -904,10 +910,12 @@ MonoBehaviour:
     00000028:
       type: {class: WaitAttackAnim, ns: , asm: Assembly-CSharp}
     00000029:
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    0000002A:
       type: {class: SetRunLimitAttack, ns: , asm: Assembly-CSharp}
       data:
-        _setBool: 1
-    0000002A:
+        _setBool: 0
+    0000002B:
       type: {class: SetLimitConditional, ns: , asm: Assembly-CSharp}
       data:
         _setID: 1
