@@ -75,6 +75,7 @@ namespace BehaviourTree
             });
 
             ConditionallyBranches.OrderByDescending(b => b.Priority);
+            
             NormalBranches.OrderByDescending(b => b.Priority);
 
             _sequenceNode = new SequenceNode();
@@ -234,13 +235,27 @@ namespace BehaviourTree
             // アクションのタイプを調べ初期化
             _actionNode.SetUp(queueData, this);
 
-            if (State == TreeState.Task) return;
-
             //　現在のキューデータの実行判定
-            if (!isAction || !_actionNode.RunUpdate(queueData.Actions))
+            if (State == TreeState.Task)
             {
-                State = TreeState.Set;
+                if (!isAction)
+                {
+                    State = TreeState.Set;
+                }
             }
+            else
+            {
+                if (!isAction || !_actionNode.RunUpdate(queueData.Actions))
+                {
+                    State = TreeState.Set;
+                }
+            }
+        }
+
+        public void ResetBranch()
+        {
+            State = TreeState.End;
+            _branchID = 0;
         }
 
         public void InitParam()

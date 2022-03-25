@@ -11,8 +11,7 @@ public class EnemyKnockBack : State
 
     PhysicsBase _physicsBase;
     AttackSettings _settings;
-
-
+   
     bool _isSetUp = false;
     float _speed;
 
@@ -22,7 +21,7 @@ public class EnemyKnockBack : State
         _anim = user.GetComponent<Animator>();
         _physicsBase = user.GetComponent<PhysicsBase>();
         _settings = user.GetComponent<AttackSettings>();
-
+       
         _speed = _enemyBase.Speed;
     }
 
@@ -36,7 +35,7 @@ public class EnemyKnockBack : State
             _enemyBase.Speed = 1;
             _isSetUp = true;
             _settings?.Cancel();
-
+          
             Impluse();
         }
     }
