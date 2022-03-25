@@ -76,7 +76,6 @@ public class Player : CharaBase, IDamage
         Shot();
        
         Vector3 set = Vector3.Scale(Move * Speed, PhsicsBase.Gravity);
-        
         Character.Move(set * Time.deltaTime);
     }
 
@@ -218,6 +217,8 @@ public class Player : CharaBase, IDamage
         if (type == AttackType.None) return;
 
         Sounds.SoundMaster.PlayRequest(transform, "Damage", 0);
+
+        BaseState.ChangeState(State.KnockBack);
 
         object[] datas = { damage, gameObject, ColorType.Player };
         BaseUI.Instance.CallBack("Game", "Damage", datas);

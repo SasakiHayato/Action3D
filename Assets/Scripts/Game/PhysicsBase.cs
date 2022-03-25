@@ -108,6 +108,7 @@ public class PhysicsBase : MonoBehaviour
         _forceDir = dir.normalized;
         _forcePower = power;
         _forceType = type;
+        _forceTimer = 0;
 
         SetUpForceEvent(type);
     }
@@ -132,7 +133,6 @@ public class PhysicsBase : MonoBehaviour
 
                 InitGravityParam();
                 
-
                 break;
         }
     }
@@ -156,8 +156,9 @@ public class PhysicsBase : MonoBehaviour
     {
         float mass = _gravityData.Mass;
         if (mass <= 0) mass = 1;
-
+       
         float power = (_forcePower - _forceTimer * _physicsGravity * -1) / mass;
+        
         ImpulsePower = power;
         _gravity = _forceDir * power;
 

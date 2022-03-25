@@ -27,8 +27,6 @@ public class EnemyKnockBack : State
 
     public override void Entry(Enum beforeType)
     {
-        
-
         if (_enemyBase.KnonckForwardPower == 0 && _enemyBase.KnonckUpPower == 0) _isSetUp = false;
         else
         {

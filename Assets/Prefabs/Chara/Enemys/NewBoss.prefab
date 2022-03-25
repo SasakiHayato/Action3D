@@ -1113,15 +1113,15 @@ MonoBehaviour:
       SEID: 0
       KnockBackData:
         UpPower: 0
-        ForwardPower: 0
+        ForwardPower: 10
       Effects: 000000000100000002000000
     - AnimName: Attack_3Combo_2_Inplace
       ID: 0
       Power: 1
       SEID: 0
       KnockBackData:
-        UpPower: 0
-        ForwardPower: 0
+        UpPower: 1
+        ForwardPower: 7
       Effects: 000000000100000002000000
     - AnimName: Attack_3Combo_3_Inplace
       ID: 0
@@ -1129,13 +1129,13 @@ MonoBehaviour:
       SEID: 0
       KnockBackData:
         UpPower: 0
-        ForwardPower: 0
+        ForwardPower: 15
       Effects: 000000000100000002000000
   - AttackType: 3
     AttackDatas:
     - AnimName: Attack_7Combo_1_Inplace
       ID: 0
-      Power: 0
+      Power: 2
       SEID: 0
       KnockBackData:
         UpPower: 0
@@ -1143,7 +1143,7 @@ MonoBehaviour:
       Effects: 000000000100000002000000
     - AnimName: Attack_7Combo_2_Inplace
       ID: 0
-      Power: 0
+      Power: 2
       SEID: 0
       KnockBackData:
         UpPower: 0
@@ -1151,7 +1151,7 @@ MonoBehaviour:
       Effects: 000000000100000002000000
     - AnimName: Attack_7Combo_3_Inplace
       ID: 0
-      Power: 0
+      Power: 2
       SEID: 0
       KnockBackData:
         UpPower: 0
@@ -1159,7 +1159,7 @@ MonoBehaviour:
       Effects: 000000000100000002000000
     - AnimName: Attack_7Combo_4_Inplace
       ID: 0
-      Power: 0
+      Power: 2
       SEID: 0
       KnockBackData:
         UpPower: 0
@@ -1167,7 +1167,7 @@ MonoBehaviour:
       Effects: 000000000100000002000000
     - AnimName: Attack_7Combo_5_Inplace
       ID: 0
-      Power: 0
+      Power: 2
       SEID: 0
       KnockBackData:
         UpPower: 0
@@ -1175,7 +1175,7 @@ MonoBehaviour:
       Effects: 000000000100000002000000
     - AnimName: Attack_7Combo_6_Inplace
       ID: 0
-      Power: 0
+      Power: 2
       SEID: 0
       KnockBackData:
         UpPower: 0
@@ -1183,7 +1183,7 @@ MonoBehaviour:
       Effects: 000000000100000002000000
     - AnimName: Attack_7Combo_7_Inplace
       ID: 0
-      Power: 0
+      Power: 2
       SEID: 0
       KnockBackData:
         UpPower: 0
@@ -1193,11 +1193,11 @@ MonoBehaviour:
     AttackDatas:
     - AnimName: Skill_I
       ID: 0
-      Power: 0
+      Power: 3
       SEID: 0
       KnockBackData:
         UpPower: 0
-        ForwardPower: 0
+        ForwardPower: 10
       Effects: 000000000100000002000000
   - AttackType: 1
     AttackDatas:

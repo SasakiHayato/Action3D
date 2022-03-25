@@ -29,8 +29,6 @@ namespace BehaviourTree
             {
                 var branch = manager.ConditionallyBranches.FirstOrDefault(b => 
                 {
-                    Debug.Log(b.Priority);
-
                     if (b.Condition == ConditionalType.Sequence)
                         if (Sequence(b.BranchConditionals))
                         {
