@@ -30,7 +30,6 @@ public class MenuPanel : ChildrenUI
     {
         if (_isActive)
         {
-            
             _rect.DOAnchorPosX(_setPos.x, 0.2f)
                 .SetEase(Ease.Linear)
                 .SetUpdate(true)

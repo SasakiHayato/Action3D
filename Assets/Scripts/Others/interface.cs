@@ -31,3 +31,9 @@ public interface IAttackCollision
     GameObject Target { get; }
     Collider Collider { get; }
 }
+
+public interface IWindow
+{
+    void Open();
+    void Close();
+}

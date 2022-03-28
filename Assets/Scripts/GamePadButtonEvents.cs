@@ -41,13 +41,7 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
     int _currentSelectID = 0;
     int _saveID = 0;
     int _setID = 0;
-    List<int> _savePickUpIDList = new List<int>();
-
-    int _savePickUpID = 0;
-    public int SavePickUpID { set { _savePickUpID = value; } }
-    Action _saveCallBackAction = null;
-    public Action SaveCallBackAction { set { _saveCallBackAction = value; } } 
-
+    
     public override void SetUp()
     {
         base.SetUp();
@@ -89,19 +83,6 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
         return data;
     }
 
-    public void BackPickUp()
-    {
-        foreach (var item in _eventsDatas)
-        {
-            if (item.ID == _savePickUpID)
-            {
-                _pickUpEvents = item;
-                _saveCallBackAction?.Invoke();
-                return;
-            }
-        }
-    }
-
     public void PickUpRequest(int id)
     {
         foreach (var item in _eventsDatas)
@@ -109,7 +90,6 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
             if (item.ID == id)
             {
                 _pickUpEvents = item;
-                _savePickUpIDList.Add(id);
                 return;
             }
         }
@@ -181,6 +161,5 @@ public class GamePadButtonEvents : SingletonAttribute<GamePadButtonEvents>
         _currentSelectID = 0;
         _saveID = 0;
         _setID = 0;
-        _savePickUpIDList = new List<int>();
     }
 }
