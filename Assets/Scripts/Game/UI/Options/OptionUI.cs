@@ -16,12 +16,6 @@ public class OptionUI : ParentUI, IWindow
         _rect.anchoredPosition = _setPos;
 
         WindowManager.Instance.CreateWindowList(GetComponent<IWindow>() , "Option");
-
-        if (GameManager.GameState.Title != GameManager.Instance.CurrentGameState)
-        {
-            Inputter.Instance.Inputs.UI.Options.started +=
-                context => WindowManager.Instance.Request("Option");
-        }
     }
 
     public void Open()

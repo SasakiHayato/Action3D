@@ -18,9 +18,6 @@ public class GamePresenter : MonoBehaviour
         Inputter.SetInstance(inputter, inputter);
         Inputter.Instance.Load();
 
-        GamePadButtonEvents gamePadButtonEvents = new GamePadButtonEvents();
-        GamePadButtonEvents.SetInstance(gamePadButtonEvents, gamePadButtonEvents);
-
         WindowManager windowManager = new WindowManager();
         WindowManager.SetInstance(windowManager, windowManager);
         WindowManager.Instance.SetUp();
@@ -40,8 +37,7 @@ public class GamePresenter : MonoBehaviour
     {
         if (GameManager.Instance.OptionState == GameManager.Option.Open)
         {
-            GamePadButtonEvents.Instance.Select();
-            GamePadButtonEvents.Instance.SelectChangeScale(Vector2.one, Vector2.one * 1.2f);
+            
         }
     }
 }

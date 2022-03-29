@@ -165,7 +165,7 @@ public class GameManager : SingletonAttribute<GameManager>
     {
         Init();
         Inputter.Init();
-        GamePadButtonEvents.Instance.Dispose();
+        //GamePadButtonEvents.Instance.Dispose();
     }
 
     /// <summary>

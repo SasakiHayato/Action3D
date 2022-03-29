@@ -7,7 +7,7 @@ using UniRx;
 /// TitleÉVÅ[ÉìÇÃàÍî‘ç≈èâÇÃButton
 /// </summary>
 
-public class AnyPressedTitle : ChildrenUI
+public class AnyPressedTitle : ChildrenUI, IWindow
 {
     [SerializeField] GameObject _requestActivePanel;
     [SerializeField] GameObject _titleTextObj;
@@ -24,18 +24,26 @@ public class AnyPressedTitle : ChildrenUI
             .Subscribe(_ => CallBack(null))
             .AddTo(_button);
 
-        GamePadButtonEvents.Instance.CreateList(0)
-            .AddEvents(_button, () => CallBack(null));
+        WindowManager.Instance.CreateWindowList(GetComponent<IWindow>(), "Title")
+            .AddEvents(null, () => CallBack(null))
+            .SetWindow("Title");
+    }
 
-        GamePadButtonEvents.Instance.PickUpRequest(0);
+    public void Open()
+    {
+
+    }
+
+    public void Close()
+    {
+        _titleTextObj.SetActive(false);
+        _requestActivePanel.SetActive(true);
+        _button.gameObject.SetActive(false);
+        Fader.Instance.Cancel();
     }
 
     public override void CallBack(object[] data)
     {
-        Fader.Instance.Cancel();
-        _titleTextObj.SetActive(false);
-        _button.gameObject.SetActive(false);
-        _requestActivePanel.SetActive(true);
-        GamePadButtonEvents.Instance.PickUpRequest(1);
+        WindowManager.Instance.Request("SetStart");
     }
 }

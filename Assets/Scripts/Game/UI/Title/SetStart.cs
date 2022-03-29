@@ -7,17 +7,13 @@ using UniRx;
 /// Titleのスタートに関するクラス
 /// </summary>
 
-public class SetStart : ChildrenUI
+public class SetStart : ChildrenUI, IWindow
 {
     [SerializeField] GameObject _panel;
 
     [SerializeField] Button _startButton;
     [SerializeField] Button _optionButton;
-    [SerializeField] Button _startWarldButton;
-    [SerializeField] Button _startArenaButton;
-
-    const float WaitTime = 1f;
-    
+   
     public override void SetUp()
     {
         _startButton.OnClickAsObservable()
@@ -32,52 +28,30 @@ public class SetStart : ChildrenUI
             .Subscribe(_ => SetOptionPanel())
             .AddTo(_optionButton);
 
-        _startWarldButton.OnClickAsObservable()
-            .TakeUntilDestroy(_startWarldButton)
-            .ThrottleFirst(TimeSpan.FromSeconds(1f))
-            .Subscribe(_ => SetWorldCallBack())
-            .AddTo(_startWarldButton);
-
-        _startArenaButton.OnClickAsObservable()
-            .TakeUntilDestroy(_startArenaButton)
-            .ThrottleFirst(TimeSpan.FromSeconds(1f))
-            .Subscribe(_ => SetArenaCallBack())
-            .AddTo(_startArenaButton);
-
-        GamePadButtonEvents.Instance.CreateList(1)
-            .AddEvents(_startButton, () => CallBack(null))
-            .AddEvents(_optionButton, () => SetOptionPanel());
-
-
-        GamePadButtonEvents.Instance.CreateList(2)
-            .AddEvents(_startWarldButton, SetWorldCallBack)
-            .AddEvents(_startArenaButton, SetArenaCallBack);
+        WindowManager.Instance.CreateWindowList(GetComponent<IWindow>(), "SetStart")
+            .AddEvents(_startButton.GetComponent<Image>(), () => CallBack(null))
+            .AddEvents(_optionButton.GetComponent<Image>(), () => SetOptionPanel());
 
         gameObject.SetActive(false);
     }
 
     public override void CallBack(object[] data) 
     {
-        _panel.SetActive(true);
-        GamePadButtonEvents.Instance.PickUpRequest(2);
+        WindowManager.Instance.Request("IntoGame");
+    }
+
+    public void Open()
+    {
+
+    }
+
+    public void Close()
+    {
+
     }
     
     void SetOptionPanel()
     {
         BaseUI.Instance.CallBackParent("Option");
-    }
-
-    void SetArenaCallBack()
-    {
-        Sounds.SoundMaster.StopRequest("TitleBGM", Sounds.SEDataBase.DataType.BGM);
-        Fader.Instance.Request(Fader.FadeType.Out, WaitTime);
-        SceneSettings.Instance.LoadAsync(2, WaitTime);
-    }
-
-    void SetWorldCallBack()
-    {
-        Sounds.SoundMaster.StopRequest("TitleBGM", Sounds.SEDataBase.DataType.BGM);
-        Fader.Instance.Request(Fader.FadeType.Out, WaitTime);
-        SceneSettings.Instance.LoadAsync(1, WaitTime);
     }
 }

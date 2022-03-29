@@ -15,6 +15,12 @@ public class Inputter : SingletonAttribute<Inputter>
         _inputs.Enable();
         
         Inputs.UI.Check.started += context => IsSelectButton();
+        Inputs.UI.Cancel.started += context => Cancel();
+
+        if (GameManager.GameState.Title != GameManager.Instance.CurrentGameState)
+        {
+            Inputs.UI.Options.started += context => WindowManager.Instance.Request("Option");
+        }
     }
 
     public static void Init()
@@ -48,6 +54,13 @@ public class Inputter : SingletonAttribute<Inputter>
     {
         if (GameManager.Option.Open != GameManager.Instance.OptionState) return;
 
-        GamePadButtonEvents.Instance.IsSelected();
+        WindowManager.Instance.IsSelect();
+    }
+
+    void Cancel()
+    {
+        if (GameManager.Option.Open != GameManager.Instance.OptionState) return;
+
+        WindowManager.Instance.CloseRequest();
     }
 }

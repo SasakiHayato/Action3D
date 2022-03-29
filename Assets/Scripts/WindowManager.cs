@@ -19,8 +19,6 @@ public class WindowManager : SingletonAttribute<WindowManager>
             public int ID;
             public Image Target;
             public Action Action;
-
-
         }
     }
 
@@ -33,6 +31,7 @@ public class WindowManager : SingletonAttribute<WindowManager>
 
     WindowGroup _group;
     WindowGroup _saveWindow = null;
+    string _savePath;
 
     public override void SetUp()
     {
@@ -73,6 +72,13 @@ public class WindowManager : SingletonAttribute<WindowManager>
         return this;
     }
 
+    public WindowManager SetWindow(string path)
+    {
+        WindowGroup group = _windowDatas.FirstOrDefault(w => w.Path == path);
+        _saveWindow = group;
+        return this;
+    }
+
     public void Request(string path)
     {
         WindowGroup group = _windowDatas.FirstOrDefault(w => w.Path == path);
@@ -86,13 +92,22 @@ public class WindowManager : SingletonAttribute<WindowManager>
         if (_saveWindow == null)
         {
             _saveWindow = group;
+            _savePath = group.Path;
             group.IWindow.Open();
         }
         else
         {
             _saveWindow.IWindow.Close();
-            _saveWindow = group;
-            group.IWindow.Open();
+
+            if (_savePath != group.Path)
+            {
+                _saveWindow = group;
+                group.IWindow.Open();
+            }
+            else
+            {
+                _saveWindow = null;
+            }
         }
     }
 
@@ -113,6 +128,7 @@ public class WindowManager : SingletonAttribute<WindowManager>
 
     public void IsSelect()
     {
-
+        if (_saveWindow == null) return;
+        _saveWindow.WindowDatas[_selectID].Action.Invoke();
     }
 }
