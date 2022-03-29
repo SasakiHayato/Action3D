@@ -21,6 +21,10 @@ public class GamePresenter : MonoBehaviour
         GamePadButtonEvents gamePadButtonEvents = new GamePadButtonEvents();
         GamePadButtonEvents.SetInstance(gamePadButtonEvents, gamePadButtonEvents);
 
+        WindowManager windowManager = new WindowManager();
+        WindowManager.SetInstance(windowManager, windowManager);
+        WindowManager.Instance.SetUp();
+
         BaseUI baseUI = new BaseUI();
         BaseUI.SetInstance(baseUI, baseUI);
     }

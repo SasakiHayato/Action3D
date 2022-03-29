@@ -9,7 +9,6 @@ public class WindowManager : SingletonAttribute<WindowManager>
     class WindowGroup
     {
         public IWindow IWindow;
-        public GameObject Target;
         public int ID;
         public string Path;
 
@@ -44,11 +43,10 @@ public class WindowManager : SingletonAttribute<WindowManager>
         _windowID = 0;
     }
 
-    public WindowManager CreateWindowList(IWindow iWindow, GameObject target, string path)
+    public WindowManager CreateWindowList(IWindow iWindow, string path)
     {
         WindowGroup window = new WindowGroup();
         window.IWindow = iWindow;
-        window.Target = target;
         window.ID = _groupID;
         window.Path = path;
 
@@ -98,8 +96,18 @@ public class WindowManager : SingletonAttribute<WindowManager>
         }
     }
 
+    public void CloseRequest()
+    {
+        if (_saveWindow == null) return;
+
+        _saveWindow.IWindow.Close();
+        _saveWindow = null;
+    }
+
     public void Selecting()
     {
+        if (_saveWindow == null) return;
+
 
     }
 

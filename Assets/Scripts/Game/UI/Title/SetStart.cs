@@ -64,7 +64,7 @@ public class SetStart : ChildrenUI
     
     void SetOptionPanel()
     {
-        BaseUI.Instance.CallBack("Option", "Menu", new object[] { 3 });
+        BaseUI.Instance.CallBackParent("Option");
     }
 
     void SetArenaCallBack()
