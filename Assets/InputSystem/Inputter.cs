@@ -60,7 +60,7 @@ public class Inputter : SingletonAttribute<Inputter>
     void Cancel()
     {
         if (GameManager.Option.Open != GameManager.Instance.OptionState) return;
-
+        Debug.Log("Close");
         WindowManager.Instance.CloseRequest();
     }
 }

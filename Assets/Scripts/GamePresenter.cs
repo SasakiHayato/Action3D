@@ -37,7 +37,7 @@ public class GamePresenter : MonoBehaviour
     {
         if (GameManager.Instance.OptionState == GameManager.Option.Open)
         {
-            
+            WindowManager.Instance.Selecting();
         }
     }
 }
