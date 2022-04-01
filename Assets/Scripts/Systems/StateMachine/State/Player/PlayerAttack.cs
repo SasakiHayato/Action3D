@@ -80,7 +80,7 @@ public class PlayerAttack : State
         if (GameManager.Instance.IsLockOn) Rotate(GameManager.Instance.LockonTarget.transform);
         else
         {
-            Vector2 input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
+            Vector2 input = (Vector2)Inputter.Instance.GetValue(InputType.PlayerMove);
             if (input == Vector2.zero && _target != null) Rotate(_target);
             else
             {

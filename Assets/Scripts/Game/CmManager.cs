@@ -22,6 +22,7 @@ public class CmManager : MonoBehaviour
         public Transform NextTarget;
 
         public Vector3 Position;
+        public Vector3 TransitionPos;
 
         List<Data> _datas = new List<Data>();
 
@@ -141,8 +142,7 @@ public class CmManager : MonoBehaviour
         
         if (_user.position.y >= hit.transform.position.y)
         {
-            Debug.Log($"User {_user.position.y} : Hit {hit.transform.position.y}");
-            result = Mathf.Abs(hit.transform.position.y + _user.position.y) + 1;
+            result = Mathf.Abs(hit.transform.position.y + _user.position.y);
         }
         
         return result ;

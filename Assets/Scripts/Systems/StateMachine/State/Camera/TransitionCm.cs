@@ -60,7 +60,11 @@ public class TransitionCm : State
 
     public override Enum Exit()
     {
-        if (_isTransition) return CmManager.CmData.Instance.NextState;
+        if (_isTransition)
+        {
+            CmManager.CmData.Instance.TransitionPos = _cm.position;
+            return CmManager.CmData.Instance.NextState;
+        }
         return CmManager.State.Transition;
     }
 }

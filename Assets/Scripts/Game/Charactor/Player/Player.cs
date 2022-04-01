@@ -81,7 +81,7 @@ public class Player : CharaBase, IDamage
 
     void Shot()
     {
-        float value = (float)Inputter.GetValue(InputType.ShotVal);
+        float value = (float)Inputter.Instance.GetValue(InputType.ShotVal);
         if ((int)value == 1)
         {
             _shotTimer += Time.deltaTime;

@@ -164,7 +164,7 @@ public class GameManager : SingletonAttribute<GameManager>
     public void End()
     {
         Init();
-        Inputter.Init();
+        Inputter.Instance.Init();
     }
 
     /// <summary>

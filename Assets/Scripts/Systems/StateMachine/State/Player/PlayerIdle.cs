@@ -26,7 +26,7 @@ public class PlayerIdle : State
 
     public override void Run()
     {
-        _input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
+        _input = (Vector2)Inputter.Instance.GetValue(InputType.PlayerMove);
         _player.Move = new Vector3(0, 1, 0);
     }
 

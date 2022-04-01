@@ -39,5 +39,7 @@ public class GamePresenter : MonoBehaviour
         {
             WindowManager.Instance.Selecting();
         }
+
+        Inputter.Instance.CheckConnectGamePad();
     }
 }

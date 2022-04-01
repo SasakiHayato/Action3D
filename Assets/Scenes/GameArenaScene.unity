@@ -212,6 +212,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3838557692302222804, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
+      propertyPath: _viewDelay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838557692302222804, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
+      propertyPath: _transitionSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3838557692302222811, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
       propertyPath: _user
@@ -250,12 +260,12 @@ PrefabInstance:
     - target: {fileID: 3838557692302222812, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
       propertyPath: _sensitivityX
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3838557692302222812, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
       propertyPath: _sensitivityY
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3838557692302222813, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}

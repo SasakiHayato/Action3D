@@ -40,7 +40,7 @@ public class PlayerFloating : State
     {
         _timer += Time.deltaTime;
 
-        _input = (Vector2)Inputter.GetValue(InputType.PlayerMove) * _setSpeedRate;
+        _input = (Vector2)Inputter.Instance.GetValue(InputType.PlayerMove) * _setSpeedRate;
 
         Vector3 forward = _mainCm.transform.forward * _input.y;
         Vector3 right = _mainCm.transform.right * _input.x;

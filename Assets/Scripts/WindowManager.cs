@@ -155,7 +155,7 @@ public class WindowManager : SingletonAttribute<WindowManager>
     {
         if (_saveWindow == null || _saveWindow.WindowDatas.Count <= 0) return;
         
-        Vector2 input = (Vector2)Inputter.GetValue(InputType.Select);
+        Vector2 input = (Vector2)Inputter.Instance.GetValue(InputType.Select);
         
         if ((int)input.y < 0 && _inputY != (int)input.y)
         {

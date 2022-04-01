@@ -31,7 +31,7 @@ public class PlayerAvoid : State
     {
         _currentTime = 0;
         
-        _input = (Vector2)Inputter.GetValue(InputType.PlayerMove);
+        _input = (Vector2)Inputter.Instance.GetValue(InputType.PlayerMove);
         _input = _input.normalized;
         SoundMaster.PlayRequest(_user.transform, "Avoid", 0);
         GameObject t = GameManager.Instance.LockonTarget;

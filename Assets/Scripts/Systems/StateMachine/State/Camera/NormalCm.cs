@@ -20,9 +20,9 @@ public class NormalCm : State
 
     float _savePosY;
     Vector3 _saveHorizontalPos;
-    Vector3 _saveCmPos;
-
+    
     const float Degree90 = 90f;
+    const float MouseSensitivityRate = 2;
 
     public override void SetUp(GameObject user)
     {
@@ -30,7 +30,6 @@ public class NormalCm : State
         _cm = user.transform;
         _cm.position = _user.position + (_offSetPos.normalized * _cmDist);
 
-        _saveCmPos = _user.position + (_offSetPos.normalized * _cmDist);
         _saveHorizontalPos = _offSetPos.normalized * _cmDist;
 
         CmManager.CmData.Instance.AddData(CmManager.State.Normal, _cm.position);
@@ -38,13 +37,13 @@ public class NormalCm : State
 
     public override void Entry(Enum before)
     {
-        _cm.position = _saveCmPos;
+        _cm.position = CmManager.CmData.Instance.TransitionPos;
         CmManager.CmData.Instance.CurrentState = CmManager.State.Normal;
     }
 
     public override void Run()
     {
-        Vector2 input = (Vector2)Inputter.GetValue(InputType.CmMove);
+        Vector2 input = (Vector2)Inputter.Instance.GetValue(InputType.CmMove);
 
         Vector3 pos = HorizontalPos(input.normalized.x);
         float y = VerticlePos(input.normalized.y);
@@ -62,7 +61,11 @@ public class NormalCm : State
         if (x > 0) _horizontalAngle++;
         else if (x < 0) _horizontalAngle--;
 
-        float angle = _horizontalAngle * _sensitivityX;
+        float sensitivity = 0;
+        if (Inputter.Instance.IsConnectGamePad) sensitivity = _sensitivityX;
+        else sensitivity = _sensitivityX * MouseSensitivityRate;
+
+        float angle = _horizontalAngle * sensitivity;
 
         if (angle >= 360 || angle <= -360)
         {
@@ -86,7 +89,11 @@ public class NormalCm : State
         if (y > 0) _verticleAngle++;
         else if (y < 0) _verticleAngle--;
 
-        float angle = _verticleAngle * _sensitivityY * -1;
+        float sensitivity = 0;
+        if (Inputter.Instance.IsConnectGamePad) sensitivity = _sensitivityY;
+        else sensitivity = _sensitivityY * MouseSensitivityRate;
+
+        float angle = _verticleAngle * sensitivity * -1;
 
         if (angle > Degree90)
         {
@@ -120,8 +127,6 @@ public class NormalCm : State
     {
         if (GameManager.Instance.LockonTarget != null)
         {
-            _saveCmPos = _cm.position;
-
             CmManager.CmData.Data data = CmManager.CmData.Instance.GetData(CmManager.State.Normal);
             data.Pos = _cm.position - _user.position;
 

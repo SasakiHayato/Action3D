@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// InputSystemのデータ管理クラス
@@ -9,11 +10,13 @@ public class Inputter : SingletonAttribute<Inputter>
     public InputData Inputs { get => _inputs; }
     InputData _inputs;
 
+    public bool IsConnectGamePad { get; private set; }
+    
     public void Load()
     {
         _inputs = new InputData();
         _inputs.Enable();
-        
+
         Inputs.UI.Check.started += context => IsSelectButton();
         Inputs.UI.Cancel.started += context => Cancel();
 
@@ -23,12 +26,18 @@ public class Inputter : SingletonAttribute<Inputter>
         }
     }
 
-    public static void Init()
+    public void Init()
     {
         Instance._inputs.Dispose();
     }
 
-    public static object GetValue(InputType type)
+    public void CheckConnectGamePad()
+    {
+        if (Gamepad.current == null) IsConnectGamePad = false;
+        else IsConnectGamePad = true;
+    }
+
+    public object GetValue(InputType type)
     {
         object obj = null;
         switch (type)
