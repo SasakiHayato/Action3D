@@ -11,8 +11,9 @@ public class WindowManager : SingletonAttribute<WindowManager>
         public IWindow IWindow;
         public int ID;
         public string Path;
-
+        
         public List<WindowData> WindowDatas;
+        public List<WindowGroup> WindowList;
 
         public class WindowData
         {
@@ -32,6 +33,7 @@ public class WindowManager : SingletonAttribute<WindowManager>
 
     WindowGroup _groupSetter;
     WindowGroup _saveWindow = null;
+    List<WindowGroup> _windowList;
     string _savePath;
 
     public override void SetUp()
@@ -39,6 +41,7 @@ public class WindowManager : SingletonAttribute<WindowManager>
         base.SetUp();
 
         _windowDatas = new List<WindowGroup>();
+        _windowList = new List<WindowGroup>();
         _groupID = 0;
         _windowID = 0;
     }
@@ -80,6 +83,7 @@ public class WindowManager : SingletonAttribute<WindowManager>
         
         _saveWindow = group;
         _savePath = group.Path;
+
         return this;
     }
 
@@ -108,21 +112,24 @@ public class WindowManager : SingletonAttribute<WindowManager>
             {
                 _saveWindow = group;
                 group.IWindow.Open();
-                Debug.Log("Request");
-            }
-            else
-            {
-                _saveWindow = null;
             }
         }
+
+        _windowList.Add(group);
     }
 
     public void CloseRequest()
     {
         if (_saveWindow == null) return;
-
+        
         _saveWindow.IWindow.Close();
-        _saveWindow = null;
+
+        if (_windowList.Count > 1)
+        {
+            _windowList.Remove(_windowList.Last());
+            _saveWindow = _windowList.Last();
+        }
+
         _selectID = 0;
     }
 
@@ -168,6 +175,6 @@ public class WindowManager : SingletonAttribute<WindowManager>
     {
         if (_saveWindow == null) return;
         
-        _saveWindow.WindowDatas[_selectID].Action.Invoke();
+        _saveWindow.WindowDatas[_selectID].Action?.Invoke();
     }
 }

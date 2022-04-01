@@ -27,6 +27,6 @@ public class OptionTitle : ChildrenUI
 
     public override void CallBack(object[] datas = null)
     {
-        
+        GoTitle();
     }
 }

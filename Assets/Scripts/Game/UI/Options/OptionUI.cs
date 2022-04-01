@@ -1,10 +1,16 @@
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class OptionUI : ParentUI, IWindow
 {
     [SerializeField] RectTransform _rect;
     [SerializeField] Vector2 _setPos;
+    [SerializeField] Image _backButtonImage;
+    [SerializeField] Image _mapButtonImage;
+    [SerializeField] Image _itemButtonImage;
+    [SerializeField] Image _titleButtonImage;
+    [SerializeField] Image _systemButtonImage;
 
     Vector2 _centerPos = Vector2.zero;
     
@@ -15,7 +21,9 @@ public class OptionUI : ParentUI, IWindow
         _centerPos = _rect.anchoredPosition;
         _rect.anchoredPosition = _setPos;
 
-        WindowManager.Instance.CreateWindowList(GetComponent<IWindow>() , "Option");
+        WindowManager.Instance.CreateWindowList(GetComponent<IWindow>() , "Option")
+            .AddEvents(_titleButtonImage, () => BaseUI.Instance.CallBack("Option", "Title"))
+            .AddEvents(_backButtonImage, () => BaseUI.Instance.CallBack("Option", "Back"));
     }
 
     public void Open()

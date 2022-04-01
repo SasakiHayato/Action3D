@@ -19,6 +19,6 @@ public class BackOption : ChildrenUI
 
     public override void CallBack(object[] datas = null)
     {
-        
+        WindowManager.Instance.CloseRequest();
     }
 }

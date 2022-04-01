@@ -24,7 +24,9 @@ public class IntoGameButton : ChildrenUI, IWindow
             .Subscribe(_ => SetArenaCallBack())
             .AddTo(_goArenaButton);
 
-        WindowManager.Instance.CreateWindowList(GetComponent<IWindow>(), "IntoGame");
+        WindowManager.Instance.CreateWindowList(GetComponent<IWindow>(), "IntoGame")
+            .AddEvents(_goWorldButton.GetComponent<Image>(), () => SetWorldCallBack())
+            .AddEvents(_goArenaButton.GetComponent<Image>(), () => SetArenaCallBack());
 
         gameObject.SetActive(false);
     }
