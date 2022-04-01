@@ -55,10 +55,14 @@ public class CmManager : MonoBehaviour
 
     [SerializeField] Transform _user;
     [SerializeField] LayerMask _collsionLayer;
+    [SerializeField] float _zoomRate;
+    [SerializeField] float _deadZoomDist;
     [SerializeField] StateManager _state = new StateManager();
 
     Transform _cmPoint;
     Vector3 _zoomPos = Vector3.zero;
+
+    float _distRate;
 
     void Start()
     {
@@ -72,6 +76,8 @@ public class CmManager : MonoBehaviour
             .RunRequest(State.Normal);
 
         CreatePoint();
+
+        _distRate = Vector3.Distance(_user.position, transform.position);
     }
 
     void CreatePoint()
@@ -107,15 +113,16 @@ public class CmManager : MonoBehaviour
         
         if (isHit)
         {
-            Vector3 setPos = transform.forward * hit.distance;
+            if (hit.distance < _deadZoomDist) hit.distance = _deadZoomDist;
+
+            float rate = Mathf.Lerp(0, _zoomRate, (_distRate / hit.distance) / 10);
+            
+            Vector3 setPos = transform.forward * rate * 2;
             setPos.y = 0;
             _zoomPos = setPos;
-
-            Debug.Log("Hit");
         }
         else
         {
-            Debug.Log("NO");
             _zoomPos = Vector3.zero;
         }
     }
