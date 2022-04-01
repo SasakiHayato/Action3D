@@ -19,7 +19,7 @@ public class Inputter : SingletonAttribute<Inputter>
 
         if (GameManager.GameState.Title != GameManager.Instance.CurrentGameState)
         {
-            Inputs.UI.Options.started += context => WindowManager.Instance.Request("Option");
+            Inputs.UI.Options.started += context => WindowManager.Instance.OpenRequest("Option");
         }
     }
 

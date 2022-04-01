@@ -49,7 +49,7 @@ public class NormalCm : State
         Vector3 pos = HorizontalPos(input.normalized.x);
         float y = VerticlePos(input.normalized.y);
         
-        _cm.position = new Vector3(pos.x, y, pos.z);
+        CmManager.CmData.Instance.Position = new Vector3(pos.x, y, pos.z);
 
         View();
     }

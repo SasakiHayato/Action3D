@@ -53,7 +53,7 @@ public class LockonCm : State
         HorizontalPos(out setPos);
         setPos.y = VerticlePos();
 
-        _cm.position = setPos;
+        CmManager.CmData.Instance.Position = setPos;
 
         View();
     }

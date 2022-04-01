@@ -139,8 +139,6 @@ public class WindowManager : SingletonAttribute<WindowManager>
 
     public void OpenRequest(string path)
     {
-        if (_saveWindow == null) return;
-
         WindowGroup window = _windowDatas.FirstOrDefault(w => w.Path == path);
 
         if (window == null) return;

@@ -21,6 +21,8 @@ public class CmManager : MonoBehaviour
         public Transform User;
         public Transform NextTarget;
 
+        public Vector3 Position;
+
         List<Data> _datas = new List<Data>();
 
         public void AddData(State state, Vector3 pos)
@@ -52,7 +54,11 @@ public class CmManager : MonoBehaviour
     }
 
     [SerializeField] Transform _user;
+    [SerializeField] LayerMask _collsionLayer;
     [SerializeField] StateManager _state = new StateManager();
+
+    Transform _cmPoint;
+    Vector3 _zoomPos = Vector3.zero;
 
     void Start()
     {
@@ -64,6 +70,15 @@ public class CmManager : MonoBehaviour
             .AddState(State.Transition, "Transition")
             .AddState(State.Shake, "Shake")
             .RunRequest(State.Normal);
+
+        CreatePoint();
+    }
+
+    void CreatePoint()
+    {
+        GameObject obj = new GameObject("CamPoint");
+        obj.transform.position = CmData.Instance.Position;
+        _cmPoint = obj.transform;
     }
 
     void Update()
@@ -72,10 +87,36 @@ public class CmManager : MonoBehaviour
         {
             _state.Update();
         }
+
+        CollisionObstacle();
+        transform.position = CmData.Instance.Position + _zoomPos;
+        _cmPoint.position = CmData.Instance.Position;
     }
 
     public void RequestShakeCm()
     {
         _state.ChangeState(State.Shake);
+    }
+
+    void CollisionObstacle()
+    {
+        float dist = Vector3.Distance(_user.position, _cmPoint.position);
+
+        RaycastHit hit;
+        bool isHit = Physics.Raycast(_user.position, _cmPoint.position, out hit, dist, _collsionLayer);
+        
+        if (isHit)
+        {
+            Vector3 setPos = transform.forward * hit.distance;
+            setPos.y = 0;
+            _zoomPos = setPos;
+
+            Debug.Log("Hit");
+        }
+        else
+        {
+            Debug.Log("NO");
+            _zoomPos = Vector3.zero;
+        }
     }
 }
