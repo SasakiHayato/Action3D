@@ -24,6 +24,7 @@ public class PlayerAnimController : MonoBehaviour
             EndAnim = false;
         }
 
+        if (_anim == null) _anim = GetComponent<Animator>();
         _anim.CrossFade(animName, Duration);
     }
 
@@ -31,7 +32,7 @@ public class PlayerAnimController : MonoBehaviour
     {
         if (EndAnim) return;
         EndAnim = true;
-
+        if (_anim == null) _anim = GetComponent<Animator>();
         _anim.CrossFade(animName, Duration);
         _coroutine = StartCoroutine(AnimCoroutine(action));
     }

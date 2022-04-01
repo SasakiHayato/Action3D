@@ -32,6 +32,7 @@ public class GameManager : SingletonAttribute<GameManager>
     }
 
     public GameState CurrentGameState { get; private set; }
+    public GameState SetGameState { set { CurrentGameState = value; } }
     public Option OptionState { get; private set; } = Option.Close;
 
     bool _islockOn = false;
@@ -114,13 +115,21 @@ public class GameManager : SingletonAttribute<GameManager>
         switch (state)
         {
             case GameState.InGame:
+                
                 Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+                
+                if (player.AnimController == null)
+                {
+                    player.SetUp();
+                }
+                
                 player.AnimController.RequestAnimCallBackEvent("Intro", () => { PlayerData.CanMove = true; });
                 SetOptionState(Option.Close);
                 
                 break;
 
             case GameState.Title:
+                
                 Fader.Instance.Request(Fader.FadeType.In, 0.25f);
                 SetOptionState(Option.Open);
                 

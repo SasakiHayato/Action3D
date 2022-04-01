@@ -14,6 +14,11 @@ public class Inputter : SingletonAttribute<Inputter>
     
     public void Load()
     {
+        if (_inputs != null)
+        {
+            Init();
+        }
+
         _inputs = new InputData();
         _inputs.Enable();
 

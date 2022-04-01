@@ -40,7 +40,7 @@ public class Player : CharaBase, IDamage
 
         AnimController = GetComponent<PlayerAnimController>();
         _settings = GetComponent<AttackSettings>();
-        
+
         Inputter.Instance.Inputs.Player
             .Fire.started += context => Avoid();
 
@@ -64,6 +64,14 @@ public class Player : CharaBase, IDamage
             .AddState(State.KnockBack, "Knock")
             .AddState(State.Attack, "Attack")
             .RunRequest(State.Idle);
+
+        GameManager.Instance.PlayerData.CanMove = true;
+    }
+
+    public void SetUp()
+    {
+        AnimController = GetComponent<PlayerAnimController>();
+        _settings = GetComponent<AttackSettings>();
     }
 
     void Update()
@@ -74,7 +82,7 @@ public class Player : CharaBase, IDamage
         if (BaseState.CurrentStateType != State.Avoid.ToString()) IsAvoid = false;
 
         Shot();
-       
+        
         Vector3 set = Vector3.Scale(Move * Speed, PhsicsBase.Gravity);
         Character.Move(set * Time.deltaTime);
     }

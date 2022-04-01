@@ -13,6 +13,7 @@ public class GamePresenter : MonoBehaviour
     {
         GameManager gameManager = new GameManager();
         GameManager.SetInstance(gameManager, gameManager);
+        GameManager.Instance.SetGameState = _gameState;
 
         Inputter inputter = new Inputter();
         Inputter.SetInstance(inputter, inputter);
