@@ -96,7 +96,7 @@ public class CmManager : MonoBehaviour
 
         CollisionObstacle();
         transform.position = CmData.Instance.Position + _zoomPos;
-        _cmPoint.position = CmData.Instance.Position;
+        _cmPoint.position = CmData.Instance.Position.normalized * _distRate;
     }
 
     public void RequestShakeCm()
@@ -113,17 +113,38 @@ public class CmManager : MonoBehaviour
         
         if (isHit)
         {
-            if (hit.distance < _deadZoomDist) hit.distance = _deadZoomDist;
-
-            float rate = Mathf.Lerp(0, _zoomRate, (_distRate / hit.distance) / 10);
+            Vector3 setPps = ZoomPosHrizontal(hit.distance);
+            setPps.y = ZoomPosVitical(hit);
             
-            Vector3 setPos = transform.forward * rate * 2;
-            setPos.y = 0;
-            _zoomPos = setPos;
+            _zoomPos = setPps;
         }
         else
         {
             _zoomPos = Vector3.zero;
         }
+    }
+
+    Vector3 ZoomPosHrizontal(float hitDist)
+    {
+        if (hitDist < _deadZoomDist) hitDist = _deadZoomDist;
+
+        float rate = Mathf.Lerp(0, _zoomRate, (_distRate / hitDist) / 10);
+        Vector3 setPos = transform.forward * rate * 2;
+        setPos.y = 0;
+        
+        return setPos;
+    }
+
+    float ZoomPosVitical(RaycastHit hit)
+    {
+        float result = 0;
+        
+        if (_user.position.y >= hit.transform.position.y)
+        {
+            Debug.Log($"User {_user.position.y} : Hit {hit.transform.position.y}");
+            result = Mathf.Abs(hit.transform.position.y + _user.position.y) + 1;
+        }
+        
+        return result ;
     }
 }
