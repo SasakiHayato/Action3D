@@ -306,6 +306,7 @@ MonoBehaviour:
   _branchDatas:
   - BrockType: 0
     Condition: 0
+    Priority: 0
     BranchConditionals: []
     BrockDatas:
     - QueueType: 0
@@ -332,6 +333,7 @@ MonoBehaviour:
         - id: 7
   - BrockType: 2
     Condition: 0
+    Priority: 0
     BranchConditionals:
     - id: 8
     - id: 9
@@ -351,6 +353,7 @@ MonoBehaviour:
         - id: 16
   - BrockType: 2
     Condition: 0
+    Priority: 0
     BranchConditionals:
     - id: 17
     BrockDatas:
@@ -433,6 +436,7 @@ MonoBehaviour:
     0000000D:
       type: {class: MomentMove, ns: , asm: Assembly-CSharp}
       data:
+        _distanceRate: 1
         _apllayPosY: 0
     0000000E:
       type: {class: WaitTime, ns: , asm: Assembly-CSharp}
@@ -494,11 +498,11 @@ MonoBehaviour:
     AttackDatas:
     - AnimName: SkeletonAttack
       ID: 0
-      Power: 0
+      Power: 1
       SEID: 0
       KnockBackData:
         UpPower: 0
-        ForwardPower: 0
+        ForwardPower: 2
       Effects: 0000000001000000
 --- !u!114 &2666447687925516403
 MonoBehaviour:
@@ -545,6 +549,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 513
     Scale: 1
+    Mass: 10
   _jumpData:
     _jumpParams: []
 --- !u!1 &1541433764611268897

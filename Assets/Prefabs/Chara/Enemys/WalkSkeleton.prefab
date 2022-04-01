@@ -640,6 +640,7 @@ MonoBehaviour:
   _branchDatas:
   - BrockType: 0
     Condition: 0
+    Priority: 0
     BranchConditionals: []
     BrockDatas:
     - QueueType: 0
@@ -666,6 +667,7 @@ MonoBehaviour:
         - id: 7
   - BrockType: 2
     Condition: 0
+    Priority: 0
     BranchConditionals:
     - id: 8
     - id: 9
@@ -685,6 +687,7 @@ MonoBehaviour:
         - id: 16
   - BrockType: 2
     Condition: 0
+    Priority: 0
     BranchConditionals:
     - id: 17
     BrockDatas:
@@ -767,6 +770,7 @@ MonoBehaviour:
     0000000D:
       type: {class: MomentMove, ns: , asm: Assembly-CSharp}
       data:
+        _distanceRate: 1
         _apllayPosY: 0
     0000000E:
       type: {class: WaitTime, ns: , asm: Assembly-CSharp}
@@ -823,7 +827,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 2448143286815395276}
   _targetWeapon: {fileID: 2492898638037187930}
-  _dataLists: []
+  _dataLists:
+  - AttackType: 0
+    AttackDatas:
+    - AnimName: SkeletonAttack
+      ID: 0
+      Power: 1
+      SEID: 0
+      KnockBackData:
+        UpPower: 0
+        ForwardPower: 2
+      Effects: 0000000001000000
 --- !u!114 &1826431267241854616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,10 +883,9 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 513
     Scale: 1
+    Mass: 10
   _jumpData:
-    Count: 0
-    InitialPower: 0
-    Speed: 0
+    _jumpParams: []
 --- !u!1 &2565751911822226107
 GameObject:
   m_ObjectHideFlags: 0

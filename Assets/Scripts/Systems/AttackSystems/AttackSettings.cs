@@ -91,7 +91,7 @@ namespace NewAttacks
         {
             EndAnim();
             _weaponCllider.enabled = false;
-
+            
             if (_trail != null) _trail.enabled = false;
         }
 

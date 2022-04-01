@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GroupTipPoint_1
   m_EditorClassIdentifier: 
   _datas:
-  - Types: 05000000
+  - Types: 0100000000000000
   - Types: 05000000
