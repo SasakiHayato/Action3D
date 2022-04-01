@@ -22,6 +22,7 @@ public class OptionUI : ParentUI, IWindow
         _rect.anchoredPosition = _setPos;
 
         WindowManager.Instance.CreateWindowList(GetComponent<IWindow>() , "Option")
+            .AddEvents(_systemButtonImage, () => BaseUI.Instance.CallBack("Option", "System"))
             .AddEvents(_titleButtonImage, () => BaseUI.Instance.CallBack("Option", "Title"))
             .AddEvents(_backButtonImage, () => BaseUI.Instance.CallBack("Option", "Back"));
     }

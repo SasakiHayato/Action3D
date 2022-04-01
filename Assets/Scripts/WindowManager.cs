@@ -40,10 +40,14 @@ public class WindowManager : SingletonAttribute<WindowManager>
     {
         base.SetUp();
 
+        Debug.Log("Setup");
+
         _windowDatas = new List<WindowGroup>();
         _windowList = new List<WindowGroup>();
         _groupID = 0;
         _windowID = 0;
+        _selectID = 0;
+        _inputY = 0;
     }
 
     public WindowManager CreateWindowList(IWindow iWindow, string path)
@@ -129,6 +133,22 @@ public class WindowManager : SingletonAttribute<WindowManager>
             _windowList.Remove(_windowList.Last());
             _saveWindow = _windowList.Last();
         }
+
+        _selectID = 0;
+    }
+
+    public void OpenRequest(string path)
+    {
+        if (_saveWindow == null) return;
+
+        WindowGroup window = _windowDatas.FirstOrDefault(w => w.Path == path);
+
+        if (window == null) return;
+
+        _windowList.Add(window);
+        _saveWindow = window;
+
+        window.IWindow.Open();
 
         _selectID = 0;
     }
