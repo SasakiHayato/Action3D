@@ -8,9 +8,9 @@ using System.Linq;
 /// </summary>
 
 [System.Serializable]
-public class FieldSetter
+public class FieldData
 {
-    public FieldSetter() { }
+    public FieldData() { }
 
     public bool DebugBool { get; set; }
     public int DebugLevel { get; set; }
@@ -40,7 +40,7 @@ public class FieldSetter
 
     public int Level { get; private set; } = 1;
 
-    public FieldSetter(List<FieldManager.SpawnData> spawn, EnemyMasterData masterDatas)
+    public FieldData(List<FieldManager.SpawnData> spawn, EnemyMasterData masterDatas)
     {
         _spawnData = spawn;
         _enemyMasterData = masterDatas;
@@ -163,6 +163,7 @@ public class FieldSetter
                         iEnemy.GroupID = spawnData.ID;
                         iEnemy.Target = obj;
                         iEnemy.EnemyData = enemyData;
+                        iEnemy.CanMove = true;
 
                         if (enemyData.EnemyType == EnemyType.Boss)
                             BaseUI.Instance.CallBack("EnemyConnect", "BossInfo", new object[] { enemyData.DisplayName });
@@ -250,6 +251,21 @@ public class FieldSetter
                     data.IsSet = false;
                 }
             }
+        }
+    }
+
+    public void SetEnemysMove(bool set, int id = -1)
+    {
+        if (id <= -1)
+        {
+            _enemyGroupDatas.ForEach(e =>
+            {
+                e.FieldEnemies.ForEach(f => f.CanMove = set);
+            });
+        }
+        else
+        {
+            _enemyGroupDatas[id].FieldEnemies.ForEach(f => f.CanMove = set);
         }
     }
 }

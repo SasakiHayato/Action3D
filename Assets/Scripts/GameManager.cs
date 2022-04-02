@@ -160,9 +160,11 @@ public class GameManager : SingletonAttribute<GameManager>
         switch (option)
         {
             case Option.Open:
+                FieldManager.Instance.FieldData.SetEnemysMove(false);
                 break;
 
             case Option.Close:
+                FieldManager.Instance.FieldData.SetEnemysMove(true);
                 break;
         }
     }

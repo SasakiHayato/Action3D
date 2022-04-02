@@ -17,6 +17,8 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
 
     void Update()
     {
+        if (!CanMove) return;
+
         BaseState.Update();
 
         Vector3 set = Vector3.Scale(MoveDir * Speed, PhsicsBase.Gravity);

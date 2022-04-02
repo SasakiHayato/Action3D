@@ -22,6 +22,8 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
 
     void Update()
     {
+        if (!CanMove) return;
+
         Rotate();
         BaseState.Update();
         

@@ -25,6 +25,7 @@ public abstract class EnemyBase : CharaBase
     public int GroupID { get; set; }
     public GameObject Target { get; set; }
     public EnemyData EnemyData { get; set; }
+    public bool CanMove { get; set; } = false;
 
     protected virtual void Dead(GameObject target)
     {

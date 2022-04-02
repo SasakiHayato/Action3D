@@ -12,6 +12,8 @@ public class CubeEnemy : EnemyBase, IDamage, IFieldEnemy
 
     void Update()
     {
+        if (!CanMove) return;
+
         BaseState.Update();
 
         Vector3 set = Speed * MoveDir;
