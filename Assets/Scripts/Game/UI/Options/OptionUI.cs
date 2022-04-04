@@ -30,7 +30,7 @@ public class OptionUI : ParentUI, IWindow
     public void Open()
     {
         GameManager.Instance.SetOptionState(GameManager.Option.Open);
-        Time.timeScale = 0;
+        
         _rect.DOAnchorPosX(_centerPos.x, 0.2f)
             .SetEase(Ease.Linear)
             .SetUpdate(true);
@@ -47,8 +47,6 @@ public class OptionUI : ParentUI, IWindow
                     {
                         GameManager.Instance.SetOptionState(GameManager.Option.Close);
                     }
-
-                    Time.timeScale = 1;
                 });
     }
 

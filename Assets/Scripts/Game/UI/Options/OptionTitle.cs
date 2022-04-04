@@ -20,6 +20,7 @@ public class OptionTitle : ChildrenUI
 
     void GoTitle()
     {
+        GameManager.Instance.InGameFieldType = GameManager.FieldType.None;
         GameManager.Instance.GameStateSetUpSystems(GameManager.GameState.End);
         GameManager.Instance.GameStateSetUpEvents(GameManager.GameState.End);
         Time.timeScale = 1;

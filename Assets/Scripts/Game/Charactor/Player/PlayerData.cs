@@ -11,6 +11,7 @@ public class PlayerData
 
     public int HP { get; set; }
     public int Power { get; set; }
+    public float Speed { get; set; }
 
     public bool CanMove { get; set; } = false;
 }

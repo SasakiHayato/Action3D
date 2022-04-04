@@ -16,7 +16,6 @@ public interface IFieldEnemy
     int GroupID { get; set; }
     EnemysData.EnemyData EnemyData { get; set; }
     GameObject Target { get; set; }
-    bool CanMove { get; set; }
 }
 
 public interface IPool

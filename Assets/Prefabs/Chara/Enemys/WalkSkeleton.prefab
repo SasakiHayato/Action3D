@@ -538,6 +538,7 @@ GameObject:
   - component: {fileID: 1826431267241854616}
   - component: {fileID: 4912865492408140545}
   - component: {fileID: 436046997991151356}
+  - component: {fileID: 4473410026877017552}
   m_Layer: 0
   m_Name: WalkSkeleton
   m_TagString: Enemy
@@ -623,6 +624,8 @@ MonoBehaviour:
       State: {fileID: 4912865492408140545}
     - Path: Knock
       State: {fileID: 1826431267241854616}
+    - Path: Idle
+      State: {fileID: 4473410026877017552}
   _tree: {fileID: 1533691912657367723}
   _enemyConditionals: []
 --- !u!114 &1533691912657367723
@@ -886,6 +889,19 @@ MonoBehaviour:
     Mass: 10
   _jumpData:
     _jumpParams: []
+--- !u!114 &4473410026877017552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448143286815395276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589c2953c8bb24b4e8cf67d880f8d09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animName: Skeleton
 --- !u!1 &2565751911822226107
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public abstract class EnemyBase : CharaBase
     {
         BehaviorTree,
         KnockBack,
+        Idle,
     }
 
     [SerializeField] TreeManager _tree;
@@ -25,8 +26,7 @@ public abstract class EnemyBase : CharaBase
     public int GroupID { get; set; }
     public GameObject Target { get; set; }
     public EnemyData EnemyData { get; set; }
-    public bool CanMove { get; set; } = false;
-
+    
     protected virtual void Dead(GameObject target)
     {
         ParticleUser particle = FieldManager.Instance.GetDeadParticle.Respons();
@@ -37,7 +37,7 @@ public abstract class EnemyBase : CharaBase
 
         if (iEnemy != null)
         {
-            FieldManager.Instance.FieldData.Delete(GroupID, iEnemy);
+            FieldManager.Instance.FieldData.DeleteIField(GroupID, iEnemy);
             FieldManager.RequestExprosion(iEnemy.EnemyData, target.transform.position, Level);
         }
 

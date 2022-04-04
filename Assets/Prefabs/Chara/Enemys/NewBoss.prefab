@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 1505618242595551840}
   - component: {fileID: 5230034582209009415}
   - component: {fileID: 5018679095256781038}
+  - component: {fileID: 1980318279106915236}
   m_Layer: 0
   m_Name: NewBoss
   m_TagString: Enemy
@@ -510,6 +511,8 @@ MonoBehaviour:
       State: {fileID: 1505618242595551840}
     - Path: Knock
       State: {fileID: 5230034582209009415}
+    - Path: Idle
+      State: {fileID: 1980318279106915236}
   _tree: {fileID: 3225593644156799479}
   _enemyConditionals:
   - ID: 1
@@ -1281,6 +1284,19 @@ MonoBehaviour:
     Mass: 50
   _jumpData:
     _jumpParams: []
+--- !u!114 &1980318279106915236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735183208793564310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589c2953c8bb24b4e8cf67d880f8d09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animName: 
 --- !u!1 &8735183208793564312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3439,15 +3455,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 958cf4748c84fb948bc3400edc8005e9, type: 3}
---- !u!1 &8117627567819245669 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1982315913299486, guid: 958cf4748c84fb948bc3400edc8005e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 8115646663912099451}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8120220898634481381 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4574269520425118, guid: 958cf4748c84fb948bc3400edc8005e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8115646663912099451}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8117627567819245669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1982315913299486, guid: 958cf4748c84fb948bc3400edc8005e9,
     type: 3}
   m_PrefabInstance: {fileID: 8115646663912099451}
   m_PrefabAsset: {fileID: 0}

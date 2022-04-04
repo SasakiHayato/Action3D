@@ -7,13 +7,12 @@ public class CubeEnemy : EnemyBase, IDamage, IFieldEnemy
         BaseState.SetUp(gameObject)
             .AddState(State.BehaviorTree, "Tree")
             .AddState(State.KnockBack, "Knock")
+            .AddState(State.Idle, "Idle")
             .RunRequest(State.BehaviorTree);
     }
 
     void Update()
     {
-        if (!CanMove) return;
-
         BaseState.Update();
 
         Vector3 set = Speed * MoveDir;

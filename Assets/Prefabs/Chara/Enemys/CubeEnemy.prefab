@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4184691060614374985}
   - component: {fileID: 5588957004100169152}
   - component: {fileID: 4751761146890201596}
+  - component: {fileID: -4706256955204889832}
   m_Layer: 0
   m_Name: CubeEnemy
   m_TagString: Enemy
@@ -130,6 +131,8 @@ MonoBehaviour:
       State: {fileID: 4184691060614374985}
     - Path: Knock
       State: {fileID: 5588957004100169152}
+    - Path: Idle
+      State: {fileID: -4706256955204889832}
   _tree: {fileID: 8891125759827804182}
   _enemyConditionals: []
 --- !u!114 &8891125759827804182
@@ -147,6 +150,7 @@ MonoBehaviour:
   _branchDatas:
   - BrockType: 0
     Condition: 0
+    Priority: 0
     BranchConditionals: []
     BrockDatas:
     - QueueType: 0
@@ -179,6 +183,7 @@ MonoBehaviour:
         - id: 9
   - BrockType: 2
     Condition: 0
+    Priority: 0
     BranchConditionals:
     - id: 10
     BrockDatas:
@@ -305,10 +310,22 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 513
     Scale: 1
+    Mass: 0
   _jumpData:
-    Count: 0
-    InitialPower: 0
-    Speed: 0
+    _jumpParams: []
+--- !u!114 &-4706256955204889832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980940582174284826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589c2953c8bb24b4e8cf67d880f8d09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animName: 
 --- !u!1001 &2932163159214366345
 PrefabInstance:
   m_ObjectHideFlags: 0

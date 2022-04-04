@@ -81,17 +81,11 @@ public class FieldManager : MonoBehaviour
         else
         {
             _fieldData = new FieldData(_arenaSpawnDatas, _enemyMasterData);
-
-            // Log
-            //BaseUI.Instance.CallBack("Game", "Log", new object[] { 6 });
-            //BaseUI.Instance.CallBack("Game", "Log", new object[] { 5 });
         }
     }
 
     void Update()
     {
-        GameManager.Instance.GameTime();
-
         if (GameManager.Instance.InGameFieldType == GameManager.FieldType.Warld)
         {
             UpDateWorld();
@@ -129,8 +123,6 @@ public class FieldManager : MonoBehaviour
     /// スローモーションの設定
     /// </summary>
     /// <param name="action">スローモーションが終わった際に実行する関数</param>
-    /// <param name="type">アクションに登録するUiType</param>
-    /// <param name="id">アクションに登録するID</param>
     public static void FieldTimeRate(Action action)
     {
         SoundMaster.PlayRequest(null, "StartSlowMotion", SEDataBase.DataType.Field);

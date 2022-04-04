@@ -54,13 +54,11 @@ namespace BehaviourTree
             {
                 if (_actions == null)
                 {
-                    Debug.Log("Do Not Action");
                     return false;
                 }
 
                 if (_actions.Count <= _executeID)
                 {
-                    Debug.Log("EndTask");
                     return false;
                 }
                 

@@ -41,6 +41,7 @@ public class GamePresenter : MonoBehaviour
             WindowManager.Instance.Selecting();
         }
 
+        GameManager.Instance.GameTime();
         Inputter.Instance.CheckConnectGamePad();
     }
 }

@@ -40,8 +40,6 @@ public class WindowManager : SingletonAttribute<WindowManager>
     {
         base.SetUp();
 
-        Debug.Log("Setup");
-
         _windowDatas = new List<WindowGroup>();
         _windowList = new List<WindowGroup>();
         _groupID = 0;
@@ -151,9 +149,15 @@ public class WindowManager : SingletonAttribute<WindowManager>
         _selectID = 0;
     }
 
+    public void InitWindowList()
+    {
+        _windowList = new List<WindowGroup>();
+        _saveWindow = null;
+    }
+
     public void Selecting()
     {
-        if (_saveWindow == null || _saveWindow.WindowDatas.Count <= 0) return;
+        if (_saveWindow.WindowDatas.Count <= 0) return;
         
         Vector2 input = (Vector2)Inputter.Instance.GetValue(InputType.Select);
         

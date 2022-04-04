@@ -37,6 +37,7 @@ public class Player : CharaBase, IDamage
         GameManager.Instance.PlayerData.Player = this;
         GameManager.Instance.PlayerData.HP = HP;
         GameManager.Instance.PlayerData.Power = Power;
+        GameManager.Instance.PlayerData.Speed = Speed;
 
         AnimController = GetComponent<PlayerAnimController>();
         _settings = GetComponent<AttackSettings>();

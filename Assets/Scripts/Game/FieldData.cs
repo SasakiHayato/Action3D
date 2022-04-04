@@ -40,12 +40,13 @@ public class FieldData
 
     public int Level { get; private set; } = 1;
 
+    // SetUp
     public FieldData(List<FieldManager.SpawnData> spawn, EnemyMasterData masterDatas)
     {
         _spawnData = spawn;
         _enemyMasterData = masterDatas;
         _enemyGroupDatas = new List<EnemyGroupData>();
-      
+        
         TeleportManager.Instnace.SetUp(spawn);
 
         for (int i = 0; i < spawn.Count(); i++)
@@ -155,7 +156,7 @@ public class FieldData
                     CharaBase charaBase = obj.GetComponent<CharaBase>();
                     charaBase.Character.ChangeLocalPos(new Vector3(x, y, z), obj);
                     charaBase.SetParam(enemyData.HP, enemyData.Power, enemyData.Speed, level);
-                    
+
                     IFieldEnemy iEnemy = obj.GetComponent<IFieldEnemy>();
 
                     if (iEnemy != null)
@@ -163,8 +164,7 @@ public class FieldData
                         iEnemy.GroupID = spawnData.ID;
                         iEnemy.Target = obj;
                         iEnemy.EnemyData = enemyData;
-                        iEnemy.CanMove = true;
-
+                        
                         if (enemyData.EnemyType == EnemyType.Boss)
                             BaseUI.Instance.CallBack("EnemyConnect", "BossInfo", new object[] { enemyData.DisplayName });
 
@@ -238,7 +238,7 @@ public class FieldData
     /// </summary>
     /// <param name="id">FieldÇÃSpawnID</param>
     /// <param name="enemy">ëŒè€ÇÃEnemyData</param>
-    public void Delete(int id, IFieldEnemy enemy)
+    public void DeleteIField(int id, IFieldEnemy enemy)
     {
         foreach (var data in _enemyGroupDatas)
         {
@@ -251,21 +251,6 @@ public class FieldData
                     data.IsSet = false;
                 }
             }
-        }
-    }
-
-    public void SetEnemysMove(bool set, int id = -1)
-    {
-        if (id <= -1)
-        {
-            _enemyGroupDatas.ForEach(e =>
-            {
-                e.FieldEnemies.ForEach(f => f.CanMove = set);
-            });
-        }
-        else
-        {
-            _enemyGroupDatas[id].FieldEnemies.ForEach(f => f.CanMove = set);
         }
     }
 }

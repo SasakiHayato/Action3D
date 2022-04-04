@@ -5,15 +5,10 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
 {
     GameObject _player;
 
-    Animator _anim;
-    AttackSettings _attack;
-    
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
-        _anim = GetComponent<Animator>();
-        _attack = GetComponent<AttackSettings>();
-
+        
         BaseState.SetUp(gameObject)
             .AddState(State.BehaviorTree, "Tree")
             .AddState(State.KnockBack, "Knock")
@@ -22,8 +17,6 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
 
     void Update()
     {
-        if (!CanMove) return;
-
         Rotate();
         BaseState.Update();
         
