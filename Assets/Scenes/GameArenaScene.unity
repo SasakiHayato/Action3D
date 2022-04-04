@@ -254,6 +254,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3838557692302222812, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
+      propertyPath: _deadAngle
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838557692302222812, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
       propertyPath: _offSetPos.y
       value: 2
       objectReference: {fileID: 0}

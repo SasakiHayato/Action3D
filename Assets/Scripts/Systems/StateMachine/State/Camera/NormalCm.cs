@@ -9,6 +9,7 @@ public class NormalCm : State
     [SerializeField] float _sensitivityY = 0.5f;
     [SerializeField] float _viewDelay;
     [SerializeField] float _deadInput = 0.1f;
+    [SerializeField] float _deadAngle;
     [SerializeField] float _cmDist;
 
     Transform _user;
@@ -103,6 +104,12 @@ public class NormalCm : State
         else if (angle < Degree90 * -1)
         {
             angle = Degree90 * -1;
+            _verticleAngle--;
+        }
+
+        if (angle < _deadAngle)
+        {
+            angle = _deadAngle + 1;
             _verticleAngle--;
         }
 
