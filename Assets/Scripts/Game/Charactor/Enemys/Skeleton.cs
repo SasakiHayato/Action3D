@@ -1,6 +1,10 @@
 using UnityEngine;
 using NewAttacks;
 
+/// <summary>
+/// スケルトンの制御クラス
+/// </summary>
+
 public class Skeleton : EnemyBase, IDamage, IFieldEnemy
 {
     AttackSettings _attack;

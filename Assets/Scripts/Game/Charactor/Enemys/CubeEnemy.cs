@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// CubeEnemy‚Ì§ŒäƒNƒ‰ƒX
+/// </summary>
+
 public class CubeEnemy : EnemyBase, IDamage, IFieldEnemy
 {
     void Start()

@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Boss‚ÌŒ¶‰e‚Ì§ŒäƒNƒ‰ƒX
+/// </summary>
+
 public class BossShadow : EnemyBase, IDamage
 {
     GameObject _player;
