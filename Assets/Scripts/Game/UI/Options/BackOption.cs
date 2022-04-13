@@ -2,6 +2,10 @@ using UnityEngine.UI;
 using UniRx;
 using System;
 
+/// <summary>
+/// Option‚ğ•Â‚¶‚éƒNƒ‰ƒXButton‚©‚ç‚Ì§Œä
+/// </summary>
+
 public class BackOption : ChildrenUI
 {
     Button _button;

@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+/// <summary>
+/// Optionのベースとなるクラス
+/// </summary>
+
 public class OptionUI : ParentUI, IWindow
 {
     [SerializeField] RectTransform _rect;

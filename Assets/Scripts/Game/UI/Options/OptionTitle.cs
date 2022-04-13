@@ -3,6 +3,10 @@ using UnityEngine.UI;
 using UniRx;
 using System;
 
+/// <summary>
+/// Title‚ÖŒü‚©‚¤‚½‚ß‚ÌButtonİ’èƒNƒ‰ƒX
+/// </summary>
+
 public class OptionTitle : ChildrenUI
 {
     Button _button;

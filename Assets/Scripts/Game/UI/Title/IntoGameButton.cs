@@ -3,6 +3,10 @@ using UnityEngine.UI;
 using UniRx;
 using System;
 
+/// <summary>
+/// InGame‚ÖŒü‚©‚¤‚½‚ß‚Ìİ’èƒNƒ‰ƒX
+/// </summary>
+
 public class IntoGameButton : ChildrenUI, IWindow
 {
     [SerializeField] Button _goWorldButton;
