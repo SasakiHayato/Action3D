@@ -153,6 +153,10 @@ public class GameManager : SingletonAttribute<GameManager>
         }
     }
 
+    /// <summary>
+    /// optionを開いた際のゲームシーンの管理
+    /// </summary>
+    /// <param name="option">OptionState</param>
     public void SetOptionState(Option option)
     {
         OptionState = option;
@@ -160,11 +164,17 @@ public class GameManager : SingletonAttribute<GameManager>
         switch (option)
         {
             case Option.Open:
-                FieldManager.Instance.FieldData.SetEnemysMove(false);
+
+                if (GameState.Title != CurrentGameState)
+                {
+                    Time.timeScale = 0;
+                }
+                
                 break;
 
             case Option.Close:
-                FieldManager.Instance.FieldData.SetEnemysMove(true);
+                Time.timeScale = 1;
+                
                 break;
         }
     }

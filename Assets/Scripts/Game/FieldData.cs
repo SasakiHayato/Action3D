@@ -253,19 +253,4 @@ public class FieldData
             }
         }
     }
-
-    public void SetEnemysMove(bool set, int id = -1)
-    {
-        if (id <= -1)
-        {
-            _enemyGroupDatas.ForEach(e =>
-            {
-                e.FieldEnemies.ForEach(f => f.CanMove = set);
-            });
-        }
-        else
-        {
-            _enemyGroupDatas[id].FieldEnemies.ForEach(f => f.CanMove = set);
-        }
-    }
 }

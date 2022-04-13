@@ -2,8 +2,13 @@ using UnityEngine;
 using StateMachine;
 using System.Collections.Generic;
 
+/// <summary>
+/// カメラ制御の管理クラス
+/// </summary>
+
 public class CmManager : MonoBehaviour
 {
+    // Note. カメラのステートデータ
     public class CmData
     {
         public class Data
@@ -100,6 +105,7 @@ public class CmManager : MonoBehaviour
         _cmPoint.position = CmData.Instance.Position.normalized * _distRate;
     }
 
+    // カメラの揺らすリクエスト
     public void RequestShakeCm()
     {
         _state.ChangeState(State.Shake);

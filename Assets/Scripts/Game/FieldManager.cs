@@ -81,10 +81,6 @@ public class FieldManager : MonoBehaviour
         else
         {
             _fieldData = new FieldData(_arenaSpawnDatas, _enemyMasterData);
-
-            // Log
-            //BaseUI.Instance.CallBack("Game", "Log", new object[] { 6 });
-            //BaseUI.Instance.CallBack("Game", "Log", new object[] { 5 });
         }
     }
 

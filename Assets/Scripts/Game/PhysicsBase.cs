@@ -2,6 +2,10 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// •¨—‹““®‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class PhysicsBase : MonoBehaviour
 {
     [Serializable]

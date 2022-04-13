@@ -4,8 +4,13 @@ using UnityEngine.UI;
 using System.Linq;
 using System;
 
+/// <summary>
+/// Optionの階層構造の管理
+/// </summary>
+
 public class WindowManager : SingletonAttribute<WindowManager>
 {
+    // Note. 一つ一つのWindowのデータクラス
     class WindowGroup
     {
         public IWindow IWindow;
