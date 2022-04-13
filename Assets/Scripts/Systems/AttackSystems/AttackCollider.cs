@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// •Ší‚ÌUŒ‚”»’èƒNƒ‰ƒX
+/// </summary>
+
 namespace NewAttacks
 {
     public class AttackCollider : MonoBehaviour, IAttackCollision

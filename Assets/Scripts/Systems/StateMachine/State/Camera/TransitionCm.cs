@@ -2,6 +2,10 @@ using UnityEngine;
 using StateMachine;
 using System;
 
+/// <summary>
+/// カメラステートの遷移を管理するクラス
+/// </summary>
+
 public class TransitionCm : State
 {
     [SerializeField] float _transitionSpeed;

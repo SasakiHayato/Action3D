@@ -1,6 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// 攻撃した際のEffectのリクエストクラス
+/// </summary>
+
 namespace NewAttacks
 {
     public class AttackEffects : MonoBehaviour

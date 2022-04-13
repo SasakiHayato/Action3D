@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 攻撃のデータクラス
+/// </summary>
+
 namespace NewAttacks
 {
     public enum AttackType

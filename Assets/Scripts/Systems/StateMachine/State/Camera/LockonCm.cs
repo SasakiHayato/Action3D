@@ -2,6 +2,10 @@ using UnityEngine;
 using StateMachine;
 using System;
 
+/// <summary>
+/// Enemyをロックオンした際の制御クラス
+/// </summary>
+
 public class LockonCm : State
 {
     [SerializeField] Vector3 _offSetPos;

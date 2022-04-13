@@ -2,6 +2,10 @@ using UnityEngine;
 using StateMachine;
 using System;
 
+/// <summary>
+/// ‹ó’†‚É‚¢‚éÛ‚Ì§ŒäƒNƒ‰ƒX
+/// </summary>
+
 public class PlayerFloating : State
 {
     [SerializeField] float _nextStateSpan;

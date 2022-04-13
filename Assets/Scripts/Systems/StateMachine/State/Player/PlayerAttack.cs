@@ -5,6 +5,10 @@ using StateMachine;
 using System;
 using System.Linq;
 
+/// <summary>
+/// UŒ‚‚·‚éÛ‚Ì§ŒäƒNƒ‰ƒX
+/// </summary>
+
 public class PlayerAttack : State
 {
     [SerializeField] float _moveTime;

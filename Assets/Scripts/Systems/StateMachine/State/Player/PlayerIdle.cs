@@ -2,6 +2,10 @@ using UnityEngine;
 using StateMachine;
 using System;
 
+/// <summary>
+/// ‰½‚à‚µ‚Ä‚¢‚È‚¢Û‚Ì§ŒäƒNƒ‰ƒX
+/// </summary>
+
 public class PlayerIdle : State
 {
     Vector2 _input;

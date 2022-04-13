@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// SEのデータクラス
+/// </summary>
+
 namespace Sounds
 {
     [CreateAssetMenu(fileName = "SEDatas")]

@@ -3,6 +3,10 @@ using UnityEngine;
 using System;
 using Sounds;
 
+/// <summary>
+/// UŒ‚‚Ìİ’èAŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 namespace NewAttacks
 {
     public partial class AttackSettings : MonoBehaviour

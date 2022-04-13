@@ -2,6 +2,10 @@ using UnityEngine;
 using StateMachine;
 using System;
 
+/// <summary>
+/// ’Êí‚ÌƒJƒƒ‰§ŒäƒNƒ‰ƒX
+/// </summary>
+
 public class NormalCm : State
 {
     [SerializeField] Vector3 _offSetPos;

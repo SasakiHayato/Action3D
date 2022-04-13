@@ -1,6 +1,10 @@
 using UnityEngine;
 using System;
 
+/// <summary>
+/// UŒ‚‚µ‚½Û‚ÌEffect¶¬ƒNƒ‰ƒX
+/// </summary>
+
 namespace NewAttacks
 {
     public partial class AttackSettings : MonoBehaviour
