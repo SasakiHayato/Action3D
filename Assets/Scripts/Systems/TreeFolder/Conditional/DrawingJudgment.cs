@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// ƒJƒƒ‰“à‚É‚¢‚é‚©‚Ç‚¤‚©‚ÌğŒ•ªŠò
+/// </summary>
+
 public class DrawingJudgment : IConditional
 {
     enum ReturnType

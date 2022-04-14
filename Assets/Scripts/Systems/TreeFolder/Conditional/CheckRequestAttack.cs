@@ -2,6 +2,10 @@ using UnityEngine;
 using BehaviourTree;
 using NewAttacks;
 
+/// <summary>
+/// RequestEAS‚©‚ç“`‚¦‚ç‚ê‚½ğŒ‚ğ’²‚×‚éğŒ•ªŠò
+/// </summary>
+
 public class CheckRequestAttack : IConditional
 {
     enum RequestType
@@ -15,11 +19,8 @@ public class CheckRequestAttack : IConditional
 
     EnemyAttackSystem _enemySystem = null;
 
-    GameObject _user;
-
     public void SetUp(GameObject user)
     {
-        _user = user;
         _enemySystem = user.GetComponent<EnemyAttackSystem>();
     }
 

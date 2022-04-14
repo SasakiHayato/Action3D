@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// ©g‚Ì‘Ì—Í‚ğ’²‚×‚éğŒ•ªŠò
+/// </summary>
+
 public class CheckMyHP : IConditional
 {
     enum CheckType
