@@ -4,6 +4,10 @@ using UnityEngine;
 using BehaviourTree;
 using NewAttacks;
 
+/// <summary>
+/// AttackSettingsコンポーネントをもつEnemyが攻撃するためのAI行動
+/// </summary>
+
 public class ShortDistanceAttack : IAction
 {
     [SerializeField] NewAttacks.AttackType _type = NewAttacks.AttackType.Weak;

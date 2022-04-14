@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// Player‚ÉŒü‚©‚Á‚Ä’e‚ğ‘Å‚ÂAIs“®
+/// </summary>
+
 public class ShotBulletLockon : IAction
 {
     [SerializeField] float _speed;

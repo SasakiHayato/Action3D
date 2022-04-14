@@ -2,6 +2,10 @@ using NewAttacks;
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// AttackSettingsコンポーネントをもつEnemyのAnimationを待つAI行動
+/// </summary>
+
 public class WaitAttackAnim : IAction
 {
     AttackSettings _settings;

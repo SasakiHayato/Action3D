@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// Ç»Ç…Ç‡ÇµÇ»Ç¢AIçsìÆ
+/// </summary>
+
 public class EnemyIdle : IAction
 {
     [SerializeField] string _idleAnimName;

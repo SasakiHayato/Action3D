@@ -4,6 +4,10 @@ using UnityEngine;
 using NewAttacks;
 using BehaviourTree;
 
+/// <summary>
+/// UŒ‚‚·‚é‚½‚ß‚ÌConditional‚É\¿‚·‚éAIs“®
+/// </summary>
+
 public class RequestEAS : IAction
 {
     enum RequestType

@@ -2,6 +2,10 @@ using UnityEngine;
 using BehaviourTree;
 using NewAttacks;
 
+/// <summary>
+/// AttackSettingsコンポーネントをもつEnemyの攻撃をキャンセルするAI行動
+/// </summary>
+
 public class AttackCancel : IAction
 {
     AttackSettings _attack;

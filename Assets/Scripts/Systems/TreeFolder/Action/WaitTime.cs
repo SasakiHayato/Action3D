@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// ˆê’èŠÔ‘Ò‚ÂAIs“®
+/// </summary>
+
 public class WaitTime : IAction
 {
     [SerializeField] float _minWaitTime;

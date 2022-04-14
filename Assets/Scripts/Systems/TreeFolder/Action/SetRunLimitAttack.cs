@@ -2,6 +2,10 @@ using UnityEngine;
 using BehaviourTree;
 using NewAttacks;
 
+/// <summary>
+/// “Áês“®‚ğs‚¢‘±‚¯‚éÛ‚ÉConditional‚Éî•ñ‚ğ“`‚¦‚éAIs“®
+/// </summary>
+
 public class SetRunLimitAttack : IAction
 {
     [SerializeField] bool _setBool;

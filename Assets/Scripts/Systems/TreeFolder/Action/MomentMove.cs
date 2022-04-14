@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// Player‚ÉuŠÔˆÚ“®‚·‚éAIs“®
+/// </summary>
+
 public class MomentMove : IAction
 {
     [SerializeField] float _distanceRate = 1;

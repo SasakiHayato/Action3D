@@ -2,6 +2,10 @@ using UnityEngine;
 using NewAttacks;
 using BehaviourTree;
 
+/// <summary>
+/// AttackSettings‚ğ‚à‚ÂEnemy‚Ì˜A‘±UŒ‚‚ğ\¿‚·‚éAIs“®
+/// </summary>
+
 public class AttackNextRequest : IAction
 {
     AttackSettings _settings;
