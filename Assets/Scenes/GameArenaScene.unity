@@ -244,6 +244,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3838557692302222811, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
+      propertyPath: _moveTranditionRate
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838557692302222811, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
       propertyPath: _collsionLayer.m_Bits
       value: 520
       objectReference: {fileID: 0}

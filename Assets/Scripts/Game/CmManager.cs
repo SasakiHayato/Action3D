@@ -62,12 +62,14 @@ public class CmManager : MonoBehaviour
     [SerializeField] Transform _user;
     [SerializeField] LayerMask _collsionLayer;
     [SerializeField] float _zoomRate;
+    [SerializeField] float _moveTranditionRate;
     [SerializeField] float _deadZoomDist;
     [SerializeField] StateManager _state = new StateManager();
 
     Transform _cmPoint;
     Vector3 _zoomPos = Vector3.zero;
 
+    float _moveTimer;
     float _distRate;
 
     void Start()
@@ -101,8 +103,24 @@ public class CmManager : MonoBehaviour
         }
 
         CollisionObstacle();
-        transform.position = CmData.Instance.Position + _zoomPos;
+        Move();
+        
         _cmPoint.position = CmData.Instance.Position.normalized * _distRate;
+    }
+
+    void Move()
+    {
+        Vector3 setPos = Vector3.Lerp(transform.position, CmData.Instance.Position, _moveTimer / _moveTranditionRate);
+        transform.position = setPos + _zoomPos;
+
+        if (setPos == CmData.Instance.Position + _zoomPos)
+        {
+            _moveTimer = 0;
+        }
+        else
+        {
+            _moveTimer += Time.deltaTime;
+        }
     }
 
     // カメラの揺らすリクエスト

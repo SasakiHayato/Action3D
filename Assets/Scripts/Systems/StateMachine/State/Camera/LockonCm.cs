@@ -52,12 +52,12 @@ public class LockonCm : State
 
     public override void Run()
     {
-        Vector3 setPos = Vector3.zero;
+        Vector3 pos = Vector3.zero;
 
-        HorizontalPos(out setPos);
-        setPos.y = VerticlePos();
+        HorizontalPos(out pos);
+        pos.y = VerticlePos();
 
-        CmManager.CmData.Instance.Position = setPos;
+        CmManager.CmData.Instance.Position = pos;
 
         View();
     }

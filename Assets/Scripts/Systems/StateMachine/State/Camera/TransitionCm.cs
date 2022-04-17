@@ -36,8 +36,8 @@ public class TransitionCm : State
         CmManager.CmData.Data currntData = CmManager.CmData.Instance.GetData(CmManager.CmData.Instance.CurrentState);
         CmManager.CmData.Data nextData = CmManager.CmData.Instance.GetData(CmManager.CmData.Instance.NextState);
 
-        _currentPos = currntData.Pos + _user.position;
-        _nextPos = nextData.Pos + _user.position;
+        _currentPos = nextData.Pos + _user.position;
+        _nextPos = currntData.Pos + _user.position;
     }
 
     public override void Run()
@@ -55,7 +55,7 @@ public class TransitionCm : State
     {
         _rotateTimer += Time.deltaTime / _viewDelay;
 
-        Vector3 dir = CmManager.CmData.Instance.NextTarget.position - _cm.position;
+        Vector3 dir = /*CmManager.CmData.Instance.NextTarget.position*/_user.position - _cm.position;
         Quaternion q = Quaternion.LookRotation(dir.normalized);
         _cm.rotation = Quaternion.Lerp(_cm.rotation, q, _rotateTimer);
 
