@@ -15,6 +15,7 @@ public class CmManager : MonoBehaviour
         {
             public State State;
             public Vector3 Pos;
+            public ICmEntry IEntry;
         }
 
         private static CmData _instance = new CmData();
@@ -31,11 +32,12 @@ public class CmManager : MonoBehaviour
 
         List<Data> _datas = new List<Data>();
 
-        public void AddData(State state, Vector3 pos)
+        public void AddData(State state, Vector3 pos, ICmEntry iEntry)
         {
             Data data = new Data();
             data.State = state;
             data.Pos = pos;
+            data.IEntry = iEntry;
 
             _datas.Add(data);
         }

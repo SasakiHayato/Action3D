@@ -6,7 +6,7 @@ using System;
 /// Enemyをロックオンした際の制御クラス
 /// </summary>
 
-public class LockonCm : State
+public class LockonCm : State, ICmEntry
 {
     [SerializeField] Vector3 _offSetPos;
     [SerializeField] float _deadDist;
@@ -28,7 +28,7 @@ public class LockonCm : State
         _cm = user.transform;
         _dist = Vector3.Distance(_user.position, _cm.position);
 
-        CmManager.CmData.Instance.AddData(CmManager.State.Lockon, _cm.position);
+        CmManager.CmData.Instance.AddData(CmManager.State.Lockon, _cm.position, GetComponent<ICmEntry>());
     }
 
     public override void Entry(Enum before)
@@ -48,6 +48,16 @@ public class LockonCm : State
         _saveQuaternion = Quaternion.identity;
 
         CmManager.CmData.Instance.CurrentState = CmManager.State.Lockon;
+    }
+
+    public Vector3 ResponsePos()
+    {
+        Vector3 pos = Vector3.zero;
+
+        HorizontalPos(out pos);
+        pos.y = VerticlePos();
+
+        return pos;
     }
 
     public override void Run()

@@ -6,7 +6,7 @@ using System;
 /// í èÌéûÇÃÉJÉÅÉâêßå‰ÉNÉâÉX
 /// </summary>
 
-public class NormalCm : State
+public class NormalCm : State, ICmEntry
 {
     [SerializeField] Vector3 _offSetPos;
     [SerializeField] float _sensitivityX = 0.5f;
@@ -37,13 +37,23 @@ public class NormalCm : State
 
         _saveHorizontalPos = _offSetPos.normalized * _cmDist;
 
-        CmManager.CmData.Instance.AddData(CmManager.State.Normal, _cm.position);
+        CmManager.CmData.Instance.AddData(CmManager.State.Normal, _cm.position, GetComponent<ICmEntry>());
     }
 
     public override void Entry(Enum before)
     {
         _cm.position = CmManager.CmData.Instance.TransitionPos;
         CmManager.CmData.Instance.CurrentState = CmManager.State.Normal;
+    }
+
+    public Vector3 ResponsePos()
+    {
+        Vector2 input = (Vector2)Inputter.Instance.GetValue(InputType.CmMove);
+
+        Vector3 pos = HorizontalPos(input.normalized.x);
+        float y = VerticlePos(input.normalized.y);
+
+        return new Vector3(pos.x, y, pos.z);
     }
 
     public override void Run()
