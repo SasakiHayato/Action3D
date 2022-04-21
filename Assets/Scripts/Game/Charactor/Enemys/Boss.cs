@@ -1,5 +1,8 @@
 using UnityEngine;
-using NewAttacks;
+
+/// <summary>
+/// Boss‚Ì‹““®‚ğ§Œä‚·‚éƒNƒ‰ƒX
+/// </summary>
 
 public class Boss : EnemyBase, IDamage, IFieldEnemy
 {
@@ -8,7 +11,7 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
-        
+       
         BaseState.SetUp(gameObject)
             .AddState(State.BehaviorTree, "Tree")
             .AddState(State.KnockBack, "Knock")
@@ -17,6 +20,8 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
 
     void Update()
     {
+        if (!CanMove) return;
+
         Rotate();
         BaseState.Update();
         

@@ -2,6 +2,10 @@ using UnityEngine;
 using BehaviourTree;
 using NewAttacks;
 
+/// <summary>
+/// ˆÚ“®‚·‚é‚½‚ß‚ÌAIs“®
+/// </summary>
+
 public class MoveEnemy : IAction
 {
     enum MoveType

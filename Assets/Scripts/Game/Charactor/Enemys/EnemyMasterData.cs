@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Enemyの基底データクラス
+/// </summary>
+
 namespace EnemysData
 {
     public enum EnemyName

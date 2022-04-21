@@ -3,6 +3,10 @@ using StateMachine;
 using System;
 using System.Collections;
 
+/// <summary>
+/// ƒJƒƒ‰‚ğ—h‚ç‚·Û‚Ì§ŒäƒNƒ‰ƒX
+/// </summary>
+
 public class ShakeCm : State
 {
     [SerializeField] float _shakeTime;

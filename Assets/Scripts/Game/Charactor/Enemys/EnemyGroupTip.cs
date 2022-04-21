@@ -1,6 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// Field‚É¶¬‚·‚éEnemy‚Ìİ’è
+/// </summary>
 
 namespace EnemysData
 {

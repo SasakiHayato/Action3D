@@ -1,6 +1,10 @@
 using UnityEngine;
 using NewAttacks;
 
+/// <summary>
+/// スケルトンの制御クラス
+/// </summary>
+
 public class Skeleton : EnemyBase, IDamage, IFieldEnemy
 {
     AttackSettings _attack;
@@ -26,7 +30,7 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
 
     public void GetDamage(int damage, AttackType type)
     {
-        BaseState.ChangeState(State.KnockBack);
+        BaseState.ChangeState(State.KnockBack, true);
         
         Sounds.SoundMaster.PlayRequest(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
         

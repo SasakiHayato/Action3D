@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// Debug—p
+/// </summary>
+
 public class Console : IConditional, IAction
 {
     [SerializeField] string _cosole;

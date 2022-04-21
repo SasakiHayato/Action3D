@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// Carmera“à‚ÖˆÚ“®‚·‚éAIs“®
+/// </summary>
+
 public class MoveInCamera : IAction
 {
     [SerializeField] TreeManager.RunType _runType;

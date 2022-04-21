@@ -3,6 +3,10 @@ using StateMachine;
 using System;
 using NewAttacks;
 
+/// <summary>
+/// ノックバックした際の制御クラス
+/// </summary>
+
 public class EnemyKnockBack : State
 {
     [SerializeField] string _animName;
@@ -58,7 +62,10 @@ public class EnemyKnockBack : State
         if (_physicsBase.ImpulsePower <= 0) _isSetUp = false;
         else
         {
-            if (_animName != "") _anim.Play(_animName);
+            if (_animName != "")
+            {
+                _anim.Play(_animName);
+            }
         }
     }
 

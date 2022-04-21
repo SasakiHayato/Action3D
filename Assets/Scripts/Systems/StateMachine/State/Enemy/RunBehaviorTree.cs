@@ -3,6 +3,10 @@ using BehaviourTree;
 using StateMachine;
 using System;
 
+/// <summary>
+/// Enemy‚ÌAI‚ðUpdate‚³‚¹‚éƒNƒ‰ƒX
+/// </summary>
+
 public class RunBehaviorTree : State
 {
     TreeManager _tree;
@@ -20,7 +24,8 @@ public class RunBehaviorTree : State
 
     public override void Run()
     {
-        _tree.Update();
+        Debug.Log("bbbbbbbbbbbbbbbbbbb");
+        _tree.TreeUpdate();
     }
 
     public override Enum Exit()

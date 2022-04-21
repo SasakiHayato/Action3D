@@ -37,3 +37,8 @@ public interface IWindow
     void Open();
     void Close();
 }
+
+public interface ICmEntry
+{
+    Vector3 ResponsePos();
+}

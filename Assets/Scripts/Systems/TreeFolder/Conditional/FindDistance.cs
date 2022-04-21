@@ -1,6 +1,9 @@
 using UnityEngine;
-
 using BehaviourTree;
+
+/// <summary>
+/// Player‚Æ‚Ì‹——£‚ğ’²‚×‚éğŒ•ªŠò
+/// </summary>
 
 public class FindDistance : IConditional
 {

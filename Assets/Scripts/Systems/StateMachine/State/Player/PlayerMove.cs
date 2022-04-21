@@ -2,6 +2,10 @@ using UnityEngine;
 using StateMachine;
 using System;
 
+/// <summary>
+/// “®‚¢‚Ä‚¢‚éÛ‚Ì§ŒäƒNƒ‰ƒX
+/// </summary>
+
 public class PlayerMove : State
 {
     [SerializeField] float _dashSpeedRate;

@@ -2,6 +2,10 @@ using UnityEngine;
 using BehaviourTree;
 using DG.Tweening;
 
+/// <summary>
+/// パーティクルをだすAI行動
+/// </summary>
+
 public class SetParticleEffect : IAction
 {
     [SerializeField] string _particleName;

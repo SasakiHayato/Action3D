@@ -3,6 +3,10 @@ using NewAttacks;
 using StateMachine;
 using System;
 
+/// <summary>
+/// ノックバックした際の制御クラス
+/// </summary>
+
 public class PlayerKnockBack : State
 {
     [SerializeField] float _knockTime;

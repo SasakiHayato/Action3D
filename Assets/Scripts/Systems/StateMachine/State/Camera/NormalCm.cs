@@ -2,13 +2,18 @@ using UnityEngine;
 using StateMachine;
 using System;
 
-public class NormalCm : State
+/// <summary>
+/// í èÌéûÇÃÉJÉÅÉâêßå‰ÉNÉâÉX
+/// </summary>
+
+public class NormalCm : State, ICmEntry
 {
     [SerializeField] Vector3 _offSetPos;
     [SerializeField] float _sensitivityX = 0.5f;
     [SerializeField] float _sensitivityY = 0.5f;
     [SerializeField] float _viewDelay;
     [SerializeField] float _deadInput = 0.1f;
+    [SerializeField] float _deadAngle;
     [SerializeField] float _cmDist;
 
     Transform _user;
@@ -32,13 +37,23 @@ public class NormalCm : State
 
         _saveHorizontalPos = _offSetPos.normalized * _cmDist;
 
-        CmManager.CmData.Instance.AddData(CmManager.State.Normal, _cm.position);
+        CmManager.CmData.Instance.AddData(CmManager.State.Normal, _cm.position, GetComponent<ICmEntry>());
     }
 
     public override void Entry(Enum before)
     {
         _cm.position = CmManager.CmData.Instance.TransitionPos;
         CmManager.CmData.Instance.CurrentState = CmManager.State.Normal;
+    }
+
+    public Vector3 ResponsePos()
+    {
+        Vector2 input = (Vector2)Inputter.Instance.GetValue(InputType.CmMove);
+
+        Vector3 pos = HorizontalPos(input.normalized.x);
+        float y = VerticlePos(input.normalized.y);
+
+        return new Vector3(pos.x, y, pos.z);
     }
 
     public override void Run()
@@ -103,6 +118,12 @@ public class NormalCm : State
         else if (angle < Degree90 * -1)
         {
             angle = Degree90 * -1;
+            _verticleAngle--;
+        }
+
+        if (angle < _deadAngle)
+        {
+            angle = _deadAngle + 1;
             _verticleAngle--;
         }
 

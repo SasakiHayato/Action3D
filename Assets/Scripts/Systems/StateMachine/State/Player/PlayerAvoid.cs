@@ -3,6 +3,10 @@ using System;
 using Sounds;
 using StateMachine;
 
+/// <summary>
+/// ‰ñ”ğ‚·‚éÛ‚Ì§ŒäƒNƒ‰ƒX
+/// </summary>
+
 public class PlayerAvoid : State
 {
     [SerializeField] float _avoidTime;

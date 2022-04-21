@@ -2,6 +2,10 @@ using UnityEngine;
 using StateMachine;
 using System;
 
+/// <summary>
+/// カメラステートの遷移を管理するクラス
+/// </summary>
+
 public class TransitionCm : State
 {
     [SerializeField] float _transitionSpeed;
@@ -32,8 +36,8 @@ public class TransitionCm : State
         CmManager.CmData.Data currntData = CmManager.CmData.Instance.GetData(CmManager.CmData.Instance.CurrentState);
         CmManager.CmData.Data nextData = CmManager.CmData.Instance.GetData(CmManager.CmData.Instance.NextState);
 
-        _currentPos = currntData.Pos + _user.position;
-        _nextPos = nextData.Pos + _user.position;
+        _currentPos = currntData.IEntry.ResponsePos() + _user.position;
+        _nextPos = nextData.IEntry.ResponsePos() + _user.position;
     }
 
     public override void Run()
@@ -41,7 +45,7 @@ public class TransitionCm : State
         _timer += Time.deltaTime * _transitionSpeed;
         Vector3 transition = Vector3.Lerp(_currentPos, _nextPos, _timer);
 
-        _cm.position = transition;
+        CmManager.CmData.Instance.Position = transition;
         View();
 
         if (_nextPos == transition) _isTransition = true;

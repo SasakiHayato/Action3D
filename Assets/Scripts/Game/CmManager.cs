@@ -2,14 +2,20 @@ using UnityEngine;
 using StateMachine;
 using System.Collections.Generic;
 
+/// <summary>
+/// カメラ制御の管理クラス
+/// </summary>
+
 public class CmManager : MonoBehaviour
 {
+    // Note. カメラのステートデータ
     public class CmData
     {
         public class Data
         {
             public State State;
             public Vector3 Pos;
+            public ICmEntry IEntry;
         }
 
         private static CmData _instance = new CmData();
@@ -26,11 +32,12 @@ public class CmManager : MonoBehaviour
 
         List<Data> _datas = new List<Data>();
 
-        public void AddData(State state, Vector3 pos)
+        public void AddData(State state, Vector3 pos, ICmEntry iEntry)
         {
             Data data = new Data();
             data.State = state;
             data.Pos = pos;
+            data.IEntry = iEntry;
 
             _datas.Add(data);
         }
@@ -57,12 +64,14 @@ public class CmManager : MonoBehaviour
     [SerializeField] Transform _user;
     [SerializeField] LayerMask _collsionLayer;
     [SerializeField] float _zoomRate;
+    [SerializeField] float _moveTranditionRate;
     [SerializeField] float _deadZoomDist;
     [SerializeField] StateManager _state = new StateManager();
 
     Transform _cmPoint;
     Vector3 _zoomPos = Vector3.zero;
 
+    float _moveTimer;
     float _distRate;
 
     void Start()
@@ -96,10 +105,27 @@ public class CmManager : MonoBehaviour
         }
 
         CollisionObstacle();
-        transform.position = CmData.Instance.Position + _zoomPos;
+        Move();
+        
         _cmPoint.position = CmData.Instance.Position.normalized * _distRate;
     }
 
+    void Move()
+    {
+        Vector3 setPos = Vector3.Lerp(transform.position, CmData.Instance.Position, _moveTimer / _moveTranditionRate);
+        transform.position = setPos + _zoomPos;
+
+        if (setPos == CmData.Instance.Position + _zoomPos)
+        {
+            _moveTimer = 0;
+        }
+        else
+        {
+            _moveTimer += Time.deltaTime;
+        }
+    }
+
+    // カメラの揺らすリクエスト
     public void RequestShakeCm()
     {
         _state.ChangeState(State.Shake);

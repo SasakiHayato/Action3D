@@ -45,8 +45,6 @@ public class GameManager : SingletonAttribute<GameManager>
 
     public FieldType InGameFieldType { get; set; }
 
-    ArenaManager _arenaManager;
-
     public bool IsLockOn
     {
         get
@@ -86,7 +84,6 @@ public class GameManager : SingletonAttribute<GameManager>
                 else
                 {
                     SoundMaster.PlayRequest(null, "ArenaBGM", SEDataBase.DataType.BGM);
-                    _arenaManager = new ArenaManager();
                 }
                
                 break;
@@ -139,26 +136,10 @@ public class GameManager : SingletonAttribute<GameManager>
                 break;
 
             case GameState.Dead:
-
                 PlayerData.CanMove = false;
-
-                if (InGameFieldType == FieldType.Arena)
-                {
-                    //SetOptionState(Option.Open);
-                    //WindowManager.Instance.InitWindowList();
-                    //WindowManager.Instance.OpenRequest("ArenaPanel");
-                }
-                else
-                {
-                    //Fader.Instance.Request(Fader.FadeType.Out, 0.5f);
-                    //player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-                    //player.AnimController.RequestAnimCallBackEvent("Damage_Die", () => SceneSettings.Instance.LoadSync(0));
-                }
-
                 Fader.Instance.Request(Fader.FadeType.Out, 0.5f);
                 player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
                 player.AnimController.RequestAnimCallBackEvent("Damage_Die", () => SceneSettings.Instance.LoadSync(0));
-
                 break;
 
             case GameState.Load:
@@ -166,24 +147,16 @@ public class GameManager : SingletonAttribute<GameManager>
                 break;
 
             case GameState.End:
-
-                if (InGameFieldType == FieldType.Arena)
-                {
-                    //_arenaManager.End();
-                }
-                else
-                {
-                    //Fader.Instance.Request(Fader.FadeType.Out, 1f);
-                    //SceneSettings.Instance.LoadAsync(0, 1);
-                }
-
                 Fader.Instance.Request(Fader.FadeType.Out, 1f);
                 SceneSettings.Instance.LoadAsync(0, 1);
-
                 break;
         }
     }
 
+    /// <summary>
+    /// optionを開いた際のゲームシーンの管理
+    /// </summary>
+    /// <param name="option">OptionState</param>
     public void SetOptionState(Option option)
     {
         OptionState = option;
@@ -192,7 +165,7 @@ public class GameManager : SingletonAttribute<GameManager>
         {
             case Option.Open:
 
-                if (GameState.InGame == CurrentGameState)
+                if (GameState.Title != CurrentGameState)
                 {
                     Time.timeScale = 0;
                 }
@@ -220,8 +193,6 @@ public class GameManager : SingletonAttribute<GameManager>
     /// </summary>
     public void GameTime()
     {
-        if (OptionState == Option.Open) return;
-
         Instance.GetCurrentTime += Time.deltaTime;
     }
 

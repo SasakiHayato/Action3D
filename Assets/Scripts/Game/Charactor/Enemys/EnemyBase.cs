@@ -2,7 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
 using EnemysData;
-using StateMachine;
+
+/// <summary>
+/// Enemyの基底クラス
+/// </summary>
 
 [RequireComponent(typeof(TreeManager))]
 public abstract class EnemyBase : CharaBase
@@ -52,6 +55,8 @@ public abstract class EnemyBase : CharaBase
     }
 }
 
+
+// Note. ビヘイビアーツリー関連。一度だけTrueを返すようにするデータクラス
 [System.Serializable]
 public class EnemyConditionalData
 {

@@ -1,11 +1,17 @@
 using UnityEngine;
 using StateMachine;
 using System;
+using System.Linq;
 
-public class LockonCm : State
+/// <summary>
+/// Enemyをロックオンした際の制御クラス
+/// </summary>
+
+public class LockonCm : State, ICmEntry
 {
     [SerializeField] Vector3 _offSetPos;
-    [SerializeField] float _deadDist;
+    [SerializeField] float _deadInput = 0.75f;
+    [SerializeField] float _lockOnDist;
     [SerializeField] float _viewDelay;
 
     Transform _user;
@@ -18,13 +24,15 @@ public class LockonCm : State
     Vector3 _saveHorizontalPos;
     Quaternion _saveQuaternion;
 
+    int _saveInputX = 0;
+
     public override void SetUp(GameObject user)
     {
         _user = CmManager.CmData.Instance.User;
         _cm = user.transform;
         _dist = Vector3.Distance(_user.position, _cm.position);
 
-        CmManager.CmData.Instance.AddData(CmManager.State.Lockon, _cm.position);
+        CmManager.CmData.Instance.AddData(CmManager.State.Lockon, _cm.position, GetComponent<ICmEntry>());
     }
 
     public override void Entry(Enum before)
@@ -46,16 +54,101 @@ public class LockonCm : State
         CmManager.CmData.Instance.CurrentState = CmManager.State.Lockon;
     }
 
+    public Vector3 ResponsePos()
+    {
+        Vector3 pos = Vector3.zero;
+
+        HorizontalPos(out pos);
+        pos.y = VerticlePos();
+
+        return pos;
+    }
+
     public override void Run()
     {
-        Vector3 setPos = Vector3.zero;
+        Vector3 pos = Vector3.zero;
 
-        HorizontalPos(out setPos);
-        setPos.y = VerticlePos();
+        HorizontalPos(out pos);
+        pos.y = VerticlePos();
 
-        CmManager.CmData.Instance.Position = setPos;
+        ChangeTarget();
+
+        CmManager.CmData.Instance.Position = pos;
 
         View();
+    }
+
+    void ChangeTarget()
+    {
+        Vector2 input = (Vector2)Inputter.Instance.GetValue(InputType.CmMove);
+        if (Mathf.Abs(input.x) < _deadInput)
+        {
+            _saveInputX = 0;
+            return;
+        }
+
+        if (input.x < 0 && _saveInputX != -1)
+        {
+            _saveInputX = -1;
+            SetTarget();
+        }
+        else if (input.x > 0 && _saveInputX != 1)
+        {
+            _saveInputX = 1;
+            SetTarget();
+        }
+    }
+
+    void SetTarget()
+    {
+        Debug.Log(_saveInputX);
+
+        var finds = GameObject.FindGameObjectsWithTag("Enemy")
+                .Where(e =>
+                {
+                    float dist = Vector3.Distance(e.transform.position, transform.position);
+                    if (dist < _lockOnDist) return e;
+                    else return false;
+                });
+
+        if (finds.Count() <= 0) return;
+        GameManager.Instance.IsLockOn = true;
+
+        Vector3 cmForwrad = Camera.main.transform.forward;
+        GameObject set = null;
+        float saveAngle = float.MinValue;
+
+        foreach (var e in finds)
+        {
+            Vector3 dir = Camera.main.transform.position - e.transform.position;
+
+            float rad = Vector3.Dot(cmForwrad, dir.normalized);
+            if (rad > 0) continue;
+
+            float angle = Mathf.Acos(rad) * Mathf.Rad2Deg;
+            if (_saveInputX == 1)
+            {
+                if (angle < 0) continue;
+            }
+            
+            if (_saveInputX == -1)
+            {
+                if (angle > 0) continue;
+            }
+
+            if (saveAngle < angle)
+            {
+                CharaBase chara = e.GetComponent<CharaBase>();
+                if (chara != null)
+                {
+                    set = e.GetComponent<CharaBase>().OffSetPosObj;
+                    saveAngle = angle;
+                }
+            }
+        }
+
+        GameManager.Instance.LockonTarget = set;
+        BaseUI.Instance.CallBack("Player", "Lockon", new object[] { set });
     }
 
     void HorizontalPos(out Vector3 setPos)

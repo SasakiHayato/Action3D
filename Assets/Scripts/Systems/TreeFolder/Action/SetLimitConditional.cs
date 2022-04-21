@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// “Áês“®‚ğ‚·‚é‚½‚ß‚ÌConditional‚Éî•ñ‚ğ“`‚¦‚éAIs“®
+/// </summary>
+
 public class SetLimitConditional : IAction
 {
     [SerializeField] int _setID;

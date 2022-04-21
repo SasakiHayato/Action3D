@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Text‚Ì•\¦‚ğİ’è‚·‚éƒNƒ‰ƒX
+/// </summary>
+
 [CreateAssetMenu(fileName = "TextDatas")]
 public class TextDataBase : ScriptableObject
 {
