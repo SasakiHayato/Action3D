@@ -45,8 +45,6 @@ public class WindowManager : SingletonAttribute<WindowManager>
     {
         base.SetUp();
 
-        Debug.Log("Setup");
-
         _windowDatas = new List<WindowGroup>();
         _windowList = new List<WindowGroup>();
         _groupID = 0;

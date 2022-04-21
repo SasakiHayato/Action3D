@@ -24,7 +24,8 @@ public class RunBehaviorTree : State
 
     public override void Run()
     {
-        _tree.Update();
+        Debug.Log("bbbbbbbbbbbbbbbbbbb");
+        _tree.TreeUpdate();
     }
 
     public override Enum Exit()

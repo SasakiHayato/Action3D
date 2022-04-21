@@ -377,7 +377,7 @@ MonoBehaviour:
     Level: 1
     Point: {fileID: 2093945628312842036}
     Range: 2
-    GroupTip: {fileID: 11400000, guid: 374aa9aa69c034e4a9ad7228363d0970, type: 2}
+    GroupTip: {fileID: 11400000, guid: e3e94682274e89d4b96e04734e1a47bf, type: 2}
   - ID: 3
     Level: 1
     Point: {fileID: 6709215924939542627}
@@ -387,7 +387,7 @@ MonoBehaviour:
     Level: 1
     Point: {fileID: 1715336330447533435}
     Range: 2
-    GroupTip: {fileID: 11400000, guid: 374aa9aa69c034e4a9ad7228363d0970, type: 2}
+    GroupTip: {fileID: 11400000, guid: e3e94682274e89d4b96e04734e1a47bf, type: 2}
   - ID: 5
     Level: 1
     Point: {fileID: 1715336330447533435}

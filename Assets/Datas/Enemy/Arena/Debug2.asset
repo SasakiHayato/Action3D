@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663101b5e70d74a46a58a1d1a5293aff, type: 3}
   m_Name: Debug2
   m_EditorClassIdentifier: 
-  _datas: []
+  _datas:
+  - Types: 05000000

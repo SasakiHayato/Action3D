@@ -86,7 +86,7 @@ namespace BehaviourTree
             _isSetUp = true;
         }
 
-        public void Update()
+        public void TreeUpdate()
         {
             if (!_isSetUp)
             {

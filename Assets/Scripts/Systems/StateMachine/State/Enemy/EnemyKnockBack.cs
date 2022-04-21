@@ -62,7 +62,10 @@ public class EnemyKnockBack : State
         if (_physicsBase.ImpulsePower <= 0) _isSetUp = false;
         else
         {
-            if (_animName != "") _anim.Play(_animName);
+            if (_animName != "")
+            {
+                _anim.Play(_animName);
+            }
         }
     }
 

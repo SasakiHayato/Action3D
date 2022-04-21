@@ -279,6 +279,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3838557692302222813, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
+      propertyPath: _lockOnDist
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838557692302222813, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
       propertyPath: _offSetPos.z
       value: 0
       objectReference: {fileID: 0}

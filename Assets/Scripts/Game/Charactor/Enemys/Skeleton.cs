@@ -31,7 +31,7 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
 
     public void GetDamage(int damage, AttackType type)
     {
-        BaseState.ChangeState(State.KnockBack);
+        BaseState.ChangeState(State.KnockBack, true);
         
         Sounds.SoundMaster.PlayRequest(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
         

@@ -104,9 +104,10 @@ namespace StateMachine
         /// UpdateさせるStateを変える
         /// </summary>
         /// <param name="type">UpdateさせるState</param>
-        public Enum ChangeState(Enum type)
+        /// <param name="reEntry">同じステートの際にもう一度Entryするかどうか</param>
+        public Enum ChangeState(Enum type, bool reEntry = false)
         {
-            if (_saveType.ToString() == type.ToString()) return type;
+            if (_saveType.ToString() == type.ToString() && !reEntry) return type;
 
             foreach (var data in _stateDic)
             {
