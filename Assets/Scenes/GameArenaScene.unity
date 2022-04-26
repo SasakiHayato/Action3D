@@ -215,7 +215,7 @@ PrefabInstance:
     - target: {fileID: 3838557692302222804, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
       propertyPath: _viewDelay
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3838557692302222804, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
@@ -276,6 +276,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _sensitivityY
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838557692302222813, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
+      propertyPath: _deadDist
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838557692302222813, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
+      propertyPath: _nearDist
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3838557692302222813, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}

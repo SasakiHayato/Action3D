@@ -20,7 +20,6 @@ public class LockonCm : State, ICmEntry
     Transform _lookonTarget;
 
     float _rotateTimer;
-    float _timer;
     float _dist;
     bool _isNear;
 
@@ -59,7 +58,7 @@ public class LockonCm : State, ICmEntry
 
     public Vector3 ResponsePos()
     {
-        Vector3 pos = Vector3.zero;
+        Vector3 pos;
 
         HorizontalPos(out pos);
         pos.y = VerticlePos();
@@ -69,107 +68,21 @@ public class LockonCm : State, ICmEntry
 
     public override void Run()
     {
-        Vector3 pos = Vector3.zero;
+        if (_lookonTarget == null) return;
+
+        Vector3 pos;
 
         HorizontalPos(out pos);
         pos.y = VerticlePos();
 
-        ChangeTarget();
-
         float dist = Vector3.Distance(_user.position, _lookonTarget.position);
-        if (dist > _deadDist)
-        {
-            CmManager.CmData.Instance.Position = pos;
-            _timer = 0;
-            _isNear = false;
-        }
-        else
-        {
-            _isNear = true;
-            MoveNear(pos);
-        }
+
+        if (dist > _deadDist) _isNear = false;
+        else _isNear = true;
+
+        CmManager.CmData.Instance.Position = pos;
 
         View();
-    }
-
-    void MoveNear(Vector3 cmPos)
-    {
-        _timer += Time.deltaTime;
-
-        Vector3 currentCmPos = CmManager.CmData.Instance.Position;
-        Vector2 lerpSetPos = Vector3.Lerp(currentCmPos, cmPos, _timer);
-        CmManager.CmData.Instance.Position = lerpSetPos;
-    }
-
-    void ChangeTarget()
-    {
-        Vector2 input = (Vector2)Inputter.Instance.GetValue(InputType.CmMove);
-        if (Mathf.Abs(input.x) < _deadInput)
-        {
-            _saveInputX = 0;
-            return;
-        }
-
-        if (input.x < 0 && _saveInputX != -1)
-        {
-            _saveInputX = -1;
-            SetTarget();
-        }
-        else if (input.x > 0 && _saveInputX != 1)
-        {
-            _saveInputX = 1;
-            SetTarget();
-        }
-    }
-
-    void SetTarget()
-    {
-        var finds = GameObject.FindGameObjectsWithTag("Enemy")
-                .Where(e =>
-                {
-                    float dist = Vector3.Distance(e.transform.position, transform.position);
-                    if (dist < _lockOnDist) return e;
-                    else return false;
-                });
-
-        if (finds.Count() <= 0) return;
-        GameManager.Instance.IsLockOn = true;
-
-        Vector3 cmForwrad = Camera.main.transform.forward;
-        GameObject set = null;
-        float saveAngle = float.MinValue;
-
-        foreach (var e in finds)
-        {
-            Vector3 dir = Camera.main.transform.position - e.transform.position;
-
-            float rad = Vector3.Dot(cmForwrad, dir.normalized);
-            if (rad > 0) continue;
-
-            float angle = Mathf.Acos(rad) * Mathf.Rad2Deg;
-            if (_saveInputX == 1)
-            {
-                if (angle < 0) continue;
-            }
-            
-            if (_saveInputX == -1)
-            {
-                if (angle > 0) continue;
-            }
-
-            if (saveAngle < angle)
-            {
-                CharaBase chara = e.GetComponent<CharaBase>();
-                if (chara != null)
-                {
-                    set = e.GetComponent<CharaBase>().OffSetPosObj;
-                    saveAngle = angle;
-                }
-            }
-        }
-
-        GameManager.Instance.LockonTarget = set;
-        BaseUI.Instance.CallBack("Player", "Lockon", new object[] { set });
     }
 
     void HorizontalPos(out Vector3 setPos)
@@ -187,12 +100,21 @@ public class LockonCm : State, ICmEntry
         Vector3 pos = new Vector3(Mathf.Cos(rad), 0, Mathf.Sin(rad)) * _dist;
         setPos = pos + _user.position;
 
+        if (_isNear)
+        {
+            setPos /= 2;
+            setPos.y = 0;
+        }
+
         _saveHorizontalPos = setPos;
     }
 
     float VerticlePos()
     {
-        return _offSetPos.y + _user.position.y;
+        float posY = _offSetPos.y + _user.position.y;
+        if (_isNear) posY = _offSetPos.y;
+
+        return posY;
     }
 
     void View()
@@ -225,7 +147,7 @@ public class LockonCm : State, ICmEntry
 
     public override Enum Exit()
     {
-        if (GameManager.Instance.LockonTarget != null) return CmManager.State.Lockon;
+        if (GameManager.Instance.LockonTarget != null && _lookonTarget != null) return CmManager.State.Lockon;
         else
         {
             CmManager.CmData.Data data = CmManager.CmData.Instance.GetData(CmManager.State.Lockon);
