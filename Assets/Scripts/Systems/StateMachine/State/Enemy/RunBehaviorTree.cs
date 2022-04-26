@@ -24,7 +24,6 @@ public class RunBehaviorTree : State
 
     public override void Run()
     {
-        Debug.Log("bbbbbbbbbbbbbbbbbbb");
         _tree.TreeUpdate();
     }
 

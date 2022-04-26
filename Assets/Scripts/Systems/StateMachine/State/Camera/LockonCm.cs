@@ -12,6 +12,7 @@ public class LockonCm : State, ICmEntry
     [SerializeField] Vector3 _offSetPos;
     [SerializeField] float _deadInput = 0.75f;
     [SerializeField] float _lockOnDist;
+    [SerializeField] float _deadDist;
     [SerializeField] float _viewDelay;
 
     Transform _user;
@@ -19,7 +20,9 @@ public class LockonCm : State, ICmEntry
     Transform _lookonTarget;
 
     float _rotateTimer;
+    float _timer;
     float _dist;
+    bool _isNear;
 
     Vector3 _saveHorizontalPos;
     Quaternion _saveQuaternion;
@@ -73,9 +76,29 @@ public class LockonCm : State, ICmEntry
 
         ChangeTarget();
 
-        CmManager.CmData.Instance.Position = pos;
+        float dist = Vector3.Distance(_user.position, _lookonTarget.position);
+        if (dist > _deadDist)
+        {
+            CmManager.CmData.Instance.Position = pos;
+            _timer = 0;
+            _isNear = false;
+        }
+        else
+        {
+            _isNear = true;
+            MoveNear(pos);
+        }
 
         View();
+    }
+
+    void MoveNear(Vector3 cmPos)
+    {
+        _timer += Time.deltaTime;
+
+        Vector3 currentCmPos = CmManager.CmData.Instance.Position;
+        Vector2 lerpSetPos = Vector3.Lerp(currentCmPos, cmPos, _timer);
+        CmManager.CmData.Instance.Position = lerpSetPos;
     }
 
     void ChangeTarget()
@@ -101,8 +124,6 @@ public class LockonCm : State, ICmEntry
 
     void SetTarget()
     {
-        Debug.Log(_saveInputX);
-
         var finds = GameObject.FindGameObjectsWithTag("Enemy")
                 .Where(e =>
                 {
@@ -184,13 +205,22 @@ public class LockonCm : State, ICmEntry
 
         _rotateTimer += Time.deltaTime / _viewDelay;
 
-        Vector3 dir = _lookonTarget.position - _cm.position;
+        Vector3 dir = SetViewPosition() - _cm.position;
         Quaternion q = Quaternion.LookRotation(dir.normalized);
         _cm.rotation = Quaternion.Lerp(_cm.rotation, q, _rotateTimer);
 
         _saveQuaternion = _cm.rotation;
 
         if (_cm.rotation == q) _rotateTimer = 0;
+    }
+
+    Vector3 SetViewPosition()
+    {
+        Vector3 setPos;
+        if (_isNear) setPos = (_lookonTarget.position + _user.position) / 2;
+        else setPos = _lookonTarget.position;
+
+        return setPos;
     }
 
     public override Enum Exit()

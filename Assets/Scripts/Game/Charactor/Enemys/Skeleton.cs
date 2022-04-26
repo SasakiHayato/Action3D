@@ -16,7 +16,6 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
         BaseState.SetUp(gameObject)
             .AddState(State.BehaviorTree, "Tree")
             .AddState(State.KnockBack, "Knock")
-            .AddState(State.Idle, "Idle")
             .RunRequest(State.BehaviorTree);
     }
 
@@ -31,6 +30,7 @@ public class Skeleton : EnemyBase, IDamage, IFieldEnemy
     public void GetDamage(int damage, AttackType type)
     {
         BaseState.ChangeState(State.KnockBack, true);
+        IsGetDamage = true;
         
         Sounds.SoundMaster.PlayRequest(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);
         

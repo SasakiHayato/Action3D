@@ -133,7 +133,8 @@ public class PlayerAttack : State
             }
         }
 
-        return set.transform;
+        if (set != null) return set.transform;
+        else return null;
     }
 
     void Rotate(Transform target)

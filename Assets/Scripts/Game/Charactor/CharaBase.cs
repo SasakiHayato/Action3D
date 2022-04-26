@@ -31,10 +31,11 @@ public class CharaBase : MonoBehaviour
 
     public StateManager BaseState => _baseState;
 
-
     public float KnonckUpPower { get; set; }
     public float KnonckForwardPower { get; set; }
     public Vector3 KnockDir { get; set; }
+
+    public bool IsGetDamage { get; set; } = false;
 
     // Note. ステータスの上昇最大倍率
     const float MaxAddCount = 0.4f;
