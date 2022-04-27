@@ -113,9 +113,9 @@ public class CmManager : MonoBehaviour
     void Move()
     {
         Vector3 setPos = Vector3.Lerp(transform.position, CmData.Instance.Position, _moveTimer / _moveTranditionRate);
-        transform.position = setPos + _zoomPos;
+        transform.position = setPos/* + _zoomPos*/;
 
-        if (setPos == CmData.Instance.Position + _zoomPos)
+        if (setPos == CmData.Instance.Position/* + _zoomPos*/)
         {
             _moveTimer = 0;
         }

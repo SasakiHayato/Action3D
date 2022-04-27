@@ -75,7 +75,9 @@ public class LockonCm : State, ICmEntry
         HorizontalPos(out pos);
         pos.y = VerticlePos();
 
-        float dist = Vector3.Distance(_user.position, _lookonTarget.position);
+        Vector2 userPos = new Vector2(_user.position.x, _user.position.z);
+        Vector2 tPos = new Vector2(_lookonTarget.position.x, _lookonTarget.position.z);
+        float dist = Vector2.Distance(userPos, tPos);
 
         if (dist > _deadDist) _isNear = false;
         else _isNear = true;
@@ -98,13 +100,14 @@ public class LockonCm : State, ICmEntry
 
         float rad = angle * Mathf.Deg2Rad;
         Vector3 pos = new Vector3(Mathf.Cos(rad), 0, Mathf.Sin(rad)) * _dist;
-        setPos = pos + _user.position;
 
         if (_isNear)
         {
-            setPos /= 2;
-            setPos.y = 0;
+            pos.x /= 2;
+            pos.z /= 2;
         }
+
+        setPos = pos + _user.position;
 
         _saveHorizontalPos = setPos;
     }
@@ -112,8 +115,7 @@ public class LockonCm : State, ICmEntry
     float VerticlePos()
     {
         float posY = _offSetPos.y + _user.position.y;
-        if (_isNear) posY = _offSetPos.y;
-
+        
         return posY;
     }
 
