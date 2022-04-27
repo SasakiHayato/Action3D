@@ -27,7 +27,7 @@ public class NormalCm : State, ICmEntry
     Vector3 _saveHorizontalPos;
     
     const float Degree90 = 90f;
-    const float MouseSensitivityRate = 2;
+    const float MouseSensitivityRate = 2.5f;
 
     public override void SetUp(GameObject user)
     {
@@ -76,7 +76,8 @@ public class NormalCm : State, ICmEntry
         if (x > 0) _horizontalAngle++;
         else if (x < 0) _horizontalAngle--;
 
-        float sensitivity = 0;
+        float sensitivity;
+
         if (Inputter.Instance.IsConnectGamePad) sensitivity = _sensitivityX;
         else sensitivity = _sensitivityX * MouseSensitivityRate;
 
