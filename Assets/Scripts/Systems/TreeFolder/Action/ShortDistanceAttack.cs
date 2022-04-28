@@ -11,6 +11,7 @@ using NewAttacks;
 public class ShortDistanceAttack : IAction
 {
     [SerializeField] NewAttacks.AttackType _type = NewAttacks.AttackType.Weak;
+    [SerializeField] int _requestID = -1;
 
     EnemyBase _enemyBase = null;
     AttackSettings _attack = null;
@@ -31,7 +32,7 @@ public class ShortDistanceAttack : IAction
         _enemyBase.MoveDir = Vector3.zero;
         
         Rotate();
-        _attack.Request(_type);
+        _attack.Request(_type, _requestID);
 
         return true;
     }

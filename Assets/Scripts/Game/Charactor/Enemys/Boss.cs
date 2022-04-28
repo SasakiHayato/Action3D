@@ -47,6 +47,8 @@ public class Boss : EnemyBase, IDamage, IFieldEnemy
             return;
         }
 
+        KnonckForwardPower = 0;
+        KnonckUpPower = 0;
         BaseState.ChangeState(State.KnockBack);
 
         Sounds.SoundMaster.PlayRequest(transform, "Damage", Sounds.SEDataBase.DataType.Enemys);

@@ -1665,6 +1665,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4864700091838028667, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[0].KnockBackData.UpPower
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864700091838028667, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[1].KnockBackData.UpPower
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864700091838028667, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[2].KnockBackData.UpPower
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864700091838028667, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[0].KnockBackData.ForwardPower
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864700091838028667, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[1].KnockBackData.ForwardPower
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864700091838028667, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[2].KnockBackData.ForwardPower
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864700091838028667, guid: 59ef05e806e32994c91492a4deb01892,
+        type: 3}
+      propertyPath: _dataLists.Array.data[0].AttackDatas.Array.data[3].KnockBackData.ForwardPower
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7006125452275017767, guid: 59ef05e806e32994c91492a4deb01892,
         type: 3}
       propertyPath: m_Name
