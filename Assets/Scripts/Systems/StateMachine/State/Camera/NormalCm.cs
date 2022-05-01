@@ -25,7 +25,9 @@ public class NormalCm : State, ICmEntry
 
     float _savePosY;
     Vector3 _saveHorizontalPos;
-    
+
+    bool _isFirst = true;
+
     const float Degree90 = 90f;
     const float MouseSensitivityRate = 2.5f;
 
@@ -42,7 +44,17 @@ public class NormalCm : State, ICmEntry
 
     public override void Entry(Enum before)
     {
-        _cm.position = CmManager.CmData.Instance.TransitionPos;
+        if (_isFirst)
+        {
+            _isFirst = false;
+            
+        }
+        else
+        {
+            _cm.position = CmManager.CmData.Instance.TransitionPos;
+            _saveHorizontalPos = _cm.position - _user.position;
+        }
+
         CmManager.CmData.Instance.CurrentState = CmManager.State.Normal;
     }
 

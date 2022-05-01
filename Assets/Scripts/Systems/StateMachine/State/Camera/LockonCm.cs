@@ -53,6 +53,7 @@ public class LockonCm : State, ICmEntry
         _saveHorizontalPos = Vector3.zero;
         _saveQuaternion = Quaternion.identity;
 
+        _cm.position = CmManager.CmData.Instance.TransitionPos;
         CmManager.CmData.Instance.CurrentState = CmManager.State.Lockon;
     }
 
