@@ -26,8 +26,6 @@ public class LockonCm : State, ICmEntry
     Vector3 _saveHorizontalPos;
     Quaternion _saveQuaternion;
 
-    int _saveInputX = 0;
-
     public override void SetUp(GameObject user)
     {
         _user = CmManager.CmData.Instance.User;
@@ -102,12 +100,6 @@ public class LockonCm : State, ICmEntry
         float rad = angle * Mathf.Deg2Rad;
         Vector3 pos = new Vector3(Mathf.Cos(rad), 0, Mathf.Sin(rad)) * _dist;
 
-        if (_isNear)
-        {
-            pos.x /= 2;
-            pos.z /= 2;
-        }
-
         setPos = pos + _user.position;
 
         _saveHorizontalPos = setPos;
@@ -130,7 +122,7 @@ public class LockonCm : State, ICmEntry
 
         _rotateTimer += Time.deltaTime / _viewDelay;
 
-        Vector3 dir = SetViewPosition() - _cm.position;
+        Vector3 dir = _lookonTarget.position - _cm.position;
         Quaternion q = Quaternion.LookRotation(dir.normalized);
         _cm.rotation = Quaternion.Lerp(_cm.rotation, q, _rotateTimer);
 
@@ -139,17 +131,10 @@ public class LockonCm : State, ICmEntry
         if (_cm.rotation == q) _rotateTimer = 0;
     }
 
-    Vector3 SetViewPosition()
-    {
-        Vector3 setPos;
-        if (_isNear) setPos = (_lookonTarget.position + _user.position) / 2;
-        else setPos = _lookonTarget.position;
-
-        return setPos;
-    }
-
     public override Enum Exit()
     {
+        if (_isNear) return CmManager.State.LockonNear;
+
         if (GameManager.Instance.LockonTarget != null && _lookonTarget != null) return CmManager.State.Lockon;
         else
         {

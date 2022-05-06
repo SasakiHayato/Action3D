@@ -57,6 +57,7 @@ public class CmManager : MonoBehaviour
     {
         Normal,
         Lockon,
+        LockonNear,
         Shake,
         Transition,
     }
@@ -83,6 +84,7 @@ public class CmManager : MonoBehaviour
             .AddState(State.Lockon, "Lockon")
             .AddState(State.Transition, "Transition")
             .AddState(State.Shake, "Shake")
+            .AddState(State.LockonNear, "LockonNear")
             .RunRequest(State.Normal);
 
         CreatePoint();
@@ -113,9 +115,9 @@ public class CmManager : MonoBehaviour
     void Move()
     {
         Vector3 setPos = Vector3.Lerp(transform.position, CmData.Instance.Position, _moveTimer / _moveTranditionRate);
-        transform.position = setPos/* + _zoomPos*/;
+        transform.position = setPos + _zoomPos;
 
-        if (setPos == CmData.Instance.Position/* + _zoomPos*/)
+        if (setPos == CmData.Instance.Position + _zoomPos)
         {
             _moveTimer = 0;
         }

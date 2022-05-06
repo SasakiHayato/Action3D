@@ -1267,6 +1267,11 @@ PrefabInstance:
       propertyPath: _deadAngle
       value: -28
       objectReference: {fileID: 0}
+    - target: {fileID: 4453118141663412284, guid: 2e110ddf55fedf347b7a6166422f37fe,
+        type: 3}
+      propertyPath: _user
+      value: 
+      objectReference: {fileID: 1516425800}
     - target: {fileID: 8687923995288002092, guid: 2e110ddf55fedf347b7a6166422f37fe,
         type: 3}
       propertyPath: _user
@@ -1276,7 +1281,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 2e110ddf55fedf347b7a6166422f37fe, type: 3}
 --- !u!4 &237668622 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5909179089771982268, guid: 2e110ddf55fedf347b7a6166422f37fe,
+  m_CorrespondingSourceObject: {fileID: 4453118141978622580, guid: 2e110ddf55fedf347b7a6166422f37fe,
     type: 3}
   m_PrefabInstance: {fileID: 237668621}
   m_PrefabAsset: {fileID: 0}
