@@ -133,7 +133,16 @@ public class LockonCm : State, ICmEntry
 
     public override Enum Exit()
     {
-        if (_isNear) return CmManager.State.LockonNear;
+        if (_isNear)
+        {
+            CmManager.CmData.Data data = CmManager.CmData.Instance.GetData(CmManager.State.Lockon);
+            data.Pos = _cm.position - _user.position;
+
+            CmManager.CmData.Instance.NextState = CmManager.State.LockonNear;
+            CmManager.CmData.Instance.NextTarget = CmManager.CmData.Instance.User;
+
+            return CmManager.State.Transition;
+        }
 
         if (GameManager.Instance.LockonTarget != null && _lookonTarget != null) return CmManager.State.Lockon;
         else

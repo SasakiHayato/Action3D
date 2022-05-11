@@ -36,8 +36,8 @@ public class TransitionCm : State
         CmManager.CmData.Data currntData = CmManager.CmData.Instance.GetData(CmManager.CmData.Instance.CurrentState);
         CmManager.CmData.Data nextData = CmManager.CmData.Instance.GetData(CmManager.CmData.Instance.NextState);
 
-        _currentPos = currntData.IEntry.ResponsePos() + _user.position;
-        _nextPos = nextData.IEntry.ResponsePos() + _user.position;
+        _currentPos = currntData.IEntry.ResponsePos();
+        _nextPos = nextData.IEntry.ResponsePos();
     }
 
     public override void Run()

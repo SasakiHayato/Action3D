@@ -65,7 +65,7 @@ public class NormalCm : State, ICmEntry
         Vector3 pos = HorizontalPos(input.normalized.x);
         float y = VerticlePos(input.normalized.y);
 
-        return new Vector3(pos.x, y, pos.z);
+        return new Vector3(pos.x, y - _user.position.y, pos.z);
     }
 
     public override void Run()
