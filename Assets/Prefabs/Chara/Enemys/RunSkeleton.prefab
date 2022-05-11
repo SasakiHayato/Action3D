@@ -436,6 +436,7 @@ MonoBehaviour:
       type: {class: ShortDistanceAttack, ns: , asm: Assembly-CSharp}
       data:
         _type: 0
+        _requestID: -1
     0000000D:
       type: {class: MomentMove, ns: , asm: Assembly-CSharp}
       data:
